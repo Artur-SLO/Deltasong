@@ -1,0 +1,92 @@
+[
+    {
+        "name": "7 COLORED FLOWERS",
+        "gender": "Unknown",
+        "type": "Unknown",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/thumb/7_Colored_Flowers_screenshot_enemies.png/300px-7_Colored_Flowers_screenshot_enemies.png.webp?cb=cqm57j&h=thumb.php&f=7_Colored_Flowers_screenshot_enemies.png",
+        "url": "https://deltarune.wiki/w/7_Colored_Flowers"
+    },
+    {
+        "name": "AARON",
+        "gender": "Unknown",
+        "type": "Lightner",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/Aaron_overworld.png?cb=21xrgk&h=thumb.php&f=Aaron_overworld.png",
+        "url": "https://deltarune.wiki/w/Aaron"
+    },
+    {
+        "name": "ADDISON",
+        "gender": "Unknown",
+        "type": "Darkner",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/Addison_overworld_blue.gif?cb=5xd016&h=thumb.php&f=Addison_overworld_blue.gif",
+        "url": "https://deltarune.wiki/w/Addison"
+    },
+    {
+        "name": "ALPHYS",
+        "gender": "Unknown",
+        "type": "Lightner",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/Alphys_overworld.png?cb=hwjtyk&h=thumb.php&f=Alphys_overworld.png",
+        "url": "https://deltarune.wiki/w/Alphys"
+    },
+    {
+        "name": "ALVIN",
+        "gender": "Unknown",
+        "type": "Lightner",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/Alvin_overworld.png?cb=ijwfnw&h=thumb.php&f=Alvin_overworld.png",
+        "url": "https://deltarune.wiki/w/Alvin"
+    },
+    {
+        "name": "AMBYU-LANCE",
+        "gender": "Unknown",
+        "type": "Darkner",
+        "chapter": 1,
+        "class": "Boss / Enemy",
+        "image": "https://deltarune.wiki/images/Ambyu-Lance_overworld.gif?cb=s1j1c4&h=thumb.php&f=Ambyu-Lance_overworld.gif",
+        "url": "https://deltarune.wiki/w/Ambyu-Lance"
+    },
+    {
+        "name": "ANNOYING DOG",
+        "gender": "Unknown",
+        "type": "Lightner",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/Annoying_Dog_overworld.gif?cb=9k72ty&h=thumb.php&f=Annoying_Dog_overworld.gif",
+        "url": "https://deltarune.wiki/w/Annoying_Dog"
+    },
+    {
+        "name": "ANTLION",
+        "gender": "Unknown",
+        "type": "Unknown",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/Antlion_overworld_red.gif?cb=f1wm7i&h=thumb.php&f=Antlion_overworld_red.gif",
+        "url": "https://deltarune.wiki/w/Antlion"
+    },
+    {
+        "name": "AQUA",
+        "gender": "Unknown",
+        "type": "Unknown",
+        "chapter": 1,
+        "class": "Boss / Enemy",
+        "image": "https://deltarune.wiki/images/Aqua_overworld.png?cb=g9efvm&h=thumb.php&f=Aqua_overworld.png",
+        "url": "https://deltarune.wiki/w/Aqua"
+    },
+    {
+        "name": "ARCHER",
+        "gender": "Unknown",
+        "type": "Darkner",
+        "chapter": 1,
+        "class": "NPC",
+        "image": "https://deltarune.wiki/images/Archer_overworld.gif?cb=gdivq7&h=thumb.php&f=Archer_overworld.gif",
+        "url": "https://deltarune.wiki/w/Archer"
+    }
+]
