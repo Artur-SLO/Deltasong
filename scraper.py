@@ -1,5 +1,6 @@
 import json
 import re
+import sys
 import time
 from urllib.parse import urljoin
 import requests
@@ -9,6 +10,14 @@ BASE_URL = "https://deltarune.wiki"
 CATEGORY_URL = f"{BASE_URL}/w/Category:Characters"
 
 MAX_CHARACTERS = 10
+
+if len(sys.argv) > 1:
+    arg_input = sys.argv[1]
+
+    if arg_input.isdigit() and int(arg_input) >= 0:
+        MAX_CHARACTERS = int(arg_input)
+    else:
+        sys.exit("Error: argument needs to be a positive integer")
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
