@@ -1,11 +1,12 @@
 [
     {
         "name": "7 COLORED FLOWERS",
-        "gender": "Male",
+        "gender": "Unknown",
         "type": "Plant",
         "chapter": 5,
         "class": "Boss / Enemy",
-        "image": "https://deltarune.wiki/images/7_Colored_Flowers_screenshot_enemies.png?cb=cqm57j&h=thumb.php&f=7_Colored_Flowers_screenshot_enemies.png",
+        "first_appearance": "Flower Kingdom",
+        "image": "https://deltarune.wiki/images/Flowery_battle_idle.gif?cb=s5lzd3&h=thumb.php&f=Flowery_battle_idle.gif",
         "url": "https://deltarune.wiki/w/7_Colored_Flowers"
     },
     {
@@ -14,6 +15,7 @@
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
+        "first_appearance": "Hometown",
         "image": "https://deltarune.wiki/images/Aaron_overworld.png?cb=21xrgk&h=thumb.php&f=Aaron_overworld.png",
         "url": "https://deltarune.wiki/w/Aaron"
     },
@@ -23,6 +25,7 @@
         "type": "Darkner",
         "chapter": 2,
         "class": "Vendor",
+        "first_appearance": "Cyber City",
         "image": "https://deltarune.wiki/images/Addison_overworld_blue.gif?cb=5xd016&h=thumb.php&f=Addison_overworld_blue.gif",
         "url": "https://deltarune.wiki/w/Addison"
     },
@@ -32,7 +35,8 @@
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
-        "image": "https://deltarune.wiki/images/Alphys_overworld.png?cb=hwjtyk&h=thumb.php&f=Alphys_overworld.png",
+        "first_appearance": "Hometown",
+        "image": "https://deltarune.wiki/images/thumb/Alphys_overworld_vampire_attire_spin.gif/58px-Alphys_overworld_vampire_attire_spin.gif.webp?cb=c2l4s7&h=thumb.php&f=Alphys_overworld_vampire_attire_spin.gif",
         "url": "https://deltarune.wiki/w/Alphys"
     },
     {
@@ -41,6 +45,7 @@
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
+        "first_appearance": "Hometown",
         "image": "https://deltarune.wiki/images/Alvin_overworld.png?cb=ijwfnw&h=thumb.php&f=Alvin_overworld.png",
         "url": "https://deltarune.wiki/w/Alvin"
     },
@@ -50,15 +55,17 @@
         "type": "Darkner",
         "chapter": 1,
         "class": "Boss / Enemy",
+        "first_appearance": "Cyber City",
         "image": "https://deltarune.wiki/images/Ambyu-Lance_overworld.gif?cb=s1j1c4&h=thumb.php&f=Ambyu-Lance_overworld.gif",
         "url": "https://deltarune.wiki/w/Ambyu-Lance"
     },
     {
         "name": "ANNOYING DOG",
-        "gender": "Male",
+        "gender": "Non-binary",
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
+        "first_appearance": "Hometown",
         "image": "https://deltarune.wiki/images/Annoying_Dog_overworld.gif?cb=9k72ty&h=thumb.php&f=Annoying_Dog_overworld.gif",
         "url": "https://deltarune.wiki/w/Annoying_Dog"
     },
@@ -68,6 +75,7 @@
         "type": "Unknown",
         "chapter": 1,
         "class": "NPC",
+        "first_appearance": "Island Board",
         "image": "https://deltarune.wiki/images/Antlion_overworld_red.gif?cb=f1wm7i&h=thumb.php&f=Antlion_overworld_red.gif",
         "url": "https://deltarune.wiki/w/Antlion"
     },
@@ -77,7 +85,8 @@
         "type": "Plant",
         "chapter": 5,
         "class": "Boss / Enemy",
-        "image": "https://deltarune.wiki/images/Aqua_overworld.png?cb=g9efvm&h=thumb.php&f=Aqua_overworld.png",
+        "first_appearance": "Garden",
+        "image": "https://deltarune.wiki/images/Aqua_battle_idle.gif?cb=gth4x6&h=thumb.php&f=Aqua_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Aqua"
     },
     {
@@ -86,6 +95,7 @@
         "type": "Darkner",
         "chapter": 1,
         "class": "NPC",
+        "first_appearance": "Flower Castle",
         "image": "https://deltarune.wiki/images/Archer_overworld.gif?cb=gdivq7&h=thumb.php&f=Archer_overworld.gif",
         "url": "https://deltarune.wiki/w/Archer"
     }

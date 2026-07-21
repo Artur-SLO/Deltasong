@@ -33,17 +33,8 @@ def parse_gender(full_text, infobox_text=""):
         return "Male"
     if "she/her" in combined or "she / her" in combined:
         return "Female"
-    if "they/them" in combined or "they / them" in combined or "non-binary" in combined:
+    if "they/them" in combined or "they / them" in combined or "non-binary" in combined or "it/its" in combined or "it / its" in combined:
         return "Non-binary"
-
-    # Priority 2: Fallback pronoun counting in text
-    he_count = len(re.findall(r"\b(he|his|him)\b", combined))
-    she_count = len(re.findall(r"\b(she|her|hers)\b", combined))
-
-    if he_count > she_count and he_count > 2:
-        return "Male"
-    if she_count > he_count and she_count > 2:
-        return "Female"
 
     return "Unknown"
 
@@ -105,15 +96,50 @@ def parse_class(first_paragraph, categories_text, infobox_text):
 
     return "NPC"
 
+def parse_first_appearance(infobox_el, full_text):
+    """Extract the first location under 'Appearances' from the infobox HTML structure."""
+    if infobox_el:
+        # Search for any block containing 'appearance' in the label or text
+        for item in infobox_el.select(".pi-data-item, tr, div"):
+            label_el = item.select_one(".pi-data-label, th, h3, h4")
+            val_el = item.select_one(".pi-data-value, td, div")
+
+            if label_el and val_el and "appearance" in label_el.text.strip().lower():
+                # Strategy 1: Find the first <li><a> element inside the <ul> list
+                first_link = val_el.select_one("ul li a, ol li a, a")
+                if first_link and clean_text(first_link.text):
+                    return clean_text(first_link.text)
+
+                # Strategy 2: Fallback to the first non-empty line of text
+                lines = [clean_text(line) for line in val_el.text.split("\n") if clean_text(line)]
+                if lines:
+                    return lines[0]
+
+    # Fallback via Regex in full text if infobox parsing fails
+    match = re.search(
+        r"first appears in\s+([A-Za-z0-9\s\'\?]+?)(?=\s+and|\s+or|\.|\,)",
+        full_text,
+        re.IGNORECASE,
+    )
+    if match:
+        return match.group(1).strip().title()
+
+    return "Unknown"
 
 def extract_image_url(soup):
-    """Extract character image from meta tags, infobox, or main body."""
-    # Open Graph meta tag (Contains primary page sprite)
+    """Extract character image URL, prioritizing animated GIFs."""
+    # Priority 1: Search for animated GIFs in infobox or content
+    for img in soup.select("aside img, .portable-infobox img, .mw-parser-output img"):
+        src = img.get("src") or img.get("data-src") or ""
+        if ".gif" in src.lower() and not any(ignored_term in src.lower() for ignored_term in ["icon", "logo", "badge"]):
+            return urljoin(BASE_URL, src)
+
+    # Priority 2: Fallback to Open Graph meta tag
     og_img = soup.find("meta", property="og:image")
     if og_img and og_img.get("content"):
         return og_img["content"]
 
-    # Infobox image tag
+    # Priority 3: Fallback to first available image tag
     img = soup.select_one("aside img, .portable-infobox img, .mw-parser-output img")
     if img:
         src = img.get("src") or img.get("data-src")
@@ -155,6 +181,7 @@ def parse_character_page(url):
             "type": parse_type(first_paragraph, categories_text, infobox_text),
             "chapter": parse_chapter(soup, full_body_text),
             "class": parse_class(first_paragraph, categories_text, infobox_text),
+            "first_appearance": parse_first_appearance(infobox_el, full_body_text),
             "image": extract_image_url(soup),
             "url": url,
         }
