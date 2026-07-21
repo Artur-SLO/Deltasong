@@ -1,11 +1,11 @@
 [
     {
         "name": "7 COLORED FLOWERS",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "image": "https://deltarune.wiki/images/thumb/7_Colored_Flowers_screenshot_enemies.png/300px-7_Colored_Flowers_screenshot_enemies.png.webp?cb=cqm57j&h=thumb.php&f=7_Colored_Flowers_screenshot_enemies.png",
+        "gender": "Male",
+        "type": "Plant",
+        "chapter": 5,
+        "class": "Boss / Enemy",
+        "image": "https://deltarune.wiki/images/7_Colored_Flowers_screenshot_enemies.png?cb=cqm57j&h=thumb.php&f=7_Colored_Flowers_screenshot_enemies.png",
         "url": "https://deltarune.wiki/w/7_Colored_Flowers"
     },
     {
@@ -19,16 +19,16 @@
     },
     {
         "name": "ADDISON",
-        "gender": "Unknown",
+        "gender": "Non-binary",
         "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
+        "chapter": 2,
+        "class": "Vendor",
         "image": "https://deltarune.wiki/images/Addison_overworld_blue.gif?cb=5xd016&h=thumb.php&f=Addison_overworld_blue.gif",
         "url": "https://deltarune.wiki/w/Addison"
     },
     {
         "name": "ALPHYS",
-        "gender": "Unknown",
+        "gender": "Female",
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
@@ -37,7 +37,7 @@
     },
     {
         "name": "ALVIN",
-        "gender": "Unknown",
+        "gender": "Male",
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
@@ -46,7 +46,7 @@
     },
     {
         "name": "AMBYU-LANCE",
-        "gender": "Unknown",
+        "gender": "Non-binary",
         "type": "Darkner",
         "chapter": 1,
         "class": "Boss / Enemy",
@@ -55,7 +55,7 @@
     },
     {
         "name": "ANNOYING DOG",
-        "gender": "Unknown",
+        "gender": "Male",
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
@@ -73,9 +73,9 @@
     },
     {
         "name": "AQUA",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
+        "gender": "Female",
+        "type": "Plant",
+        "chapter": 5,
         "class": "Boss / Enemy",
         "image": "https://deltarune.wiki/images/Aqua_overworld.png?cb=g9efvm&h=thumb.php&f=Aqua_overworld.png",
         "url": "https://deltarune.wiki/w/Aqua"
