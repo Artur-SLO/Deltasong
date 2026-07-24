@@ -24,7 +24,6 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
 }
 
-
 def clean_text(text):
     """Remove footnotes [1], [2] and normalize whitespace."""
     if not text:
@@ -32,7 +31,6 @@ def clean_text(text):
     cleaned = re.sub(r"\[\d+\]", "", text)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned
-
 
 def parse_gender(full_text, infobox_text=""):
     """Extract gender using pronouns in infobox or body text."""
@@ -47,7 +45,6 @@ def parse_gender(full_text, infobox_text=""):
         return "Non-binary"
 
     return "Unknown"
-
 
 def parse_type(first_paragraph, categories_text, infobox_text):
     """Extract type/species from classification, intro sentence, or categories."""
@@ -71,7 +68,6 @@ def parse_type(first_paragraph, categories_text, infobox_text):
 
     return "Unknown"
 
-
 def parse_chapter(soup, full_text):
     """Find the earliest chapter mentioned in headers or intro text."""
     chapter_headers = []
@@ -89,7 +85,6 @@ def parse_chapter(soup, full_text):
         return int(match.group(1) or match.group(2))
 
     return 1
-
 
 def parse_class(first_paragraph, categories_text, infobox_text):
     """Determine character role/class (Main Character, Boss, Enemy, Vendor, Ally, NPC)."""
@@ -110,7 +105,6 @@ def parse_class(first_paragraph, categories_text, infobox_text):
         return "Ally"
 
     return "NPC"
-
 
 def parse_first_appearance(infobox_el, full_text):
     """Extract the first location under 'Appearances' from the infobox HTML structure."""
@@ -138,7 +132,6 @@ def parse_first_appearance(infobox_el, full_text):
 
     return "Unknown"
 
-
 def extract_image_url(soup):
     """Extract character image URL, prioritizing animated GIFs."""
     for img in soup.select("aside img, .portable-infobox img, .mw-parser-output img"):
@@ -157,7 +150,6 @@ def extract_image_url(soup):
             return urljoin(BASE_URL, src)
 
     return None
-
 
 def parse_character_page(url, location_map=None):
     """Scrape and parse character page content using text body and DOM structure."""
@@ -203,7 +195,6 @@ def parse_character_page(url, location_map=None):
         print(f"Error scraping {url}: {e}")
         return None
 
-
 def get_character_links():
     """Fetch links from Category:Characters."""
     print("Fetching character URLs...")
@@ -223,7 +214,6 @@ def get_character_links():
 
     print(f"Found {len(character_links)} character links.")
     return character_links
-
 
 def fetch_location_map():
     """
@@ -288,7 +278,6 @@ def update_character_indices(characters_file="deltarune_characters.json", locati
     except Exception as e:
         print(f"Error updating character indices: {e}")
 
-
 def main():
     location_map = fetch_location_map()
     links = get_character_links()
@@ -323,4 +312,5 @@ def main():
     print(f"\nExtraction complete! Saved {len(characters)} character(s) to '{output_file}'.")
 
 if __name__ == "__main__":
+    # update_character_indices()
     main()

@@ -1,16 +1,5 @@
 [
     {
-        "name": "7 COLORED FLOWERS",
-        "gender": "Unknown",
-        "type": "Plant",
-        "chapter": 5,
-        "class": "NPC",
-        "first_appearance": "Flower Kingdom",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Flowery_battle_idle.gif?cb=s5lzd3&h=thumb.php&f=Flowery_battle_idle.gif",
-        "url": "https://deltarune.wiki/w/7_Colored_Flowers"
-    },
-    {
         "name": "AARON",
         "gender": "Unknown",
         "type": "Lightner",
@@ -83,7 +72,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Island Board",
-        "first_appearance_index": 36,
+        "first_appearance_index": 37,
         "image": "https://deltarune.wiki/images/Antlion_overworld_red.gif?cb=f1wm7i&h=thumb.php&f=Antlion_overworld_red.gif",
         "url": "https://deltarune.wiki/w/Antlion"
     },
@@ -94,7 +83,7 @@
         "chapter": 5,
         "class": "Boss",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Aqua_battle_idle.gif?cb=gth4x6&h=thumb.php&f=Aqua_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Aqua"
     },
@@ -105,7 +94,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 46,
+        "first_appearance_index": 47,
         "image": "https://deltarune.wiki/images/Archer_overworld.gif?cb=gdivq7&h=thumb.php&f=Archer_overworld.gif",
         "url": "https://deltarune.wiki/w/Archer"
     },
@@ -116,7 +105,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 42,
+        "first_appearance_index": 0,
         "image": "https://deltarune.wiki/images/Artist_screenshot.png?cb=p3nw5c&h=thumb.php&f=Artist_screenshot.png",
         "url": "https://deltarune.wiki/w/Artist"
     },
@@ -137,7 +126,7 @@
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
-        "first_appearance": "Asriel",
+        "first_appearance": "Unknown",
         "first_appearance_index": 0,
         "image": "https://deltarune.wiki/images/Asriel_overworld_young_silhouette.png?cb=8ukyyl&h=thumb.php&f=Asriel_overworld_young_silhouette.png",
         "url": "https://deltarune.wiki/w/Asriel"
@@ -160,7 +149,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/Balthizard_battle.gif?cb=ph0586&h=thumb.php&f=Balthizard_battle.gif",
         "url": "https://deltarune.wiki/w/Balthizard"
     },
@@ -182,20 +171,9 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Bibliox_battle_idle.gif?cb=joz8gy&h=thumb.php&f=Bibliox_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Bibliox"
-    },
-    {
-        "name": "BLOCK TREE",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Forest",
-        "first_appearance_index": 25,
-        "image": "https://deltarune.wiki/images/Block_Tree_overworld_switch.gif?cb=ftdbp8&h=thumb.php&f=Block_Tree_overworld_switch.gif",
-        "url": "https://deltarune.wiki/w/Block_Tree"
     },
     {
         "name": "BLOCKLER",
@@ -226,7 +204,7 @@
         "chapter": 4,
         "class": "Boss",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 46,
+        "first_appearance_index": 47,
         "image": "https://deltarune.wiki/images/Blue_battle_idle.gif?cb=ancsxy&h=thumb.php&f=Blue_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Blue"
     },
@@ -275,17 +253,6 @@
         "url": "https://deltarune.wiki/w/C._Round"
     },
     {
-        "name": "CACTUS",
-        "gender": "Non-binary",
-        "type": "Plant",
-        "chapter": 3,
-        "class": "NPC",
-        "first_appearance": "Dreemurr residence",
-        "first_appearance_index": 2,
-        "image": "https://deltarune.wiki/images/Cactus_overworld_replica.png?cb=qdiel2&h=thumb.php&f=Cactus_overworld_replica.png",
-        "url": "https://deltarune.wiki/w/Cactus"
-    },
-    {
         "name": "CAGE ANIMALS",
         "gender": "Unknown",
         "type": "Darkner",
@@ -295,28 +262,6 @@
         "first_appearance_index": 26,
         "image": "https://deltarune.wiki/images/Cage_Animals_overworld.png?cb=n4wttu&h=thumb.php&f=Cage_Animals_overworld.png",
         "url": "https://deltarune.wiki/w/Cage_Animals"
-    },
-    {
-        "name": "CALLER",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Unknown",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Cell_Phone_item.png?cb=9fgq28&h=thumb.php&f=Cell_Phone_item.png",
-        "url": "https://deltarune.wiki/w/Caller"
-    },
-    {
-        "name": "CANDLE LIGHTER",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
-        "image": "https://deltarune.wiki/images/Candle_Lighter_overworld.png?cb=h5o6z3&h=thumb.php&f=Candle_Lighter_overworld.png",
-        "url": "https://deltarune.wiki/w/Candle_Lighter"
     },
     {
         "name": "CAROL",
@@ -363,17 +308,6 @@
         "url": "https://deltarune.wiki/w/Catty"
     },
     {
-        "name": "CHAIRERY",
-        "gender": "Non-binary",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Flower Castle",
-        "first_appearance_index": 46,
-        "image": "https://deltarune.wiki/images/Chairery_overworld.png?cb=svh04l&h=thumb.php&f=Chairery_overworld.png",
-        "url": "https://deltarune.wiki/w/Chairery"
-    },
-    {
         "name": "CLAM GUY",
         "gender": "Unknown",
         "type": "Lightner",
@@ -396,59 +330,15 @@
         "url": "https://deltarune.wiki/w/Clover"
     },
     {
-        "name": "COUCH",
-        "gender": "Non-binary",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Couch cliffs",
-        "first_appearance_index": 30,
-        "image": "https://deltarune.wiki/images/thumb/Couch_overworld.gif/300px-Couch_overworld.gif.webp?cb=h8a5ls&h=thumb.php&f=Couch_overworld.gif",
-        "url": "https://deltarune.wiki/w/Couch"
-    },
-    {
-        "name": "CROWD",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "TV World",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/thumb/Crowd_overworld.gif/300px-Crowd_overworld.gif.webp?cb=o680kx&h=thumb.php&f=Crowd_overworld.gif",
-        "url": "https://deltarune.wiki/w/Crowd"
-    },
-    {
-        "name": "CRYSTAL",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Crystal_overworld_grave.png?cb=id2570&h=thumb.php&f=Crystal_overworld_grave.png",
-        "url": "https://deltarune.wiki/w/Crystal"
-    },
-    {
         "name": "CUPTAIN",
         "gender": "Unknown",
         "type": "Darkner",
         "chapter": 4,
         "class": "NPC",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/Cuptain_overworld.gif?cb=4jklmy&h=thumb.php&f=Cuptain_overworld.gif",
         "url": "https://deltarune.wiki/w/Cuptain"
-    },
-    {
-        "name": "CURTAIN NPC",
-        "gender": "Non-binary",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "TV World",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Curtain_NPC_overworld.png?cb=enqomh&h=thumb.php&f=Curtain_NPC_overworld.png",
-        "url": "https://deltarune.wiki/w/Curtain_NPC"
     },
     {
         "name": "DAD CAT",
@@ -501,7 +391,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Doubter_overworld.png?cb=8xpjxd&h=thumb.php&f=Doubter_overworld.png",
         "url": "https://deltarune.wiki/w/Doubter"
     },
@@ -517,28 +407,6 @@
         "url": "https://deltarune.wiki/w/Dress_Lion"
     },
     {
-        "name": "DUMMY",
-        "gender": "Non-binary",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "Enemy",
-        "first_appearance": "Castle Town",
-        "first_appearance_index": 17,
-        "image": "https://deltarune.wiki/images/thumb/Dummy_act_Hug.gif/320px-Dummy_act_Hug.gif.webp?cb=fvfls6&h=thumb.php&f=Dummy_act_Hug.gif",
-        "url": "https://deltarune.wiki/w/Dummy"
-    },
-    {
-        "name": "DUST PILE",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "??????",
-        "first_appearance_index": 16,
-        "image": "https://deltarune.wiki/images/Dust_pile_overworld.gif?cb=gam0kn&h=thumb.php&f=Dust_pile_overworld.gif",
-        "url": "https://deltarune.wiki/w/Dust_pile"
-    },
-    {
         "name": "ELECTRO-DASHER",
         "gender": "Male",
         "type": "Darkner",
@@ -548,17 +416,6 @@
         "first_appearance_index": 28,
         "image": "https://deltarune.wiki/images/Electro-Dasher_overworld_legs.gif?cb=l5dfhj&h=thumb.php&f=Electro-Dasher_overworld_legs.gif",
         "url": "https://deltarune.wiki/w/Electro-Dasher"
-    },
-    {
-        "name": "EVERYMAN",
-        "gender": "Male",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Card Castle",
-        "first_appearance_index": 26,
-        "image": "https://deltarune.wiki/images/Poppup_attack_Everyman_ad.png?cb=4j9g8a&h=thumb.php&f=Poppup_attack_Everyman_ad.png",
-        "url": "https://deltarune.wiki/w/Everyman"
     },
     {
         "name": "FAW FAW",
@@ -578,7 +435,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 45,
+        "first_appearance_index": 46,
         "image": "https://deltarune.wiki/images/Ferroll_overworld.gif?cb=2q4lqz&h=thumb.php&f=Ferroll_overworld.gif",
         "url": "https://deltarune.wiki/w/Ferroll"
     },
@@ -600,20 +457,9 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/Fire_extinguisher_overworld.png?cb=iltsi7&h=thumb.php&f=Fire_extinguisher_overworld.png",
         "url": "https://deltarune.wiki/w/Fire_extinguisher"
-    },
-    {
-        "name": "FLANNEL DEMON",
-        "gender": "Female",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Flannel_Demon_overworld.png?cb=6xlkf9&h=thumb.php&f=Flannel_Demon_overworld.png",
-        "url": "https://deltarune.wiki/w/Flannel_Demon"
     },
     {
         "name": "FLORADINN",
@@ -622,20 +468,9 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Floradinn_battle.gif?cb=t66o1a&h=thumb.php&f=Floradinn_battle.gif",
         "url": "https://deltarune.wiki/w/Floradinn"
-    },
-    {
-        "name": "FLOWER SHOP LOOX",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Flower_Shop_Loox_overworld.png?cb=8crhyh&h=thumb.php&f=Flower_Shop_Loox_overworld.png",
-        "url": "https://deltarune.wiki/w/Flower_Shop_Loox"
     },
     {
         "name": "FLOWERY",
@@ -644,31 +479,9 @@
         "chapter": 5,
         "class": "Boss",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Flowery_battle_idle.gif?cb=s5lzd3&h=thumb.php&f=Flowery_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Flowery"
-    },
-    {
-        "name": "FLYING ACES",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 3,
-        "class": "NPC",
-        "first_appearance": "Mancountry",
-        "first_appearance_index": 34,
-        "image": "https://deltarune.wiki/images/Blue_Flying_Ace_overworld.png?cb=6qcj6j&h=thumb.php&f=Blue_Flying_Ace_overworld.png",
-        "url": "https://deltarune.wiki/w/Flying_Aces"
-    },
-    {
-        "name": "FOMMT",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Cyber Field",
-        "first_appearance_index": 27,
-        "image": "https://deltarune.wiki/images/Fommt_overworld.gif?cb=lb9d71&h=thumb.php&f=Fommt_overworld.gif",
-        "url": "https://deltarune.wiki/w/Fommt"
     },
     {
         "name": "FORMER KINGS",
@@ -710,7 +523,7 @@
         "chapter": 1,
         "class": "Vendor",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/Gerson_battle_spare.gif?cb=giz5bv&h=thumb.php&f=Gerson_battle_spare.gif",
         "url": "https://deltarune.wiki/w/Gerson"
     },
@@ -754,7 +567,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Goulden_Son_overworld.png?cb=lw50wk&h=thumb.php&f=Goulden_Son_overworld.png",
         "url": "https://deltarune.wiki/w/Goulden_Son"
     },
@@ -765,20 +578,9 @@
         "chapter": 5,
         "class": "Boss",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Green_battle_idle.gif?cb=8viz3t&h=thumb.php&f=Green_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Green"
-    },
-    {
-        "name": "GREEN FIRE",
-        "gender": "Female",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Green_Fire_overworld.gif?cb=h1jbgr&h=thumb.php&f=Green_Fire_overworld.gif",
-        "url": "https://deltarune.wiki/w/Green_Fire"
     },
     {
         "name": "GUEI",
@@ -787,7 +589,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/Guei_overworld.gif?cb=4nssf8&h=thumb.php&f=Guei_overworld.gif",
         "url": "https://deltarune.wiki/w/Guei"
     },
@@ -803,17 +605,6 @@
         "url": "https://deltarune.wiki/w/Hacker"
     },
     {
-        "name": "HAMMER OF JUSTICE",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "Boss",
-        "first_appearance": "Study",
-        "first_appearance_index": 41,
-        "image": "https://deltarune.wiki/images/Hammer_of_Justice_battle_idle.gif?cb=g0f8at&h=thumb.php&f=Hammer_of_Justice_battle_idle.gif",
-        "url": "https://deltarune.wiki/w/Hammer_of_Justice"
-    },
-    {
         "name": "HAND RECEPTIONIST",
         "gender": "Unknown",
         "type": "Lightner",
@@ -823,17 +614,6 @@
         "first_appearance_index": 1,
         "image": "https://deltarune.wiki/images/Hand_Receptionist_overworld.png?cb=nu8mux&h=thumb.php&f=Hand_Receptionist_overworld.png",
         "url": "https://deltarune.wiki/w/Hand_Receptionist"
-    },
-    {
-        "name": "HAT MONSTER",
-        "gender": "Male",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Hat_Monster_overworld.png?cb=3pqvy3&h=thumb.php&f=Hat_Monster_overworld.png",
-        "url": "https://deltarune.wiki/w/Hat_Monster"
     },
     {
         "name": "HATHY",
@@ -858,59 +638,15 @@
         "url": "https://deltarune.wiki/w/Head_Hathy"
     },
     {
-        "name": "HERO_AXE",
-        "gender": "Female",
-        "type": "Unknown",
-        "chapter": 3,
-        "class": "Ally",
-        "first_appearance": "The Legend of Tenna",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Susie_overworld_8bit.gif?cb=rovo7c&h=thumb.php&f=Susie_overworld_8bit.gif",
-        "url": "https://deltarune.wiki/w/HERO_AXE"
-    },
-    {
-        "name": "HERO_SCARF",
-        "gender": "Male",
-        "type": "Unknown",
-        "chapter": 3,
-        "class": "Ally",
-        "first_appearance": "The Legend of Tenna",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Ralsei_overworld_8bit.gif?cb=h4k9p2&h=thumb.php&f=Ralsei_overworld_8bit.gif",
-        "url": "https://deltarune.wiki/w/HERO_SCARF"
-    },
-    {
-        "name": "HERO_SWORD",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 3,
-        "class": "Ally",
-        "first_appearance": "The Legend of Tenna",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Kris_overworld_8bit.gif?cb=9i3sw8&h=thumb.php&f=Kris_overworld_8bit.gif",
-        "url": "https://deltarune.wiki/w/HERO_SWORD"
-    },
-    {
         "name": "HOPSCHEF",
         "gender": "Male",
         "type": "Darkner",
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Hopschef_overworld.gif?cb=6lo049&h=thumb.php&f=Hopschef_overworld.gif",
         "url": "https://deltarune.wiki/w/Hopschef"
-    },
-    {
-        "name": "HOTS FIREGUY",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Hots_Fireguy%27s_book_screenshot.png?cb=ekllio&h=thumb.php&f=Hots_Fireguy%27s_book_screenshot.png",
-        "url": "https://deltarune.wiki/w/Hots_Fireguy"
     },
     {
         "name": "ICE CAP",
@@ -946,59 +682,15 @@
         "url": "https://deltarune.wiki/w/Icon_Man"
     },
     {
-        "name": "INNKEEPER",
-        "gender": "Female",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Innkeeper_overworld.png?cb=cy1ck3&h=thumb.php&f=Innkeeper_overworld.png",
-        "url": "https://deltarune.wiki/w/Innkeeper"
-    },
-    {
-        "name": "INNKEEPER'S CHILD",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Innkeeper%27s_child_overworld.png?cb=egtya6&h=thumb.php&f=Innkeeper%27s_child_overworld.png",
-        "url": "https://deltarune.wiki/w/Innkeeper%27s_child"
-    },
-    {
-        "name": "IRRITABLE GHOST",
-        "gender": "Female",
-        "type": "Lightner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Pink_battle_ghost_idle.gif?cb=6esk30&h=thumb.php&f=Pink_battle_ghost_idle.gif",
-        "url": "https://deltarune.wiki/w/Irritable_ghost"
-    },
-    {
         "name": "JACKENSTEIN",
         "gender": "Male",
         "type": "Darkner",
         "chapter": 4,
         "class": "Boss",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/thumb/Jackenstein_battle_idle.gif/101px-Jackenstein_battle_idle.gif.webp?cb=izb0md&h=thumb.php&f=Jackenstein_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Jackenstein"
-    },
-    {
-        "name": "JACKENSTEIN'S PUMPKIN",
-        "gender": "Non-binary",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
-        "image": "https://deltarune.wiki/images/thumb/Jackenstein%27s_pumpkin_battle_laughing.gif/147px-Jackenstein%27s_pumpkin_battle_laughing.gif.webp?cb=jmptuj&h=thumb.php&f=Jackenstein%27s_pumpkin_battle_laughing.gif",
-        "url": "https://deltarune.wiki/w/Jackenstein%27s_pumpkin"
     },
     {
         "name": "JAILED PUZZLE MASTER",
@@ -1073,20 +765,9 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 45,
+        "first_appearance_index": 46,
         "image": "https://deltarune.wiki/images/Kawkaw_battle_idle.gif?cb=60607f&h=thumb.php&f=Kawkaw_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Kawkaw"
-    },
-    {
-        "name": "KIKKY",
-        "gender": "Female",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "TV Studio",
-        "first_appearance_index": 21,
-        "image": "https://deltarune.wiki/images/Kikky_overworld.gif?cb=3y6h05&h=thumb.php&f=Kikky_overworld.gif",
-        "url": "https://deltarune.wiki/w/Kikky"
     },
     {
         "name": "KING",
@@ -1106,7 +787,7 @@
         "chapter": 1,
         "class": "Boss",
         "first_appearance": "Cold Place",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Knight_overworld_transform_flight.gif?cb=a0ajs6&h=thumb.php&f=Knight_overworld_transform_flight.gif",
         "url": "https://deltarune.wiki/w/Knight"
     },
@@ -1117,7 +798,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Kooby_overworld.png?cb=ag6x9l&h=thumb.php&f=Kooby_overworld.png",
         "url": "https://deltarune.wiki/w/Kooby"
     },
@@ -1127,21 +808,10 @@
         "type": "Lightner",
         "chapter": 1,
         "class": "Main Character",
-        "first_appearance": "Unknown",
-        "first_appearance_index": 0,
+        "first_appearance": "Hometown",
+        "first_appearance_index": 1,
         "image": "https://deltarune.wiki/images/Kris_battle_idle.gif?cb=dpui8e&h=thumb.php&f=Kris_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Kris"
-    },
-    {
-        "name": "LADDERY",
-        "gender": "Non-binary",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Top of Castle",
-        "first_appearance_index": 47,
-        "image": "https://deltarune.wiki/images/Laddery_overworld.png?cb=0ydllx&h=thumb.php&f=Laddery_overworld.png",
-        "url": "https://deltarune.wiki/w/Laddery"
     },
     {
         "name": "LANCER",
@@ -1155,15 +825,26 @@
         "url": "https://deltarune.wiki/w/Lancer"
     },
     {
-        "name": "LANINO AND ELNINA",
+        "name": "LANINO",
         "gender": "Male",
         "type": "Darkner",
         "chapter": 3,
         "class": "Boss",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Lanino_and_Elnina_overworld.gif?cb=7gtss4&h=thumb.php&f=Lanino_and_Elnina_overworld.gif",
-        "url": "https://deltarune.wiki/w/Lanino_and_Elnina"
+        "first_appearance_index": 31,
+        "image": "https://deltarune.wiki/images/Lanino_battle_idle.gif?cb=6s7wgl&h=thumb.php&f=Lanino_battle_idle.gif",
+        "url": "https://deltarune.wiki/w/Lanino"
+    },
+    {
+        "name": "ELNINA",
+        "gender": "Female",
+        "type": "Darkner",
+        "chapter": 3,
+        "class": "Boss",
+        "first_appearance": "TV World",
+        "first_appearance_index": 31,
+        "image": "https://deltarune.wiki/images/Elnina_battle_idle.gif?cb=dr9ynq&h=thumb.php&f=Elnina_battle_idle.gif",
+        "url": "https://deltarune.wiki/images/Lanino_battle_idle.gif?cb=6s7wgl&h=thumb.php&f=Lanino_battle_idle.gif"
     },
     {
         "name": "LEAFLING",
@@ -1172,7 +853,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 45,
+        "first_appearance_index": 46,
         "image": "https://deltarune.wiki/images/Leafling_battle.gif?cb=8cd8au&h=thumb.php&f=Leafling_battle.gif",
         "url": "https://deltarune.wiki/w/Leafling"
     },
@@ -1186,17 +867,6 @@
         "first_appearance_index": 25,
         "image": "https://deltarune.wiki/images/Malius_overworld.gif?cb=2089ru&h=thumb.php&f=Malius_overworld.gif",
         "url": "https://deltarune.wiki/w/Malius"
-    },
-    {
-        "name": "MAN",
-        "gender": "Male",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Forest",
-        "first_appearance_index": 25,
-        "image": "https://deltarune.wiki/images/Man_overworld_tree.gif?cb=15l8og&h=thumb.php&f=Man_overworld_tree.gif",
-        "url": "https://deltarune.wiki/w/Man"
     },
     {
         "name": "MANTICORE",
@@ -1216,7 +886,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 46,
+        "first_appearance_index": 47,
         "image": "https://deltarune.wiki/images/Mantis_overworld.gif?cb=cephpy&h=thumb.php&f=Mantis_overworld.gif",
         "url": "https://deltarune.wiki/w/Mantis"
     },
@@ -1230,17 +900,6 @@
         "first_appearance_index": 28,
         "image": "https://deltarune.wiki/images/Maus_battle_idle.gif?cb=fmyqf6&h=thumb.php&f=Maus_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Maus"
-    },
-    {
-        "name": "MAUSWHEEL",
-        "gender": "Non-binary",
-        "type": "Darkner",
-        "chapter": 2,
-        "class": "Boss",
-        "first_appearance": "Queen's Mansion",
-        "first_appearance_index": 29,
-        "image": "https://deltarune.wiki/images/Mauswheel_battle_idle.gif?cb=bpko65&h=thumb.php&f=Mauswheel_battle_idle.gif",
-        "url": "https://deltarune.wiki/w/Mauswheel"
     },
     {
         "name": "MIKE",
@@ -1271,7 +930,7 @@
         "chapter": 1,
         "class": "Boss",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/Miss_Mizzle_battle_idle.gif?cb=dbmbw4&h=thumb.php&f=Miss_Mizzle_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Miss_Mizzle"
     },
@@ -1282,7 +941,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 40,
+        "first_appearance_index": 41,
         "image": "https://deltarune.wiki/images/Mizzle_battle_idle.gif?cb=131sr1&h=thumb.php&f=Mizzle_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Mizzle"
     },
@@ -1353,28 +1012,6 @@
         "url": "https://deltarune.wiki/w/Ms._Boom"
     },
     {
-        "name": "MUNMI",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "The Legend of Tenna",
-        "first_appearance_index": 0,
-        "image": "https://deltarune.wiki/images/Munmi_overworld.png?cb=ioh7dl&h=thumb.php&f=Munmi_overworld.png",
-        "url": "https://deltarune.wiki/w/Munmi"
-    },
-    {
-        "name": "MUTTLER",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Muttler_overworld_grave.png?cb=9a6upq&h=thumb.php&f=Muttler_overworld_grave.png",
-        "url": "https://deltarune.wiki/w/Muttler"
-    },
-    {
         "name": "NAPSTABLOOK",
         "gender": "Non-binary",
         "type": "Lightner",
@@ -1392,20 +1029,9 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Netskie_battle_idle.gif?cb=ee09j1&h=thumb.php&f=Netskie_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Netskie"
-    },
-    {
-        "name": "NOBODY",
-        "gender": "Non-binary",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Blook_house_overworld.png?cb=fe4dex&h=thumb.php&f=Blook_house_overworld.png",
-        "url": "https://deltarune.wiki/w/Nobody"
     },
     {
         "name": "NOELLE",
@@ -1469,7 +1095,7 @@
         "chapter": 5,
         "class": "Boss",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 46,
+        "first_appearance_index": 47,
         "image": "https://deltarune.wiki/images/Orange_battle_idle.gif?cb=ax0c6w&h=thumb.php&f=Orange_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Orange"
     },
@@ -1480,20 +1106,9 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 42,
+        "first_appearance_index": 0,
         "image": "https://deltarune.wiki/images/Organikk_battle_idle.gif?cb=7sadu2&h=thumb.php&f=Organikk_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Organikk"
-    },
-    {
-        "name": "PAIR OF EYES",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Card Castle",
-        "first_appearance_index": 26,
-        "image": "https://deltarune.wiki/images/Pair_of_eyes_overworld.png?cb=mxf5g1&h=thumb.php&f=Pair_of_eyes_overworld.png",
-        "url": "https://deltarune.wiki/w/Pair_of_eyes"
     },
     {
         "name": "PAPYRUS",
@@ -1513,20 +1128,9 @@
         "chapter": 1,
         "class": "Boss",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 45,
+        "first_appearance_index": 46,
         "image": "https://deltarune.wiki/images/Pink_battle_idle.gif?cb=4bs0th&h=thumb.php&f=Pink_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Pink"
-    },
-    {
-        "name": "PIPIS",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 2,
-        "class": "Enemy",
-        "first_appearance": "Queen's Mansion",
-        "first_appearance_index": 29,
-        "image": "https://deltarune.wiki/images/Pipis_battle_yellow.gif?cb=c5jwgs&h=thumb.php&f=Pipis_battle_yellow.gif",
-        "url": "https://deltarune.wiki/w/Pipis"
     },
     {
         "name": "PIPPINS",
@@ -1549,17 +1153,6 @@
         "first_appearance_index": 1,
         "image": "https://deltarune.wiki/images/Pizzapants_overworld_masked.gif?cb=e3hmh0&h=thumb.php&f=Pizzapants_overworld_masked.gif",
         "url": "https://deltarune.wiki/w/Pizzapants"
-    },
-    {
-        "name": "PIZZARINA",
-        "gender": "Female",
-        "type": "Unknown",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Blue_Ears_screenshot_texting.png?cb=asvxrz&h=thumb.php&f=Blue_Ears_screenshot_texting.png",
-        "url": "https://deltarune.wiki/w/Pizzarina"
     },
     {
         "name": "PLUGBOY",
@@ -1604,17 +1197,6 @@
         "first_appearance_index": 28,
         "image": "https://deltarune.wiki/images/Poppup_battle_idle.gif?cb=nwmrc9&h=thumb.php&f=Poppup_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Poppup"
-    },
-    {
-        "name": "PROUD DOOR OWNER",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Cyber City",
-        "first_appearance_index": 28,
-        "image": "https://deltarune.wiki/images/Proud_door_owner_screenshot.png?cb=qh9xc6&h=thumb.php&f=Proud_door_owner_screenshot.png",
-        "url": "https://deltarune.wiki/w/Proud_door_owner"
     },
     {
         "name": "PURPLE GUY",
@@ -1667,7 +1249,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Desert Board",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Quiz_vortex_overworld.gif?cb=a5dw3d&h=thumb.php&f=Quiz_vortex_overworld.gif",
         "url": "https://deltarune.wiki/w/Quiz_vortex"
     },
@@ -1683,46 +1265,13 @@
         "url": "https://deltarune.wiki/w/Rabbick"
     },
     {
-        "name": "RABBIT KID",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Rabbit_Kid_overworld.png?cb=ksr6g9&h=thumb.php&f=Rabbit_Kid_overworld.png",
-        "url": "https://deltarune.wiki/w/Rabbit_Kid"
-    },
-    {
-        "name": "RABBIT LADY",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Rabbit_Lady_overworld.png?cb=ihfval&h=thumb.php&f=Rabbit_Lady_overworld.png",
-        "url": "https://deltarune.wiki/w/Rabbit_Lady"
-    },
-    {
-        "name": "RAINY",
-        "gender": "Male",
-        "type": "Lightner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Rainy_overworld.gif?cb=8yf5rn&h=thumb.php&f=Rainy_overworld.gif",
-        "url": "https://deltarune.wiki/w/Rainy"
-    },
-    {
         "name": "RALSEI",
         "gender": "Male",
         "type": "Darkner",
         "chapter": 1,
         "class": "Main Character",
-        "first_appearance": "The Flower Kingdom",
-        "first_appearance_index": 0,
+        "first_appearance": "Castle Town",
+        "first_appearance_index": 17,
         "image": "https://deltarune.wiki/images/Ralsei_battle_serious.gif?cb=ktm22m&h=thumb.php&f=Ralsei_battle_serious.gif",
         "url": "https://deltarune.wiki/w/Ralsei"
     },
@@ -1733,7 +1282,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Ramb_overworld_smug.gif?cb=bxpsb5&h=thumb.php&f=Ramb_overworld_smug.gif",
         "url": "https://deltarune.wiki/w/Ramb"
     },
@@ -1744,7 +1293,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Ribbick_battle_idle.gif?cb=9rmtfh&h=thumb.php&f=Ribbick_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Ribbick"
     },
@@ -1826,39 +1375,6 @@
         "url": "https://deltarune.wiki/w/Sans"
     },
     {
-        "name": "SAUCER UFO",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Queen's Mansion",
-        "first_appearance_index": 29,
-        "image": "https://deltarune.wiki/images/Saucer_UFO_overworld.gif?cb=kqkwdy&h=thumb.php&f=Saucer_UFO_overworld.gif",
-        "url": "https://deltarune.wiki/w/Saucer_UFO"
-    },
-    {
-        "name": "SCARED DONUT GUY",
-        "gender": "Male",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Scared_donut_guy_overworld.png?cb=5j3mgu&h=thumb.php&f=Scared_donut_guy_overworld.png",
-        "url": "https://deltarune.wiki/w/Scared_donut_guy"
-    },
-    {
-        "name": "SCARF LADY",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Scarf_Lady_overworld.png?cb=5u0wha&h=thumb.php&f=Scarf_Lady_overworld.png",
-        "url": "https://deltarune.wiki/w/Scarf_Lady"
-    },
-    {
         "name": "SEAM",
         "gender": "Non-binary",
         "type": "Darkner",
@@ -1870,24 +1386,13 @@
         "url": "https://deltarune.wiki/w/Seam"
     },
     {
-        "name": "SECRETARY",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 42,
-        "image": "https://deltarune.wiki/images/Blue_Flying_Ace_overworld.png?cb=6qcj6j&h=thumb.php&f=Blue_Flying_Ace_overworld.png",
-        "url": "https://deltarune.wiki/w/Secretary"
-    },
-    {
         "name": "SERIOUS TRASHY",
         "gender": "Male",
         "type": "Darkner",
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Serious_Trashy_overworld.png?cb=36pby4&h=thumb.php&f=Serious_Trashy_overworld.png",
         "url": "https://deltarune.wiki/w/Serious_Trashy"
     },
@@ -1898,18 +1403,18 @@
         "chapter": 5,
         "class": "Boss",
         "first_appearance": "Garden",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://deltarune.wiki/images/Seth_battle_idle.gif?cb=edlsk9&h=thumb.php&f=Seth_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Seth"
     },
     {
-        "name": "SHADOW MANTLE HOLDER",
+        "name": "SHADOW MANTLE",
         "gender": "Unknown",
         "type": "Unknown",
         "chapter": 1,
         "class": "Boss",
-        "first_appearance": "Original Game",
-        "first_appearance_index": 0,
+        "first_appearance": "TV World",
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Shadow_Mantle_holder_battle_idle.gif?cb=ptnocd&h=thumb.php&f=Shadow_Mantle_holder_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shadow_Mantle_holder"
     },
@@ -1920,20 +1425,9 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Shadowguy_battle_idle.gif?cb=h7a5kt&h=thumb.php&f=Shadowguy_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shadowguy"
-    },
-    {
-        "name": "SHAMBLING MASS",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 4,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Shambling_Mass_overworld.png?cb=ntvpby&h=thumb.php&f=Shambling_Mass_overworld.png",
-        "url": "https://deltarune.wiki/w/Shambling_Mass"
     },
     {
         "name": "SHEARY",
@@ -1953,7 +1447,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 45,
+        "first_appearance_index": 46,
         "image": "https://deltarune.wiki/images/Shi_battle_idle.gif?cb=enw1j3&h=thumb.php&f=Shi_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shi"
     },
@@ -1964,20 +1458,9 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 46,
+        "first_appearance_index": 47,
         "image": "https://deltarune.wiki/images/Shinobeetle_battle_idle.gif?cb=rbals7&h=thumb.php&f=Shinobeetle_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shinobeetle"
-    },
-    {
-        "name": "SHRUBBERY",
-        "gender": "Non-binary",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Garden",
-        "first_appearance_index": 44,
-        "image": "https://deltarune.wiki/images/Shrubbery_overworld.png?cb=08jkug&h=thumb.php&f=Shrubbery_overworld.png",
-        "url": "https://deltarune.wiki/w/Shrubbery"
     },
     {
         "name": "SHUTTAH",
@@ -1986,20 +1469,9 @@
         "chapter": 3,
         "class": "Boss",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Shuttah_battle_idle.gif?cb=et34w4&h=thumb.php&f=Shuttah_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shuttah"
-    },
-    {
-        "name": "SHYRA",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Shyra_overworld_grave.png?cb=dwilq8&h=thumb.php&f=Shyra_overworld_grave.png",
-        "url": "https://deltarune.wiki/w/Shyra"
     },
     {
         "name": "SHYREN",
@@ -2011,39 +1483,6 @@
         "first_appearance_index": 1,
         "image": "https://deltarune.wiki/images/Shyren_overworld.png?cb=66zy5b&h=thumb.php&f=Shyren_overworld.png",
         "url": "https://deltarune.wiki/w/Shyren"
-    },
-    {
-        "name": "SIGNERY",
-        "gender": "Non-binary",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Flower Castle",
-        "first_appearance_index": 46,
-        "image": "https://deltarune.wiki/images/Signery_overworld.png?cb=jtkxtm&h=thumb.php&f=Signery_overworld.png",
-        "url": "https://deltarune.wiki/w/Signery"
-    },
-    {
-        "name": "SNAIL GUY",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Snail_Guy_overworld.png?cb=bbrmbs&h=thumb.php&f=Snail_Guy_overworld.png",
-        "url": "https://deltarune.wiki/w/Snail_Guy"
-    },
-    {
-        "name": "SNIPER",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Island Board",
-        "first_appearance_index": 36,
-        "image": "https://deltarune.wiki/images/Shadowguy_overworld_8bit_sniper.png?cb=ntyahm&h=thumb.php&f=Shadowguy_overworld_8bit_sniper.png",
-        "url": "https://deltarune.wiki/w/Sniper"
     },
     {
         "name": "SNOWY",
@@ -2068,17 +1507,6 @@
         "url": "https://deltarune.wiki/w/Snowy%27s_father"
     },
     {
-        "name": "SOUND OF JUSTICE",
-        "gender": "Non-binary",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "Boss",
-        "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 42,
-        "image": "https://deltarune.wiki/images/Sound_of_Justice_battle.png?cb=cy1k28&h=thumb.php&f=Sound_of_Justice_battle.png",
-        "url": "https://deltarune.wiki/w/Sound_of_Justice"
-    },
-    {
         "name": "SPAMTON",
         "gender": "Male",
         "type": "Darkner",
@@ -2101,29 +1529,7 @@
         "url": "https://deltarune.wiki/w/Spamton_NEO"
     },
     {
-        "name": "SPHINX-TENNA",
-        "gender": "Non-binary",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Desert Board",
-        "first_appearance_index": 35,
-        "image": "https://deltarune.wiki/images/Sphinx-Tenna_overworld.png?cb=2nlugf&h=thumb.php&f=Sphinx-Tenna_overworld.png",
-        "url": "https://deltarune.wiki/w/Sphinx-Tenna"
-    },
-    {
-        "name": "SPIKERY",
-        "gender": "Non-binary",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Garden",
-        "first_appearance_index": 44,
-        "image": "https://deltarune.wiki/images/Spikery_overworld.png?cb=guhgn7&h=thumb.php&f=Spikery_overworld.png",
-        "url": "https://deltarune.wiki/w/Spikery"
-    },
-    {
-        "name": "STARWALKER",
+        "name": "ORIGINAL STARWALKER",
         "gender": "Male",
         "type": "Darkner",
         "chapter": 1,
@@ -2151,7 +1557,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 0,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Suilver_Sam_overworld.png?cb=pp22qv&h=thumb.php&f=Suilver_Sam_overworld.png",
         "url": "https://deltarune.wiki/w/Suilver_Sam"
     },
@@ -2161,8 +1567,8 @@
         "type": "Lightner",
         "chapter": 1,
         "class": "Main Character",
-        "first_appearance": "Unknown",
-        "first_appearance_index": 0,
+        "first_appearance": "Hometown",
+        "first_appearance_index": 1,
         "image": "https://deltarune.wiki/images/Susie_battle_serious.gif?cb=s2z2tj&h=thumb.php&f=Susie_battle_serious.gif",
         "url": "https://deltarune.wiki/w/Susie"
     },
