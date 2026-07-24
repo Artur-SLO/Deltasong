@@ -261,6 +261,33 @@ def fetch_location_map():
         print(f"Error fetching dynamic location map: {e}")
         return {}
 
+def update_character_indices(characters_file="deltarune_characters.json", locations_file="deltarune_locations.json"):
+    """
+    Reads existing JSON files, re-indexes characters sequentially based on
+    deltarune_locations.json, and overwrites deltarune_characters.json.
+    """
+    print("Updating character indices from locations JSON...")
+    try:
+        with open(locations_file, "r", encoding="utf-8") as f:
+            location_map = json.load(f)
+
+        with open(characters_file, "r", encoding="utf-8") as f:
+            characters = json.load(f)
+
+        normalized_map = {k.lower(): v for k, v in location_map.items()}
+
+        for char in characters:
+            first_app = char.get("first_appearance", "")
+            char["first_appearance_index"] = normalized_map.get(first_app.lower(), 0)
+
+        with open(characters_file, "w", encoding="utf-8") as f:
+            json.dump(characters, f, ensure_ascii=False, indent=4)
+
+        print(f"Successfully re-indexed {len(characters)} characters!")
+
+    except Exception as e:
+        print(f"Error updating character indices: {e}")
+
 
 def main():
     location_map = fetch_location_map()
@@ -294,8 +321,6 @@ def main():
         json.dump(location_map, f, ensure_ascii=False, indent=4)
 
     print(f"\nExtraction complete! Saved {len(characters)} character(s) to '{output_file}'.")
-
-
 
 if __name__ == "__main__":
     main()
