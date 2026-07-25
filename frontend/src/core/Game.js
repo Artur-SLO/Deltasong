@@ -15,10 +15,8 @@ export default class Game {
 
         const guess = this.characters.find(c => c.getName() === name);
         if (!guess) throw new Error("Non-existent character");
+        if (this.guessedNames.has(name)) throw new Error("Character already guessed!");
 
-        if (this.guessedNames.has(name)) {
-            throw new Error("Character already guessed!");
-        }
         this.guessedNames.add(name);
 
         const result = this.target.compareTo(guess);
