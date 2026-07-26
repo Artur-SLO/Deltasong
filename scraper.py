@@ -331,5 +331,5 @@ def main():
     print(f"\nExtraction complete! Saved {len(characters)} character(s) to '{output_file}'.")
 
 if __name__ == "__main__":
-    # update_character_indices()
-    main()
+    update_character_indices()
+    # main()
