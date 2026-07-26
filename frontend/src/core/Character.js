@@ -1,66 +1,48 @@
-export default class Character {
-    constructor(data) {
-        this.name = data.name;
-        this.gender = data.gender;
-        this.type = data.type;
-        this.chapter = data.chapter;
-        this.className = data.class;
-        this.first_appearance = data.first_appearance;
-        this.first_appearance_index = data.first_appearance_index;
-        this.image = data.image;
-        this.url = data.url;
-    }
+export function formatCharacter(character) {
+    return {
+        "name": character.name,
+        "gender": character.gender,
+        "type": character.type,
+        "chapter": character.chapter,
+        "class": character.class,
+        "first_appearance": character.first_appearance,
+        "first_appearance_index": character.first_appearance_index,
+        "image": character.image,
+    };
+}
 
-    print() {
-        return {
-            "name": this.name,
-            "gender": this.gender,
-            "type": this.type,
-            "chapter": this.chapter,
-            "class": this.className,
-            "first_appearance": this.first_appearance,
-            "first_appearance_index": this.first_appearance_index,
-            "image": this.image,
-        }
-    }
-
-    compareTo(guessedCharacter) {
-        return {
-            name: {
-                value: guessedCharacter.name,
-                correct: guessedCharacter.name === this.name
-            },
-            gender: {
-                value: guessedCharacter.gender,
-                correct: guessedCharacter.gender === this.gender
-            },
-            type: {
-                value: guessedCharacter.type,
-                correct: guessedCharacter.type === this.type
-            },
-            chapter: {
-                value: guessedCharacter.chapter,
-                correct: guessedCharacter.chapter === this.chapter,
-                hint: guessedCharacter.chapter === this.chapter ? "equal" : (guessedCharacter.chapter < this.chapter ? "higher" : "lower")
-            },
-            class: {
-                value: guessedCharacter.className,
-                correct: guessedCharacter.className === this.className
-            },
-            first_appearance: {
-                value: guessedCharacter.first_appearance,
-                correct: guessedCharacter.first_appearance === this.first_appearance
-            },
-            first_appearance_index: {
-                value: guessedCharacter.first_appearance_index,
-                correct: guessedCharacter.first_appearance_index === this.first_appearance_index,
-                hint: guessedCharacter.first_appearance_index === this.first_appearance_index ? "equal" : (guessedCharacter.first_appearance_index < this.first_appearance_index ? "higher" : "lower")
-            },
-            image: guessedCharacter.image
-        };
-    }
-
-    getName() {
-        return this.name;
-    }
+export function compareCharacters(target, guessed) {
+    return {
+        name: {
+            value: guessed.name,
+            correct: guessed.name === target.name
+        },
+        gender: {
+            value: guessed.gender,
+            correct: guessed.gender === target.gender
+        },
+        type: {
+            value: guessed.type,
+            correct: guessed.type === target.type
+        },
+        chapter: {
+            value: guessed.chapter,
+            correct: guessed.chapter === target.chapter,
+            hint: guessed.chapter === target.chapter ? "equal" : (guessed.chapter < target.chapter ? "higher" : "lower")
+        },
+        class: {
+            value: guessed.class,
+            correct: guessed.class === target.class
+        },
+        first_appearance: {
+            value: guessed.first_appearance,
+            correct: guessed.first_appearance === target.first_appearance
+        },
+        first_appearance_index: {
+            value: guessed.first_appearance_index,
+            correct: guessed.first_appearance_index === target.first_appearance_index,
+            hint: guessed.first_appearance_index === target.first_appearance_index ? "equal" : (guessed.first_appearance_index < target.first_appearance_index ? "higher" : "lower")
+        },
+        image: guessed.image
+    };
 }

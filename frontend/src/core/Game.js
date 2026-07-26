@@ -1,40 +1,48 @@
-import Character from './Character.js';
+import { compareCharacters } from './Character.js';
 
-export default class Game {
-    constructor(json) {
-        this.characters = json.map(character => new Character(character));
-        this.totalCharacters = this.characters.length;
-        this.target = this.characters[Math.floor(Math.random() * this.totalCharacters)];
-        this.guessedNames = new Set();
-    }
+export function createGame(json) {
+    const characters = json;
+    const totalCharacters = characters.length;
+    const target = characters[Math.floor(Math.random() * totalCharacters)];
+    
+    return {
+        characters,
+        totalCharacters,
+        target,
+        guessedNames: []
+    };
+}
 
-    makeGuess(name) {
-        if (!name) throw new Error("Empty name");
+export function makeGuess(gameState, name) {
+    if (!name) throw new Error("Empty name");
 
-        name = name.toUpperCase().trim();
+    const formattedName = name.toUpperCase().trim();
 
-        const guess = this.characters.find(c => c.getName() === name);
-        if (!guess) throw new Error("Non-existent character");
-        if (this.guessedNames.has(name)) throw new Error("Character already guessed!");
+    const guess = gameState.characters.find(c => c.name.toUpperCase() === formattedName);
+    if (!guess) throw new Error("Non-existent character");
+    if (gameState.guessedNames.includes(formattedName)) throw new Error("Character already guessed!");
 
-        this.guessedNames.add(name);
+    const nextGuessedNames = [...gameState.guessedNames, formattedName];
 
-        const result = this.target.compareTo(guess);
-        const victory = this.#checkResult(result);
-        return victory ? "Victory" : result;
-    }
+    const result = compareCharacters(gameState.target, guess);
+    const victory = checkResult(result);
 
-    #checkResult(result) {
-        const keys = Object.keys(result).filter(k => k !== 'image');
-        return keys.every(key => result[key].correct === true);
-    }
+    const nextGameState = {
+        ...gameState,
+        guessedNames: nextGuessedNames
+    };
 
-    getGuessedNames() {
-        return Array.from(this.guessedNames);
-    }
+    return {
+        gameState: nextGameState,
+        result: victory ? "Victory" : result
+    };
+}
 
-    print() {
-        console.log("Target: " + this.target.getName());
-        console.log("Total: " + this.totalCharacters);
-    }
+function checkResult(result) {
+    const keys = Object.keys(result).filter(k => k !== 'image');
+    return keys.every(key => result[key].correct === true);
+}
+
+export function getGuessedNames(gameState) {
+    return gameState.guessedNames;
 }

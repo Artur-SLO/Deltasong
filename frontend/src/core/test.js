@@ -1,11 +1,13 @@
 import { createInterface } from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import deltaruneCharacters from '../../../deltarune_characters.json' with { type: 'json' };
-import Game from './Game.js';
+import { createGame, makeGuess } from './Game.js';
 
 const rl = createInterface({ input, output });
-const game = new Game(deltaruneCharacters);
-game.print();
+let gameState = createGame(deltaruneCharacters);
+
+console.log("Target: " + gameState.target.name);
+console.log("Total: " + gameState.totalCharacters);
 
 const GREEN = '\x1b[32m';
 const RED = '\x1b[31m';
@@ -39,7 +41,8 @@ while (true) {
     const name = await rl.question("\nNext Guess: ");
 
     try {
-        const result = game.makeGuess(name);
+        const { gameState: nextState, result } = makeGuess(gameState, name);
+        gameState = nextState;
 
         if (result === "Victory") {
             console.log(`\n${GREEN}${BOLD}Congratulations! You guessed the character!${RESET}`);
