@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import sys
 import time
@@ -196,23 +197,41 @@ def parse_character_page(url, location_map=None):
         return None
 
 def get_character_links():
-    """Fetch links from Category:Characters."""
-    print("Fetching character URLs...")
-    response = requests.get(CATEGORY_URL, headers=HEADERS)
-    if response.status_code != 200:
-        return []
-
-    soup = BeautifulSoup(response.text, "html.parser")
+    """Fetch all character links, traversing through all paginated category pages."""
+    print("Fetching character URLs across all pages...")
     character_links = []
+    current_url = CATEGORY_URL
 
-    for link in soup.select(".mw-category a, .mw-category-group a, #mw-pages a"):
-        href = link.get("href")
-        if href and "/w/" in href and ":" not in href.replace("/w/", ""):
-            full_url = urljoin(BASE_URL, href)
-            if full_url not in character_links:
-                character_links.append(full_url)
+    while current_url:
+        print(f" -> Accessing category page: {current_url}")
+        response = requests.get(current_url, headers=HEADERS)
+        if response.status_code != 200:
+            print(f"Error fetching page {current_url} (Status: {response.status_code})")
+            break
 
-    print(f"Found {len(character_links)} character links.")
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        # Extract character links from the current category page
+        for link in soup.select(".mw-category a, .mw-category-group a, #mw-pages li a"):
+            href = link.get("href")
+            # Ensure it's an article page and not a special/category page (no ':' after /w/)
+            if href and "/w/" in href and ":" not in href.replace("/w/", ""):
+                full_url = urljoin(BASE_URL, href)
+                if full_url not in character_links:
+                    character_links.append(full_url)
+
+        # Look for the "next page" pagination link
+        next_page_link = None
+        for a_tag in soup.select("#mw-pages a"):
+            if "next page" in a_tag.text.lower():
+                next_page_link = urljoin(BASE_URL, a_tag.get("href"))
+                break
+
+        # Move to next page or terminate loop if there is no next page
+        current_url = next_page_link
+        time.sleep(0.3)
+
+    print(f"Found {len(character_links)} total character links across all pages.")
     return character_links
 
 def fetch_location_map():
