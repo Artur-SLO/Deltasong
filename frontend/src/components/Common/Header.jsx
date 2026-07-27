@@ -1,6 +1,7 @@
 import { Container, Group, Title } from '@mantine/core';
 import { Link, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
+import { IconFlame } from '@tabler/icons-react';
 import classes from '../../styles/Mantine/Header.module.css';
 import { getActiveUser, updateActiveUserStreak } from '../../utils/auth';
 
@@ -51,8 +52,9 @@ export default function Header() {
                     {activeUser ? (
                         <Group gap="xs" className={classes.profileGroup}>
                             <div className={classes.streakBadge}>
-                                STREAK: {activeUser.streak}
+                                <IconFlame size={20} className={classes.flameIcon} /> {activeUser.streak}
                             </div>
+                            <span className={classes.headerName}>{activeUser.name}</span>
                             <img 
                                 src={activeUser.avatar} 
                                 alt={activeUser.name} 

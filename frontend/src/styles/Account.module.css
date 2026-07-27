@@ -3,38 +3,38 @@
 }
 
 .paper {
-    background-color: #1f0f33 !important; /* Castle Plum */
-    border: 2px solid #381f54 !important; /* Shadow Border */
-    color: #f0f0f0 !important;
+    background-color: var(--color-bg-secondary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
 }
 
 .title {
-    font-family: 'Deltarune', sans-serif !important;
+    font-family: var(--font-family-deltarune) !important;
 }
 
 .scrollContainer {
-    max-height: 220px;
+    max-height: var(--size-9);
     overflow-y: auto;
     overflow-x: hidden;
-    border: 2px solid #381f54;
+    border: var(--size-2) solid var(--color-border-primary);
     border-radius: var(--mantine-radius-md);
     padding: var(--mantine-spacing-xs);
-    background-color: #130920;
+    background-color: var(--color-bg-primary);
     margin-bottom: var(--mantine-spacing-md);
     box-sizing: border-box;
 }
 
 .scrollContainer::-webkit-scrollbar {
-    width: 8px;
+    width: var(--size-4);
 }
 
 .scrollContainer::-webkit-scrollbar-track {
-    background: #1f0f33;
+    background: var(--color-bg-secondary);
 }
 
 .scrollContainer::-webkit-scrollbar-thumb {
-    background: #381f54;
-    border-radius: 4px;
+    background: var(--color-border-primary);
+    border-radius: var(--mantine-radius-xs);
 }
 
 .scrollContainer::-webkit-scrollbar-thumb:hover {
@@ -61,35 +61,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 95px;
+    height: var(--size-9);
     width: 100%;
     min-width: 0;
-    border: 2px solid #381f54;
+    border: var(--size-2) solid var(--color-border-primary);
     border-radius: var(--mantine-radius-md);
-    padding: 4px;
+    padding: var(--mantine-spacing-xs);
     cursor: pointer;
     text-align: center;
-    background-color: #130920;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--color-bg-primary);
+    transition: var(--transition-standard);
     box-sizing: border-box;
     overflow: hidden;
 }
 
 .avatarOption:hover {
-    transform: translateY(-2px);
+    transform: translateY(calc(var(--size-2) * -1));
     border-color: var(--mantine-color-cyberCyan-6);
 }
 
 .avatarOptionActive {
-    border-color: #ff1f8e !important; /* Susie Magenta active border */
-    box-shadow: 0 0 10px rgba(255, 31, 142, 0.4);
+    border-color: var(--color-accent-secondary) !important;
+    box-shadow: 0px 0px var(--mantine-spacing-xs) rgba(255, 31, 142, 0.4);
 }
 
 .avatarLabel {
     font-size: var(--mantine-font-size-xs);
-    font-family: 'Deltarune', sans-serif;
-    color: #f0f0f0;
-    margin-top: 4px;
+    font-family: var(--font-family-deltarune);
+    color: var(--color-text-primary);
+    margin-top: var(--mantine-spacing-xs);
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -101,7 +101,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
+    height: var(--size-8);
     width: 100%;
     overflow: hidden;
 }
@@ -120,63 +120,83 @@
 }
 
 .profileAvatar {
-    width: 80px;
-    height: 80px;
+    width: var(--size-9);
+    height: var(--size-9);
     object-fit: contain;
     image-rendering: pixelated;
-    border: 2px solid #381f54;
+    border: var(--size-2) solid var(--color-border-primary);
     border-radius: var(--mantine-radius-md);
     padding: var(--mantine-spacing-xs);
-    background-color: #130920;
+    background-color: var(--color-bg-primary);
     cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: var(--transition-standard);
 }
 
 .profileAvatar:hover {
     transform: scale(1.08);
     border-color: var(--mantine-color-cyberCyan-6);
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    box-shadow: 0px 0px var(--mantine-spacing-xs) rgba(0, 255, 255, 0.4);
 }
 
 .streakNumber {
-    font-size: 1.8rem;
-    font-family: 'Deltarune', sans-serif;
-    color: #00ffff;
-    text-shadow: 2px 2px 0px #ff1f8e;
+    display: flex;
+    align-items: center;
+    gap: var(--size-4);
+    font-size: var(--mantine-font-size-xl);
+    font-family: var(--font-family-deltarune);
+    color: var(--color-accent-primary);
+    text-shadow: var(--size-2) var(--size-2) 0px var(--color-accent-secondary);
+}
+
+.flameIcon {
+    animation: dashboardStreak 2.2s infinite ease-in-out;
+}
+
+@keyframes dashboardStreak {
+    0%, 100% {
+        transform: translateY(1px) scale(1);
+        filter: drop-shadow(0px 0px var(--size-2) var(--color-accent-secondary));
+        color: var(--color-accent-primary);
+    }
+    50% {
+        transform: translateY(-2px) scale(1.15);
+        filter: drop-shadow(0px 0px var(--size-4) var(--color-accent-primary));
+        color: var(--color-accent-secondary);
+    }
 }
 
 /* Target Mantine Tabs buttons to match header hovers */
 .paper :global(.mantine-Tabs-tab) {
-    color: #f0f0f0 !important;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+    color: var(--color-text-primary) !important;
+    transition: var(--transition-standard) !important;
     background-color: transparent;
     border: none !important;
 }
 
 .paper :global(.mantine-Tabs-tab:hover) {
-    background-color: #381f54 !important;
-    color: #00ffff !important;
+    background-color: var(--color-border-primary) !important;
+    color: var(--color-accent-primary) !important;
     transform: scale(1.05) !important;
 }
 
 .paper :global(.mantine-Tabs-tab[data-active]) {
-    background-color: #381f54 !important;
-    color: #ff1f8e !important;
-    border-bottom: 2px solid #ff1f8e !important;
+    background-color: var(--color-border-primary) !important;
+    color: var(--color-accent-secondary) !important;
+    border-bottom: var(--size-2) solid var(--color-accent-secondary) !important;
 }
 
 /* Style Mantine Inputs within the paper card and Modal content */
 .paper :global(.mantine-Input-input),
 .paper :global(.mantine-PasswordInput-input),
 :global(.mantine-Modal-content) :global(.mantine-Input-input) {
-    background-color: #130920 !important;
-    color: #f0f0f0 !important;
-    border: 2px solid #381f54 !important;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    transition: var(--transition-standard) !important;
 }
 
 .paper :global(.mantine-PasswordInput-innerInput) {
-    color: #f0f0f0 !important;
+    color: var(--color-text-primary) !important;
     background-color: transparent !important;
     border: none !important;
 }
@@ -185,7 +205,7 @@
 .paper :global(.mantine-PasswordInput-input:focus-within),
 :global(.mantine-Modal-content) :global(.mantine-Input-input:focus) {
     border-color: var(--mantine-color-cyberCyan-6) !important;
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.4) !important;
+    box-shadow: 0px 0px var(--mantine-spacing-xs) rgba(0, 255, 255, 0.4) !important;
 }
 
 .paper :global(.mantine-Input-input::placeholder),
@@ -196,6 +216,6 @@
 
 .paper :global(.mantine-InputWrapper-label),
 :global(.mantine-Modal-content) :global(.mantine-InputWrapper-label) {
-    color: #f0f0f0 !important;
+    color: var(--color-text-primary) !important;
     font-weight: 500;
 }

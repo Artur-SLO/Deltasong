@@ -1,0 +1,60 @@
+/* Adjusting Mantine AppShell main background */
+.mantine-AppShell-main {
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+}
+
+/* Adjusting Mantine AppShell Header colors */
+.mantine-AppShell-header {
+    background-color: var(--color-bg-secondary) !important;
+    border-bottom: var(--size-2) solid var(--color-border-primary) !important;
+}
+
+.mantine-Card-root {
+    background-color: var(--color-bg-secondary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
+    box-shadow: var(--shadow-standard) !important;
+    transition: var(--transition-standard) !important;
+}
+
+.mantine-Card-root:hover {
+    transform: translateY(calc(var(--size-3) * -1)) !important;
+    box-shadow: var(--shadow-hover) !important;
+    border-color: var(--mantine-color-cyberCyan-6) !important;
+}
+
+.mantine-Button-root {
+    font-family: var(--font-family-deltarune) !important;
+    letter-spacing: 0.05em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* Style Mantine Notifications globally to match theme */
+.mantine-Notification-root {
+    background-color: var(--color-bg-secondary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
+    box-shadow: var(--shadow-notification) !important;
+    border-radius: var(--mantine-radius-md) !important;
+}
+
+.mantine-Notification-title {
+    color: var(--color-text-secondary) !important;
+    font-size: var(--mantine-font-size-md) !important;
+    letter-spacing: 0.03em !important;
+}
+
+.mantine-Notification-description {
+    color: rgba(240, 240, 240, 0.8) !important;
+}
+
+.mantine-Notification-closeButton {
+    color: var(--color-text-primary) !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.mantine-Notification-closeButton:hover {
+    background-color: var(--color-border-primary) !important;
+    color: var(--color-accent-primary) !important;
+}

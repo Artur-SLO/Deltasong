@@ -1,3 +1,47 @@
+:root {
+    /* Colors */
+    --color-bg-primary: #130920;
+    --color-bg-secondary: #1f0f33;
+    --color-border-primary: #381f54;
+    --color-text-primary: #f0f0f0;
+    --color-text-secondary: #ffffff;
+    --color-accent-primary: #00ffff;
+    --color-accent-secondary: var(--mantine-color-royalMagenta-5);
+
+    /* Typography */
+    --font-family-deltarune: 'Deltarune', sans-serif;
+
+    /* Generic Sizing */
+    --size-1: 1px;
+    --size-2: 2px;
+    --size-3: 4px;
+    --size-4: 8px;
+    --size-5: 16px;
+    --size-6: 32px;
+    --size-7: 40px;
+    --size-8: 64px;
+    --size-9: 128px;
+    --size-10: 256px;
+    --size-11: 512px;
+
+    /* REM Sizing */
+    --size-rem-1: 1rem;
+    --size-rem-2: 2rem;
+    --size-rem-3: 4rem;
+    --size-rem-4: 8rem;
+    --size-rem-5: 16rem;
+    --size-rem-6: 32rem;
+
+    /* Shadows & Glows */
+    --shadow-standard: 0px var(--size-3) var(--size-4) rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0px var(--size-4) var(--size-5) rgba(56, 31, 84, 0.8);
+    --shadow-notification: 0px var(--size-3) var(--size-5) rgba(0, 0, 0, 0.6);
+
+    /* Transitions */
+    --transition-standard: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    --transition-slow: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
 @font-face {
     font-family: 'Deltarune';
     src: url('../assets/fonts/deltarune.ttf') format('truetype');
@@ -6,89 +50,16 @@
 }
 
 body {
-    background-color: #130920 !important; /* Dark Forest Plum */
-    color: #f0f0f0 !important;
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
 }
 
 /* Headings font overrides */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Deltarune', sans-serif !important;
-}
-
-/* Adjusting Mantine AppShell main background */
-.mantine-AppShell-main {
-    background-color: #130920 !important; /* Dark Forest Plum */
-    color: #f0f0f0 !important;
-}
-
-/* Adjusting Mantine AppShell Header colors */
-.mantine-AppShell-header {
-    background-color: #1f0f33 !important; /* Castle Plum */
-    border-bottom: 2px solid #381f54 !important; /* Shadow Border */
-}
-
-/* Theme overrides for Cards to match Castle Plum and Shadow Border */
-.mantine-Card-root {
-    background-color: #1f0f33 !important; /* Castle Plum */
-    border: 2px solid #381f54 !important; /* Shadow Border */
-    color: #f0f0f0 !important;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
-}
-
-.mantine-Card-root:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0px 8px 24px rgba(56, 31, 84, 0.8) !important; /* Shadow Border themed shadow */
-    border-color: var(--mantine-color-cyberCyan-6) !important;
-}
-
-/* Buttons style override to use the Deltarune pixel font */
-.mantine-Button-root {
-    font-family: 'Deltarune', sans-serif !important;
-    letter-spacing: 0.05em;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
-}
-
-/* Generic Game Mode Layout classes */
-.game-container {
-    margin-top: 2rem;
-}
-
-.game-paper {
-    background-color: #1f0f33 !important; /* Castle Plum */
-    border-color: #381f54 !important; /* Shadow Border */
-    color: #f0f0f0 !important;
-}
-
-.game-title {
-    font-family: 'Deltarune', sans-serif !important;
-}
-
-/* Style Mantine Notifications globally to match theme */
-.mantine-Notification-root {
-    background-color: #1f0f33 !important; /* Castle Plum */
-    border: 2px solid #381f54 !important; /* Shadow Border */
-    color: #f0f0f0 !important;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6) !important;
-    border-radius: var(--mantine-radius-md) !important;
-}
-
-.mantine-Notification-title {
-    color: #ffffff !important;
-    font-size: 1rem !important;
-    letter-spacing: 0.03em !important;
-}
-
-.mantine-Notification-description {
-    color: rgba(240, 240, 240, 0.8) !important;
-}
-
-.mantine-Notification-closeButton {
-    color: #f0f0f0 !important;
-    transition: background-color 0.2s ease, color 0.2s ease !important;
-}
-
-.mantine-Notification-closeButton:hover {
-    background-color: #381f54 !important;
-    color: #00ffff !important;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-deltarune) !important;
 }

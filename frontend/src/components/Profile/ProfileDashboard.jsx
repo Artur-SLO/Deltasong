@@ -1,6 +1,7 @@
 import { Title, Group, Text, Button, Paper, Modal } from '@mantine/core';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { IconFlame } from '@tabler/icons-react';
 import classes from '../../styles/Account.module.css';
 import { logoutUser, updateUserAvatar } from '../../utils/auth';
 import { notifications } from '@mantine/notifications';
@@ -72,7 +73,7 @@ export default function ProfileDashboard({ activeUser }) {
 
             <Group justify="center" mt="xl" mb="xl" style={{ flexDirection: 'column', gap: 5 }}>
                 <div className={classes.streakNumber}>
-                    STREAK: {activeUser.streak}
+                    <IconFlame size={32} className={classes.flameIcon} /> {activeUser.streak}
                 </div>
             </Group>
 
