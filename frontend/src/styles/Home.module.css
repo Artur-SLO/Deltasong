@@ -1,0 +1,43 @@
+.container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hero Section Styles */
+.heroWrapper {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Deltarune', sans-serif !important;
+    color: #ffffff !important;
+    text-shadow: 4px 4px 0px #381f54, 0px 0px 10px rgba(0, 255, 255, 0.3);
+    margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+    font-weight: 500;
+}
+
+/* Card Section Styles */
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cardTitle {
+    font-family: 'Deltarune', sans-serif !important;
+    color: #f0f0f0 !important;
+    margin: 0;
+}
+
+.cardDescription {
+    line-height: 1.6;
+    flex-grow: 1;
+}

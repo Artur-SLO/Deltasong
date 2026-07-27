@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Deltarune';
+    src: url('../assets/fonts/deltarune.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #130920 !important; /* Dark Forest Plum */
+    color: #f0f0f0 !important;
+}
+
+/* Headings font overrides */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Deltarune', sans-serif !important;
+}
+
+/* Adjusting Mantine AppShell main background */
+.mantine-AppShell-main {
+    background-color: #130920 !important; /* Dark Forest Plum */
+    color: #f0f0f0 !important;
+}
+
+/* Adjusting Mantine AppShell Header colors */
+.mantine-AppShell-header {
+    background-color: #1f0f33 !important; /* Castle Plum */
+    border-bottom: 2px solid #381f54 !important; /* Shadow Border */
+}
+
+/* Theme overrides for Cards to match Castle Plum and Shadow Border */
+.mantine-Card-root {
+    background-color: #1f0f33 !important; /* Castle Plum */
+    border: 2px solid #381f54 !important; /* Shadow Border */
+    color: #f0f0f0 !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+.mantine-Card-root:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0px 8px 24px rgba(56, 31, 84, 0.8) !important; /* Shadow Border themed shadow */
+    border-color: var(--mantine-color-cyberCyan-6) !important;
+}
+
+/* Buttons style override to use the Deltarune pixel font */
+.mantine-Button-root {
+    font-family: 'Deltarune', sans-serif !important;
+    letter-spacing: 0.05em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* Generic Game Mode Layout classes */
+.game-container {
+    margin-top: 2rem;
+}
+
+.game-paper {
+    background-color: #1f0f33 !important; /* Castle Plum */
+    border-color: #381f54 !important; /* Shadow Border */
+    color: #f0f0f0 !important;
+}
+
+.game-title {
+    font-family: 'Deltarune', sans-serif !important;
+}
