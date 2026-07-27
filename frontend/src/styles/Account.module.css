@@ -1,0 +1,201 @@
+.container {
+    margin-top: var(--mantine-spacing-xl);
+}
+
+.paper {
+    background-color: #1f0f33 !important; /* Castle Plum */
+    border: 2px solid #381f54 !important; /* Shadow Border */
+    color: #f0f0f0 !important;
+}
+
+.title {
+    font-family: 'Deltarune', sans-serif !important;
+}
+
+.scrollContainer {
+    max-height: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 2px solid #381f54;
+    border-radius: var(--mantine-radius-md);
+    padding: var(--mantine-spacing-xs);
+    background-color: #130920;
+    margin-bottom: var(--mantine-spacing-md);
+    box-sizing: border-box;
+}
+
+.scrollContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+    background: #1f0f33;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+    background: #381f54;
+    border-radius: 4px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+    background: var(--mantine-color-cyberCyan-6);
+}
+
+.columnsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--mantine-spacing-xs);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.avatarColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-xs);
+    min-width: 0;
+}
+
+.avatarOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 95px;
+    width: 100%;
+    min-width: 0;
+    border: 2px solid #381f54;
+    border-radius: var(--mantine-radius-md);
+    padding: 4px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #130920;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.avatarOption:hover {
+    transform: translateY(-2px);
+    border-color: var(--mantine-color-cyberCyan-6);
+}
+
+.avatarOptionActive {
+    border-color: #ff1f8e !important; /* Susie Magenta active border */
+    box-shadow: 0 0 10px rgba(255, 31, 142, 0.4);
+}
+
+.avatarLabel {
+    font-size: var(--mantine-font-size-xs);
+    font-family: 'Deltarune', sans-serif;
+    color: #f0f0f0;
+    margin-top: 4px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.avatarImageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.avatarImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.dashboardHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--mantine-spacing-md);
+}
+
+.profileAvatar {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border: 2px solid #381f54;
+    border-radius: var(--mantine-radius-md);
+    padding: var(--mantine-spacing-xs);
+    background-color: #130920;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profileAvatar:hover {
+    transform: scale(1.08);
+    border-color: var(--mantine-color-cyberCyan-6);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+}
+
+.streakNumber {
+    font-size: 1.8rem;
+    font-family: 'Deltarune', sans-serif;
+    color: #00ffff;
+    text-shadow: 2px 2px 0px #ff1f8e;
+}
+
+/* Target Mantine Tabs buttons to match header hovers */
+.paper :global(.mantine-Tabs-tab) {
+    color: #f0f0f0 !important;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+    background-color: transparent;
+    border: none !important;
+}
+
+.paper :global(.mantine-Tabs-tab:hover) {
+    background-color: #381f54 !important;
+    color: #00ffff !important;
+    transform: scale(1.05) !important;
+}
+
+.paper :global(.mantine-Tabs-tab[data-active]) {
+    background-color: #381f54 !important;
+    color: #ff1f8e !important;
+    border-bottom: 2px solid #ff1f8e !important;
+}
+
+/* Style Mantine Inputs within the paper card and Modal content */
+.paper :global(.mantine-Input-input),
+.paper :global(.mantine-PasswordInput-input),
+:global(.mantine-Modal-content) :global(.mantine-Input-input) {
+    background-color: #130920 !important;
+    color: #f0f0f0 !important;
+    border: 2px solid #381f54 !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.paper :global(.mantine-PasswordInput-innerInput) {
+    color: #f0f0f0 !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.paper :global(.mantine-Input-input:focus),
+.paper :global(.mantine-PasswordInput-input:focus-within),
+:global(.mantine-Modal-content) :global(.mantine-Input-input:focus) {
+    border-color: var(--mantine-color-cyberCyan-6) !important;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.4) !important;
+}
+
+.paper :global(.mantine-Input-input::placeholder),
+.paper :global(.mantine-PasswordInput-innerInput::placeholder),
+:global(.mantine-Modal-content) :global(.mantine-Input-input::placeholder) {
+    color: rgba(240, 240, 240, 0.4) !important;
+}
+
+.paper :global(.mantine-InputWrapper-label),
+:global(.mantine-Modal-content) :global(.mantine-InputWrapper-label) {
+    color: #f0f0f0 !important;
+    font-weight: 500;
+}

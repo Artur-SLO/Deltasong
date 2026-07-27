@@ -4,6 +4,7 @@ import ErrorPage from './components/Common/ErrorPage.jsx';
 import Game from './components/Character/Game.jsx';
 import ItemsPage from './components/Item/ItemsPage.jsx';
 import SongsPage from './components/Song/SongsPage.jsx';
+import AccountPage from './components/Profile/AccountPage.jsx';
 
 const routes = [
     {
@@ -26,6 +27,10 @@ const routes = [
             {
                 path: "songs",
                 element: <SongsPage />
+            },
+            {
+                path: "account",
+                element: <AccountPage />
             }
        ]
     }

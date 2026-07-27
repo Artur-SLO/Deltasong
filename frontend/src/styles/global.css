@@ -63,3 +63,32 @@ h1, h2, h3, h4, h5, h6 {
 .game-title {
     font-family: 'Deltarune', sans-serif !important;
 }
+
+/* Style Mantine Notifications globally to match theme */
+.mantine-Notification-root {
+    background-color: #1f0f33 !important; /* Castle Plum */
+    border: 2px solid #381f54 !important; /* Shadow Border */
+    color: #f0f0f0 !important;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6) !important;
+    border-radius: var(--mantine-radius-md) !important;
+}
+
+.mantine-Notification-title {
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    letter-spacing: 0.03em !important;
+}
+
+.mantine-Notification-description {
+    color: rgba(240, 240, 240, 0.8) !important;
+}
+
+.mantine-Notification-closeButton {
+    color: #f0f0f0 !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.mantine-Notification-closeButton:hover {
+    background-color: #381f54 !important;
+    color: #00ffff !important;
+}

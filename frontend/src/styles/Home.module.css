@@ -17,11 +17,37 @@
     font-family: 'Deltarune', sans-serif !important;
     color: #ffffff !important;
     text-shadow: 4px 4px 0px #381f54, 0px 0px 10px rgba(0, 255, 255, 0.3);
-    margin-bottom: 1rem;
+    margin-bottom: var(--mantine-spacing-md);
+    user-select: none;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                text-shadow 0.3s ease !important;
+}
+
+.heroTitle:hover {
+    transform: scale(1.08);
+    text-shadow: 4px 4px 0px #ff1f8e, 0px 0px 20px rgba(0, 255, 255, 0.8);
+    cursor: default;
 }
 
 .heroSubtitle {
     font-weight: 500;
+}
+
+.modeCard {
+    background-color: #1f0f33 !important;
+    border: 2px solid #381f54 !important;
+    color: #f0f0f0 !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease !important;
+}
+
+.modeCard:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    border-color: var(--hover-border) !important;
+    box-shadow: 0px 12px 30px var(--hover-glow) !important;
 }
 
 /* Card Section Styles */

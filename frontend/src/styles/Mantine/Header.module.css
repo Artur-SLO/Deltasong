@@ -6,13 +6,17 @@
 .title {
     user-select: none;
     font-family: 'Deltarune', sans-serif;
-    color: #00ffff;
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                text-shadow 0.3s ease, 
+                color 0.3s ease !important;
 }
 
 .title:hover {
-    transform: scale(1.05);
-    color: #ff1f8e;
+    transform: scale(1.08);
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #ff1f8e, 0px 0px 15px rgba(0, 255, 255, 0.8);
+    cursor: pointer;
 }
 
 .inner {
@@ -39,12 +43,29 @@
     color: #f0f0f0;
     font-family: 'Deltarune', sans-serif;
     font-weight: 500;
+    position: relative;
     transition: transform 0.1s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
     @media (max-width: $mantine-breakpoint-xs) {
         border-radius: 0;
         padding: var(--mantine-spacing-md);
     }
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 2px;
+    left: 50%;
+    background-color: #00ffff;
+    transition: width 0.2s ease, left 0.2s ease;
+}
+
+.link:hover::after {
+    width: 70%;
+    left: 15%;
 }
 
 .link:hover {
@@ -57,5 +78,67 @@
     background-color: #381f54 !important;
     color: #ff1f8e !important;
     border: 1px solid #ff1f8e !important;
+}
+
+.link[data-active]::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    bottom: 2px;
+    left: 15%;
+    background-color: #ff1f8e;
+}
+
+.profileGroup {
+    cursor: pointer;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.profileGroup:hover {
+    transform: scale(1.03);
+}
+
+.headerAvatar {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border: 1px solid #381f54;
+    border-radius: var(--mantine-radius-sm);
+    padding: 2px;
+    background-color: #130920;
+    transition: border-color 0.2s ease;
+}
+
+.profileGroup:hover .headerAvatar {
+    border-color: var(--mantine-color-cyberCyan-6);
+}
+
+.streakBadge {
+    font-family: 'Deltarune', sans-serif !important;
+    font-size: 13px;
+    color: #00ffff;
+    text-shadow: 1px 1px 0px #ff1f8e;
+    user-select: none;
+}
+
+.loginButton {
+    font-family: 'Deltarune', sans-serif !important;
+    font-size: 13px;
+    color: #f0f0f0;
+    border: 1px solid #381f54;
+    padding: 6px 12px;
+    border-radius: var(--mantine-radius-sm);
+    cursor: pointer;
+    background-color: #130920;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.loginButton:hover {
+    transform: scale(1.05);
+    border-color: var(--mantine-color-cyberCyan-6);
+    background-color: #381f54;
 }
 

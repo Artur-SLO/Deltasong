@@ -1,11 +1,30 @@
 import { Container, Group, Title } from '@mantine/core';
 import { Link, useLocation } from 'react-router';
+import { useState, useEffect } from 'react';
 import classes from '../../styles/Mantine/Header.module.css';
+import { getActiveUser, updateActiveUserStreak } from '../../utils/auth';
 
 import { LINKS } from '../../config/Constants';
 
 export default function Header() {
     const location = useLocation();
+    const [activeUser, setActiveUser] = useState(null);
+
+    useEffect(() => {
+        // Update streak if applicable, then fetch active user
+        updateActiveUserStreak();
+        setActiveUser(getActiveUser());
+
+        const handleAuthChange = () => {
+            setActiveUser(getActiveUser());
+        };
+
+        window.addEventListener('deltasong_auth_change', handleAuthChange);
+        return () => {
+            window.removeEventListener('deltasong_auth_change', handleAuthChange);
+        };
+    }, []);
+
     const items = LINKS.map((link) => (
         <Link
             key={link.label}
@@ -19,7 +38,7 @@ export default function Header() {
 
     return (
         <header className={classes.header}>
-            <Container size="xl" className={classes.inner}>
+            <Container fluid className={classes.inner}>
 
                 <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <Title order={3} className={classes.title}>deltAsong</Title>
@@ -27,6 +46,25 @@ export default function Header() {
                 <Group gap={3} visibleFrom="xs" className={classes.subjects}>
                     {items}
                 </Group>
+                
+                <Link to="/account" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    {activeUser ? (
+                        <Group gap="xs" className={classes.profileGroup}>
+                            <div className={classes.streakBadge}>
+                                STREAK: {activeUser.streak}
+                            </div>
+                            <img 
+                                src={activeUser.avatar} 
+                                alt={activeUser.name} 
+                                className={classes.headerAvatar} 
+                            />
+                        </Group>
+                    ) : (
+                        <div className={classes.loginButton}>
+                            Login
+                        </div>
+                    )}
+                </Link>
             </Container>
         </header>
     );
