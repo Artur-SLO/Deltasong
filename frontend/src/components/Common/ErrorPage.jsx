@@ -19,7 +19,7 @@ export default function ErrorPage() {
                         The page you are trying to open does not exist. You may have typed the address incorrectly or the page has been moved to another URL.
                     </Text>
                     <Group justify="center">
-                        <Button size="md" onClick={() => navigate('/')}>
+                        <Button className={classes.btn} size="md" onClick={() => navigate('/')}>
                             Return to home page
                         </Button>
                     </Group>

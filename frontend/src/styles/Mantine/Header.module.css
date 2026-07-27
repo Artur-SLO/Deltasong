@@ -1,26 +1,24 @@
 .header {
-    height: 56px;
-    background-color: #1f0f33;
+    height: var(--size-8);
+    background-color: var(--color-bg-secondary);
 }
 
 .title {
     user-select: none;
-    font-family: 'Deltarune', sans-serif;
+    font-family: var(--font-family-deltarune);
     display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                text-shadow 0.3s ease, 
-                color 0.3s ease !important;
+    transition: var(--transition-slow) !important;
 }
 
 .title:hover {
     transform: scale(1.08);
-    color: #ffffff;
-    text-shadow: 2px 2px 0px #ff1f8e, 0px 0px 15px rgba(0, 255, 255, 0.8);
+    color: var(--color-text-secondary);
+    text-shadow: var(--size-2) var(--size-2) 0px var(--color-accent-secondary), 0px 0px var(--mantine-spacing-md) rgba(0, 255, 255, 0.8);
     cursor: pointer;
 }
 
 .inner {
-    height: 56px;
+    height: var(--size-8);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,16 +35,16 @@
 .link {
     display: block;
     line-height: 1;
-    padding: 8px 12px;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
     border-radius: var(--mantine-radius-sm);
     text-decoration: none;
-    color: #f0f0f0;
-    font-family: 'Deltarune', sans-serif;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-deltarune);
     font-weight: 500;
     position: relative;
-    transition: transform 0.1s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: var(--transition-standard);
 
-    @media (max-width: $mantine-breakpoint-xs) {
+    @media (max-width: 36em) {
         border-radius: 0;
         padding: var(--mantine-spacing-md);
     }
@@ -56,10 +54,10 @@
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
-    bottom: 2px;
+    height: var(--size-2);
+    bottom: var(--size-2);
     left: 50%;
-    background-color: #00ffff;
+    background-color: var(--color-accent-primary);
     transition: width 0.2s ease, left 0.2s ease;
 }
 
@@ -69,31 +67,27 @@
 }
 
 .link:hover {
-    background-color: #381f54;
-    color: #00ffff;
+    background-color: var(--color-border-primary);
+    color: var(--color-accent-primary);
     transform: scale(1.05);
 }
 
 .link[data-active] {
-    background-color: #381f54 !important;
-    color: #ff1f8e !important;
-    border: 1px solid #ff1f8e !important;
+    background-color: var(--color-border-primary) !important;
+    color: var(--color-accent-secondary) !important;
+    border: var(--size-1) solid var(--color-accent-secondary) !important;
 }
 
 .link[data-active]::after {
-    content: '';
-    position: absolute;
     width: 70%;
-    height: 2px;
-    bottom: 2px;
     left: 15%;
-    background-color: #ff1f8e;
+    background-color: var(--color-accent-secondary);
 }
 
 .profileGroup {
     cursor: pointer;
     align-items: center;
-    transition: transform 0.2s ease;
+    transition: var(--transition-standard);
 }
 
 .profileGroup:hover {
@@ -101,14 +95,14 @@
 }
 
 .headerAvatar {
-    width: 34px;
-    height: 34px;
+    width: var(--size-7);
+    height: var(--size-7);
     object-fit: contain;
     image-rendering: pixelated;
-    border: 1px solid #381f54;
+    border: var(--size-1) solid var(--color-border-primary);
     border-radius: var(--mantine-radius-sm);
-    padding: 2px;
-    background-color: #130920;
+    padding: var(--size-2);
+    background-color: var(--color-bg-primary);
     transition: border-color 0.2s ease;
 }
 
@@ -117,28 +111,47 @@
 }
 
 .streakBadge {
-    font-family: 'Deltarune', sans-serif !important;
-    font-size: 13px;
-    color: #00ffff;
-    text-shadow: 1px 1px 0px #ff1f8e;
+    display: flex;
+    align-items: center;
+    gap: var(--size-3);
+    font-family: var(--font-family-deltarune) !important;
+    font-size: var(--mantine-font-size-xs);
+    color: var(--color-accent-primary);
+    text-shadow: var(--size-1) var(--size-1) 0px var(--color-accent-secondary);
     user-select: none;
 }
 
+.flameIcon {
+    animation: streakFlame 2.2s infinite ease-in-out;
+}
+
+@keyframes streakFlame {
+    0%, 100% {
+        transform: translateY(1px) scale(1);
+        filter: drop-shadow(0px 0px var(--size-2) var(--color-accent-secondary));
+        color: var(--color-accent-primary);
+    }
+    50% {
+        transform: translateY(-1px) scale(1.2);
+        filter: drop-shadow(0px 0px var(--size-3) var(--color-accent-primary));
+        color: var(--color-accent-secondary);
+    }
+}
+
 .loginButton {
-    font-family: 'Deltarune', sans-serif !important;
-    font-size: 13px;
-    color: #f0f0f0;
-    border: 1px solid #381f54;
-    padding: 6px 12px;
+    font-family: var(--font-family-deltarune) !important;
+    font-size: var(--mantine-font-size-xs);
+    color: var(--color-text-primary);
+    border: var(--size-1) solid var(--color-border-primary);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
     border-radius: var(--mantine-radius-sm);
     cursor: pointer;
-    background-color: #130920;
-    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    background-color: var(--color-bg-primary);
+    transition: var(--transition-standard);
 }
 
 .loginButton:hover {
     transform: scale(1.05);
     border-color: var(--mantine-color-cyberCyan-6);
-    background-color: #381f54;
+    background-color: var(--color-border-primary);
 }
-
