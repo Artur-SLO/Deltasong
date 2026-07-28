@@ -32,6 +32,11 @@
     margin: 0;
 }
 
+.linkWrapper {
+    text-decoration: none;
+    color: inherit;
+}
+
 .link {
     display: block;
     line-height: 1;
@@ -114,12 +119,13 @@
     font-family: var(--font-family-deltarune) !important;
     font-size: var(--mantine-font-size-sm);
     color: var(--color-text-primary);
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
     user-select: none;
 }
 
 .profileGroup:hover .headerName {
-    color: var(--mantine-color-cyberCyan-6);
+    color: var(--color-text-secondary);
+    text-shadow: var(--size-2) var(--size-2) 0px var(--color-accent-secondary), 0px 0px var(--mantine-spacing-md) rgba(0, 255, 255, 0.8);
 }
 
 .streakBadge {
@@ -138,11 +144,14 @@
 }
 
 @keyframes streakFlame {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(1px) scale(1);
         filter: drop-shadow(0px 0px var(--size-2) var(--color-accent-secondary));
         color: var(--color-accent-primary);
     }
+
     50% {
         transform: translateY(-1px) scale(1.15);
         filter: drop-shadow(0px 0px var(--size-3) var(--color-accent-primary));

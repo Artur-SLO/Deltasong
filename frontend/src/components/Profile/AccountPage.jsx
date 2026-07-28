@@ -31,8 +31,8 @@ export default function AccountPage() {
                 ) : (
                     <Tabs value={activeTab} onChange={setActiveTab} color="cyberCyan">
                         <Tabs.List grow mb="md">
-                            <Tabs.Tab value="login" style={{ fontFamily: 'Deltarune, sans-serif' }}>Login</Tabs.Tab>
-                            <Tabs.Tab value="register" style={{ fontFamily: 'Deltarune, sans-serif' }}>Register</Tabs.Tab>
+                            <Tabs.Tab value="login" className={classes.tabButton}>Login</Tabs.Tab>
+                            <Tabs.Tab value="register" className={classes.tabButton}>Register</Tabs.Tab>
                         </Tabs.List>
 
                         <Tabs.Panel value="login">
@@ -46,7 +46,7 @@ export default function AccountPage() {
                 )}
 
                 {!activeUser && (
-                    <Paper p="sm" radius="xs" withBorder style={{ borderColor: '#381f54', backgroundColor: '#130920', marginTop: '2rem' }}>
+                    <Paper p="sm" radius="xs" withBorder className={classes.privacyNote}>
                         <Text size="xs" ta="center" c="dimmed">
                             Privacy Note: Your username, password, and stats are stored 100% locally on your computer via localStorage. No data is ever sent to any server.
                         </Text>

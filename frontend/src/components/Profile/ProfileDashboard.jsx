@@ -1,4 +1,4 @@
-import { Title, Group, Text, Button, Paper, Modal } from '@mantine/core';
+import { Title, Group, Text, Button, Paper, Modal, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { IconFlame } from '@tabler/icons-react';
@@ -30,7 +30,11 @@ export default function ProfileDashboard({ activeUser }) {
 
     return (
         <div>
-            <div className={classes.dashboardHeader} style={{ justifyContent: 'center', flexDirection: 'column' }}>
+            <div className={classes.dashboardHeader}>
+
+                <Title order={1} mt="sm" className={classes.profileName}>
+                    {activeUser.name}
+                </Title>
                 <img 
                     src={getAvatarSrc(activeUser.avatar)} 
                     alt={activeUser.name} 
@@ -38,9 +42,6 @@ export default function ProfileDashboard({ activeUser }) {
                     onClick={() => setIsEditingAvatar(true)}
                     title="Click to change avatar"
                 />
-                <Title order={1} mt="sm" style={{ fontSize: '2rem' }}>
-                    {activeUser.name}
-                </Title>
             </div>
 
             <Modal
@@ -51,16 +52,16 @@ export default function ProfileDashboard({ activeUser }) {
                 size="md"
                 styles={{
                     content: {
-                        backgroundColor: '#1f0f33',
-                        border: '2px solid #381f54',
-                        color: '#f0f0f0',
+                        backgroundColor: 'var(--color-bg-secondary)',
+                        border: 'var(--size-2) solid var(--color-border-primary)',
+                        color: 'var(--color-text-primary)',
                     },
                     header: {
-                        backgroundColor: '#1f0f33',
-                        color: '#f0f0f0',
+                        backgroundColor: 'var(--color-bg-secondary)',
+                        color: 'var(--color-text-primary)',
                     },
                     title: {
-                        fontFamily: 'Deltarune, sans-serif',
+                        fontFamily: 'var(--font-family-deltarune)',
                         fontSize: '1.2rem',
                     }
                 }}
@@ -71,11 +72,11 @@ export default function ProfileDashboard({ activeUser }) {
                 />
             </Modal>
 
-            <Group justify="center" mt="xl" mb="xl" style={{ flexDirection: 'column', gap: 5 }}>
+            <Stack gap={5} align="center" mt="xl" mb="xl">
                 <div className={classes.streakNumber}>
                     <IconFlame size={32} className={classes.flameIcon} /> {activeUser.streak}
                 </div>
-            </Group>
+            </Stack>
 
             <Group justify="center" mt="xl">
                 <Button color="royalMagenta" variant="light" size="md" onClick={() => navigate('/')}>

@@ -4,7 +4,7 @@ export function createGame(json) {
     const characters = json;
     const totalCharacters = characters.length;
     const target = characters[Math.floor(Math.random() * totalCharacters)];
-    
+
     return {
         characters,
         totalCharacters,

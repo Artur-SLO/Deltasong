@@ -10,8 +10,13 @@ export default function Hero() {
             >
                 deltAsong
             </Title>
+
             <Text size="xl" c="dimmed" maxW={600} mx="auto" className={classes.heroSubtitle}>
-                A guessing game set in the Dark World. Choose your mode and test your knowledge of Deltarune!
+                A guessing game set in the Dark World
+            </Text>
+
+            <Text size="xl" c="dimmed" maxW={600} mx="auto" className={classes.heroSubtitle}>
+                Test Your Deltarune knowledge!
             </Text>
         </div>
     );

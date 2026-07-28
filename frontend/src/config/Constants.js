@@ -27,3 +27,13 @@ export const GAME_MODES = [
         color: "emeraldGreen"
     }
 ];
+
+export const GUESS_HEADERS = [
+    'IMAGE',
+    'NAME',
+    'CHAPTER',
+    'GENDER',
+    'TYPE',
+    'ROLE',
+    'FIRST APPEARANCE',
+];

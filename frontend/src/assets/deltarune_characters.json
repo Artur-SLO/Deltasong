@@ -99,17 +99,6 @@
         "url": "https://deltarune.wiki/w/Archer"
     },
     {
-        "name": "ARTIST",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 43,
-        "image": "https://deltarune.wiki/images/Artist_screenshot.png?cb=p3nw5c&h=thumb.php&f=Artist_screenshot.png",
-        "url": "https://deltarune.wiki/w/Artist"
-    },
-    {
         "name": "ASGORE",
         "gender": "Male",
         "type": "Lightner",
@@ -117,7 +106,7 @@
         "class": "NPC",
         "first_appearance": "Hometown",
         "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Asgore_overworld_hug_Kris.gif?cb=953o9x&h=thumb.php&f=Asgore_overworld_hug_Kris.gif",
+        "image": "https://static.wikia.nocookie.net/undertale/images/7/7b/Asgore_Dreemurr_battle_idle.gif/revision/latest?cb=20160117232335",
         "url": "https://deltarune.wiki/w/Asgore"
     },
     {
@@ -1118,7 +1107,7 @@
         "class": "NPC",
         "first_appearance": "Hometown",
         "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Sans%27s_house_screenshot_knocking.png?cb=p1pahe&h=thumb.php&f=Sans%27s_house_screenshot_knocking.png",
+        "image": "https://undertale.wiki/images/Papyrus_overworld.png?cb=pc0aa8&h=thumb.php&f=Papyrus_overworld.png",
         "url": "https://deltarune.wiki/w/Papyrus"
     },
     {
@@ -1371,7 +1360,7 @@
         "class": "NPC",
         "first_appearance": "Hometown",
         "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/thumb/Sans_overworld_sign.gif/30px-Sans_overworld_sign.gif.webp?cb=syan3i&h=thumb.php&f=Sans_overworld_sign.gif",
+        "image": "https://undertale.wiki/images/Sans_battle_idle.gif?cb=nm34ps&h=thumb.php&f=Sans_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Sans"
     },
     {

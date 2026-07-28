@@ -58,3 +58,58 @@
     background-color: var(--color-border-primary) !important;
     color: var(--color-accent-primary) !important;
 }
+
+:global(.mantine-Autocomplete-input) {
+  background-color: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+  border: var(--size-2) solid var(--color-border-primary) !important;
+  font-family: var(--font-family-deltarune) !important;
+  transition: var(--transition-standard) !important;
+}
+
+:global(.mantine-Autocomplete-input:focus) {
+  border-color: var(--mantine-color-cyberCyan-6) !important;
+  box-shadow: 0px 0px var(--mantine-spacing-xs) rgba(0, 255, 255, 0.4) !important;
+}
+
+:global(.mantine-Autocomplete-input::placeholder) {
+  color: rgba(240, 240, 240, 0.4) !important;
+  font-family: var(--font-family-deltarune) !important;
+}
+
+:global(.mantine-Autocomplete-dropdown) {
+  background-color: var(--color-bg-secondary) !important;
+  border: var(--size-2) solid var(--color-border-primary) !important;
+  border-radius: var(--mantine-radius-md) !important;
+  box-shadow: 0px 4px var(--mantine-spacing-xs) rgba(0, 0, 0, 0.5) !important;
+  padding: var(--mantine-spacing-xs) !important;
+}
+
+:global(.mantine-Autocomplete-option) {
+  border-radius: var(--mantine-radius-xs) !important;
+  transition: var(--transition-standard) !important;
+  color: var(--color-text-primary) !important;
+}
+
+:global(.mantine-Autocomplete-option:hover),
+:global(.mantine-Autocomplete-option[data-combobox-selected]) {
+  background-color: var(--color-border-primary) !important;
+  color: var(--color-accent-primary) !important;
+}
+
+:global(.mantine-Autocomplete-dropdown) ::-webkit-scrollbar {
+  width: var(--size-4);
+}
+
+:global(.mantine-Autocomplete-dropdown) ::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+:global(.mantine-Autocomplete-dropdown) ::-webkit-scrollbar-thumb {
+  background: var(--color-border-primary);
+  border-radius: var(--mantine-radius-xs);
+}
+
+:global(.mantine-Autocomplete-dropdown) ::-webkit-scrollbar-thumb:hover {
+  background: var(--mantine-color-cyberCyan-6);
+}

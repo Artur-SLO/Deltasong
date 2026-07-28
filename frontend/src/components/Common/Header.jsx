@@ -41,14 +41,14 @@ export default function Header() {
         <header className={classes.header}>
             <Container fluid className={classes.inner}>
 
-                <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to="/" className={classes.linkWrapper}>
                     <Title order={3} className={classes.title}>deltAsong</Title>
                 </Link>
                 <Group gap={3} visibleFrom="xs" className={classes.subjects}>
                     {items}
                 </Group>
-                
-                <Link to="/account" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                <Link to="/account" className={classes.linkWrapper}>
                     {activeUser ? (
                         <Group gap="xs" className={classes.profileGroup}>
                             <div className={classes.streakBadge}>
@@ -62,10 +62,10 @@ export default function Header() {
                             />
                         </Group>
                     ) : (
-                        <div className={classes.loginButton}>
-                            Login
-                        </div>
-                    )}
+                            <div className={classes.loginButton}>
+                                Login
+                            </div>
+                        )}
                 </Link>
             </Container>
         </header>
