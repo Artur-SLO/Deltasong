@@ -1,15 +1,19 @@
-import { Paper, Text } from '@mantine/core';
+import { Paper } from '@mantine/core';
+import styles from '../../styles/Character.module.css';
 
-export default function GridCell({ children }) {
+export default function GridCell({ children, bg }) {
     return (
         <Paper
             ff="var(--font-family-deltarune)"
-            bg="var(--color-border-primary)"
+            bg={bg || "var(--color-border-primary)"}
             shadow="md"
             withBorder
-            p="lg"
+            p="xs"
+            className={styles.gridCell}
         >
-            {children}
+            <div className={styles.cellContent}>
+                {children}
+            </div>
         </Paper>
     );
 }

@@ -1,16 +1,5 @@
 [
     {
-        "name": "AARON",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Aaron_overworld.png?cb=21xrgk&h=thumb.php&f=Aaron_overworld.png",
-        "url": "https://deltarune.wiki/w/Aaron"
-    },
-    {
         "name": "ADDISON",
         "gender": "Non-binary",
         "type": "Darkner",
@@ -66,17 +55,6 @@
         "url": "https://deltarune.wiki/w/Annoying_Dog"
     },
     {
-        "name": "ANTLION",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Island Board",
-        "first_appearance_index": 37,
-        "image": "https://deltarune.wiki/images/Antlion_overworld_red.gif?cb=f1wm7i&h=thumb.php&f=Antlion_overworld_red.gif",
-        "url": "https://deltarune.wiki/w/Antlion"
-    },
-    {
         "name": "AQUA",
         "gender": "Female",
         "type": "Plant",
@@ -106,7 +84,7 @@
         "class": "NPC",
         "first_appearance": "Hometown",
         "first_appearance_index": 1,
-        "image": "https://static.wikia.nocookie.net/undertale/images/7/7b/Asgore_Dreemurr_battle_idle.gif/revision/latest?cb=20160117232335",
+        "image": "https://i.redd.it/3htx7rsmpo8f1.gif",
         "url": "https://deltarune.wiki/w/Asgore"
     },
     {
@@ -218,17 +196,6 @@
         "first_appearance_index": 1,
         "image": "https://deltarune.wiki/images/Bratty_overworld.png?cb=00umxu&h=thumb.php&f=Bratty_overworld.png",
         "url": "https://deltarune.wiki/w/Bratty"
-    },
-    {
-        "name": "BUSINESS GUY",
-        "gender": "Male",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Business_Guy_overworld.png?cb=cfye4j&h=thumb.php&f=Business_Guy_overworld.png",
-        "url": "https://deltarune.wiki/w/Business_Guy"
     },
     {
         "name": "C. ROUND",
@@ -363,39 +330,6 @@
         "url": "https://deltarune.wiki/w/Dess"
     },
     {
-        "name": "DOOR KNOCKING GUY",
-        "gender": "Male",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Door_knocking_guy_overworld.png?cb=8asud2&h=thumb.php&f=Door_knocking_guy_overworld.png",
-        "url": "https://deltarune.wiki/w/Door_knocking_guy"
-    },
-    {
-        "name": "DOUBTER",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Garden",
-        "first_appearance_index": 46,
-        "image": "https://deltarune.wiki/images/Doubter_overworld.png?cb=8xpjxd&h=thumb.php&f=Doubter_overworld.png",
-        "url": "https://deltarune.wiki/w/Doubter"
-    },
-    {
-        "name": "DRESS LION",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Dress_Lion_overworld.png?cb=s70web&h=thumb.php&f=Dress_Lion_overworld.png",
-        "url": "https://deltarune.wiki/w/Dress_Lion"
-    },
-    {
         "name": "ELECTRO-DASHER",
         "gender": "Male",
         "type": "Darkner",
@@ -407,17 +341,6 @@
         "url": "https://deltarune.wiki/w/Electro-Dasher"
     },
     {
-        "name": "FAW FAW",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Faw_Faw_overworld.png?cb=a4422v&h=thumb.php&f=Faw_Faw_overworld.png",
-        "url": "https://deltarune.wiki/w/Faw_Faw"
-    },
-    {
         "name": "FERROLL",
         "gender": "Unknown",
         "type": "Darkner",
@@ -427,17 +350,6 @@
         "first_appearance_index": 47,
         "image": "https://deltarune.wiki/images/Ferroll_overworld.gif?cb=2q4lqz&h=thumb.php&f=Ferroll_overworld.gif",
         "url": "https://deltarune.wiki/w/Ferroll"
-    },
-    {
-        "name": "FICUS LICKER",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Ficus_licker_overworld.png?cb=b2pjrw&h=thumb.php&f=Ficus_licker_overworld.png",
-        "url": "https://deltarune.wiki/w/Ficus_licker"
     },
     {
         "name": "FIRE EXTINGUISHER",
@@ -528,17 +440,6 @@
         "url": "https://deltarune.wiki/w/GIGA_Queen"
     },
     {
-        "name": "GLAD DRAGON",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Glad_Dragon_overworld.png?cb=snbafj&h=thumb.php&f=Glad_Dragon_overworld.png",
-        "url": "https://deltarune.wiki/w/Glad_Dragon"
-    },
-    {
         "name": "GOULDEN SAM",
         "gender": "Unknown",
         "type": "Darkner",
@@ -592,17 +493,6 @@
         "first_appearance_index": 27,
         "image": "https://deltarune.wiki/images/Hacker_overworld.png?cb=74vytn&h=thumb.php&f=Hacker_overworld.png",
         "url": "https://deltarune.wiki/w/Hacker"
-    },
-    {
-        "name": "HAND RECEPTIONIST",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Hand_Receptionist_overworld.png?cb=nu8mux&h=thumb.php&f=Hand_Receptionist_overworld.png",
-        "url": "https://deltarune.wiki/w/Hand_Receptionist"
     },
     {
         "name": "HATHY",
@@ -681,18 +571,7 @@
         "image": "https://deltarune.wiki/images/thumb/Jackenstein_battle_idle.gif/101px-Jackenstein_battle_idle.gif.webp?cb=izb0md&h=thumb.php&f=Jackenstein_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Jackenstein"
     },
-    {
-        "name": "JAILED PUZZLE MASTER",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Card Castle",
-        "first_appearance_index": 26,
-        "image": "https://deltarune.wiki/images/Jigsawry_overworld_prison.png?cb=nd2j1e&h=thumb.php&f=Jigsawry_overworld_prison.png",
-        "url": "https://deltarune.wiki/w/Jailed_Puzzle_Master"
-    },
-    {
+        {
         "name": "JEVIL",
         "gender": "Male",
         "type": "Darkner",
@@ -1155,17 +1034,6 @@
         "url": "https://deltarune.wiki/w/Plugboy"
     },
     {
-        "name": "POLITICS BEAR",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Politics_Bear_overworld.png?cb=4jfr3v&h=thumb.php&f=Politics_Bear_overworld.png",
-        "url": "https://deltarune.wiki/w/Politics_Bear"
-    },
-    {
         "name": "PONMAN",
         "gender": "Non-binary",
         "type": "Darkner",
@@ -1186,28 +1054,6 @@
         "first_appearance_index": 28,
         "image": "https://deltarune.wiki/images/Poppup_battle_idle.gif?cb=nwmrc9&h=thumb.php&f=Poppup_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Poppup"
-    },
-    {
-        "name": "PURPLE GUY",
-        "gender": "Male",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Purple_Guy_overworld.gif?cb=5icqe3&h=thumb.php&f=Purple_Guy_overworld.gif",
-        "url": "https://deltarune.wiki/w/Purple_Guy"
-    },
-    {
-        "name": "PUZZLE MASTERS",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Field",
-        "first_appearance_index": 23,
-        "image": "https://deltarune.wiki/images/Kris_Master_overworld.png?cb=erd8rr&h=thumb.php&f=Kris_Master_overworld.png",
-        "url": "https://deltarune.wiki/w/Puzzle_Masters"
     },
     {
         "name": "QC",
@@ -1294,7 +1140,7 @@
         "class": "Boss",
         "first_appearance": "Card Castle",
         "first_appearance_index": 26,
-        "image": "https://deltarune.wiki/images/thumb/Rouxls_Kaard_face_shop.gif/300px-Rouxls_Kaard_face_shop.gif.webp?cb=kn4tm0&h=thumb.php&f=Rouxls_Kaard_face_shop.gif",
+        "image": "https://i.redd.it/yqp2aoqhpudf1.gif",
         "url": "https://deltarune.wiki/w/Rouxls_Kaard"
     },
     {
@@ -1485,17 +1331,6 @@
         "url": "https://deltarune.wiki/w/Snowy"
     },
     {
-        "name": "SNOWY'S FATHER",
-        "gender": "Unknown",
-        "type": "Lightner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Hometown",
-        "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/Snowy%27s_father_overworld.png?cb=gu43cp&h=thumb.php&f=Snowy%27s_father_overworld.png",
-        "url": "https://deltarune.wiki/w/Snowy%27s_father"
-    },
-    {
         "name": "SPAMTON",
         "gender": "Male",
         "type": "Darkner",
@@ -1503,7 +1338,7 @@
         "class": "Boss",
         "first_appearance": "Cyber City",
         "first_appearance_index": 28,
-        "image": "https://deltarune.wiki/images/Spamton_battle_cherub.gif?cb=k5ebrw&h=thumb.php&f=Spamton_battle_cherub.gif",
+        "image": "https://i.redd.it/z6971venlho91.gif",
         "url": "https://deltarune.wiki/w/Spamton"
     },
     {

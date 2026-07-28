@@ -1,63 +1,98 @@
-import { Autocomplete, Group, Text } from "@mantine/core";
+import { TextInput, Group, Text, Paper } from "@mantine/core";
+import { useState } from 'react';
 import styles from '../../styles/Character.module.css';
 
 export default function SearchBar({ data, charactersMap, input, setInput, handleGuess }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+
     const filteredSuggestions = input.trim() === '' ? []
         : data.filter(name => name.toLowerCase().includes(input.toLowerCase().trim()));
+
+    const limit = Math.min(5, filteredSuggestions.length);
 
     const submitSelection = (valueToSubmit) => {
         if (!valueToSubmit) return;
 
         handleGuess(null, valueToSubmit);
-
-        setTimeout(() => {
-            setInput('');
-        }, 0);
+        setInput('');
+        setIsOpen(false);
+        setActiveIndex(0);
     };
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
         if (filteredSuggestions.length > 0) {
-            submitSelection(filteredSuggestions[0]);
+            submitSelection(filteredSuggestions[activeIndex] || filteredSuggestions[0]);
+        }
+    };
+
+    const handleKeyDown = (e) => {
+        if (!isOpen || filteredSuggestions.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setActiveIndex((prev) => (prev + 1) % limit);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setActiveIndex((prev) => (prev - 1 + limit) % limit);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            setIsOpen(false);
         }
     };
 
     return (
-        <form onSubmit={handleSubmitForm} className={styles.searchBar}>
-            <Autocomplete
-                placeholder="Type a character name..."
-                data={filteredSuggestions}
-                value={input}
-                onChange={setInput}
-                onOptionSubmit={(val) => submitSelection(val)}
-                selectFirstOptionOnChange
-                limit={5}
-                renderOption={({ option }) => {
-                    const character = charactersMap[option.value];
+        <div className={styles.searchBar}>
+            <form onSubmit={handleSubmitForm}>
+                <TextInput
+                    placeholder="Type a character name"
+                    value={input}
+                    onChange={(e) => {
+                        setInput(e.target.value);
+                        setIsOpen(true);
+                        setActiveIndex(0);
+                    }}
+                    onFocus={() => setIsOpen(true)}
+                    onBlur={() => {
+                        setTimeout(() => setIsOpen(false), 200);
+                    }}
+                    onKeyDown={handleKeyDown}
+                    size="md"
+                />
+            </form>
+            {isOpen && filteredSuggestions.length > 0 && (
+                <Paper className={styles.dropdown} shadow="md" withBorder>
+                    {filteredSuggestions.slice(0, 5).map((name, index) => {
+                        const character = charactersMap[name];
 
-                    return (
-                        <Group gap="xs" wrap="nowrap" style={{ padding: '2px 0' }}>
-                            {character?.image && (
-                                <img
-                                    src={character.image}
-                                    alt={option.value}
-                                    style={{
-                                        width: '48px',
-                                        height: '48px',
-                                        objectFit: 'contain',
-                                        imageRendering: 'pixelated'
-                                    }}
-                                />
-                            )}
-                            <Text size="md">
-                                {option.value}
-                            </Text>
-                        </Group>
-                    );
-                }}
-                style={{ width: '100%' }}
-                size="md"
-            />
-        </form>
+                        return (
+                            <Group
+                                key={name}
+                                gap="xs"
+                                wrap="nowrap"
+                                className={`${styles.dropdownOption} ${index === activeIndex ? styles.dropdownOptionActive : ''}`}
+                                onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    submitSelection(name);
+                                }}
+                                onMouseEnter={() => setActiveIndex(index)}
+                            >
+                                {character?.image && (
+                                    <img
+                                        src={character.image}
+                                        alt={name}
+                                        className={styles.suggestionImage}
+                                    />
+                                )}
+                                <Text size="md" style={{ color: 'var(--color-text-primary)' }}>
+                                    {name}
+                                </Text>
+                            </Group>
+                        );
+                    })}
+                </Paper>
+            )}
+        </div>
     );
 }

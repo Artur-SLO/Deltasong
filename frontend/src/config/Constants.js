@@ -28,12 +28,12 @@ export const GAME_MODES = [
     }
 ];
 
-export const GUESS_HEADERS = [
-    'IMAGE',
-    'NAME',
-    'CHAPTER',
-    'GENDER',
-    'TYPE',
-    'ROLE',
-    'FIRST APPEARANCE',
+export const COLUMNS_CONFIG = [
+    { label: 'IMAGE', key: 'image', span: 2 },
+    { label: 'NAME', key: 'name', span: 2 },
+    { label: 'CHAPTER', key: 'chapter', span: 2 },
+    { label: 'GENDER', key: 'gender', span: 2 },
+    { label: 'TYPE', key: 'type', span: 2 },
+    { label: 'ROLE', key: 'class', span: 2 },
+    { label: 'FIRST APPEARANCE', key: 'first_appearance', span: 3 }
 ];
