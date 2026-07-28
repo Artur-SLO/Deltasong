@@ -9,7 +9,7 @@ export default function GridCell({ children }) {
             withBorder
             p="lg"
         >
-            <Text size="lg" style={{ whiteSpace: 'nowrap' }}>{children}</Text>
+            {children}
         </Paper>
     );
 }

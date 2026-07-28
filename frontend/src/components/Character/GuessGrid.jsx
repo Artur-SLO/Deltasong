@@ -1,15 +1,17 @@
-import { Flex, Stack } from '@mantine/core';
+import { Flex, Stack, Text } from '@mantine/core';
 import GridCell from './GridCell.jsx';
 import { GUESS_HEADERS } from '../../config/Constants.js';
 import { createGame, makeGuess } from '../../core/Game.js';
 import deltaruneCharacters from '../../assets/deltarune_characters.json' with { type: 'json' };
 import { useEffect, useState } from 'react';
 import SearchBar from './SearchBar.jsx';
+import Guess from './Guess.jsx';
 
 export default function GuessGrid() {
     const [gameState, setGameState] = useState(null);
     const [input, setInput] = useState('');
     const [guessedCharacters, setguessedCharacters] = useState([]);
+    const [gridItems, setGridItems] = useState([]);
 
     useEffect(() => {
         const game = createGame(deltaruneCharacters);
@@ -27,6 +29,8 @@ export default function GuessGrid() {
         const characterToGuess = selectedName || input;
         if (!characterToGuess || !characterToGuess.trim()) return;
         const result = makeGuess(gameState, characterToGuess);
+        const outcome = result.outcome;
+        setGridItems((prevItems) => [...prevItems, outcome]);
         setGameState(result.gameState);
         setguessedCharacters(result.gameState.guessedNames);
         setInput('');
@@ -43,9 +47,14 @@ export default function GuessGrid() {
             />
             <Flex gap="md" justify="center" align="center" direction="row" wrap="nowrap" w="100%">
                 {GUESS_HEADERS.map((text) => (
-                    <GridCell key={text}>{text}</GridCell>
+                    <GridCell key={text}>
+                        <Text size="lg" style={{ whiteSpace: 'nowrap' }}>{text}</Text>
+                    </GridCell>
                 ))}
             </Flex>
+            {gridItems.map((char)=> (
+                <Guess character={char}/>
+            ))}
         </Stack>
     );
 }

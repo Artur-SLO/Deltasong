@@ -34,7 +34,7 @@ export function makeGuess(gameState, name) {
 
     return {
         gameState: nextGameState,
-        result: victory ? "Victory" : result
+        outcome: victory ? "Victory" : result
     };
 }
 
