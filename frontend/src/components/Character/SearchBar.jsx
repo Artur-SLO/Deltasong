@@ -10,8 +10,17 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
         const query = input.toLowerCase().trim();
         if (query === '') return [];
         return data
-            .filter(name => name.toLowerCase().startsWith(query))
-            .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+            .filter(name => name.toLowerCase().includes(query))
+            .sort((a, b) => {
+                const aLower = a.toLowerCase();
+                const bLower = b.toLowerCase();
+                const aStartsWith = aLower.startsWith(query);
+                const bStartsWith = bLower.startsWith(query);
+
+                if (aStartsWith && !bStartsWith) return -1;
+                if (!aStartsWith && bStartsWith) return 1;
+                return aLower.localeCompare(bLower);
+            });
     })();
 
     const limit = Math.min(5, filteredSuggestions.length);

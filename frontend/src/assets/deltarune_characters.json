@@ -91,7 +91,7 @@
         "name": "ASRIEL",
         "gender": "Male",
         "type": "Lightner",
-        "chapter": 1,
+        "chapter": 3,
         "class": "NPC",
         "first_appearance": "Cold Place",
         "first_appearance_index": 34,
@@ -610,7 +610,7 @@
         "type": "Darkner",
         "chapter": 1,
         "class": "Boss",
-        "first_appearance": "Great Board",
+        "first_appearance": "Great earoard",
         "first_appearance_index": 24,
         "image": "https://deltarune.wiki/images/K._Round_battle_idle.gif?cb=t4fy6n&h=thumb.php&f=K._Round_battle_idle.gif",
         "url": "https://deltarune.wiki/w/K._Round"
