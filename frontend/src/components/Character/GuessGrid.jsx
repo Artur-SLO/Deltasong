@@ -28,6 +28,22 @@ export default function GuessGrid() {
         setGameState(game);
     }, []);
 
+    useEffect(() => {
+        if (!isModalOpen) return;
+
+        const handleKeyDown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                resetGame();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isModalOpen]);
+
     const characterOptions = deltaruneCharacters.map(c => c.name).filter(name => !guessedCharacters.includes(name));
 
     const charactersMap = Object.fromEntries(

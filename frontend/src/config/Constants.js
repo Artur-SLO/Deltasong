@@ -40,7 +40,23 @@ export const COLUMNS_CONFIG = [
 
 export const SONG_DIFFICULTIES = {
     easy: { label: 'Easy', duration: 5.0, color: 'emeraldGreen' },
-    medium: { label: 'Medium', duration: 3.0, color: 'cyberCyan' },
+    normal: { label: 'Normal', duration: 3.0, color: 'cyberCyan' },
     hard: { label: 'Hard', duration: 1.5, color: 'spadeBlue' },
     madness: { label: 'Madness', duration: 0.5, color: 'royalMagenta' }
 };
+
+export const ITEM_CATEGORIES = [
+    { value: 'Consumables', label: 'Consumables' },
+    { value: 'Armor', label: 'Armor' },
+    { value: 'Weapons', label: 'Weapons' },
+    { value: 'Key Items', label: 'Key Items' },
+    { value: 'Light World items', label: 'Light World' }
+];
+
+export const ITEM_DETAILS_CONFIG = [
+    { label: 'Type', key: 'type' },
+    { label: 'Description', key: 'description' },
+    { label: 'Effects', key: 'effects' },
+    { label: 'Buy Price', key: 'buy' },
+    { label: 'Source', key: 'source' }
+];

@@ -21,7 +21,7 @@ function getYouTubeId(url) {
 export default function SongGame() {
     const [gameState, setGameState] = useState(null);
     const [input, setInput] = useState('');
-    const [activeDifficulty, setActiveDifficulty] = useState('easy');
+    const [activeDifficulty, setActiveDifficulty] = useState('normal');
     const [guessedTitles, setGuessedTitles] = useState([]);
     const [guesses, setGuesses] = useState([]);
     const [isWon, setIsWon] = useState(false);
@@ -36,6 +36,22 @@ export default function SongGame() {
         const game = createSongGame(deltaruneSoundtrack);
         setGameState(game);
     }, []);
+
+    useEffect(() => {
+        if (!isModalOpen) return;
+
+        const handleKeyDown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                resetGame();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isModalOpen]);
 
     const songOptions = deltaruneSoundtrack
         .map(s => s.title)

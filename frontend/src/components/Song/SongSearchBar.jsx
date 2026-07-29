@@ -60,7 +60,7 @@ export default function SongSearchBar({ data, songsMap, input, setInput, handleG
         <div className={styles.searchBar}>
             <form onSubmit={handleSubmitForm}>
                 <TextInput
-                    placeholder="Type a song title..."
+                    placeholder="Type a song title"
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);
@@ -70,7 +70,7 @@ export default function SongSearchBar({ data, songsMap, input, setInput, handleG
                     onFocus={() => setIsOpen(true)}
                     onBlur={() => {
                         // Delay to allow clicking option before closing
-                        setTimeout(() => setIsOpen(false), 200);
+                        setTimeout(() => setIsOpen(false), 50);
                     }}
                     onKeyDown={handleKeyDown}
                     size="md"

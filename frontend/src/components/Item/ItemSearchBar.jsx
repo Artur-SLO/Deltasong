@@ -1,8 +1,8 @@
-import { TextInput, Group, Text, Paper } from "@mantine/core";
+import { TextInput, Paper, Text } from '@mantine/core';
 import { useState } from 'react';
-import styles from '../../styles/Character.module.css';
+import styles from '../../styles/Item.module.css';
 
-export default function SearchBar({ data, charactersMap, input, setInput, handleGuess }) {
+export default function ItemSearchBar({ data, input, setInput, handleGuess }) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -10,10 +10,10 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
         const query = input.toLowerCase().trim();
         if (query === '') return [];
         return data
-            .filter(name => name.toLowerCase().includes(query))
+            .filter(item => item.name.toLowerCase().includes(query))
             .sort((a, b) => {
-                const aLower = a.toLowerCase();
-                const bLower = b.toLowerCase();
+                const aLower = a.name.toLowerCase();
+                const bLower = b.name.toLowerCase();
                 const aStartsWith = aLower.startsWith(query);
                 const bStartsWith = bLower.startsWith(query);
 
@@ -25,10 +25,10 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
 
     const limit = Math.min(5, filteredSuggestions.length);
 
-    const submitSelection = (valueToSubmit) => {
-        if (!valueToSubmit) return;
+    const submitSelection = (itemToSubmit) => {
+        if (!itemToSubmit) return;
 
-        handleGuess(null, valueToSubmit);
+        handleGuess(null, itemToSubmit.name);
         setInput('');
         setIsOpen(false);
         setActiveIndex(0);
@@ -60,7 +60,7 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
         <div className={styles.searchBar}>
             <form onSubmit={handleSubmitForm}>
                 <TextInput
-                    placeholder="Type a character name"
+                    placeholder="Type an item name"
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);
@@ -69,40 +69,33 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
                     }}
                     onFocus={() => setIsOpen(true)}
                     onBlur={() => {
-                        setTimeout(() => setIsOpen(false), 50);
+                        setTimeout(() => setIsOpen(false), 200);
                     }}
                     onKeyDown={handleKeyDown}
                     size="md"
+                    autoComplete="off"
                 />
             </form>
             {isOpen && filteredSuggestions.length > 0 && (
                 <Paper className={styles.dropdown} shadow="md" withBorder>
-                    {filteredSuggestions.slice(0, 5).map((name, index) => {
-                        const character = charactersMap[name];
-
+                    {filteredSuggestions.slice(0, 5).map((item, index) => {
                         return (
-                            <Group
-                                key={name}
-                                gap="xs"
-                                wrap="nowrap"
+                            <div
+                                key={`${item.name}-${item.type}-${index}`}
                                 className={`${styles.dropdownOption} ${index === activeIndex ? styles.dropdownOptionActive : ''}`}
                                 onMouseDown={(e) => {
                                     e.preventDefault();
-                                    submitSelection(name);
+                                    submitSelection(item);
                                 }}
                                 onMouseEnter={() => setActiveIndex(index)}
                             >
-                                {character?.image && (
-                                    <img
-                                        src={character.image}
-                                        alt={name}
-                                        className={styles.suggestionImage}
-                                    />
-                                )}
-                                <Text size="md" style={{ color: 'var(--color-text-primary)' }}>
-                                    {name}
+                                <Text className={styles.dropdownText}>
+                                    {item.name}
                                 </Text>
-                            </Group>
+                                <Text className={styles.dropdownMeta}>
+                                    {item.type}
+                                </Text>
+                            </div>
                         );
                     })}
                 </Paper>
