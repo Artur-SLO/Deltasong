@@ -6,8 +6,13 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const filteredSuggestions = input.trim() === '' ? []
-        : data.filter(name => name.toLowerCase().includes(input.toLowerCase().trim()));
+    const filteredSuggestions = (() => {
+        const query = input.toLowerCase().trim();
+        if (query === '') return [];
+        return data
+            .filter(name => name.toLowerCase().startsWith(query))
+            .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+    })();
 
     const limit = Math.min(5, filteredSuggestions.length);
 

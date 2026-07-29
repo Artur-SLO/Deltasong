@@ -4,7 +4,6 @@ import styles from '../../styles/Character.module.css';
 export default function GridCell({ children, bg }) {
     return (
         <Paper
-            ff="var(--font-family-deltarune)"
             bg={bg || "var(--color-border-primary)"}
             shadow="md"
             withBorder

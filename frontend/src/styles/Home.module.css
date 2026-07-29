@@ -145,8 +145,17 @@
     background-color: var(--color-bg-secondary) !important;
     border-color: var(--color-border-primary) !important;
     color: var(--color-text-primary) !important;
+    position: relative;
 }
 
 .gameTitle {
     font-family: var(--font-family-deltarune) !important;
+}
+
+.conventionalTitle {
+    font-family: var(--mantine-font-family) !important;
+}
+
+.conventionalFont {
+    font-family: var(--mantine-font-family) !important;
 }

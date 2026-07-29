@@ -13,12 +13,9 @@ export default function Characters() {
                 withBorder
                 className={`${homeClasses.gamePaper} ${classes.paper || ''}`}
             >
-                <Title order={2} ta="center" mb="lg" c="cyberCyan.5" className={`${homeClasses.gameTitle} ${classes.title || ''}`}>
-                    Guess the Character
+                <Title order={2} ta="center" mb="lg" c="cyberCyan.5" className={homeClasses.conventionalTitle}>
+                    Characters Mode
                 </Title>
-                {/* <Text size="lg" ta="center" mb="lg" c="dimmed"> */}
-                {/*     Guess the character from Deltarune! */}
-                {/* </Text> */}
                 <GuessGrid />
             </Paper>
         </Container>

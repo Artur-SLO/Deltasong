@@ -34,15 +34,18 @@ export default function Guess({ character, widths, totalColumns }) {
 
                         let showHint = null;
 
-                        if (col.key === 'chapter' && fieldResult.hint) {
-                            if (fieldResult.hint === 'higher') showHint = 'higher';
-                            if (fieldResult.hint === 'lower') showHint = 'lower';
-                        }
+                        if (!isCorrect) {
+                            if (col.key === 'chapter' && fieldResult.hint) {
+                                if (fieldResult.hint === 'higher') showHint = 'higher';
+                                if (fieldResult.hint === 'lower') showHint = 'lower';
+                            }
 
-                        if (col.key === 'first_appearance' && character.first_appearance_index?.hint) {
-                            const indexHint = character.first_appearance_index.hint;
-                            if (indexHint === 'higher') showHint = 'higher';
-                            if (indexHint === 'lower') showHint = 'lower';
+                            if (col.key === 'first_appearance' && character.first_appearance_index?.hint) {
+                                const indexHint = character.first_appearance_index.hint;
+                                if (indexHint === 'higher') showHint = 'higher';
+                                if (indexHint === 'lower') showHint = 'lower';
+                                if (indexHint === 'equal') showHint = 'equal';
+                            }
                         }
 
                         content = (

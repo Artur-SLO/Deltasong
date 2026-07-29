@@ -15,7 +15,7 @@ export default function SongsPage() {
                 withBorder 
                 className={`${homeClasses.gamePaper} ${classes.paper || ''}`}
             >
-                <Title order={2} ta="center" mb="md" c="emeraldGreen.5" className={`${homeClasses.gameTitle} ${classes.title || ''}`}>
+                <Title order={2} ta="center" mb="md" c="emeraldGreen.5" className={homeClasses.conventionalTitle}>
                     Songs Game Mode
                 </Title>
                 <Text size="lg" ta="center" mb="lg" c="dimmed">
