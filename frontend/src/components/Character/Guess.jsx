@@ -8,7 +8,7 @@ export default function Guess({ character, widths, totalColumns }) {
 
     return (
         <Grid columns={totalColumns} gutter="md" w="100%" align="center">
-            {widths.map((col) => {
+            {widths.map((col, index) => {
                 let content = null;
                 let cellBg = "var(--color-border-primary)";
 
@@ -70,7 +70,7 @@ export default function Guess({ character, widths, totalColumns }) {
 
                 return (
                     <Grid.Col key={col.key} span={col.span}>
-                        <GridCell bg={cellBg}>
+                        <GridCell bg={cellBg} className={styles[`flipCell${index}`]}>
                             {content}
                         </GridCell>
                     </Grid.Col>

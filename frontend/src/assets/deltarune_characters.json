@@ -990,17 +990,6 @@
         "url": "https://deltarune.wiki/w/Pizzapants"
     },
     {
-        "name": "PLUGBOY",
-        "gender": "Non-binary",
-        "type": "Darkner",
-        "chapter": 2,
-        "class": "NPC",
-        "first_appearance": "Cyber Field",
-        "first_appearance_index": 27,
-        "image": "https://deltarune.wiki/images/thumb/Plugboy_overworld_transform.gif/76px-Plugboy_overworld_transform.gif.webp?cb=lauhuy&h=thumb.php&f=Plugboy_overworld_transform.gif",
-        "url": "https://deltarune.wiki/w/Plugboy"
-    },
-    {
         "name": "PONMAN",
         "gender": "Non-binary",
         "type": "Darkner",

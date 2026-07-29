@@ -1,6 +1,6 @@
 import { Grid, Stack, Text, Button, Modal, Paper, Group } from '@mantine/core';
 import GridCell from './GridCell.jsx';
-import { createGame, makeGuess } from '../../core/Game.js';
+import { createGame, makeGuess } from '../../core/characterGame.js';
 import { compareCharacters } from '../../core/Character.js';
 import { COLUMNS_CONFIG } from '../../config/Constants.js';
 import deltaruneCharacters from '../../assets/deltarune_characters.json' with { type: 'json' };
@@ -49,9 +49,12 @@ export default function GuessGrid() {
                 targetCharResult.isVictory = true;
                 setGridItems((prevItems) => [targetCharResult, ...prevItems]);
                 setIsWon(true);
-                setModalType('victory');
-                setIsModalOpen(true);
                 setguessedCharacters(result.gameState.guessedNames);
+                // Delay showing victory modal until all cells fade in (7 * 0.45s = 3.15s)
+                setTimeout(() => {
+                    setModalType('victory');
+                    setIsModalOpen(true);
+                }, 3200);
             } else {
                 setGridItems((prevItems) => [outcome, ...prevItems]);
                 setGameState(result.gameState);
@@ -120,6 +123,7 @@ export default function GuessGrid() {
                 onClose={() => setIsModalOpen(false)}
                 centered
                 size="md"
+                title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
                 styles={{
                     content: {
                         backgroundColor: 'var(--color-bg-secondary)',

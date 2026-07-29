@@ -1,7 +1,7 @@
 export const LINKS = [
     { link: "/characters", label: "Characters" },
     { link: "/items", label: "Items" },
-    { link: "/songs", label: "Songs" }
+    { link: "/songs", label: "Song" }
 ];
 
 export const GAME_MODES = [
@@ -20,7 +20,7 @@ export const GAME_MODES = [
         color: "royalMagenta"
     },
     {
-        title: "Songs",
+        title: "Song",
         description: "Guess the soundtracks based on duration and chapter info.",
         link: "/songs",
         badge: "Audio",
@@ -37,3 +37,10 @@ export const COLUMNS_CONFIG = [
     { label: 'ROLE', key: 'class', span: 2 },
     { label: 'FIRST APPEARANCE', key: 'first_appearance', span: 3 }
 ];
+
+export const SONG_DIFFICULTIES = {
+    easy: { label: 'Easy', duration: 5.0, color: 'emeraldGreen' },
+    medium: { label: 'Medium', duration: 3.0, color: 'cyberCyan' },
+    hard: { label: 'Hard', duration: 1.5, color: 'spadeBlue' },
+    madness: { label: 'Madness', duration: 0.5, color: 'royalMagenta' }
+};
