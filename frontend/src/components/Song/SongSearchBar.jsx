@@ -1,8 +1,8 @@
 import { TextInput, Group, Text, Paper } from "@mantine/core";
 import { useState } from 'react';
-import styles from '../../styles/Character.module.css';
+import styles from '../../styles/Song.module.css';
 
-export default function SearchBar({ data, charactersMap, input, setInput, handleGuess }) {
+export default function SongSearchBar({ data, songsMap, input, setInput, handleGuess }) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -10,7 +10,7 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
         const query = input.toLowerCase().trim();
         if (query === '') return [];
         return data
-            .filter(name => name.toLowerCase().includes(query))
+            .filter(title => title.toLowerCase().includes(query))
             .sort((a, b) => {
                 const aLower = a.toLowerCase();
                 const bLower = b.toLowerCase();
@@ -60,7 +60,7 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
         <div className={styles.searchBar}>
             <form onSubmit={handleSubmitForm}>
                 <TextInput
-                    placeholder="Type a character name"
+                    placeholder="Type a song title"
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);
@@ -69,6 +69,7 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
                     }}
                     onFocus={() => setIsOpen(true)}
                     onBlur={() => {
+                        // Delay to allow clicking option before closing
                         setTimeout(() => setIsOpen(false), 50);
                     }}
                     onKeyDown={handleKeyDown}
@@ -77,32 +78,28 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
             </form>
             {isOpen && filteredSuggestions.length > 0 && (
                 <Paper className={styles.dropdown} shadow="md" withBorder>
-                    {filteredSuggestions.slice(0, 5).map((name, index) => {
-                        const character = charactersMap[name];
+                    {filteredSuggestions.slice(0, 5).map((title, index) => {
+                        const song = songsMap[title];
 
                         return (
-                            <Group
-                                key={name}
-                                gap="xs"
-                                wrap="nowrap"
+                            <div
+                                key={title}
                                 className={`${styles.dropdownOption} ${index === activeIndex ? styles.dropdownOptionActive : ''}`}
                                 onMouseDown={(e) => {
                                     e.preventDefault();
-                                    submitSelection(name);
+                                    submitSelection(title);
                                 }}
                                 onMouseEnter={() => setActiveIndex(index)}
                             >
-                                {character?.image && (
-                                    <img
-                                        src={character.image}
-                                        alt={name}
-                                        className={styles.suggestionImage}
-                                    />
-                                )}
-                                <Text size="md" style={{ color: 'var(--color-text-primary)' }}>
-                                    {name}
+                                <Text size="md" className={styles.dropdownText}>
+                                    {title}
                                 </Text>
-                            </Group>
+                                {song && (
+                                    <Text size="xs" className={styles.dropdownMeta}>
+                                        Ch. {song.chapter} ({song.duration_formatted})
+                                    </Text>
+                                )}
+                            </div>
                         );
                     })}
                 </Paper>

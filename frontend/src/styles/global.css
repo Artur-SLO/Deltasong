@@ -1,24 +1,17 @@
 :root {
     /* Colors */
     --color-bg-primary: #130920;
-    /* Dark Forest Plum */
     --color-bg-secondary: #1f0f33;
-    /* Castle Plum */
     --color-border-primary: #381f54;
-    /* Shadow Border */
     --color-text-primary: #f0f0f0;
-    /* Standard light text */
     --color-text-secondary: #ffffff;
-    /* White text */
     --color-accent-primary: #00ffff;
-    /* Cyber Cyan */
     --color-accent-secondary: var(--mantine-color-royalMagenta-5);
-    /* Susie Magenta */
 
     /* Typography */
     --font-family-deltarune: 'Deltarune', sans-serif;
 
-    /* Generic Sizing & Dimension Tokens (Sequential Scale 1 to N) */
+    /* Generic Sizing */
     --size-1: 1px;
     --size-2: 2px;
     --size-3: 4px;
@@ -26,13 +19,12 @@
     --size-5: 16px;
     --size-6: 32px;
     --size-7: 40px;
-    /* Custom index for slightly larger elements like header avatars */
     --size-8: 64px;
     --size-9: 128px;
     --size-10: 256px;
     --size-11: 512px;
 
-    /* Proportional REM Sizing Tokens (Sequential Scale 1 to N) */
+    /* REM Sizing */
     --size-rem-1: 1rem;
     --size-rem-2: 2rem;
     --size-rem-3: 4rem;
@@ -70,82 +62,4 @@ h4,
 h5,
 h6 {
     font-family: var(--font-family-deltarune) !important;
-}
-
-/* Adjusting Mantine AppShell main background */
-.mantine-AppShell-main {
-    background-color: var(--color-bg-primary) !important;
-    color: var(--color-text-primary) !important;
-}
-
-/* Adjusting Mantine AppShell Header colors */
-.mantine-AppShell-header {
-    background-color: var(--color-bg-secondary) !important;
-    border-bottom: var(--size-2) solid var(--color-border-primary) !important;
-}
-
-/* Theme overrides for Cards to match Castle Plum and Shadow Border */
-.mantine-Card-root {
-    background-color: var(--color-bg-secondary) !important;
-    border: var(--size-2) solid var(--color-border-primary) !important;
-    color: var(--color-text-primary) !important;
-    box-shadow: var(--shadow-standard) !important;
-    transition: var(--transition-standard) !important;
-}
-
-.mantine-Card-root:hover {
-    transform: translateY(calc(var(--size-3) * -1)) !important;
-    box-shadow: var(--shadow-hover) !important;
-    border-color: var(--mantine-color-cyberCyan-6) !important;
-}
-
-/* Buttons style override to use the Deltarune pixel font */
-.mantine-Button-root {
-    font-family: var(--font-family-deltarune) !important;
-    letter-spacing: 0.05em;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
-}
-
-/* Generic Game Mode Layout classes */
-.game-container {
-    margin-top: var(--mantine-spacing-lg);
-}
-
-.game-paper {
-    background-color: var(--color-bg-secondary) !important;
-    border-color: var(--color-border-primary) !important;
-    color: var(--color-text-primary) !important;
-}
-
-.game-title {
-    font-family: var(--font-family-deltarune) !important;
-}
-
-/* Style Mantine Notifications globally to match theme */
-.mantine-Notification-root {
-    background-color: var(--color-bg-secondary) !important;
-    border: var(--size-2) solid var(--color-border-primary) !important;
-    color: var(--color-text-primary) !important;
-    box-shadow: var(--shadow-notification) !important;
-    border-radius: var(--mantine-radius-md) !important;
-}
-
-.mantine-Notification-title {
-    color: var(--color-text-secondary) !important;
-    font-size: var(--mantine-font-size-md) !important;
-    letter-spacing: 0.03em !important;
-}
-
-.mantine-Notification-description {
-    color: rgba(240, 240, 240, 0.8) !important;
-}
-
-.mantine-Notification-closeButton {
-    color: var(--color-text-primary) !important;
-    transition: background-color 0.2s ease, color 0.2s ease !important;
-}
-
-.mantine-Notification-closeButton:hover {
-    background-color: var(--color-border-primary) !important;
-    color: var(--color-accent-primary) !important;
 }

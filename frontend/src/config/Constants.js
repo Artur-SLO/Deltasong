@@ -1,7 +1,8 @@
 export const LINKS = [
     { link: "/characters", label: "Characters" },
     { link: "/items", label: "Items" },
-    { link: "/songs", label: "Songs" }
+    { link: "/songs", label: "Song" },
+    { link: "/daily", label: "Daily" }
 ];
 
 export const GAME_MODES = [
@@ -9,21 +10,67 @@ export const GAME_MODES = [
         title: "Characters",
         description: "Guess the character using clues like gender, type, chapter, and class.",
         link: "/characters",
-        badge: "Trivia",
+        badge: "Classic",
         color: "cyberCyan"
     },
     {
         title: "Items",
         description: "Discover items and equipment based on their stats and locations.",
         link: "/items",
-        badge: "Stats",
+        badge: "Description",
         color: "royalMagenta"
     },
     {
-        title: "Songs",
+        title: "Song",
         description: "Guess the soundtracks based on duration and chapter info.",
         link: "/songs",
         badge: "Audio",
         color: "emeraldGreen"
+    },
+    {
+        title: "Daily Challenge",
+        description: "A continuous 3-stage marathon: Characters ➔ Items ➔ Song. 1 attempt per day!",
+        link: "/daily",
+        badge: "Daily",
+        color: "spadeBlue"
     }
 ];
+
+export const COLUMNS_CONFIG = [
+    { label: 'IMAGE', key: 'image', span: 2 },
+    { label: 'NAME', key: 'name', span: 2 },
+    { label: 'CHAPTER', key: 'chapter', span: 2 },
+    { label: 'GENDER', key: 'gender', span: 2 },
+    { label: 'TYPE', key: 'type', span: 2 },
+    { label: 'ROLE', key: 'class', span: 2 },
+    { label: 'FIRST APPEARANCE', key: 'first_appearance', span: 3 }
+];
+
+export const SONG_DIFFICULTIES = {
+    easy: { label: 'Easy', duration: 5.0, color: 'emeraldGreen' },
+    normal: { label: 'Normal', duration: 3.0, color: 'cyberCyan' },
+    hard: { label: 'Hard', duration: 1.5, color: 'spadeBlue' },
+    madness: { label: 'Madness', duration: 0.5, color: 'royalMagenta' }
+};
+
+export const ITEM_CATEGORIES = [
+    { value: 'Consumables', label: 'Consumables' },
+    { value: 'Armor', label: 'Armor' },
+    { value: 'Weapons', label: 'Weapons' },
+    { value: 'Key Items', label: 'Key Items' },
+    { value: 'Light World items', label: 'Light World' }
+];
+
+export const ITEM_DETAILS_CONFIG = [
+    { label: 'Type', key: 'type' },
+    { label: 'Description', key: 'description' },
+    { label: 'Effects', key: 'effects' },
+    { label: 'Buy Price', key: 'buy' },
+    { label: 'Source', key: 'source' }
+];
+
+export const DAILY_LIMITS = {
+    characters: 8,
+    items: 5,
+    songs: 8
+};
