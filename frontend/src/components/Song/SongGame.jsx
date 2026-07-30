@@ -4,13 +4,14 @@ import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { 
 import jevilGif from '../../assets/jevil.gif';
 
 import { createSongGame, makeSongGuess, compareSongs } from '../../core/songGame.js';
-import { SONG_DIFFICULTIES } from '../../config/Constants.js';
+import { SONG_DIFFICULTIES, RANK_POINTS } from '../../config/Constants.js';
 import AudioPlayer from './AudioPlayer.jsx';
 import DifficultySelector from './DifficultySelector.jsx';
 import SongSearchBar from './SongSearchBar.jsx';
 import GuessHistory from './GuessHistory.jsx';
 import styles from '../../styles/Song.module.css';
 import homeClasses from '../../styles/Home.module.css';
+import { addPoints } from '../../core/rankSystem.js';
 
 // Helper to extract YouTube video ID
 function getYouTubeId(url) {
@@ -40,6 +41,7 @@ export default function SongGame({
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
     const [hasPlayed, setHasPlayed] = useState(false);
     const [extraSeconds, setExtraSeconds] = useState(0);
+    const [startTime, setStartTime] = useState(Date.now());
 
     useEffect(() => {
         if (isDaily) return;
@@ -94,6 +96,21 @@ export default function SongGame({
                 setGuesses((prev) => [targetSongResult, ...prev]);
                 setIsWon(true);
                 setGuessedTitles(result.gameState.guessedTitles);
+
+                if (!isDaily) {
+                    const attempts = result.gameState.guessedTitles.length;
+                    let points = 0;
+                    if (attempts <= 3) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
+                    else if (attempts <= 6) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
+                    else points = RANK_POINTS.VICTORY_SLOW_ATTEMPTS;
+
+                    const duration = (Date.now() - startTime) / 1000;
+                    if (duration < RANK_POINTS.SPEED_THRESHOLD_SECONDS) {
+                        points += RANK_POINTS.SPEED_BONUS;
+                    }
+                    addPoints(points, 'songs');
+                }
+
                 // Delay showing victory modal until all cells fade in (3 * 0.45s = 1.35s)
                 setTimeout(() => {
                     setModalType('victory');
@@ -108,7 +125,7 @@ export default function SongGame({
             console.error(err);
         }
         setInput('');
-    };
+    }
 
     const handleGiveUpClick = () => {
         if (isWon || isGivenUp || !gameState) return;
@@ -135,6 +152,7 @@ export default function SongGame({
             setIsGivenUp(false);
             setHasPlayed(false);
             setExtraSeconds(0);
+            setStartTime(Date.now());
             setInput('');
         }, 200);
     };
@@ -262,7 +280,7 @@ export default function SongGame({
                 </Modal>
             )}
 
-            <GuessHistory guesses={activeGuesses} />
+            <GuessHistory guesses={activeGuesses.slice(0, 15)} />
         </Stack>
     );
 }

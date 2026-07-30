@@ -557,7 +557,7 @@
         "class": "Boss",
         "first_appearance": "Dark Sanctuary",
         "first_appearance_index": 41,
-        "image": "https://www.spriters-resource.com/media/asset_icons/270/273056.gif",
+        "image": "./jackenstein.gif",
         "url": "https://deltarune.wiki/w/Jackenstein"
     },
         {
