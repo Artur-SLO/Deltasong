@@ -1,6 +1,16 @@
-import { Stack } from '@mantine/core';
+import { Stack, Group } from '@mantine/core';
 import { IconCheck, IconPlayerPlay, IconLock } from '@tabler/icons-react';
 import classes from '../../styles/Daily.module.css';
+
+import berdlyGif from '../../assets/berdly.gif';
+import rouxlsGif from '../../assets/rouxls.gif';
+import jevilGif from '../../assets/jevil.gif';
+
+const mascots = {
+    1: berdlyGif,
+    2: rouxlsGif,
+    3: jevilGif
+};
 
 export default function DailyStepper({ currentStep, status }) {
     const steps = [
@@ -37,9 +47,18 @@ export default function DailyStepper({ currentStep, status }) {
                                 {icon}
                             </div>
                             <Stack gap={0}>
-                                <span className={classes.stepLabel}>
-                                    {step.label}
-                                </span>
+                                <Group gap="xs" align="center">
+                                    <span className={classes.stepLabel}>
+                                        {step.label}
+                                    </span>
+                                    {isActive && (
+                                        <img 
+                                            src={mascots[step.id]} 
+                                            alt={step.label} 
+                                            className={classes.stepperMascot} 
+                                        />
+                                    )}
+                                </Group>
                                 <span className={classes.stepStatusText}>
                                     {isActive ? statusText : step.desc}
                                 </span>

@@ -74,3 +74,21 @@ export const DAILY_LIMITS = {
     items: 5,
     songs: 8
 };
+
+export const GAME_MODE_SPRITES = {
+    "Characters": "https://deltarune.wiki/images/Kris_battle_idle.gif?cb=dpui8e&h=thumb.php&f=Kris_battle_idle.gif",
+    "Items": "https://deltarune.wiki/images/Susie_battle_serious.gif?cb=s2z2tj&h=thumb.php&f=Susie_battle_serious.gif",
+    "Song": "https://deltarune.wiki/images/Ralsei_battle_serious.gif?cb=ktm22m&h=thumb.php&f=Ralsei_battle_serious.gif"
+};
+
+export const GAME_MODE_HOVER_COLORS = {
+    cyberCyan: '#00ffff',
+    royalMagenta: '#ff1f8e',
+    emeraldGreen: '#00ff27'
+};
+
+export const GAME_MODE_SHADOW_COLORS = {
+    cyberCyan: 'rgba(0, 255, 255, 0.4)',
+    royalMagenta: 'rgba(255, 31, 142, 0.4)',
+    emeraldGreen: 'rgba(0, 255, 39, 0.4)'
+};

@@ -6,6 +6,11 @@ import { getDailyNumber } from '../../core/dailySeed.js';
 import classes from '../../styles/Daily.module.css';
 import { DAILY_LIMITS } from '../../config/Constants.js';
 import { getCharacterImage } from '../../utils/image.js';
+import berdlyGif from '../../assets/berdly.gif';
+import rouxlsGif from '../../assets/rouxls.gif';
+import jevilGif from '../../assets/jevil.gif';
+import spamtonGif from '../../assets/spamton.gif';
+
 
 export default function DailyResultsView({ gameState }) {
     const [timeLeft, setTimeLeft] = useState('');
@@ -167,6 +172,19 @@ export default function DailyResultsView({ gameState }) {
 
     return (
         <Stack align="center" gap="lg" w="100%">
+            {isVictory ? (
+                <div className={classes.victoryMascotRow}>
+                    <img src={berdlyGif} alt="Berdly" className={classes.resultsMascot} />
+                    <img src={rouxlsGif} alt="Rouxls Kaard" className={classes.resultsMascot} />
+                    <img src={jevilGif} alt="Jevil" className={classes.resultsMascot} />
+                </div>
+            ) : (
+                <div className={classes.defeatMascotRow}>
+                    <img src={spamtonGif} alt="Spamton" className={classes.resultsMascot} />
+                    <div className={classes.defeatMascotText}>[BIG SHOT] FAILS!</div>
+                </div>
+            )}
+
             <div className={classes.countdownContainer}>
                 <div className={classes.countdownLabel}>
                     NEXT CHALLENGE RESET IN

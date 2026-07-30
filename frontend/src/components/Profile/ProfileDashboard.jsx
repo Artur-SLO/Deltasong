@@ -8,6 +8,7 @@ import { notifications } from '@mantine/notifications';
 import AvatarSelector from './AvatarSelector';
 import deltaruneCharacters from '../../assets/deltarune_characters.json';
 import { getCharacterImage } from '../../utils/image.js';
+import susieGif from '../../assets/susie.gif';
 
 const defaultAvatar = deltaruneCharacters.find(c => c.name.toUpperCase() === 'KRIS')?.image || deltaruneCharacters[0]?.image || '';
 
@@ -74,9 +75,16 @@ export default function ProfileDashboard({ activeUser }) {
             </Modal>
 
             <Stack gap={5} align="center" mt="xl" mb="xl">
-                <div className={classes.streakNumber}>
-                    <IconFlame size={32} className={classes.flameIcon} /> {activeUser.streak}
-                </div>
+                <Group gap="sm" align="center">
+                    <img 
+                        src={susieGif} 
+                        alt="Susie" 
+                        className={classes.susieStreakBuddy} 
+                    />
+                    <div className={classes.streakNumber}>
+                        <IconFlame size={32} className={classes.flameIcon} /> {activeUser.streak}
+                    </div>
+                </Group>
             </Stack>
 
             <Group justify="center" mt="xl">

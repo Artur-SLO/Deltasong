@@ -42,7 +42,7 @@ export default function Header() {
             <Container fluid className={classes.inner}>
 
                 <Link to="/" className={classes.linkWrapper}>
-                    <Title order={3} className={classes.title}>deltAsong</Title>
+                        <Title order={3} className={classes.title}>deltAsong</Title>
                 </Link>
                 <Group gap={3} visibleFrom="xs" className={classes.subjects}>
                     {items}

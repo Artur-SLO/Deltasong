@@ -370,3 +370,20 @@
 .revealAnim {
     animation: revealClue 0.6s ease-out forwards;
 }
+
+.mascotGif {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-8px);
+    }
+}

@@ -9,6 +9,8 @@ import classes from '../../styles/Daily.module.css';
 import deltaruneCharacters from '../../assets/deltarune_characters.json' with { type: 'json' };
 import deltaruneItems from '../../assets/deltarune_items.json' with { type: 'json' };
 import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { type: 'json' };
+import lancerGif from '../../assets/lancer.gif';
+
 
 // Core engines & utilities
 import {
@@ -180,7 +182,14 @@ export default function DailyGame() {
         return (
             <Container size="md" className={`${homeClasses.gameContainer} ${classes.container}`}>
                 <Paper shadow="md" p="xl" radius="md" withBorder className={homeClasses.gamePaper}>
-                    <Text ta="center">Loading Daily Challenge...</Text>
+                    <Stack align="center" gap="md">
+                        <img 
+                            src={lancerGif} 
+                            alt="Loading..." 
+                            className={classes.loadingMascot} 
+                        />
+                        <Text ta="center">Loading Daily Challenge...</Text>
+                    </Stack>
                 </Paper>
             </Container>
         );

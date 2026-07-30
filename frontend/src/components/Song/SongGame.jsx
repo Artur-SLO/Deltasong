@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Stack, Text, Button, Modal, Paper } from '@mantine/core';
 import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { type: 'json' };
+import jevilGif from '../../assets/jevil.gif';
+
 import { createSongGame, makeSongGuess, compareSongs } from '../../core/songGame.js';
 import { SONG_DIFFICULTIES } from '../../config/Constants.js';
 import AudioPlayer from './AudioPlayer.jsx';
@@ -216,6 +218,11 @@ export default function SongGame({
                     title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
                 >
                     <Stack align="center" gap="md" p="md">
+                        <img 
+                            src={jevilGif} 
+                            alt="Jevil Mascot" 
+                            className={styles.mascotGif} 
+                        />
                         <Text size="lg" ta="center">
                             {modalType === 'victory'
                                 ? "Congratulations! You guessed the song!"

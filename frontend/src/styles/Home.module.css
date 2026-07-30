@@ -238,3 +238,43 @@
     color: var(--color-text-primary) !important;
 }
 
+.cardBadgeImage {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-4px);
+    }
+}
+
+.heroTitleRow {
+    margin-bottom: var(--mantine-spacing-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroMascot {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    animation: bounce 0.6s infinite alternate;
+}
+
+.heroTitleRow > :nth-child(1) {
+    animation-delay: 0s;
+}
+
+.heroTitleRow > :nth-child(3) {
+    animation-delay: 0.3s;
+}
+

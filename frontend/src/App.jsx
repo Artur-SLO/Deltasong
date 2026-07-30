@@ -3,6 +3,7 @@ import { Outlet } from 'react-router';
 import { AppShell } from '@mantine/core';
 import Header from './components/Common/Header.jsx';
 import Background from './components/Common/Background.jsx';
+import HelpWidget from './components/Common/HelpWidget.jsx';
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
 
                 <AppShell.Main>
                     <Outlet />
+                    <HelpWidget />
                 </AppShell.Main>
             </AppShell>
         </>
