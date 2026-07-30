@@ -5,6 +5,7 @@ import ItemsPage from './components/Item/ItemsPage.jsx';
 import SongsPage from './components/Song/SongsPage.jsx';
 import AccountPage from './components/Profile/AccountPage.jsx';
 import Characters from './components/Character/Characters.jsx';
+import DailyGame from './components/Daily/DailyGame.jsx';
 
 const routes = [
     {
@@ -27,6 +28,10 @@ const routes = [
             {
                 path: "songs",
                 element: <SongsPage />
+            },
+            {
+                path: "daily",
+                element: <DailyGame />
             },
             {
                 path: "account",

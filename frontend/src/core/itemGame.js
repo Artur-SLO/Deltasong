@@ -1,4 +1,4 @@
-export function createItemGame(json, mode = "all", category = "") {
+export function createItemGame(json, mode = "all", category = "", randomFn = Math.random) {
     let items = json;
     if (mode === "category" && category) {
         items = json.filter(item => item.type && item.type.toUpperCase() === category.toUpperCase());
@@ -18,7 +18,7 @@ export function createItemGame(json, mode = "all", category = "") {
         return { ...item };
     });
 
-    const target = formattedItems[Math.floor(Math.random() * totalItems)];
+    const target = formattedItems[Math.floor(randomFn() * totalItems)];
 
     return {
         items: formattedItems,

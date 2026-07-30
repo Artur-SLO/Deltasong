@@ -10,7 +10,12 @@ import HintProgress from './HintProgress.jsx';
 import GuessHistory from './GuessHistory.jsx';
 import ItemModal from './ItemModal.jsx';
 
-export default function ItemsPage() {
+export default function ItemsPage({
+    isDaily = false,
+    dailyGameState = null,
+    dailyGuesses = [],
+    onDailyGuess = null
+}) {
     const [mode, setMode] = useState('all');
     const [category, setCategory] = useState('');
     const [gameState, setGameState] = useState(null);
@@ -22,33 +27,37 @@ export default function ItemsPage() {
     const [isFilterSelected, setIsFilterSelected] = useState(false);
 
     const resetGame = useCallback(() => {
+        if (isDaily) return;
         setIsModalOpen(false);
         setIsConfirmingGiveUp(false);
         setInput('');
         setGameState(null);
         setGuesses([]);
         setIsFilterSelected(false);
-    }, []);
+    }, [isDaily]);
 
     const playAgainSameFilter = useCallback(() => {
+        if (isDaily) return;
         setIsModalOpen(false);
         setIsConfirmingGiveUp(false);
         setInput('');
-        
+
         const game = createItemGame(deltaruneItems, mode, category);
         setGameState(game);
         setGuesses([]);
-    }, [mode, category]);
+    }, [mode, category, isDaily]);
 
     // Initialize in unselected state
     useEffect(() => {
-        resetGame();
-    }, [resetGame]);
+        if (!isDaily) {
+            resetGame();
+        }
+    }, [resetGame, isDaily]);
 
     const handleSelectFilter = (selectedMode, selectedCategory) => {
         setMode(selectedMode);
         setCategory(selectedCategory);
-        
+
         const game = createItemGame(deltaruneItems, selectedMode, selectedCategory);
         setGameState(game);
         setGuesses([]);
@@ -98,14 +107,87 @@ export default function ItemsPage() {
         }
     };
 
-    const isGameOver = isModalOpen || (guesses.length > 0 && guesses[0].isCorrect) || (gameState && gameState.guessedNames.length >= 5);
+    const activeFilterSelected = isDaily ? true : isFilterSelected;
+    const activeGameState = isDaily ? dailyGameState : gameState;
+    const activeGuesses = isDaily ? dailyGuesses : guesses;
+    const activeIsGameOver = isDaily ? false : (isModalOpen || (guesses.length > 0 && guesses[0].isCorrect) || (gameState && gameState.guessedNames.length >= 5));
 
     // Filter autocomplete search options
-    const itemOptions = gameState
-        ? gameState.items.filter(item => !gameState.guessedNames.includes(item.name.toUpperCase()))
+    const itemOptions = activeGameState
+        ? activeGameState.items.filter(item => !activeGameState.guessedNames.includes(item.name.toUpperCase().trim()))
         : [];
 
-    const incorrectGuessesCount = guesses.filter(g => !g.isCorrect).length;
+    const activeIncorrectGuessesCount = isDaily
+        ? activeGuesses.filter(g => !g.isCorrect).length
+        : guesses.filter(g => !g.isCorrect).length;
+
+    const handleGuessAction = (e, selectedName) => {
+        if (isDaily) {
+            if (e && e.preventDefault) e.preventDefault();
+            const itemToGuess = selectedName || input;
+            if (!itemToGuess || !itemToGuess.trim()) return;
+            onDailyGuess(itemToGuess);
+            setInput('');
+        } else {
+            handleGuess(e, selectedName);
+        }
+    };
+
+    const gameContent = (
+        <>
+            {!isDaily && activeFilterSelected && activeGameState && !activeIsGameOver && (
+                <Button
+                    color="red"
+                    variant="outline"
+                    size="xs"
+                    onClick={handleGiveUpClick}
+                    onBlur={() => setIsConfirmingGiveUp(false)}
+                    className={`${homeClasses.conventionalFont} ${classes.giveUpButton}`}
+                >
+                    {isConfirmingGiveUp ? "Sure?" : "Give up"}
+                </Button>
+            )}
+
+            {!activeFilterSelected && (
+                <ItemModeSelector onSelect={handleSelectFilter} />
+            )}
+
+            {activeFilterSelected && activeGameState && !activeIsGameOver && (
+                <ItemSearchBar
+                    data={itemOptions}
+                    input={input}
+                    setInput={setInput}
+                    handleGuess={handleGuessAction}
+                />
+            )}
+
+            {activeFilterSelected && activeGameState && (
+                <HintProgress
+                    target={activeGameState.target}
+                    incorrectGuessesCount={activeIncorrectGuessesCount}
+                />
+            )}
+
+            {activeFilterSelected && (
+                <GuessHistory guesses={activeGuesses} />
+            )}
+
+            {!isDaily && activeFilterSelected && activeGameState && (
+                <ItemModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    modalType={modalType}
+                    target={activeGameState.target}
+                    onPlayAgain={playAgainSameFilter}
+                    onChangeFilter={resetGame}
+                />
+            )}
+        </>
+    );
+
+    if (isDaily) {
+        return gameContent;
+    }
 
     return (
         <Container size="md" className={`${homeClasses.gameContainer} ${classes.container || ''}`}>
@@ -119,54 +201,7 @@ export default function ItemsPage() {
                 <Title order={2} ta="center" mb="lg" c="royalMagenta.5" className={homeClasses.conventionalTitle}>
                     Items Mode
                 </Title>
-
-                {isFilterSelected && gameState && !isGameOver && (
-                    <Button
-                        color="red"
-                        variant="outline"
-                        size="xs"
-                        onClick={handleGiveUpClick}
-                        onBlur={() => setIsConfirmingGiveUp(false)}
-                        className={`${homeClasses.conventionalFont} ${classes.giveUpButton}`}
-                    >
-                        {isConfirmingGiveUp ? "Sure?" : "Give up"}
-                    </Button>
-                )}
-
-                {!isFilterSelected && (
-                    <ItemModeSelector onSelect={handleSelectFilter} />
-                )}
-
-                {isFilterSelected && gameState && !isGameOver && (
-                    <ItemSearchBar
-                        data={itemOptions}
-                        input={input}
-                        setInput={setInput}
-                        handleGuess={handleGuess}
-                    />
-                )}
-
-                {isFilterSelected && gameState && (
-                    <HintProgress
-                        target={gameState.target}
-                        incorrectGuessesCount={incorrectGuessesCount}
-                    />
-                )}
-
-                {isFilterSelected && (
-                    <GuessHistory guesses={guesses} />
-                )}
-
-                {isFilterSelected && gameState && (
-                    <ItemModal
-                        isOpen={isModalOpen}
-                        onClose={() => setIsModalOpen(false)}
-                        modalType={modalType}
-                        target={gameState.target}
-                        onPlayAgain={playAgainSameFilter}
-                        onChangeFilter={resetGame}
-                    />
-                )}
+                {gameContent}
             </Paper>
         </Container>
     );

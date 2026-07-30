@@ -1,9 +1,9 @@
 import { compareCharacters } from './Character.js';
 
-export function createGame(json) {
+export function createGame(json, randomFn = Math.random) {
     const characters = json;
     const totalCharacters = characters.length;
-    const target = characters[Math.floor(Math.random() * totalCharacters)];
+    const target = characters[Math.floor(randomFn() * totalCharacters)];
 
     return {
         characters,

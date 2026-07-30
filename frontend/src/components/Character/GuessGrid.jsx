@@ -12,7 +12,12 @@ import styles from '../../styles/Character.module.css';
 
 const totalColumns = COLUMNS_CONFIG.reduce((sum, col) => sum + col.span, 0);
 
-export default function GuessGrid() {
+export default function GuessGrid({
+    isDaily = false,
+    dailyGameState = null,
+    dailyGuesses = [],
+    onDailyGuess = null
+}) {
     const [gameState, setGameState] = useState(null);
     const [input, setInput] = useState('');
     const [guessedCharacters, setguessedCharacters] = useState([]);
@@ -24,12 +29,13 @@ export default function GuessGrid() {
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
 
     useEffect(() => {
+        if (isDaily) return;
         const game = createGame(deltaruneCharacters);
         setGameState(game);
-    }, []);
+    }, [isDaily]);
 
     useEffect(() => {
-        if (!isModalOpen) return;
+        if (isDaily || !isModalOpen) return;
 
         const handleKeyDown = (e) => {
             if (e.key === 'Enter') {
@@ -42,9 +48,15 @@ export default function GuessGrid() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [isModalOpen]);
+    }, [isModalOpen, isDaily]);
 
-    const characterOptions = deltaruneCharacters.map(c => c.name).filter(name => !guessedCharacters.includes(name));
+    const activeGameState = isDaily ? dailyGameState : gameState;
+    const activeGuesses = isDaily ? dailyGuesses : gridItems;
+    const activeGuessedNames = isDaily ? (dailyGameState?.guessedNames || []) : guessedCharacters;
+
+    const characterOptions = deltaruneCharacters
+        .map(c => c.name)
+        .filter(name => !activeGuessedNames.some(g => g.toUpperCase() === name.toUpperCase()));
 
     const charactersMap = Object.fromEntries(
         deltaruneCharacters.map(c => [c.name, c])
@@ -97,7 +109,7 @@ export default function GuessGrid() {
     const resetGame = () => {
         setIsModalOpen(false);
         setIsConfirmingGiveUp(false);
-        
+
         setTimeout(() => {
             const game = createGame(deltaruneCharacters);
             setGameState(game);
@@ -109,9 +121,11 @@ export default function GuessGrid() {
         }, 200);
     };
 
+    const showSearchBar = isDaily || (!isWon && !isGivenUp);
+
     return (
         <Stack gap="md" align="center" w="100%">
-            {!isWon && !isGivenUp && (
+            {!isDaily && !isWon && !isGivenUp && (
                 <Button
                     color="red"
                     variant="outline"
@@ -124,78 +138,87 @@ export default function GuessGrid() {
                 </Button>
             )}
 
-            {!isWon && !isGivenUp && (
+            {showSearchBar && (
                 <SearchBar
                     data={characterOptions}
                     charactersMap={charactersMap}
                     input={input}
                     setInput={setInput}
-                    handleGuess={handleGuess}
+                    handleGuess={isDaily ? (e, selectedName) => {
+                        if (e && e.preventDefault) e.preventDefault();
+                        const val = selectedName || input;
+                        if (val && val.trim()) {
+                            onDailyGuess(val);
+                            setInput('');
+                        }
+                    } : handleGuess}
                 />
             )}
 
-            <Modal
-                opened={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                centered
-                size="md"
-                title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
-                styles={{
-                    content: {
-                        backgroundColor: 'var(--color-bg-secondary)',
-                        border: 'var(--size-2) solid var(--color-border-primary)',
-                        color: 'var(--color-text-primary)',
-                    },
-                    header: {
-                        backgroundColor: 'var(--color-bg-secondary)',
-                        color: 'var(--color-text-primary)',
-                    },
-                    title: {
-                        fontFamily: 'var(--font-family-deltarune)',
-                        fontSize: '1.5rem',
-                        color: modalType === 'victory' ? '#00ff27' : '#ff1f8e',
-                    }
-                }}
-            >
-                <Stack align="center" gap="md" p="md">
-                    <Text size="lg" ta="center">
-                        {modalType === 'victory' 
-                            ? "Congratulations! You guessed the character!" 
-                            : "Too bad! The secret character was:"}
-                    </Text>
+            {!isDaily && (
+                <Modal
+                    opened={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    centered
+                    size="md"
+                    title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
+                    styles={{
+                        content: {
+                            backgroundColor: 'var(--color-bg-secondary)',
+                            border: 'var(--size-2) solid var(--color-border-primary)',
+                            color: 'var(--color-text-primary)',
+                        },
+                        header: {
+                            backgroundColor: 'var(--color-bg-secondary)',
+                            color: 'var(--color-text-primary)',
+                        },
+                        title: {
+                            fontFamily: 'var(--font-family-deltarune)',
+                            fontSize: '1.5rem',
+                            color: modalType === 'victory' ? '#00ff27' : '#ff1f8e',
+                        }
+                    }}
+                >
+                    <Stack align="center" gap="md" p="md">
+                        <Text size="lg" ta="center">
+                            {modalType === 'victory'
+                                ? "Congratulations! You guessed the character!"
+                                : "Too bad! The secret character was:"}
+                        </Text>
 
-                    {gameState?.target && (
-                        <Paper
-                            bg="var(--color-bg-primary)"
-                            p="md"
-                            radius="md"
-                            withBorder
-                            className={styles.targetCard}
+                        {gameState?.target && (
+                            <Paper
+                                bg="var(--color-bg-primary)"
+                                p="md"
+                                radius="md"
+                                withBorder
+                                className={styles.targetCard}
+                            >
+                                {gameState.target.image && (
+                                    <img
+                                        src={gameState.target.image}
+                                        alt={gameState.target.name}
+                                        className={styles.targetImage}
+                                    />
+                                )}
+                                <Text size="xl" fw="bold" ff="var(--font-family-deltarune)" ta="center">
+                                    {gameState.target.name}
+                                </Text>
+                            </Paper>
+                        )}
+
+                        <Button
+                            color="emeraldGreen"
+                            size="md"
+                            onClick={resetGame}
+                            className={homeClasses.conventionalFont}
+                            mt="md"
                         >
-                            {gameState.target.image && (
-                                <img
-                                    src={gameState.target.image}
-                                    alt={gameState.target.name}
-                                    className={styles.targetImage}
-                                />
-                            )}
-                            <Text size="xl" fw="bold" ff="var(--font-family-deltarune)" ta="center">
-                                {gameState.target.name}
-                            </Text>
-                        </Paper>
-                    )}
-
-                    <Button 
-                        color="emeraldGreen" 
-                        size="md" 
-                        onClick={resetGame}
-                        className={homeClasses.conventionalFont}
-                        mt="md"
-                    >
-                        Play Again
-                    </Button>
-                </Stack>
-            </Modal>
+                            Play Again
+                        </Button>
+                    </Stack>
+                </Modal>
+            )}
 
             <Grid columns={totalColumns} gutter="md" w="100%" align="center">
                 {COLUMNS_CONFIG.map((col) => (
@@ -209,7 +232,7 @@ export default function GuessGrid() {
                 ))}
             </Grid>
 
-            {gridItems.map((char) => (
+            {activeGuesses.map((char) => (
                 <Guess key={char.name.value} character={char} widths={COLUMNS_CONFIG} totalColumns={totalColumns} />
             ))}
         </Stack>

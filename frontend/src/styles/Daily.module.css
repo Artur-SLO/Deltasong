@@ -1,0 +1,258 @@
+.container {
+    margin-top: var(--mantine-spacing-lg);
+}
+
+.stepperContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--color-bg-secondary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: var(--mantine-radius-md);
+    padding: var(--mantine-spacing-md);
+    box-shadow: var(--shadow-standard);
+}
+
+.stepperTrack {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--mantine-spacing-xs);
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .stepperTrack {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--mantine-spacing-sm);
+    }
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: var(--mantine-spacing-sm);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    border-radius: var(--mantine-radius-sm);
+    flex: 1;
+    transition: background-color var(--transition-standard);
+}
+
+.stepActive {
+    background-color: color-mix(in srgb, var(--mantine-color-amberGold-5) 10%, transparent);
+    border-left: var(--size-3) solid var(--mantine-color-amberGold-5);
+}
+
+.stepCompleted {
+    background-color: rgba(0, 255, 39, 0.1);
+    border-left: var(--size-3) solid var(--mantine-color-emeraldGreen-6);
+}
+
+.stepPending {
+    opacity: 0.6;
+    border-left: var(--size-3) solid transparent;
+}
+
+.stepIcon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.stepIconCompleted {
+    background-color: var(--mantine-color-emeraldGreen-6);
+    color: var(--color-bg-primary);
+}
+
+.stepIconActive {
+    background-color: var(--mantine-color-amberGold-5);
+    color: var(--color-bg-primary);
+}
+
+.stepIconPending {
+    background-color: var(--color-border-primary);
+    color: var(--color-text-primary);
+}
+
+.stepLabel {
+    font-family: var(--font-family-deltarune);
+    font-size: var(--mantine-font-size-md);
+    letter-spacing: 1px;
+}
+
+.stepStatusText {
+    font-size: var(--mantine-font-size-xs);
+    opacity: 0.8;
+}
+
+/* Timer styles */
+.timerContainer {
+    position: absolute;
+    top: var(--mantine-spacing-md);
+    left: var(--mantine-spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--mantine-spacing-xs);
+    background-color: var(--color-bg-secondary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: var(--mantine-radius-md);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    box-shadow: var(--shadow-standard);
+}
+
+.timerText {
+    font-family: monospace;
+    font-size: var(--mantine-font-size-lg);
+    font-weight: bold;
+    color: var(--mantine-color-amberGold-5);
+}
+
+.gameTitle {
+    color: var(--mantine-color-amberGold-5) !important;
+}
+
+/* Header & Controls */
+.gameHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: var(--mantine-spacing-xs);
+}
+
+.giveUpButton {
+    font-family: var(--font-family-deltarune) !important;
+    position: absolute;
+    top: var(--mantine-spacing-md);
+    right: var(--mantine-spacing-md);
+}
+
+/* Modals & Content */
+.modalContent {
+    background-color: var(--color-bg-secondary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
+}
+
+.modalHeader {
+    background-color: var(--color-bg-secondary) !important;
+    border-bottom: var(--size-2) solid var(--color-border-primary);
+    color: var(--color-text-primary) !important;
+}
+
+.modalTitleVictory {
+    font-family: var(--font-family-deltarune) !important;
+    color: var(--mantine-color-emeraldGreen-6) !important;
+    font-size: var(--mantine-font-size-xl) !important;
+}
+
+.modalTitleSurrender {
+    font-family: var(--font-family-deltarune) !important;
+    color: var(--mantine-color-royalMagenta-6) !important;
+    font-size: var(--mantine-font-size-xl) !important;
+}
+
+.resultsCard {
+    background-color: var(--color-bg-primary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: var(--mantine-radius-md);
+    padding: var(--mantine-spacing-md);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--shadow-standard);
+}
+
+.resultsTitle {
+    font-family: var(--font-family-deltarune);
+    font-size: var(--mantine-font-size-md);
+    margin-bottom: var(--mantine-spacing-sm);
+    text-align: center;
+    color: var(--color-accent-primary);
+}
+
+.resultsRow {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--mantine-spacing-xs) 0;
+    border-bottom: var(--size-1) solid var(--color-border-primary);
+}
+
+.resultsRow:last-child {
+    border-bottom: none;
+}
+
+.shareButton {
+    font-family: var(--font-family-deltarune) !important;
+    width: 100%;
+    max-width: 400px;
+}
+
+.countdownContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--mantine-spacing-xs);
+    background-color: var(--color-bg-primary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: var(--mantine-radius-md);
+    padding: var(--mantine-spacing-md);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.countdownLabel {
+    font-family: var(--font-family-deltarune);
+    font-size: var(--mantine-font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.countdownTimer {
+    font-family: monospace;
+    font-size: var(--mantine-font-size-xl);
+    font-weight: bold;
+    color: var(--color-accent-primary);
+    letter-spacing: 2px;
+}
+
+/* Blocked Screen UI */
+.blockedView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--mantine-spacing-xl);
+    background-color: var(--color-bg-secondary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: var(--mantine-radius-md);
+    box-shadow: var(--shadow-standard);
+    width: 100%;
+    max-width: 600px;
+    margin: var(--mantine-spacing-xl) auto;
+    gap: var(--mantine-spacing-md);
+}
+
+.blockedTitle {
+    font-family: var(--font-family-deltarune);
+    font-size: var(--mantine-font-size-xl);
+    color: var(--mantine-color-royalMagenta-5);
+}
+
+.blockedSubtitle {
+    color: var(--color-text-primary);
+    font-size: var(--mantine-font-size-md);
+    max-width: 450px;
+}
+
+.devLog {
+    font-size: var(--mantine-font-size-xs);
+    opacity: 0.5;
+    margin-top: var(--mantine-spacing-xs);
+    color: var(--color-accent-primary);
+}

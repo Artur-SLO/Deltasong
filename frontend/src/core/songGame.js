@@ -18,17 +18,16 @@ export function compareSongs(target, guessed) {
     };
 }
 
-export function createSongGame(json) {
+export function createSongGame(json, randomFn = Math.random) {
     const songs = json;
     const totalSongs = songs.length;
-    const target = songs[Math.floor(Math.random() * totalSongs)];
+    const target = songs[Math.floor(randomFn() * totalSongs)];
 
     // Choose a random starting position for the audio segment (max limit is 5s)
     const maxDurationLimit = 5.0;
     let startTime = 0;
     if (target.duration_seconds > maxDurationLimit) {
-        // Leave a buffer of 5 seconds at the end of the song
-        startTime = Math.floor(Math.random() * (target.duration_seconds - maxDurationLimit));
+        startTime = Math.floor(randomFn() * (target.duration_seconds - maxDurationLimit));
     }
 
     return {

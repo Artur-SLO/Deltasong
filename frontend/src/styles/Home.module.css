@@ -8,7 +8,7 @@
 /* Hero Section Styles */
 .heroWrapper {
     text-align: center;
-    margin-bottom: calc(var(--mantine-spacing-xl) * 2);
+    margin-bottom: calc(var(--mantine-spacing-xl));
 }
 
 .heroTitle {
@@ -17,7 +17,7 @@
     font-family: var(--font-family-deltarune) !important;
     color: var(--color-text-secondary) !important;
     text-shadow: var(--size-3) var(--size-3) 0px var(--color-border-primary), 0px 0px var(--mantine-spacing-xs) rgba(0, 255, 255, 0.3);
-    margin-bottom: var(--mantine-spacing-md);
+    margin-bottom: var(--mantine-spacing-sm);
     user-select: none;
     display: inline-block;
     vertical-align: bottom;
@@ -28,7 +28,7 @@
     white-space: nowrap;
     border-right: var(--size-3) solid var(--color-accent-primary);
     width: 0;
-    animation: 
+    animation:
         typing 1.5s steps(9) forwards,
         blink 0.5s step-end infinite,
         removeOverflow 0.1s 1.5s forwards;
@@ -41,13 +41,25 @@
 }
 
 @keyframes typing {
-    from { width: 0; }
-    to { width: 9ch; }
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 9ch;
+    }
 }
 
 @keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: var(--color-accent-primary); }
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--color-accent-primary);
+    }
 }
 
 @keyframes removeOverflow {
@@ -113,6 +125,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -158,4 +171,65 @@
 
 .conventionalFont {
     font-family: var(--mantine-font-family) !important;
+}
+
+.dailyCardWrapper {
+    width: 100%;
+    margin-bottom: var(--mantine-spacing-md);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.dailyCard {
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, #2a1544 100%) !important;
+    border: var(--size-2) solid #783cb5 !important;
+    box-shadow: 0px 4px 10px rgba(120, 60, 181, 0.25) !important;
+    cursor: pointer;
+    transition: var(--transition-slow) !important;
+}
+
+.dailyCard:hover {
+    transform: translateY(calc(var(--size-4) * -1)) scale(1.01) !important;
+    border-color: var(--mantine-color-amberGold-5) !important;
+    box-shadow: 0px var(--size-5) var(--size-6) color-mix(in srgb, var(--mantine-color-amberGold-5) 50%, transparent) !important;
+}
+
+.dailyCardContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--mantine-spacing-xl);
+    width: 100%;
+}
+
+.dailyCardTitle {
+    font-family: var(--font-family-deltarune) !important;
+    color: var(--color-text-secondary) !important;
+    margin: 0;
+}
+
+.dailyPlayBtn {
+    background-color: var(--mantine-color-amberGold-5) !important;
+    color: #130920 !important;
+    font-family: var(--font-family-deltarune) !important;
+    font-size: var(--mantine-font-size-md) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    box-shadow: 0px 4px 10px color-mix(in srgb, var(--mantine-color-amberGold-5) 30%, transparent) !important;
+}
+
+.dailyPlayBtn:hover {
+    transform: scale(1.05) !important;
+    background-color: var(--mantine-color-amberGold-4) !important;
+    box-shadow: 0px 6px 15px color-mix(in srgb, var(--mantine-color-amberGold-5) 50%, transparent) !important;
+}
+
+@media (max-width: 768px) {
+    .dailyCardContent {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: var(--mantine-spacing-md);
+    }
 }

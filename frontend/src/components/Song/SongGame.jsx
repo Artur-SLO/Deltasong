@@ -18,7 +18,14 @@ function getYouTubeId(url) {
     return (match && match[2].length === 11) ? match[2] : '';
 }
 
-export default function SongGame() {
+export default function SongGame({
+    isDaily = false,
+    dailyGameState = null,
+    dailyGuesses = [],
+    onDailyGuess = null,
+    extraSeconds: dailyExtraSeconds = 0,
+    setExtraSeconds: setDailyExtraSeconds = null
+}) {
     const [gameState, setGameState] = useState(null);
     const [input, setInput] = useState('');
     const [activeDifficulty, setActiveDifficulty] = useState('normal');
@@ -33,12 +40,13 @@ export default function SongGame() {
     const [extraSeconds, setExtraSeconds] = useState(0);
 
     useEffect(() => {
+        if (isDaily) return;
         const game = createSongGame(deltaruneSoundtrack);
         setGameState(game);
-    }, []);
+    }, [isDaily]);
 
     useEffect(() => {
-        if (!isModalOpen) return;
+        if (isDaily || !isModalOpen) return;
 
         const handleKeyDown = (e) => {
             if (e.key === 'Enter') {
@@ -51,11 +59,19 @@ export default function SongGame() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [isModalOpen]);
+    }, [isModalOpen, isDaily]);
+
+    const activeGameState = isDaily ? dailyGameState : gameState;
+    const activeGuesses = isDaily ? dailyGuesses : guesses;
+    const activeGuessedTitles = isDaily ? (dailyGameState?.guessedTitles || []) : guessedTitles;
+    const activeExtraSeconds = isDaily ? dailyExtraSeconds : extraSeconds;
+    const activeSetExtraSeconds = isDaily ? setDailyExtraSeconds : setExtraSeconds;
+    const activeDiff = isDaily ? 'normal' : activeDifficulty;
+    const activeIsGameOver = isDaily ? false : (isWon || isGivenUp);
 
     const songOptions = deltaruneSoundtrack
         .map(s => s.title)
-        .filter(title => !guessedTitles.includes(title.toUpperCase()));
+        .filter(title => !activeGuessedTitles.includes(title.toUpperCase().trim()));
 
     const songsMap = Object.fromEntries(
         deltaruneSoundtrack.map(s => [s.title, s])
@@ -121,19 +137,30 @@ export default function SongGame() {
         }, 200);
     };
 
-    const isGameOver = isWon || isGivenUp;
-    const baseDuration = SONG_DIFFICULTIES[activeDifficulty]?.duration || 5.0;
-    const actualStartTime = activeDifficulty === 'easy' ? 0 : (gameState ? gameState.startTime : 0);
-    const maxPlayableDuration = gameState ? (gameState.target.duration_seconds - actualStartTime) : 99;
+    const baseDuration = SONG_DIFFICULTIES[activeDiff]?.duration || 5.0;
+    const actualStartTime = activeDiff === 'easy' ? 0 : (activeGameState ? activeGameState.startTime : 0);
+    const maxPlayableDuration = activeGameState ? (activeGameState.target.duration_seconds - actualStartTime) : 99;
     const durationLimit = Math.min(
         maxPlayableDuration,
-        baseDuration + extraSeconds
+        baseDuration + activeExtraSeconds
     );
-    const maxTimeReached = gameState ? durationLimit >= maxPlayableDuration : false;
+    const maxTimeReached = activeGameState ? durationLimit >= maxPlayableDuration : false;
+
+    const handleGuessAction = (e, selectedTitle) => {
+        if (isDaily) {
+            if (e && e.preventDefault) e.preventDefault();
+            const songToGuess = selectedTitle || input;
+            if (!songToGuess || !songToGuess.trim()) return;
+            onDailyGuess(songToGuess);
+            setInput('');
+        } else {
+            handleGuess(e, selectedTitle);
+        }
+    };
 
     return (
         <Stack gap="md" align="center" w="100%">
-            {!isGameOver && gameState && (
+            {!activeIsGameOver && activeGameState && !isDaily && (
                 <Button
                     color="red"
                     variant="outline"
@@ -147,84 +174,86 @@ export default function SongGame() {
             )}
 
             <DifficultySelector
-                activeDifficulty={activeDifficulty}
+                activeDifficulty={activeDiff}
                 onChangeDifficulty={setActiveDifficulty}
-                disabled={isGameOver || guesses.length > 0 || hasPlayed}
+                disabled={isDaily || activeIsGameOver || activeGuesses.length > 0 || hasPlayed}
             />
 
-            {gameState && (
+            {activeGameState && (
                 <AudioPlayer
-                    videoUrl={gameState.target.url}
-                    startTime={activeDifficulty === 'easy' ? 0 : gameState.startTime}
+                    videoUrl={activeGameState.target.url}
+                    startTime={actualStartTime}
                     durationLimit={durationLimit}
-                    disabled={isGameOver}
-                    onPlay={() => setHasPlayed(true)}
-                    onAddTime={() => setExtraSeconds(prev => prev + 1)}
+                    disabled={activeIsGameOver}
+                    onPlay={isDaily ? () => {} : () => setHasPlayed(true)}
+                    onAddTime={() => activeSetExtraSeconds(prev => prev + 1)}
                     maxTimeReached={maxTimeReached}
-                    isClueAvailable={activeDifficulty === 'easy'}
+                    isClueAvailable={activeDiff === 'easy'}
                 />
             )}
 
-            {!isGameOver && (
+            {!activeIsGameOver && (
                 <SongSearchBar
                     data={songOptions}
                     songsMap={songsMap}
                     input={input}
                     setInput={setInput}
-                    handleGuess={handleGuess}
+                    handleGuess={handleGuessAction}
                 />
             )}
 
-            <Modal
-                opened={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                centered
-                size="lg"
-                classNames={{
-                    content: styles.modalContent,
-                    header: styles.modalHeader,
-                    title: modalType === 'victory' ? styles.modalTitleVictory : styles.modalTitleSurrender
-                }}
-                title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
-            >
-                <Stack align="center" gap="md" p="md">
-                    <Text size="lg" ta="center">
-                        {modalType === 'victory'
-                            ? "Congratulations! You guessed the song!"
-                            : "Too bad! The secret song was:"}
-                    </Text>
+            {!isDaily && (
+                <Modal
+                    opened={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    centered
+                    size="lg"
+                    classNames={{
+                        content: styles.modalContent,
+                        header: styles.modalHeader,
+                        title: modalType === 'victory' ? styles.modalTitleVictory : styles.modalTitleSurrender
+                    }}
+                    title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
+                >
+                    <Stack align="center" gap="md" p="md">
+                        <Text size="lg" ta="center">
+                            {modalType === 'victory'
+                                ? "Congratulations! You guessed the song!"
+                                : "Too bad! The secret song was:"}
+                        </Text>
 
-                    {gameState?.target && (
-                        <Paper className={styles.targetCard} withBorder>
-                            <Text className={styles.modalTextTitle}>
-                                {gameState.target.title}
-                            </Text>
-                            <Text className={styles.modalTextSubtitle}>
-                                Chapter {gameState.target.chapter} ({gameState.target.duration_formatted})
-                            </Text>
-                            <iframe
-                                src={`https://www.youtube.com/embed/${getYouTubeId(gameState.target.url)}?autoplay=1&controls=1`}
-                                title={gameState.target.title}
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                className={styles.modalIframe}
-                            />
-                        </Paper>
-                    )}
+                        {gameState?.target && (
+                            <Paper className={styles.targetCard} withBorder>
+                                <Text className={styles.modalTextTitle}>
+                                    {gameState.target.title}
+                                </Text>
+                                <Text className={styles.modalTextSubtitle}>
+                                    Chapter {gameState.target.chapter} ({gameState.target.duration_formatted})
+                                </Text>
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${getYouTubeId(gameState.target.url)}?autoplay=1&controls=1`}
+                                    title={gameState.target.title}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    className={styles.modalIframe}
+                                />
+                            </Paper>
+                        )}
 
-                    <Button
-                        color="emeraldGreen"
-                        size="md"
-                        onClick={resetGame}
-                        className={`${homeClasses.conventionalFont} ${styles.playAgainBtn}`}
-                    >
-                        Play Again
-                    </Button>
-                </Stack>
-            </Modal>
+                        <Button
+                            color="emeraldGreen"
+                            size="md"
+                            onClick={resetGame}
+                            className={`${homeClasses.conventionalFont} ${styles.playAgainBtn}`}
+                        >
+                            Play Again
+                        </Button>
+                    </Stack>
+                </Modal>
+            )}
 
-            <GuessHistory guesses={guesses} />
+            <GuessHistory guesses={activeGuesses} />
         </Stack>
     );
 }
