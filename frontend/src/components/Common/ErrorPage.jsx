@@ -23,7 +23,7 @@ export default function ErrorPage() {
                     />
                     <Title className={classes.title}>Nothing to see here</Title>
                     <Text c="dimmed" size="lg" ta="center" className={classes.description}>
-                        This Page is pissing me off... I'm the original Starwalker.
+                        This Page is pissing me off...
                     </Text>
                     <Group justify="center">
                         <Button className={classes.btn} size="md" onClick={() => navigate('/')}>

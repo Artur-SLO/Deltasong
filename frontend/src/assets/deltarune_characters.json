@@ -128,7 +128,7 @@
         "class": "Boss",
         "first_appearance": "Hometown",
         "first_appearance_index": 1,
-        "image": "https://deltarune.wiki/images/thumb/Berdly_battle_intro.gif/160px-Berdly_battle_intro.gif.webp?cb=hwtxgs&h=thumb.php&f=Berdly_battle_intro.gif",
+        "image": "./berdly.gif",
         "url": "https://deltarune.wiki/w/Berdly"
     },
     {
