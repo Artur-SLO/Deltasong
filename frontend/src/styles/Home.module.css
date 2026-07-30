@@ -233,3 +233,8 @@
         gap: var(--mantine-spacing-md);
     }
 }
+
+.dailyPlayBtn {
+    color: var(--color-text-primary) !important;
+}
+

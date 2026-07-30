@@ -1,6 +1,7 @@
 import { TextInput, Group, Text, Paper } from "@mantine/core";
 import { useState } from 'react';
 import styles from '../../styles/Character.module.css';
+import { getCharacterImage } from '../../utils/image.js';
 
 export default function SearchBar({ data, charactersMap, input, setInput, handleGuess }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -94,7 +95,7 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
                             >
                                 {character?.image && (
                                     <img
-                                        src={character.image}
+                                        src={getCharacterImage(character.image)}
                                         alt={name}
                                         className={styles.suggestionImage}
                                     />

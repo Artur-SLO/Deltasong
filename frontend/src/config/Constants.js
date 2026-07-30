@@ -1,8 +1,8 @@
 export const LINKS = [
+    { link: "/daily", label: "Daily" },
     { link: "/characters", label: "Characters" },
     { link: "/items", label: "Items" },
     { link: "/songs", label: "Song" },
-    { link: "/daily", label: "Daily" }
 ];
 
 export const GAME_MODES = [

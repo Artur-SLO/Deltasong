@@ -9,6 +9,7 @@ import SearchBar from './SearchBar.jsx';
 import Guess from './Guess.jsx';
 import homeClasses from '../../styles/Home.module.css';
 import styles from '../../styles/Character.module.css';
+import { getCharacterImage } from '../../utils/image.js';
 
 const totalColumns = COLUMNS_CONFIG.reduce((sum, col) => sum + col.span, 0);
 
@@ -196,7 +197,7 @@ export default function GuessGrid({
                             >
                                 {gameState.target.image && (
                                     <img
-                                        src={gameState.target.image}
+                                        src={getCharacterImage(gameState.target.image)}
                                         alt={gameState.target.name}
                                         className={styles.targetImage}
                                     />

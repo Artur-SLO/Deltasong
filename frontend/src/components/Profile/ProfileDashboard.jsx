@@ -7,6 +7,7 @@ import { logoutUser, updateUserAvatar } from '../../utils/auth';
 import { notifications } from '@mantine/notifications';
 import AvatarSelector from './AvatarSelector';
 import deltaruneCharacters from '../../assets/deltarune_characters.json';
+import { getCharacterImage } from '../../utils/image.js';
 
 const defaultAvatar = deltaruneCharacters.find(c => c.name.toUpperCase() === 'KRIS')?.image || deltaruneCharacters[0]?.image || '';
 
@@ -25,7 +26,7 @@ export default function ProfileDashboard({ activeUser }) {
     };
 
     const getAvatarSrc = (url) => {
-        return url || defaultAvatar;
+        return getCharacterImage(url || defaultAvatar);
     };
 
     return (

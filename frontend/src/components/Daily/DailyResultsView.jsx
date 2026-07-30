@@ -5,6 +5,7 @@ import { IconCopy, IconClock, IconDownload } from '@tabler/icons-react';
 import { getDailyNumber } from '../../core/dailySeed.js';
 import classes from '../../styles/Daily.module.css';
 import { DAILY_LIMITS } from '../../config/Constants.js';
+import { getCharacterImage } from '../../utils/image.js';
 
 export default function DailyResultsView({ gameState }) {
     const [timeLeft, setTimeLeft] = useState('');
@@ -187,7 +188,7 @@ export default function DailyResultsView({ gameState }) {
                     <Group gap="xs" align="center">
                         {gameState.characterState.target.image && (
                             <img
-                                src={gameState.characterState.target.image}
+                                src={getCharacterImage(gameState.characterState.target.image)}
                                 alt={gameState.characterState.target.name}
                                 style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }}
                             />
