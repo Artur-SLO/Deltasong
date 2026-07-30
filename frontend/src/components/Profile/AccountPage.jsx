@@ -5,6 +5,8 @@ import { getActiveUser } from '../../utils/auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import ProfileDashboard from './ProfileDashboard';
+import gersonImage from '../../assets/gerson.gif';
+import gersonBoomImage from '../../assets/gerson-boom.gif';
 
 export default function AccountPage() {
     const [activeUser, setActiveUser] = useState(null);
@@ -29,7 +31,14 @@ export default function AccountPage() {
                 {activeUser ? (
                     <ProfileDashboard activeUser={activeUser} />
                 ) : (
-                    <Tabs value={activeTab} onChange={setActiveTab} color="cyberCyan">
+                    <>
+                        <div className={classes.welcomeHeader}>
+                            <img src={gersonBoomImage} alt="Gerson Welcome" className={classes.ralseiWelcome} />
+                            <div className={classes.welcomeTitle}>
+                                Deltasong Account
+                            </div>
+                        </div>
+                        <Tabs value={activeTab} onChange={setActiveTab} color="cyberCyan">
                         <Tabs.List grow mb="md">
                             <Tabs.Tab value="login" className={classes.tabButton}>Login</Tabs.Tab>
                             <Tabs.Tab value="register" className={classes.tabButton}>Register</Tabs.Tab>
@@ -43,6 +52,7 @@ export default function AccountPage() {
                             <RegisterForm onRegisterSuccess={() => setActiveTab('login')} />
                         </Tabs.Panel>
                     </Tabs>
+                    </>
                 )}
 
                 {!activeUser && (

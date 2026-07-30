@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Stack, Text, Button, Modal, Paper } from '@mantine/core';
 import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { type: 'json' };
+import jevilGif from '../../assets/jevil.gif';
+
 import { createSongGame, makeSongGuess, compareSongs } from '../../core/songGame.js';
 import { SONG_DIFFICULTIES } from '../../config/Constants.js';
 import AudioPlayer from './AudioPlayer.jsx';
@@ -173,11 +175,13 @@ export default function SongGame({
                 </Button>
             )}
 
-            <DifficultySelector
-                activeDifficulty={activeDiff}
-                onChangeDifficulty={setActiveDifficulty}
-                disabled={isDaily || activeIsGameOver || activeGuesses.length > 0 || hasPlayed}
-            />
+            {!isDaily && (
+                <DifficultySelector
+                    activeDifficulty={activeDiff}
+                    onChangeDifficulty={setActiveDifficulty}
+                    disabled={activeIsGameOver || activeGuesses.length > 0 || hasPlayed}
+                />
+            )}
 
             {activeGameState && (
                 <AudioPlayer
@@ -185,7 +189,7 @@ export default function SongGame({
                     startTime={actualStartTime}
                     durationLimit={durationLimit}
                     disabled={activeIsGameOver}
-                    onPlay={isDaily ? () => {} : () => setHasPlayed(true)}
+                    onPlay={isDaily ? () => { } : () => setHasPlayed(true)}
                     onAddTime={() => activeSetExtraSeconds(prev => prev + 1)}
                     maxTimeReached={maxTimeReached}
                     isClueAvailable={activeDiff === 'easy'}
@@ -216,6 +220,11 @@ export default function SongGame({
                     title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
                 >
                     <Stack align="center" gap="md" p="md">
+                        <img
+                            src={jevilGif}
+                            alt="Jevil Mascot"
+                            className={styles.mascotGif}
+                        />
                         <Text size="lg" ta="center">
                             {modalType === 'victory'
                                 ? "Congratulations! You guessed the song!"

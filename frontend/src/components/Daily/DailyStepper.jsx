@@ -1,6 +1,15 @@
-import { Stack } from '@mantine/core';
-import { IconCheck, IconPlayerPlay, IconLock } from '@tabler/icons-react';
+import { Stack, Group } from '@mantine/core';
+import { IconCheck } from '@tabler/icons-react';
 import classes from '../../styles/Daily.module.css';
+
+import pinkGif from '../../assets/pink.gif';
+import jackensteinGif from '../../assets/jackenstein.gif';
+
+const lockedMascots = {
+    1: pinkGif,
+    2: "https://deltarune.wiki/images/Seam_face.gif?cb=0ngjb8&h=thumb.php&f=Seam_face.gif",
+    3: jackensteinGif
+};
 
 export default function DailyStepper({ currentStep, status }) {
     const steps = [
@@ -18,17 +27,22 @@ export default function DailyStepper({ currentStep, status }) {
                     
                     let stepClass = classes.stepPending;
                     let iconClass = classes.stepIconPending;
-                    let icon = <IconLock size={14} />;
+                    let icon = (
+                        <img 
+                            src={lockedMascots[step.id]} 
+                            alt="Mascot" 
+                            className={classes.lockedStepperMascot} 
+                        />
+                    );
                     let statusText = "In Progress";
 
                     if (isCompleted) {
                         stepClass = classes.stepCompleted;
                         iconClass = classes.stepIconCompleted;
-                        icon = <IconCheck size={14} />;
+                        icon = <IconCheck size={20} />;
                     } else if (isActive) {
                         stepClass = classes.stepActive;
                         iconClass = classes.stepIconActive;
-                        icon = <IconPlayerPlay size={14} />;
                     }
 
                     return (
@@ -37,9 +51,11 @@ export default function DailyStepper({ currentStep, status }) {
                                 {icon}
                             </div>
                             <Stack gap={0}>
-                                <span className={classes.stepLabel}>
-                                    {step.label}
-                                </span>
+                                <Group gap="xs" align="center">
+                                    <span className={classes.stepLabel}>
+                                        {step.label}
+                                    </span>
+                                </Group>
                                 <span className={classes.stepStatusText}>
                                     {isActive ? statusText : step.desc}
                                 </span>

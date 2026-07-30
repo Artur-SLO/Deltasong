@@ -1,0 +1,47 @@
+.backgroundContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -999; /* Deepest layer: behind all content */
+    overflow: hidden;
+    background-color: var(--color-bg-primary); /* Dark fallback to prevent white flashes */
+    pointer-events: none; /* Ensures it doesn't block clicks */
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/background-gif.gif');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.12; /* More discreet/subtle for GIF */
+    pointer-events: none;
+    transform: translate3d(0, 0, 0); /* Force GPU acceleration */
+
+    /* Render as pixel art to preserve crispness and retro theme quality */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dark radial gradient vignette overlay for focus and smooth edges */
+    background: radial-gradient(
+        circle,
+        rgba(19, 9, 32, 0.45) 0%,
+        rgba(19, 9, 32, 0.95) 100%
+    );
+    pointer-events: none;
+}

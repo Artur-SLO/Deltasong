@@ -2,6 +2,8 @@ import { Modal, Stack, Text, Paper, Button, Group } from '@mantine/core';
 import { useEffect } from 'react';
 import { ITEM_DETAILS_CONFIG } from '../../config/Constants.js';
 import styles from '../../styles/Item.module.css';
+import rouxlsGif from '../../assets/rouxls.gif';
+
 
 export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAgain, onChangeFilter }) {
     if (!target) return null;
@@ -40,6 +42,11 @@ export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAg
             }}
         >
             <Stack align="center" gap="md" p="md">
+                <img 
+                    src={rouxlsGif} 
+                    alt="Rouxls Kaard Mascot" 
+                    className={styles.mascotGif} 
+                />
                 <Text size="lg" ta="center">
                     {isVictory
                         ? "Congratulations! You guessed the item!"

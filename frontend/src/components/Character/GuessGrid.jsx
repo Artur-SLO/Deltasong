@@ -9,8 +9,11 @@ import SearchBar from './SearchBar.jsx';
 import Guess from './Guess.jsx';
 import homeClasses from '../../styles/Home.module.css';
 import styles from '../../styles/Character.module.css';
+import { getCharacterImage } from '../../utils/image.js';
+import berdlyGif from '../../assets/berdly.gif';
 
 const totalColumns = COLUMNS_CONFIG.reduce((sum, col) => sum + col.span, 0);
+
 
 export default function GuessGrid({
     isDaily = false,
@@ -180,6 +183,11 @@ export default function GuessGrid({
                     }}
                 >
                     <Stack align="center" gap="md" p="md">
+                        <img
+                            src={berdlyGif}
+                            alt="Berdly Mascot"
+                            className={styles.mascotGif}
+                        />
                         <Text size="lg" ta="center">
                             {modalType === 'victory'
                                 ? "Congratulations! You guessed the character!"
@@ -196,7 +204,7 @@ export default function GuessGrid({
                             >
                                 {gameState.target.image && (
                                     <img
-                                        src={gameState.target.image}
+                                        src={getCharacterImage(gameState.target.image)}
                                         alt={gameState.target.name}
                                         className={styles.targetImage}
                                     />

@@ -2,6 +2,7 @@ import { Grid, Image, Text } from "@mantine/core";
 import { IconArrowUp, IconArrowDown } from "@tabler/icons-react";
 import GridCell from "./GridCell";
 import styles from '../../styles/Character.module.css';
+import { getCharacterImage } from '../../utils/image.js';
 
 export default function Guess({ character, widths, totalColumns }) {
     if (!character) return null;
@@ -15,7 +16,7 @@ export default function Guess({ character, widths, totalColumns }) {
                 if (col.key === 'image') {
                     content = character.image ? (
                         <Image
-                            src={character.image}
+                            src={getCharacterImage(character.image)}
                             alt="Guess Sprite"
                             w={48}
                             h={48}

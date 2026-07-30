@@ -33,7 +33,7 @@ export default function Header() {
             className={classes.link}
             data-active={location.pathname === link.link || undefined}
         >
-            {link.label}
+            <span className={classes.linkText}>{link.label}</span>
         </Link>
     ));
 
@@ -42,7 +42,7 @@ export default function Header() {
             <Container fluid className={classes.inner}>
 
                 <Link to="/" className={classes.linkWrapper}>
-                    <Title order={3} className={classes.title}>deltAsong</Title>
+                        <Title order={3} className={classes.title}>deltAsong</Title>
                 </Link>
                 <Group gap={3} visibleFrom="xs" className={classes.subjects}>
                     {items}
@@ -63,7 +63,7 @@ export default function Header() {
                         </Group>
                     ) : (
                             <div className={classes.loginButton}>
-                                Login
+                                <span className={classes.buttonText}>Login</span>
                             </div>
                         )}
                 </Link>

@@ -74,6 +74,14 @@
 .link:hover {
     background-color: var(--color-border-primary);
     color: var(--color-accent-primary);
+}
+
+.linkText {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.link:hover .linkText {
     transform: scale(1.05);
 }
 
@@ -172,7 +180,15 @@
 }
 
 .loginButton:hover {
-    transform: scale(1.05);
     border-color: var(--mantine-color-cyberCyan-6);
     background-color: var(--color-border-primary);
+}
+
+.buttonText {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.loginButton:hover .buttonText {
+    transform: scale(1.05);
 }

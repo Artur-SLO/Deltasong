@@ -5,6 +5,11 @@ import { IconCopy, IconClock, IconDownload } from '@tabler/icons-react';
 import { getDailyNumber } from '../../core/dailySeed.js';
 import classes from '../../styles/Daily.module.css';
 import { DAILY_LIMITS } from '../../config/Constants.js';
+import { getCharacterImage } from '../../utils/image.js';
+import spamtonGif from '../../assets/spamton.gif';
+import pinkGif from '../../assets/pink.gif';
+import jackensteinGif from '../../assets/jackenstein.gif';
+
 
 export default function DailyResultsView({ gameState }) {
     const [timeLeft, setTimeLeft] = useState('');
@@ -166,6 +171,19 @@ export default function DailyResultsView({ gameState }) {
 
     return (
         <Stack align="center" gap="lg" w="100%">
+            {isVictory ? (
+                <div className={classes.victoryMascotRow}>
+                    <img src={pinkGif} alt="Pink" className={classes.resultsMascot} />
+                    <img src="https://deltarune.wiki/images/Seam_face.gif?cb=0ngjb8&h=thumb.php&f=Seam_face.gif" alt="Seam" className={classes.resultsMascot} />
+                    <img src={jackensteinGif} alt="Jackenstein" className={classes.resultsMascot} />
+                </div>
+            ) : (
+                <div className={classes.defeatMascotRow}>
+                    <img src={spamtonGif} alt="Spamton" className={classes.resultsMascot} />
+                    <div className={classes.defeatMascotText}>[BIG SHOT] FAILS!</div>
+                </div>
+            )}
+
             <div className={classes.countdownContainer}>
                 <div className={classes.countdownLabel}>
                     NEXT CHALLENGE RESET IN
@@ -187,7 +205,7 @@ export default function DailyResultsView({ gameState }) {
                     <Group gap="xs" align="center">
                         {gameState.characterState.target.image && (
                             <img
-                                src={gameState.characterState.target.image}
+                                src={getCharacterImage(gameState.characterState.target.image)}
                                 alt={gameState.characterState.target.name}
                                 style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }}
                             />

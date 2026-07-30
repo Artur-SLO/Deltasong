@@ -193,6 +193,14 @@
 .paper :global(.mantine-Tabs-tab:hover) {
     background-color: var(--color-border-primary) !important;
     color: var(--color-accent-primary) !important;
+}
+
+.paper :global(.mantine-Tabs-tabLabel) {
+    display: inline-block;
+    transition: transform 0.2s ease !important;
+}
+
+.paper :global(.mantine-Tabs-tab:hover) :global(.mantine-Tabs-tabLabel) {
     transform: scale(1.05) !important;
 }
 
@@ -251,4 +259,46 @@
     width: 100%;
     padding: var(--mantine-spacing-md);
     grid-column: span 3;
+}
+
+.welcomeHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--mantine-spacing-md);
+    gap: var(--size-4);
+}
+
+.ralseiWelcome {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    animation: bounce 0.6s infinite alternate;
+}
+
+.welcomeTitle {
+    font-family: var(--font-family-deltarune) !important;
+    color: var(--color-accent-primary);
+    text-shadow: 2px 2px 0px var(--color-border-primary);
+    font-size: 1.8rem;
+    margin: 0;
+    text-align: center;
+}
+
+.susieStreakBuddy {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    animation: bounce 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-6px);
+    }
 }

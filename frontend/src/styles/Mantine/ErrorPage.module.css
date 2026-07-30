@@ -76,3 +76,21 @@
         min-height: var(--size-10);
     }
 }
+
+.lancerGif404 {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    margin-bottom: var(--mantine-spacing-md);
+    animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-8px);
+    }
+}

@@ -1,9 +1,15 @@
 import { Title, Text, Card, Group, Badge, Button } from '@mantine/core';
 import classes from '../../styles/Home.module.css';
+import { 
+    GAME_MODE_SPRITES, 
+    GAME_MODE_HOVER_COLORS, 
+    GAME_MODE_SHADOW_COLORS 
+} from '../../config/Constants';
+import sethAquaGif from '../../assets/seth&aqua.gif';
 
 export default function GameModeCard({ title, description, badge, color, onPlay, isDaily }) {
-    const hoverColor = color === 'cyberCyan' ? '#00ffff' : color === 'royalMagenta' ? '#ff1f8e' : '#00ff27';
-    const shadowColor = color === 'cyberCyan' ? 'rgba(0, 255, 255, 0.4)' : color === 'royalMagenta' ? 'rgba(255, 31, 142, 0.4)' : 'rgba(0, 255, 39, 0.4)';
+    const hoverColor = GAME_MODE_HOVER_COLORS[color] || '#00ff27';
+    const shadowColor = GAME_MODE_SHADOW_COLORS[color] || 'rgba(0, 255, 39, 0.4)';
 
     if (isDaily) {
         return (
@@ -16,9 +22,16 @@ export default function GameModeCard({ title, description, badge, color, onPlay,
                 onClick={onPlay}
             >
                 <div className={classes.dailyCardContent}>
-                    <Title order={2} className={classes.dailyCardTitle}>
-                        {title}
-                    </Title>
+                    <Group gap="md" align="center" className={classes.dailyHeaderGroup}>
+                        <img 
+                            src={sethAquaGif} 
+                            alt="Seth and Aqua Mascot" 
+                            className={classes.dailyMascotImage} 
+                        />
+                        <Title order={2} className={classes.dailyCardTitle}>
+                            {title}
+                        </Title>
+                    </Group>
                     <Button 
                         size="md" 
                         radius="sm"
@@ -49,13 +62,21 @@ export default function GameModeCard({ title, description, badge, color, onPlay,
             onClick={onPlay}
         >
             <div className={classes.cardContent}>
-                <Group justify="space-between" mb="xs">
+                <Group justify="space-between" mb="xs" align="center" wrap="nowrap">
                     <Title order={3} className={classes.cardTitle}>
                         {title}
                     </Title>
-                    <Badge color={color} variant="light" size="sm">
-                        {badge}
-                    </Badge>
+                    {GAME_MODE_SPRITES[title] ? (
+                        <img 
+                            src={GAME_MODE_SPRITES[title]} 
+                            alt={title} 
+                            className={classes.cardBadgeImage} 
+                        />
+                    ) : (
+                        <Badge color={color} variant="light" size="sm">
+                            {badge}
+                        </Badge>
+                    )}
                 </Group>
 
                 <Text size="sm" c="dimmed" mt="sm" mb="md" className={classes.cardDescription}>
