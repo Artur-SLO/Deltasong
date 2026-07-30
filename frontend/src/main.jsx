@@ -13,7 +13,9 @@ import '@mantine/notifications/styles.css';
 // Router config
 import routes from "./routes.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router";
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, {
+    basename: import.meta.env.BASE_URL,
+});
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
