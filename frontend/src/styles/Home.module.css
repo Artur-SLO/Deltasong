@@ -8,46 +8,128 @@
 /* Hero Section Styles */
 .heroWrapper {
     text-align: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: calc(var(--mantine-spacing-xl));
 }
 
 .heroTitle {
-    font-size: 3.5rem;
+    font-size: calc(var(--mantine-font-size-xl) * 4);
     font-weight: 900;
-    font-family: 'Deltarune', sans-serif !important;
-    color: #ffffff !important;
-    text-shadow: 4px 4px 0px #381f54, 0px 0px 10px rgba(0, 255, 255, 0.3);
-    margin-bottom: var(--mantine-spacing-md);
+    font-family: var(--font-family-deltarune) !important;
+    color: var(--color-text-secondary) !important;
+    text-shadow: var(--size-3) var(--size-3) 0px var(--color-border-primary), 0px 0px var(--mantine-spacing-xs) rgba(0, 255, 255, 0.3);
+    margin-bottom: var(--mantine-spacing-sm);
     user-select: none;
     display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                text-shadow 0.3s ease !important;
+    vertical-align: bottom;
+    transition: var(--transition-slow) !important;
+
+    /* Retro typing animation */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: var(--size-3) solid var(--color-accent-primary);
+    width: 0;
+    animation:
+        typing 1.5s steps(9) forwards,
+        blink 0.5s step-end infinite,
+        removeOverflow 0.1s 1.5s forwards;
 }
 
 .heroTitle:hover {
     transform: scale(1.08);
-    text-shadow: 4px 4px 0px #ff1f8e, 0px 0px 20px rgba(0, 255, 255, 0.8);
+    text-shadow: var(--size-3) var(--size-3) 0px var(--color-accent-secondary), 0px 0px var(--mantine-spacing-xl) rgba(0, 255, 255, 0.8);
     cursor: default;
 }
 
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 9ch;
+    }
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--color-accent-primary);
+    }
+}
+
+@keyframes removeOverflow {
+    to {
+        overflow: visible;
+        border-right-color: transparent;
+    }
+}
+
+
 .heroSubtitle {
     font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.heroSubtitle:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+
+.heroSubtitle:nth-of-type(2) {
+    animation-delay: 0.4s;
 }
 
 .modeCard {
-    background-color: #1f0f33 !important;
-    border: 2px solid #381f54 !important;
-    color: #f0f0f0 !important;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                box-shadow 0.3s ease, 
-                border-color 0.3s ease !important;
+    background-color: var(--color-bg-secondary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
+    box-shadow: var(--shadow-standard) !important;
+    transition: var(--transition-slow);
+}
+
+.cardWrapper {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cardWrapper:nth-child(1) {
+    animation-delay: 0.6s;
+}
+
+.cardWrapper:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.cardWrapper:nth-child(3) {
+    animation-delay: 0.6s;
 }
 
 .modeCard:hover {
-    transform: translateY(-8px) scale(1.02) !important;
+    transform: translateY(calc(var(--size-4) * -1)) scale(1.02) !important;
     border-color: var(--hover-border) !important;
-    box-shadow: 0px 12px 30px var(--hover-glow) !important;
+    box-shadow: 0px var(--size-5) var(--size-6) var(--hover-glow) !important;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Card Section Styles */
@@ -58,12 +140,96 @@
 }
 
 .cardTitle {
-    font-family: 'Deltarune', sans-serif !important;
-    color: #f0f0f0 !important;
+    font-family: var(--font-family-deltarune) !important;
+    color: var(--color-text-primary) !important;
     margin: 0;
 }
 
 .cardDescription {
     line-height: 1.6;
     flex-grow: 1;
+}
+
+.gameContainer {
+    margin-top: var(--mantine-spacing-lg);
+}
+
+.gamePaper {
+    background-color: var(--color-bg-secondary) !important;
+    border-color: var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
+    position: relative;
+}
+
+.gameTitle {
+    font-family: var(--font-family-deltarune) !important;
+}
+
+.conventionalTitle {
+    font-family: var(--mantine-font-family) !important;
+}
+
+.conventionalFont {
+    font-family: var(--mantine-font-family) !important;
+}
+
+.dailyCardWrapper {
+    width: 100%;
+    margin-bottom: var(--mantine-spacing-md);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.dailyCard {
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, #2a1544 100%) !important;
+    border: var(--size-2) solid #783cb5 !important;
+    box-shadow: 0px 4px 10px rgba(120, 60, 181, 0.25) !important;
+    cursor: pointer;
+    transition: var(--transition-slow) !important;
+}
+
+.dailyCard:hover {
+    transform: translateY(calc(var(--size-4) * -1)) scale(1.01) !important;
+    border-color: var(--mantine-color-amberGold-5) !important;
+    box-shadow: 0px var(--size-5) var(--size-6) color-mix(in srgb, var(--mantine-color-amberGold-5) 50%, transparent) !important;
+}
+
+.dailyCardContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--mantine-spacing-xl);
+    width: 100%;
+}
+
+.dailyCardTitle {
+    font-family: var(--font-family-deltarune) !important;
+    color: var(--color-text-secondary) !important;
+    margin: 0;
+}
+
+.dailyPlayBtn {
+    background-color: var(--mantine-color-amberGold-5) !important;
+    color: #130920 !important;
+    font-family: var(--font-family-deltarune) !important;
+    font-size: var(--mantine-font-size-md) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    box-shadow: 0px 4px 10px color-mix(in srgb, var(--mantine-color-amberGold-5) 30%, transparent) !important;
+}
+
+.dailyPlayBtn:hover {
+    transform: scale(1.05) !important;
+    background-color: var(--mantine-color-amberGold-4) !important;
+    box-shadow: 0px 6px 15px color-mix(in srgb, var(--mantine-color-amberGold-5) 50%, transparent) !important;
+}
+
+@media (max-width: 768px) {
+    .dailyCardContent {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: var(--mantine-spacing-md);
+    }
 }

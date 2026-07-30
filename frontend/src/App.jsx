@@ -1,8 +1,8 @@
-// Mantine imports
 import '@mantine/core/styles.css';
 import { Outlet } from 'react-router';
-import Header from './components/Common/Header.jsx';
 import { AppShell } from '@mantine/core';
+import Header from './components/Common/Header.jsx';
+
 
 export default function App() {
     return (

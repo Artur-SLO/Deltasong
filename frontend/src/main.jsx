@@ -7,6 +7,7 @@ import { MantineProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { theme } from './styles/Mantine/theme.js';
 import './styles/global.css';
+import './styles/Mantine/overrides.css';
 import '@mantine/notifications/styles.css';
 
 // Router config

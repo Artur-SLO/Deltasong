@@ -21,6 +21,10 @@ export const theme = createTheme({
         spadeBlue: [
             '#e6f0ff', '#ccdfff', '#99beff', '#669cff', '#337aff',
             '#0058f2', '#004bc4', '#003e9c', '#003078', '#002357'
+        ],
+        amberGold: [
+            '#fff9e6', '#fff0cc', '#ffe299', '#ffd366', '#ffc533',
+            '#ffb000', '#cc8d00', '#996a00', '#664700', '#332300'
         ]
     },
     primaryColor: 'cyberCyan',

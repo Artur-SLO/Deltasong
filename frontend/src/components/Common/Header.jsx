@@ -1,6 +1,7 @@
 import { Container, Group, Title } from '@mantine/core';
 import { Link, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
+import { IconFlame } from '@tabler/icons-react';
 import classes from '../../styles/Mantine/Header.module.css';
 import { getActiveUser, updateActiveUserStreak } from '../../utils/auth';
 
@@ -40,19 +41,20 @@ export default function Header() {
         <header className={classes.header}>
             <Container fluid className={classes.inner}>
 
-                <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to="/" className={classes.linkWrapper}>
                     <Title order={3} className={classes.title}>deltAsong</Title>
                 </Link>
                 <Group gap={3} visibleFrom="xs" className={classes.subjects}>
                     {items}
                 </Group>
-                
-                <Link to="/account" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                <Link to="/account" className={classes.linkWrapper}>
                     {activeUser ? (
                         <Group gap="xs" className={classes.profileGroup}>
                             <div className={classes.streakBadge}>
-                                STREAK: {activeUser.streak}
+                                <IconFlame size={20} className={classes.flameIcon} /> {activeUser.streak}
                             </div>
+                            <span className={classes.headerName}>{activeUser.name}</span>
                             <img 
                                 src={activeUser.avatar} 
                                 alt={activeUser.name} 
@@ -60,10 +62,10 @@ export default function Header() {
                             />
                         </Group>
                     ) : (
-                        <div className={classes.loginButton}>
-                            Login
-                        </div>
-                    )}
+                            <div className={classes.loginButton}>
+                                Login
+                            </div>
+                        )}
                 </Link>
             </Container>
         </header>

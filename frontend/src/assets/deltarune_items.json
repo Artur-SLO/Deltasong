@@ -1,0 +1,1397 @@
+[
+    {
+        "name": "Dark Candy",
+        "description": "Heals 40 HP. A red-and-black star that tastes like marshmallows.",
+        "effects": "+40HP",
+        "type": "Consumables",
+        "source": "Field\nSeam (Shop)\nCyber City",
+        "buy": "40"
+    },
+    {
+        "name": "Darker Candy",
+        "description": "A candy that has grown sweeter with time. Said to taste like toasted marshmallow. +120HP",
+        "effects": "+120HP",
+        "type": "Consumables",
+        "source": "Seam (Shop)\nDark Sanctuary\nMizzle via Embezzle\n2nd Sanctuary 1-99 D$ donation\nStarting Chapter 4 from a Chapter 3 Completion FILE that has Dark Candy in the inventory",
+        "buy": "240 D$ (Chapter 4) 250 D$ (Chapter 5)"
+    },
+    {
+        "name": "ReviveMint",
+        "description": "Heals a fallen ally to MAX HP. A minty green crystal.",
+        "effects": "Heals a downed ally to full HP Heals a non-downed ally by half of their max HP",
+        "type": "Consumables",
+        "source": "Forest (Sheary room)\nCard Castle (Floor 4F)\nCyber Field (Virovirokun shooting puzzle)\nQueen's Mansion (Floor 1F)\nRamb (A-rank or B-rank on Round 1 )\nBall machine\nTV World (Lancer digging puzzle)\nDark Sanctuary (Second bookshelf pushing puzzle)\n2nd Sanctuary (First piano pushing puzzle)\n2nd Sanctuary (Money fountain)\nMizzles by using Embezzle (10% chance)\nGarden (chest near diner)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Glowshard",
+        "description": "A shimmering shard. Its use is unknown. [Chapter 1] A shimmering shard. Its value increases each Chapter. [Chapter 2+]",
+        "effects": "Can be used during a battle against Rudinns to spare it",
+        "type": "Consumables",
+        "source": "??????\nQueen's Mansion (Floor 2F)\nBall machine",
+        "buy": "N/A"
+    },
+    {
+        "name": "Manual",
+        "description": "Ralsei's handmade book full of various tips and tricks.",
+        "effects": "Can be used against several enemies to make them tired",
+        "type": "Consumables",
+        "source": "Castle Town",
+        "buy": "N/A"
+    },
+    {
+        "name": "Top Cake",
+        "description": "This cake will make your taste buds spin! Heals 160HP to the team.",
+        "effects": "+160HP to party",
+        "type": "Consumables",
+        "source": "Forest ( Malius )",
+        "buy": "N/A"
+    },
+    {
+        "name": "SpinCake",
+        "description": "A pastry in the shape of a top. Heals [X] HP to the team.",
+        "effects": "+80HP to party ( Chapter 1 ) +140HP to party ( Chapter 2 ) +150HP to party ( Chapter 3 ) +160HP to party ( Chapter 4 ) +180HP to party ( Chapter 5 )",
+        "type": "Consumables",
+        "source": "Top Chef",
+        "buy": "N/A"
+    },
+    {
+        "name": "Darkburger",
+        "description": "A mysterious black burger made of... Hey, this is just burnt!",
+        "effects": "+70HP ( Kris , Susie , Ralsei ) +20HP ( Noelle )",
+        "type": "Consumables",
+        "source": "Field ( Seam )",
+        "buy": "70"
+    },
+    {
+        "name": "Lancer Cookie",
+        "description": "A cookie shaped like Lancer's face. Maybe not a cookie. Heals 5 / 1 HP?",
+        "effects": "+4HP (overworld, Chapter 1 ) +1HP (overworld, Chapter 2 onward) +50HP (battle)",
+        "type": "Consumables",
+        "source": "Forest (Bake sale)\nCastle Town (Top Bakery)",
+        "buy": "40 D$ (Chapter 1) Free (Chapter 2 and 4)"
+    },
+    {
+        "name": "ClubsSandwich",
+        "description": "A sandwich that can be split into 3. Heals 30 / 70 HP to the team.",
+        "effects": "+30HP to party ( Chapter 1 ) +70HP to party ( Chapter 2 onward)",
+        "type": "Consumables",
+        "source": "Card Castle (Floor 2F)\nParty Dojo",
+        "buy": "N/A"
+    },
+    {
+        "name": "Hearts Donut",
+        "description": "Hearts, don't it!? It's filled with divisive, clotty red jam. +??HP",
+        "effects": "Dark World: +20HP ( Kris ) +80HP ( Susie ) +50HP ( Ralsei ) +30HP ( Noelle ) In battle: +10 – +90HP ( see table )",
+        "type": "Consumables",
+        "source": "Forest (Bake sale, Hathy)",
+        "buy": "40"
+    },
+    {
+        "name": "Choco Diamond",
+        "description": "It's quite small, but some people REALLY like it. +??HP",
+        "effects": "Dark World: +80HP ( Kris ) +20HP ( Susie ) +50HP ( Ralsei ) +35HP ( Noelle and Kris) In battle: +20 – +80HP ( see table )",
+        "type": "Consumables",
+        "source": "Forest (Bake sale, Rudinn)\nCard Castle (Rudinn)",
+        "buy": "40"
+    },
+    {
+        "name": "RouxlsRoux",
+        "description": "A dark roux with a delicate aroma. Also... has worms in it. +50HP",
+        "effects": "+50HP (overworld) +60HP (battle, Chapter 1 ) +50HP (battle, Chapter 2 onward)",
+        "type": "Consumables",
+        "source": "Rouxls Kaard (Shop)",
+        "buy": "50"
+    },
+    {
+        "name": "CD Bagel",
+        "description": "A bagel with a reflective inside. Makes music with each bite. +80HP",
+        "effects": "+80HP",
+        "type": "Consumables",
+        "source": "Cyber Field ( Sweet Cap'n Cakes )\nCyber City Seam (Shop)\nQueen's Mansion (Rooftop, Weird Route )",
+        "buy": "80 100 120 400"
+    },
+    {
+        "name": "Tea",
+        "description": "It's own-flavored tea. The flavor just says \" < Name>.\"",
+        "effects": "+10 – +400HP ( see table )",
+        "type": "Consumables",
+        "source": "Cyber City (vendor)",
+        "buy": "100"
+    },
+    {
+        "name": "RottenTea",
+        "description": "A tea that has deteriorated after a short while due to its poor craftsmanship. +10HP",
+        "effects": "+10HP",
+        "type": "Consumables",
+        "source": "Carrying over any Tea to Chapter 3",
+        "buy": "N/A"
+    },
+    {
+        "name": "DD-Burger",
+        "description": "It's the Double-Dark-Burger. It'll take two bites to finish!",
+        "effects": "+60HP ( Kris , Susie , Ralsei ; bite 1) +70HP (Kris, Susie, Ralsei; bite 2) +20HP ( Noelle ; bite 1 or 2)",
+        "type": "Consumables",
+        "source": "Malius",
+        "buy": "140 (for components)"
+    },
+    {
+        "name": "LightCandy",
+        "description": "White candy with a chalky texture. It'll recover 120HP.",
+        "effects": "+120HP",
+        "type": "Consumables",
+        "source": "Noelle",
+        "buy": "N/A"
+    },
+    {
+        "name": "ButJuice",
+        "description": "It's short for ButlerJuice. It changes color with temperature.",
+        "effects": "+100HP",
+        "type": "Consumables",
+        "source": "Swatch (Shop)",
+        "buy": "200"
+    },
+    {
+        "name": "SpagettiCode",
+        "description": "Spaghetti woven by master coders, made of macarons and ribbons. +30HP to all.",
+        "effects": "+30HP to party",
+        "type": "Consumables",
+        "source": "Swatch (Shop)",
+        "buy": "180"
+    },
+    {
+        "name": "TensionBit",
+        "description": "Raises TP by 32% in battle.",
+        "effects": "+32% TP",
+        "type": "Consumables",
+        "source": "Cyber Field",
+        "buy": "N/A"
+    },
+    {
+        "name": "TensionGem",
+        "description": "Raises TP by 50% in battle.",
+        "effects": "+50% TP",
+        "type": "Consumables",
+        "source": "Party Dojo Ramb (A-rank or B-rank on Round 2 )\nDark Sanctuary",
+        "buy": "N/A"
+    },
+    {
+        "name": "TensionMax",
+        "description": "Raises TP to full in battle.",
+        "effects": "+100% TP",
+        "type": "Consumables",
+        "source": "Ball machine (Gold prizes)\nMalius Flower Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "ReviveDust",
+        "description": "A minty powder that revives all fallen party members to 25% HP.",
+        "effects": "Heals all downed allies to 25% HP, and other allies 10 HP (battle) +50HP to party (overworld)",
+        "type": "Consumables",
+        "source": "Queen's Mansion (Floor 3F)",
+        "buy": "N/A"
+    },
+    {
+        "name": "S.POISON",
+        "description": "A strange concoction made of colorful squares. Will poison you.",
+        "effects": "+40HP, then slowly drains 60HP (battle) -20HP (overworld; Kris , Susie , Ralsei ) 0HP (overworld; Noelle )",
+        "type": "Consumables",
+        "source": "Spamton (Shop)",
+        "buy": "Random, 50-150"
+    },
+    {
+        "name": "DogDollar",
+        "description": "A dollar with a certain dog on it. Its value decreases each Chapter.",
+        "effects": "Can be sold",
+        "type": "Consumables",
+        "source": "Cyber City\nGreen Room\nDark Sanctuary\nTop of Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "TV Dinner",
+        "description": "A TV-shaped premade meal. It even has a giant crumb of your favorite pie. [Save slot 1] A TV-shaped premade meal. The TV's pointy nose is used as a cone for the ice cream. [Save slot 2] A TV-shaped premade meal. Unfortunately, the vegan steak seems to be a normal shape. [Save slot 3]",
+        "effects": "+100HP",
+        "type": "Consumables",
+        "source": "Pippins (Before the Show)\nRamb (C-rank, Round 1 )\nVending machine (Green Room)\nBall machine\nTV World (Shadowguy crossroads)\nTV Studio (Hats hallway)\nMalius ( Chapter 5 )",
+        "buy": "250 D$ (Pippins) 60 POINTs / 200 D$ (vending machine)"
+    },
+    {
+        "name": "Pipis",
+        "description": "A certain person's special \"???\" Cannot be used in battle. [Initial] It's now tweeting. [15+ mins] It's now making a clucking noise. [Another 15+ mins]",
+        "effects": "+100HP",
+        "type": "Consumables",
+        "source": "TV World",
+        "buy": "N/A"
+    },
+    {
+        "name": "FlatSoda",
+        "description": "Flat soda someone already took a big sip from. Recovers 20HP",
+        "effects": "+20HP",
+        "type": "Consumables",
+        "source": "Green Room (Backstage)",
+        "buy": "N/A"
+    },
+    {
+        "name": "TVSlop",
+        "description": "Some sort of bland cafeteria food. The ice cream cone is soggy and saggy.",
+        "effects": "+80HP",
+        "type": "Consumables",
+        "source": "Green Room (Red carpet hall)\nGreen Room (Star Changing Room)\nBall machine\nTV World (Ribbick room)",
+        "buy": "30 POINTs (Red carpet hall) 20 POINTs (Star Changing Room)"
+    },
+    {
+        "name": "ExecBuffet",
+        "description": "A dinner for cushy TV executives. The blue \"caviar\" is unforgettable.",
+        "effects": "+100HP to party",
+        "type": "Consumables",
+        "source": "Ball machine (Gold prizes)\nParty Dojo",
+        "buy": "N/A"
+    },
+    {
+        "name": "DeluxeDinner",
+        "description": "A TV Dinner for high-ranking contestants. Comes with detachable antennas. +140 HP.",
+        "effects": "+140HP",
+        "type": "Consumables",
+        "source": "Vending machine (Green Room)\nBall machine\nTV World (Shadowguy hallways)\nMalius ( Chapter 5 )",
+        "buy": "120 POINTs / 600 D$"
+    },
+    {
+        "name": "PunchBowl",
+        "description": "A bowl of sick elixir that packs an almost physical punch. +200HP to all.",
+        "effects": "+200HP to party",
+        "type": "Consumables",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "Flavigne",
+        "description": "A small white candy in various floral flavors. Rumored to have been a bullet pattern. +130HP.",
+        "effects": "+130HP",
+        "type": "Consumables",
+        "source": "Garden (Ideal Diner)\nCliffs (Pink's shop)\nFlower Cafe\nTop of Castle (Green's Shop)",
+        "buy": "333 D$ (Ideal Diner, Pink's shop, Flower Cafe) 334 D$ (Green's Shop)"
+    },
+    {
+        "name": "GreenTea",
+        "description": "A sweet orange tea with a strong flavor of cardadad. Made by \"Green.\" +180HP.",
+        "effects": "+180HP",
+        "type": "Consumables",
+        "source": "Garden ( chests )\nGarden (Ideal Diner)\nFlower Cafe\nTop of Castle (Green's Shop)",
+        "buy": "777 D$ (Ideal Diner, Flower Cafe) 778 D$ (Green's Shop)"
+    },
+    {
+        "name": "OrangeJuice",
+        "description": "Green juice made by a girl named \"Orange.\" A smoothie of aloe and citrine. +80HP.",
+        "effects": "+80HP",
+        "type": "Consumables",
+        "source": "Garden (Ideal Diner)\nFlower Cafe\nTop of Castle (Green's Shop)",
+        "buy": "222 D$ (Ideal Diner, Flower Cafe) 223 D$ (Green's Shop)"
+    },
+    {
+        "name": "AncientSweet",
+        "description": "A chocolatey cone etched with arcane glyphs. Only Kris can eat it. +400 HP.",
+        "effects": "+400HP ( Kris ) +40HP ( Susie , Ralsei , Noelle )",
+        "type": "Consumables",
+        "source": "Church",
+        "buy": "N/A"
+    },
+    {
+        "name": "Rhapsotea",
+        "description": "A smooth, silvery drink. It sounds like whispered singing as it's poured. +115 HP.",
+        "effects": "+115HP",
+        "type": "Consumables",
+        "source": "Old Man\n2nd Sanctuary (Study)\n3rd Sanctuary (Strange spring)",
+        "buy": "250/99/100/300"
+    },
+    {
+        "name": "Scarlixir",
+        "description": "A red brew with a sickeningly fruity taste. Recovers 160 HP.",
+        "effects": "+160HP ( Kris , Susie , Ralsei ) +155/5HP ( Noelle and Kris, when used by Noelle)",
+        "type": "Consumables",
+        "source": "Old Man\nMizzle via Embezzle\nDark Sanctuary\n2nd Sanctuary (100-499 D$ donation)\n3rd Sanctuary (Strange spring)\n3rd Sanctuary (after losing twice to the Titan )",
+        "buy": "450/500"
+    },
+    {
+        "name": "BitterTear",
+        "description": "Bitter water that fell in droplets from the sky. Recovers all HP.",
+        "effects": "Heals a party member to full HP",
+        "type": "Consumables",
+        "source": "Dark Sanctuary ( Miss Mizzle via Embezzle)\n2nd Sanctuary (2000-9998 D$ donation)",
+        "buy": "N/A"
+    },
+    {
+        "name": "TreeCake",
+        "description": "A cake of bread laden with joyful memories. Recovers 160 HP to all.",
+        "effects": "+160HP to party",
+        "type": "Consumables",
+        "source": "Hopschef",
+        "buy": "N/A"
+    },
+    {
+        "name": "S.POTION",
+        "description": "An energy drink collaborating with a certain car brand. Recovers 200 HP.",
+        "effects": "+200HP",
+        "type": "Consumables",
+        "source": "Castle Town",
+        "buy": "N/A"
+    },
+    {
+        "name": "Raw Moon",
+        "description": "A bubbly liquid in a sweet floral blue. +Slight%TP, +100HP unless you like it more.",
+        "effects": "+100HP ( Susie , Ralsei , Noelle ) +200HP ( Kris )",
+        "type": "Consumables",
+        "source": "Flower Cafe (drink dispenser)",
+        "buy": "30 F$"
+    },
+    {
+        "name": "Phanta",
+        "description": "Grape-flavored phantasmagoria of a soda's dream. +Slight%TP, +100HP unless you like it more.",
+        "effects": "+100HP ( Kris , Ralsei , Noelle ) +200HP ( Susie )",
+        "type": "Consumables",
+        "source": "Flower Cafe (drink dispenser)",
+        "buy": "30 F$"
+    },
+    {
+        "name": "FlowerySoda",
+        "description": "Embarrassingly white lactose flavor. Said to be Ralsei's favorite on the bottle.",
+        "effects": "+50HP ( Kris , Susie , Noelle ) +200HP (battle, Ralsei )",
+        "type": "Consumables",
+        "source": "Flower Cafe (drink dispenser)",
+        "buy": "30 F$"
+    },
+    {
+        "name": "Shikacola",
+        "description": "A natural drink infused with nutmeg and deer hair. Heals all party members. +80HPall",
+        "effects": "Heals to party: +80HP ( Kris , Susie , Ralsei ) +5HP ( Noelle )",
+        "type": "Consumables",
+        "source": "Flower Cafe (drink dispenser)",
+        "buy": "30 F$"
+    },
+    {
+        "name": "Amber Card",
+        "description": "A thin square charm that sticks to you, increasing defense.",
+        "effects": "+1DF",
+        "type": "Armor",
+        "source": "Seam (Shop)\nRouxls Kaard (Shop)\nDefault armor if starting in Chapter 2 or 3",
+        "buy": "100"
+    },
+    {
+        "name": "Dice Brace",
+        "description": "A bracelet made out of various symbol-inscribed cubes.",
+        "effects": "+2DF",
+        "type": "Armor",
+        "source": "Forest (Second card suit puzzle)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Pink Ribbon",
+        "description": "A cute hair ribbon that increases the range bullets increase tension. [Chapter 2] A cute hair ribbon. Increases the range at which bullets raise tension. [Chapter 3]",
+        "effects": "+1DF, GrazeArea",
+        "type": "Armor",
+        "source": "Cyber City (First Addison district)\nRamb (T-rank or S-rank on Round 1 )",
+        "buy": "N/A"
+    },
+    {
+        "name": "White Ribbon",
+        "description": "A crinkly hair ribbon that slightly increases your defense.",
+        "effects": "+2DF, Cuteness",
+        "type": "Armor",
+        "source": "Field (Maze of Death)\nRamb (T-rank or S-rank on Round 2 )\nRalsei's default armor if starting in Chapter 2",
+        "buy": "N/A"
+    },
+    {
+        "name": "IronShackle",
+        "description": "Shackle that ironically increases your attack and defense.",
+        "effects": "+1AT, +2DF",
+        "type": "Armor",
+        "source": "Card Castle (Prison B1)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Jevilstail",
+        "description": "A J-shaped tail that gives you devilenergy.",
+        "effects": "+2AT, +2DF, +2 Magic",
+        "type": "Armor",
+        "source": "Jevil",
+        "buy": "N/A"
+    },
+    {
+        "name": "Silver Card",
+        "description": "A square charm that increases dropped money by 5%",
+        "effects": "+2DF, $ +5%",
+        "type": "Armor",
+        "source": "Malius",
+        "buy": "200 (for components)"
+    },
+    {
+        "name": "TwinRibbon",
+        "description": "Two ribbons. You'll have to put your hair into pigtails.",
+        "effects": "+3DF, GrazeArea",
+        "type": "Armor",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "GlowWrist",
+        "description": "A tough bracelet made of green wires, and studded with sharp glowing lights.",
+        "effects": "+2DF",
+        "type": "Armor",
+        "source": "Cyber Field\nSweet Cap'n Cakes (Shop)\nDefault armor if starting in Chapter 3 or 4",
+        "buy": "200"
+    },
+    {
+        "name": "ChainMail",
+        "description": "Chain-armor. Send it to 10 others or it'll lose its defensive rating",
+        "effects": "+3DF",
+        "type": "Armor",
+        "source": "Queen's Mansion (Floor 1F)",
+        "buy": "N/A"
+    },
+    {
+        "name": "B.ShotBowtie",
+        "description": "A handsome bowtie. Looks like the brand name has been cut off.",
+        "effects": "+2DF, +1 Magic",
+        "type": "Armor",
+        "source": "Swatch (Shop)",
+        "buy": "300"
+    },
+    {
+        "name": "SpikeBand",
+        "description": "A black wristband covered in spikes. Has the tendency to get stuck to itself.",
+        "effects": "+2AT, +1DF",
+        "type": "Armor",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "Silver Watch",
+        "description": "Grazing bullets affects the turn length by 10% more",
+        "effects": "+2DF, GrazeTime",
+        "type": "Armor",
+        "source": "Noelle (default armor)",
+        "buy": "N/A"
+    },
+    {
+        "name": "TensionBow",
+        "description": "Gain 10% more tension from grazing bullets",
+        "effects": "+2DF, TPGain",
+        "type": "Armor",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "Mannequin",
+        "description": "It's a mannequin with the clothes permanently attached. Useless",
+        "effects": "???, reduces damage received from Puppet/Cat attacks by 35% (20% in Chapter 5 )",
+        "type": "Armor",
+        "source": "Cyber City",
+        "buy": "300"
+    },
+    {
+        "name": "FrayedBowtie",
+        "description": "An old bowtie. It seems to have lost much of its defensive value.",
+        "effects": "+1AT +1DF +1 Magic, reduces damage received from Puppet/Cat attacks by 15%",
+        "type": "Armor",
+        "source": "Spamton (Shop)",
+        "buy": "Random, 50-150"
+    },
+    {
+        "name": "Dealmaker",
+        "description": "Fashionable pink and yellow glasses. Greatly increases $ gained, and...?",
+        "effects": "+5DF, +5 Magic, $ +30%, reduces damage received from Puppet/Cat attacks by 40% (20% in Chapter 5 )",
+        "type": "Armor",
+        "source": "Spamton NEO",
+        "buy": "N/A"
+    },
+    {
+        "name": "RoyalPin",
+        "description": "A brooch engraved with Queen's face. Careful of the sharp point.",
+        "effects": "+3DF, +1 Magic",
+        "type": "Armor",
+        "source": "Noelle (default armor)\nSwatch (Shop)",
+        "buy": "1000"
+    },
+    {
+        "name": "Shadow Mantle",
+        "description": "Shadows slip off like water. Greatly protects against Dark and Star attacks.",
+        "effects": "+[Chapter number] DF, Dark/Star",
+        "type": "Armor",
+        "source": "Sword Route",
+        "buy": "N/A"
+    },
+    {
+        "name": "LodeStone",
+        "description": "A lodestone token shaped like a snail's shell.",
+        "effects": "+2DF, TPGain",
+        "type": "Armor",
+        "source": "Vending machine (Green Room)\nRamb (C-rank, Round 2 )",
+        "buy": "60 POINTs / 220 D$"
+    },
+    {
+        "name": "GingerGuard",
+        "description": "A steel bangle tempered by extreme flame. Its shape is humanoid in nature.",
+        "effects": "+3DF",
+        "type": "Armor",
+        "source": "Vending machine (Green Room)\nBall machine Default armor if starting in Chapter 4 or Chapter 5",
+        "buy": "111 POINTs / 862 D$"
+    },
+    {
+        "name": "BlueRibbon",
+        "description": "A blue cheer bow. When the user uses a healing move, it recovers slightly more HP.",
+        "effects": "+1DF, +1 Magic, Heal+",
+        "type": "Armor",
+        "source": "Ball machine (Gold prizes)",
+        "buy": "N/A"
+    },
+    {
+        "name": "TennaTie",
+        "description": "A giant, heavy-duty, bullet-proof tie. How to even wear it...?",
+        "effects": "+5DF, -2 Magic",
+        "type": "Armor",
+        "source": "Ball machine (Gold prizes)",
+        "buy": "N/A"
+    },
+    {
+        "name": "MonarchRBN",
+        "description": "A ribbon like the wings of a butterfly. Increases healing ability when equipped.",
+        "effects": "+6DF, +2 Magic, HasAntenna",
+        "type": "Armor",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "TrueTie",
+        "description": "The genuine tie worn by a forgotten TV star. Defends against the Puppet&Cat element.",
+        "effects": "+1AT, +5DF, CatDefend",
+        "type": "Armor",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "DogWidow",
+        "description": "A brooch in the shape of a golden pooch. You lose almost all money after battle.",
+        "effects": "+6DF, $ -90%",
+        "type": "Armor",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "RedRibbon",
+        "description": "A ribbon with an inscription to drive away resident spirits, if they don't pay.",
+        "effects": "+4DF, +1 Magic",
+        "type": "Armor",
+        "source": "Garden Flower Castle",
+        "buy": "555"
+    },
+    {
+        "name": "NetskieHat",
+        "description": "A white-yellow hat for someone with fox ears. Somehow you can wear more than one.",
+        "effects": "+6DF",
+        "type": "Armor",
+        "source": "Garden\nCliffs\nTop of Castle",
+        "buy": "1500 D$ (Pink's shop) 1501 D$ (Green's Shop)"
+    },
+    {
+        "name": "SethSpecs",
+        "description": "A tactician's glasses. Become invulnerable for longer after being damaged.",
+        "effects": "+4DF, +6 Magic, InvTime+",
+        "type": "Armor",
+        "source": "Top of Castle (Flower item shop)",
+        "buy": "100F$ and 3 P$"
+    },
+    {
+        "name": "YellowHat",
+        "description": "The hat of a just cowboy. Makes spells 20% more effective.",
+        "effects": "+4AT, +4DF, +4 Magic, Skill20%",
+        "type": "Armor",
+        "source": "Top of Castle (Flower item shop)",
+        "buy": "100F$ and 3 P$"
+    },
+    {
+        "name": "O.Glove",
+        "description": "The glove of a brave fighter. Susie's SCYTHEMARE will cost less TP.",
+        "effects": "+4AT, +8DF, ScytheTP-",
+        "type": "Armor",
+        "source": "Top of Castle (Flower item shop)",
+        "buy": "100F$ and 3 P$"
+    },
+    {
+        "name": "GreenApron",
+        "description": "The apron of a kind chef. The wearer recovers 16% of their max HP after defending.",
+        "effects": "+7DF, DefendHeal",
+        "type": "Armor",
+        "source": "Top of Castle (Flower item shop)",
+        "buy": "100F$ and 3 P$"
+    },
+    {
+        "name": "Waferguard",
+        "description": "Although it looks brittle, it contains a magical energy that blunts damage on impact. +4DF",
+        "effects": "+4DF",
+        "type": "Armor",
+        "source": "Old Man (Shop)\n3rd Sanctuary (chest)",
+        "buy": "900"
+    },
+    {
+        "name": "MysticBand",
+        "description": "A silver armlet stained with amber. Increases magic only. MAG +4",
+        "effects": "+4 Magic",
+        "type": "Armor",
+        "source": "Dark Sanctuary (Worship room)",
+        "buy": "N/A"
+    },
+    {
+        "name": "PowerBand",
+        "description": "A silver armlet stained with red essence. Increases strength only. ATK +4",
+        "effects": "+4AT",
+        "type": "Armor",
+        "source": "Dark Sanctuary\n2nd Sanctuary (if MysticBand was not obtained)",
+        "buy": "N/A"
+    },
+    {
+        "name": "PrincessRBN",
+        "description": "Elegant lace ribbon with gloves, delicate enough to see through. +4 DEF +2 ATK",
+        "effects": "+2AT, +4DF, Elegance",
+        "type": "Armor",
+        "source": "3rd Sanctuary",
+        "buy": "N/A"
+    },
+    {
+        "name": "GoldWidow",
+        "description": "A spider made of gold. It gathers coins into it, reducing $ gained.",
+        "effects": "+1AT, +5DF, +1 Magic, $ -10%",
+        "type": "Armor",
+        "source": "2nd Sanctuary (Money fountain, 9999 D$ donation)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Wood Blade",
+        "description": "A wooden practice blade with a carbon-reinforced core.",
+        "effects": "N/A",
+        "type": "Weapons",
+        "source": "Kris 's starting weapon in Chapter 1 and Chapter 2",
+        "buy": "N/A",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "Spookysword",
+        "description": "A black-and-orange sword with a bat hilt.",
+        "effects": "+2AT, Spookiness UP",
+        "type": "Weapons",
+        "source": "Field ( Seam )",
+        "buy": "200",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "TwistedSwd",
+        "description": "A strange blade",
+        "effects": "+16AT, Trance",
+        "type": "Weapons",
+        "source": "Malius (currently unobtainable)",
+        "buy": "N/A",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "BounceBlade",
+        "description": "A pink saber with a rubber blade. Weak, but increases defence.",
+        "effects": "+2AT, Defense",
+        "type": "Weapons",
+        "source": "Cyber City",
+        "buy": "N/A",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "MechaSaber",
+        "description": "The blade extends when you press the hilt. CHA-CHK!",
+        "effects": "+4AT, Annoying",
+        "type": "Weapons",
+        "source": "Cyber Field ( Sweet Cap'n Cakes )\nDefault weapon if starting in Chapter 3",
+        "buy": "250",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "Saber10",
+        "description": "A saber made of 10 cactus needles. Fortunately, can deal more than 10 damage.",
+        "effects": "+6AT",
+        "type": "Weapons",
+        "source": "Vending machine Green Room (Star Changing Room)\nDefault weapon if starting in Chapter 4",
+        "buy": "80",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "BlackShard",
+        "description": "A dagger-like shard of the Black Knife. Strikes the weakness of dark-element enemies.",
+        "effects": "+16AT, SlayDark",
+        "type": "Weapons",
+        "source": "Knight",
+        "buy": "N/A",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "WoodBlade2",
+        "description": "A sword that is arbitrarily stronger because it fits the setting of Chapter 5.",
+        "effects": "+10AT, Coolness",
+        "type": "Weapons",
+        "source": "Cliffs (Shop)",
+        "buy": "500",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "AquaKnife",
+        "description": "A mischievous blade. Attacks with this weapon are easier to make critical.",
+        "effects": "+10AT, +2DF, Critical",
+        "type": "Weapons",
+        "source": "Top of Castle (Flower item shop)",
+        "buy": "100F$ and 3 P$",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "JingleBlade",
+        "description": "A lance-like sword with red-and-white stripes. Perfect for jousting.",
+        "effects": "+7AT, +1DF, Festive",
+        "type": "Weapons",
+        "source": "Entering the Dark World with the Holiday Pencil in the inventory",
+        "buy": "N/A",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "Winglade",
+        "description": "A majestic sword with a white feathered hilt. Slightly increases money won.",
+        "effects": "+8AT, $ +5%",
+        "type": "Weapons",
+        "source": "Dark Sanctuary Default weapon if starting in Chapter 5",
+        "buy": "N/A",
+        "weapon_type": "Swords"
+    },
+    {
+        "name": "Mane Ax",
+        "description": "Beginner's ax forged from the mane of a dragon whelp.",
+        "effects": "N/A",
+        "type": "Weapons",
+        "source": "Susie 's starting weapon in Chapter 1 and Chapter 2",
+        "buy": "N/A",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "Brave Ax",
+        "description": "A glossy ax from a block warrior. Suitable for heroes.",
+        "effects": "+2AT, Guts Up",
+        "type": "Weapons",
+        "source": "Rouxls Kaard (Shop)",
+        "buy": "150",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "Devilsknife",
+        "description": "Skull-emblazoned scythe-ax. Reduces Rudebuster's cost by 10",
+        "effects": "+5AT, +4 Magic, Buster TP DOWN",
+        "type": "Weapons",
+        "source": "Jevil",
+        "buy": "N/A",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "AutoAxe",
+        "description": "Make sure to charge it by plugging it into the wall.",
+        "effects": "+4AT, BadIdea",
+        "type": "Weapons",
+        "source": "Cyber Field ( Sweet Cap'n Cakes )\nDefault weapon if starting in Chapter 3",
+        "buy": "250",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "ToxicAxe",
+        "description": "An axe used to clear wastelands in a fetid swamp. Not poison, but gross.",
+        "effects": "+6AT",
+        "type": "Weapons",
+        "source": "Vending machine\nDefault weapon if starting in Chapter 4 or Chapter 5",
+        "buy": "80",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "Thatchet",
+        "description": "An axe made of brambles. It's rumored its wickedness infects anything it touches.",
+        "effects": "+10AT, Wicked",
+        "type": "Weapons",
+        "source": "Garden, golden watering can subarea",
+        "buy": "N/A",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "JusticeAxe",
+        "description": "It has no special powers. However, in order to attain this item, you became much stronger!",
+        "effects": "+12AT, ???",
+        "type": "Weapons",
+        "source": "Old Man",
+        "buy": "N/A",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "AbsorbAx",
+        "description": "A long, curved axe with an indent. Scoop up HP when you attack.",
+        "effects": "+8AT, Vampire",
+        "type": "Weapons",
+        "source": "Dark Sanctuary",
+        "buy": "N/A",
+        "weapon_type": "Axes"
+    },
+    {
+        "name": "Red Scarf",
+        "description": "A basic scarf made of lightly magical fiber.",
+        "effects": "N/A",
+        "type": "Weapons",
+        "source": "Ralsei 's starting weapon in Chapter 1 and Chapter 2",
+        "buy": "N/A",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "Ragger",
+        "description": "A rugged scarf that cuts enemies like a dagger.",
+        "effects": "+2AT",
+        "type": "Weapons",
+        "source": "Forest (Dark Ponmen room)",
+        "buy": "N/A",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "DaintyScarf",
+        "description": "Delicate scarf that increases healing power but has no attack.",
+        "effects": "+2 Magic, Fluffiness UP",
+        "type": "Weapons",
+        "source": "Rouxls Kaard (Shop)",
+        "buy": "200",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "FiberScarf",
+        "description": "A scarf made of soft microfiber. Balances attack and magic.",
+        "effects": "+3AT, +2 Magic ( Chapter 3 ) +2AT, +2 Magic (Chapter 2 , 4 , 5 )",
+        "type": "Weapons",
+        "source": "Cyber Field (APPLE puzzle)\nDefault weapon if starting in Chapter 3",
+        "buy": "N/A",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "Ragger2",
+        "description": "A sharp and scratchy scarf. Worse healing, better attack.",
+        "effects": "+5AT, -1 Magic, Prickly",
+        "type": "Weapons",
+        "source": "Cyber Field",
+        "buy": "N/A",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "PuppetScarf",
+        "description": "A scarf made of strange strings. For those that abandon healing.",
+        "effects": "+10AT, -6 Magic",
+        "type": "Weapons",
+        "source": "Spamton NEO",
+        "buy": "N/A",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "FlexScarf",
+        "description": "A scarf that is warm and fuzzy, but with a metal core that lets it keep its shape.",
+        "effects": "+4AT, +1 Magic",
+        "type": "Weapons",
+        "source": "Vending machine\nDefault weapon if starting in Chapter 4 or Chapter 5",
+        "buy": "80",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "BlueShoes",
+        "description": "Shoes from a prestigious dancer. Ralsei's PACIFY costs 0% TP.",
+        "effects": "+2AT, +4DF, +6 Magic, Pacify0TP",
+        "type": "Weapons",
+        "source": "Top of Castle (Flower item shop)",
+        "buy": "100F$ and 3 P$",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "BrokenScarf",
+        "description": "A scarf that was torn to pieces in the battle, revealing it was all for show.",
+        "effects": "+12AT, +3DF, +3 Magic (unlisted)",
+        "type": "Weapons",
+        "source": "Having the FloweryScarf at the end of Chapter 5",
+        "buy": "N/A",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "MistleWP",
+        "description": "A parasitic ivy whip with a nature's power. Only experts can use it as a scarf.",
+        "effects": "+6AT, +2 Magic",
+        "type": "Weapons",
+        "source": "Cliffs (chest)",
+        "buy": "N/A",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "ScarfMark",
+        "description": "A thin scarf with a deep sheen. Holy writing has been pressed into it, imbuing it with magic.",
+        "effects": "+4AT, +1DF, +1 Magic",
+        "type": "Weapons",
+        "source": "Study",
+        "buy": "900",
+        "weapon_type": "Scarves"
+    },
+    {
+        "name": "SnowRing",
+        "description": "A ring with the emblem of the snowflake",
+        "effects": "N/A",
+        "type": "Weapons",
+        "source": "Noelle 's default weapon",
+        "buy": "N/A",
+        "weapon_type": "Rings"
+    },
+    {
+        "name": "ThornRing",
+        "description": "Wearer takes damage from pain Reduces the TP cost of ice spells",
+        "effects": "+14AT, +12 Magic, Trance",
+        "type": "Weapons",
+        "source": "Spamton (Weird Route)",
+        "buy": "1997",
+        "weapon_type": "Rings"
+    },
+    {
+        "name": "FreezeRing",
+        "description": "A ring with a snowglobe on it. ... is that someone inside?",
+        "effects": "+4AT, +4 Magic",
+        "type": "Weapons",
+        "source": "Cyber City ( Addison , Weird Route )",
+        "buy": "N/A",
+        "weapon_type": "Rings"
+    },
+    {
+        "name": "BrokenSwd",
+        "description": "A rejected sword cut into 2 pieces. Not even you can equip this...",
+        "effects": "Failure",
+        "type": "Weapons",
+        "source": "Spamton (Shop)",
+        "buy": "Random, 50-150 D$ 2 D$, when first entering the shop",
+        "weapon_type": "Other"
+    },
+    {
+        "name": "FloweryScarf",
+        "description": "A scarf which says \"I <3 Flowery\" on it. It's the perfect size for Ralsei.",
+        "effects": "+70AT, +70DF, +70 Magic, TheBest",
+        "type": "Weapons",
+        "source": "Top of Castle (Flower item shop)",
+        "buy": "1 F$",
+        "weapon_type": "Other"
+    },
+    {
+        "name": "Cell Phone",
+        "description": "Can be used to make calls.",
+        "effects": "Can call various characters",
+        "type": "Key Items",
+        "source": "Default item",
+        "buy": "N/A"
+    },
+    {
+        "name": "Egg",
+        "description": "Not too important, not too unimportant. (Check) It's evidence. You'll know what it was evidence for when it happens. (Evidence)",
+        "effects": "N/A",
+        "type": "Key Items",
+        "source": "Forest (Hidden room)\nCyber City (Hidden room)\nMancountry\n2nd Sanctuary (Therapy room)\nCliffs (Hidden room)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Broken Cake",
+        "description": "Though broken, it seethes with power. A master smith could fix it.",
+        "effects": "Can be turned into the Top Cake by Malius",
+        "type": "Key Items",
+        "source": "Field",
+        "buy": "N/A"
+    },
+    {
+        "name": "Broken Key",
+        "description": "It's the top part of a key. A smith could fix all three parts. It's the middle part of a key. A smith could fix all three parts. It's the bottom part of a key. A smith could fix all three parts.",
+        "effects": "Can be combined to make the Door Key",
+        "type": "Key Items",
+        "source": "Field (Seam's Shop)\nForest (Sheary room)\nField (Card suit puzzle)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Door Key",
+        "description": "The key to a mysterious cell. Something feels strange about it.",
+        "effects": "Allows the party to fight Jevil .",
+        "type": "Key Items",
+        "source": "Malius",
+        "buy": "N/A"
+    },
+    {
+        "name": "Lancer",
+        "description": "Varies",
+        "effects": "Plays a cartoon splat noise Plays Cool Mixtape after acquiring Queen's Mixtape",
+        "type": "Key Items",
+        "source": "Lancer (Castle Town, Chapter 2)\nBall machine",
+        "buy": "N/A"
+    },
+    {
+        "name": "Rouxls Kaard",
+        "description": "Thou gazeth upon a man most handsometh. This daringst genius, adoredeth beyondth all hey let me speakst",
+        "effects": "Appears in the Key Items menu Escapes the Key Items menu",
+        "type": "Key Items",
+        "source": "Rouxls Kaard",
+        "buy": "N/A"
+    },
+    {
+        "name": "EmptyDisk",
+        "description": "A data disk from a strange machine. Didn't someone want this?",
+        "effects": "Can be given to Spamton",
+        "type": "Key Items",
+        "source": "Queen's Mansion (Basement)",
+        "buy": "N/A"
+    },
+    {
+        "name": "LoadedDisk",
+        "description": "A strange disk. You can feel it smiling in your hand.",
+        "effects": "Unlocks Spamton NEO",
+        "type": "Key Items",
+        "source": "Spamton",
+        "buy": "N/A"
+    },
+    {
+        "name": "KeyGen",
+        "description": "A shady-looking program that can open certain doors.",
+        "effects": "Unlocks a lock to the Basement in Queen's Mansion",
+        "type": "Key Items",
+        "source": "Spamton (Shop)",
+        "buy": "Random, 0-49030"
+    },
+    {
+        "name": "Shadow Crystal",
+        "description": "A sharp shadow moves like water in the hand. You have collected [#].",
+        "effects": "Is taken by Seam in Castle Town .",
+        "type": "Key Items",
+        "source": "Jevil\nSpamton NEO\nKnight\nHammer of Justice\nPink",
+        "buy": "N/A"
+    },
+    {
+        "name": "Starwalker",
+        "description": "The original (Starwalker)",
+        "effects": "Appears in the Key Items menu",
+        "type": "Key Items",
+        "source": "Starwalker",
+        "buy": "N/A"
+    },
+    {
+        "name": "PureCrystal",
+        "description": "The shadow purified by the cat",
+        "effects": "N/A",
+        "type": "Key Items",
+        "source": "Currently unobtainable",
+        "buy": "N/A"
+    },
+    {
+        "name": "OddController",
+        "description": "A gamepad no one wanted to use. The buttons are an ugly pink and yellow.",
+        "effects": "Allows use of the game console in the backstage .",
+        "type": "Key Items",
+        "source": "Green Room (Backstage)",
+        "buy": "N/A"
+    },
+    {
+        "name": "TripTicket",
+        "description": "A ticket to nowhere. It shows a map pointing to the left of a red X...",
+        "effects": "Allows access to Mancountry",
+        "type": "Key Items",
+        "source": "TV World (Nowhere)\nGreen Room (Ball machine)",
+        "buy": "N/A"
+    },
+    {
+        "name": "LancerCon",
+        "description": "Lancer's controllers. They're covered in dirt.",
+        "effects": "Allows Lancer to be playable in TV World 's The Legend of Tenna puzzles.",
+        "type": "Key Items",
+        "source": "TV World (Lancer's room)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Scissors",
+        "description": "Obviously stolen scissors which could easily be used to cut up cloth.",
+        "effects": "Can be in Yellow's Justice ACT.",
+        "type": "Key Items",
+        "source": "Flower Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "YellowShred",
+        "description": "A shred of yellow fabric with a corn pattern. The edge is black and smells.",
+        "effects": "Can be used in Yellow's Justice ACT.",
+        "type": "Key Items",
+        "source": "Flower Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "BootOil",
+        "description": "A black, opaque oil with no distinctive odor. Used to unsqueaken Cowboy boots.",
+        "effects": "Can be used in Yellow's Justice ACT.",
+        "type": "Key Items",
+        "source": "Flower Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "RedSplatter",
+        "description": "A mysterious puddle of red criminal liquid.",
+        "effects": "Can be used in Yellow's Justice ACT.",
+        "type": "Key Items",
+        "source": "Flower Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "BromideR",
+        "description": "\"Good night, sweet prince\" USE this item to observe it.",
+        "effects": "Displays an illustration of Flowery .",
+        "type": "Key Items",
+        "source": "Flower Castle (Flower Cafe path, drink dispenser)",
+        "buy": "10/-1 F$"
+    },
+    {
+        "name": "Petal Feather",
+        "description": "A petal which makes you light as a feather. Allows the use of MYSTERIOUS STATUES. [Before giving Seth Berdly 's feather, or after giving it if Berdly was frozen in Chapter 2's Weird Route ] Allows use of MYSTERIOUS STATUES. Not to be confused with a certain other feather. [After giving Seth Berdly's feather, if Berdly was not frozen]",
+        "effects": "Transforms gameplay into a platformer.",
+        "type": "Key Items",
+        "source": "Garden",
+        "buy": "N/A"
+    },
+    {
+        "name": "PerpBook",
+        "description": "A purple book with a decidedly floral scent.",
+        "effects": "Can be used in Yellow's Justice ACT.",
+        "type": "Key Items",
+        "source": "Flower Castle (Yellow's show)",
+        "buy": "N/A"
+    },
+    {
+        "name": "BlueString",
+        "description": "String which could be used to bound something in care.",
+        "effects": "Can be used in Yellow's Justice ACT.",
+        "type": "Key Items",
+        "source": "Flower Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "TrainPlan",
+        "description": "A blueprint which details how to alter tracks into a smashing machine with 2 rollercoasts.",
+        "effects": "Can be used in Yellow's Justice ACT.",
+        "type": "Key Items",
+        "source": "Flower Castle",
+        "buy": "N/A"
+    },
+    {
+        "name": "YellowKey",
+        "description": "A yellow key that looks like it could open a yellow door. Smells of corn.",
+        "effects": "Opens the Yellow Door",
+        "type": "Key Items",
+        "source": "Flower Castle (Castle West)",
+        "buy": "N/A"
+    },
+    {
+        "name": "SheetMusic",
+        "description": "Music that Susie attempted to transcribe. USE it to read it.",
+        "effects": "Opens a gate in the Study",
+        "type": "Key Items",
+        "source": "Dark Sanctuary",
+        "buy": "N/A"
+    },
+    {
+        "name": "ClaimbClaws",
+        "description": "Claws so small they conveniently can't be seen. Use them to climb up obvious walls.",
+        "effects": "Allows Kris to climb obvious walls.",
+        "type": "Key Items",
+        "source": "Dark Sanctuary ( Jackenstein )",
+        "buy": "N/A"
+    },
+    {
+        "name": "MysteryKey",
+        "description": "A pink key with an ectoplasmic aura. Maybe it's a family heirloom.",
+        "effects": "Unlocks the Pink Door",
+        "type": "Key Items",
+        "source": "Cliffs (Shop)",
+        "buy": "10 P$"
+    },
+    {
+        "name": "BromideF",
+        "description": "\"Secret Steamy Bathtime\" USE this item to observe it.",
+        "effects": "Displays an illustration of Flowery .",
+        "type": "Key Items",
+        "source": "Top of Castle (Annoying Dog room)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Hot Chocolate",
+        "description": "Topped with home-made marshmallows in the shape of bunnies.",
+        "effects": "Changes NPC dialogue in Hometown .",
+        "type": "Light World items",
+        "source": "QC's Diner Asgore (Weird Route, Chapter 4)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Pencil",
+        "description": "Mightier than a sword? Maybe equal at best.",
+        "effects": "+1AT",
+        "type": "Light World items",
+        "source": "Beginning of the game Exiting the Dark World with the Wood Blade equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "Bandage",
+        "description": "It has cartoon characters on it.",
+        "effects": "+1HP",
+        "type": "Light World items",
+        "source": "Hometown (default armor)",
+        "buy": "N/A"
+    },
+    {
+        "name": "Bouquet",
+        "description": "A bouquet of beautiful flowers in many colors. Perhaps it could be offered to someone.",
+        "effects": "Can be given to Toriel",
+        "type": "Light World items",
+        "source": "Flower King",
+        "buy": "N/A"
+    },
+    {
+        "name": "Ball of Junk",
+        "description": "A small ball of accumulated things. [Chapter 1] A small ball of accumulated things in your pocket. [Chapters 2, 4 & 5] It smells like scratch'n'sniff marshmallow stickers. [With at least one Dark Candy in Dark World inventory]",
+        "effects": "Represents the Dark World inventory .",
+        "type": "Light World items",
+        "source": "Leaving the Dark World",
+        "buy": "N/A"
+    },
+    {
+        "name": "Halloween Pencil",
+        "description": "Orange with black bats on it.",
+        "effects": "+1AT",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the Spookysword equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "Egg",
+        "description": "",
+        "effects": "Can be placed in Hometown in Chapter 1 and 2 Can appear in Alphys's classroom in Chapter 4",
+        "type": "Light World items",
+        "source": "Unknown",
+        "buy": "N/A"
+    },
+    {
+        "name": "Cards",
+        "description": "The Jack of Spades, and the Rules Card.",
+        "effects": "Represents Lancer and Rouxls Kaard .",
+        "type": "Light World items",
+        "source": "Leaving the Dark World",
+        "buy": "N/A"
+    },
+    {
+        "name": "Box of Heart Candy",
+        "description": "It's not yours. Will that stop you?",
+        "effects": "Sets HP to 19",
+        "type": "Light World items",
+        "source": "Undyne",
+        "buy": "N/A"
+    },
+    {
+        "name": "Glass",
+        "description": "There is a small shard of something in your pocket. It feels like glass, but...",
+        "effects": "N/A",
+        "type": "Light World items",
+        "source": "Unknown",
+        "buy": "N/A"
+    },
+    {
+        "name": "Eraser",
+        "description": "Pink, it bounces when thrown on the ground.",
+        "effects": "+1AT",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the BounceBlade equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "Mech. Pencil",
+        "description": "It's tempting to click it repeatedly.",
+        "effects": "+1AT",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the MechaSaber equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "Wristwatch",
+        "description": "Maybe an expensive antique. Stuck before half past noon.",
+        "effects": "+1DF",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the Silver Watch equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "Holiday Pencil",
+        "description": "A festive candycane pencil. Do not eat.",
+        "effects": "+1AT",
+        "type": "Light World items",
+        "source": "Noelle's House",
+        "buy": "N/A"
+    },
+    {
+        "name": "CactusNeedle",
+        "description": "Ouch! ... It's somewhat sentimental in a way.",
+        "effects": "+2AT",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the Saber10 equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "BlackShard",
+        "description": "A small chip of extremely hard glass. Oddly, it's nearly opaque.",
+        "effects": "+16AT",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the BlackShard in the inventory",
+        "buy": "N/A"
+    },
+    {
+        "name": "QuillPen",
+        "description": "A pen fashioned from a white feather.",
+        "effects": "+1AT",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the Winglade equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "Honey Toast",
+        "description": "A food that a parent could eat.",
+        "effects": "None",
+        "type": "Light World items",
+        "source": "Dreemurr residence",
+        "buy": "N/A"
+    },
+    {
+        "name": "Bread",
+        "description": "A loaf of bread. Tends to leave crumbs wherever it goes.",
+        "effects": "None",
+        "type": "Light World items",
+        "source": "Sans",
+        "buy": "N/A"
+    },
+    {
+        "name": "Seeds",
+        "description": "The seed of the golden flower.",
+        "effects": "None",
+        "type": "Light World items",
+        "source": "Flower King",
+        "buy": "N/A"
+    },
+    {
+        "name": "Pencil2",
+        "description": "It's a No. 2 Pencil. ... that doesn't make it any stronger.",
+        "effects": "+2AT",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the WoodBlade2 equipped",
+        "buy": "N/A"
+    },
+    {
+        "name": "Petal",
+        "description": "A cyan colored petal. It's not a weapon, but it's nice.",
+        "effects": "N/A",
+        "type": "Light World items",
+        "source": "Exiting the Dark World with the AquaKnife equipped",
+        "buy": "N/A"
+    }
+]

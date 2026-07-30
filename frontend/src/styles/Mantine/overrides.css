@@ -1,0 +1,115 @@
+/* Adjusting Mantine AppShell main background */
+.mantine-AppShell-main {
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+}
+
+/* Adjusting Mantine AppShell Header colors */
+.mantine-AppShell-header {
+    background-color: var(--color-bg-secondary) !important;
+    border-bottom: var(--size-2) solid var(--color-border-primary) !important;
+}
+
+.mantine-Card-root {
+    background-color: var(--color-bg-secondary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
+    box-shadow: var(--shadow-standard) !important;
+    transition: var(--transition-standard) !important;
+}
+
+.mantine-Card-root:hover {
+    transform: translateY(calc(var(--size-3) * -1)) !important;
+    box-shadow: var(--shadow-hover) !important;
+    border-color: var(--mantine-color-cyberCyan-6) !important;
+}
+
+.mantine-Button-root {
+    font-family: var(--font-family-deltarune) !important;
+    letter-spacing: 0.05em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* Style Mantine Notifications globally to match theme */
+.mantine-Notification-root {
+    background-color: var(--color-bg-secondary) !important;
+    border: var(--size-2) solid var(--color-border-primary) !important;
+    color: var(--color-text-primary) !important;
+    box-shadow: var(--shadow-notification) !important;
+    border-radius: var(--mantine-radius-md) !important;
+}
+
+.mantine-Notification-title {
+    color: var(--color-text-secondary) !important;
+    font-size: var(--mantine-font-size-md) !important;
+    letter-spacing: 0.03em !important;
+}
+
+.mantine-Notification-description {
+    color: rgba(240, 240, 240, 0.8) !important;
+}
+
+.mantine-Notification-closeButton {
+    color: var(--color-text-primary) !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.mantine-Notification-closeButton:hover {
+    background-color: var(--color-border-primary) !important;
+    color: var(--color-accent-primary) !important;
+}
+
+.mantine-Autocomplete-input {
+  background-color: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+  border: var(--size-2) solid var(--color-border-primary) !important;
+  font-family: var(--font-family-deltarune) !important;
+  transition: var(--transition-standard) !important;
+}
+
+.mantine-Autocomplete-input:focus {
+  border-color: var(--mantine-color-cyberCyan-6) !important;
+  box-shadow: 0px 0px var(--mantine-spacing-xs) rgba(0, 255, 255, 0.4) !important;
+}
+
+.mantine-Autocomplete-input::placeholder {
+  color: rgba(240, 240, 240, 0.4) !important;
+  font-family: var(--font-family-deltarune) !important;
+}
+
+.mantine-Autocomplete-dropdown {
+  background-color: var(--color-bg-secondary) !important;
+  border: var(--size-2) solid var(--color-border-primary) !important;
+  border-radius: var(--mantine-radius-md) !important;
+  box-shadow: 0px 4px var(--mantine-spacing-xs) rgba(0, 0, 0, 0.5) !important;
+  padding: var(--mantine-spacing-xs) !important;
+}
+
+.mantine-Autocomplete-option {
+  border-radius: var(--mantine-radius-xs) !important;
+  transition: var(--transition-standard) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.mantine-Autocomplete-option:hover,
+.mantine-Autocomplete-option[data-combobox-selected] {
+  background-color: var(--color-border-primary) !important;
+  color: var(--color-accent-primary) !important;
+}
+
+.mantine-Autocomplete-dropdown ::-webkit-scrollbar {
+  width: var(--size-4);
+}
+
+.mantine-Autocomplete-dropdown ::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+.mantine-Autocomplete-dropdown ::-webkit-scrollbar-thumb {
+  background: var(--color-border-primary);
+  border-radius: var(--mantine-radius-xs);
+}
+
+.mantine-Autocomplete-dropdown ::-webkit-scrollbar-thumb:hover {
+  background: var(--mantine-color-cyberCyan-6);
+}

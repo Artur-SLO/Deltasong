@@ -1,10 +1,11 @@
 import App from './App.jsx';
 import Home from './components/Home/Home.jsx';
 import ErrorPage from './components/Common/ErrorPage.jsx';
-import Game from './components/Character/Game.jsx';
 import ItemsPage from './components/Item/ItemsPage.jsx';
 import SongsPage from './components/Song/SongsPage.jsx';
 import AccountPage from './components/Profile/AccountPage.jsx';
+import Characters from './components/Character/Characters.jsx';
+import DailyGame from './components/Daily/DailyGame.jsx';
 
 const routes = [
     {
@@ -18,7 +19,7 @@ const routes = [
             },
             {
                 path: "characters",
-                element: <Game />
+                element: <Characters />
             },
             {
                 path: "items",
@@ -27,6 +28,10 @@ const routes = [
             {
                 path: "songs",
                 element: <SongsPage />
+            },
+            {
+                path: "daily",
+                element: <DailyGame />
             },
             {
                 path: "account",

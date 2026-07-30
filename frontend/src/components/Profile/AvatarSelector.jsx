@@ -31,9 +31,9 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
                 mb="xs"
                 size="xs"
             />
-            <div className={classes.scrollContainer} style={{ maxHeight: '200px' }}>
-                <div className={classes.columnsContainer} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--mantine-spacing-xs)', width: '100%', boxSizing: 'border-box' }}>
-                    <div className={classes.avatarColumn} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--mantine-spacing-xs)', minWidth: 0 }}>
+            <div className={classes.scrollContainer}>
+                <div className={classes.columnsContainer}>
+                    <div className={classes.avatarColumn}>
                         {col1.map(({ c, index }) => (
                             <div 
                                 key={`sel-${c.name}-${index}`}
@@ -47,7 +47,7 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
                             </div>
                         ))}
                     </div>
-                    <div className={classes.avatarColumn} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--mantine-spacing-xs)', minWidth: 0 }}>
+                    <div className={classes.avatarColumn}>
                         {col2.map(({ c, index }) => (
                             <div 
                                 key={`sel-${c.name}-${index}`}
@@ -61,7 +61,7 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
                             </div>
                         ))}
                     </div>
-                    <div className={classes.avatarColumn} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--mantine-spacing-xs)', minWidth: 0 }}>
+                    <div className={classes.avatarColumn}>
                         {col3.map(({ c, index }) => (
                             <div 
                                 key={`sel-${c.name}-${index}`}
@@ -77,7 +77,7 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
                     </div>
                 </div>
                 {filteredCharacters.length === 0 && (
-                    <Text size="sm" color="dimmed" ta="center" style={{ width: '100%', padding: 'var(--mantine-spacing-md)', gridColumn: 'span 3' }}>
+                    <Text size="sm" color="dimmed" ta="center" className={classes.noCharacters}>
                         No characters found
                     </Text>
                 )}
