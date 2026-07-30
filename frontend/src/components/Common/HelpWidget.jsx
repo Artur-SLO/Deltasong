@@ -61,7 +61,7 @@ export function HelpWidget({ currentGame }) {
             cards: [
                 "Ho-ho-ho! I am the bad guy! Or the good guy? I don't know, but you should click these cool game buttons!",
                 "If you win, my lesser dad might let me eat more cookies! Or chalk! Susie says chalk is delicious!",
-                "Make an account to save your awesome streaks!"
+                "Make an account to save your awesome progress!"
             ]
         },
         account: {

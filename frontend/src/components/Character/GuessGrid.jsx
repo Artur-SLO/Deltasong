@@ -258,7 +258,7 @@ export default function GuessGrid({
                 ))}
             </Grid>
 
-            {activeGuesses.map((char) => (
+            {activeGuesses.slice(0, 15).map((char) => (
                 <Guess key={char.name.value} character={char} widths={COLUMNS_CONFIG} totalColumns={totalColumns} />
             ))}
         </Stack>

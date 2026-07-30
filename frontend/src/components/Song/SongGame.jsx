@@ -280,7 +280,7 @@ export default function SongGame({
                 </Modal>
             )}
 
-            <GuessHistory guesses={activeGuesses} />
+            <GuessHistory guesses={activeGuesses.slice(0, 15)} />
         </Stack>
     );
 }
