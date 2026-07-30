@@ -10,6 +10,8 @@ import deltaruneCharacters from '../../assets/deltarune_characters.json' with { 
 import deltaruneItems from '../../assets/deltarune_items.json' with { type: 'json' };
 import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { type: 'json' };
 import lancerGif from '../../assets/lancer.gif';
+import { addPoints, getRankData } from '../../core/rankSystem.js';
+import { RANK_POINTS } from '../../config/Constants.js';
 
 
 // Core engines & utilities
@@ -155,6 +157,10 @@ export default function DailyGame() {
                             next.endTime = Date.now();
                             setIsModalOpen(true);
                             console.log('[Dev] Skipped Stage 3: Song (Victory!)');
+                            
+                            const rankData = getRankData();
+                            const streak = rankData.streak || 1;
+                            addPoints(RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS), 'daily');
                         }
                         saveDailyGame(next);
                         return next;
@@ -265,6 +271,12 @@ export default function DailyGame() {
 
             if (nextGame.status === 'victory' || nextGame.status === 'defeat') {
                 setIsModalOpen(true);
+                if (gameState.status === 'playing' && nextGame.status === 'victory') {
+                    const rankData = getRankData();
+                    const streak = rankData.streak || 1;
+                    const points = RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS);
+                    addPoints(points, 'daily');
+                }
             }
         } catch (err) {
             console.error(err);

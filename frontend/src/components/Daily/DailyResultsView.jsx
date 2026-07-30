@@ -274,7 +274,7 @@ export default function DailyResultsView({ gameState }) {
                     className={classes.shareButton}
                     size="sm"
                 >
-                    Copy Text
+                    Copy
                 </Button>
 
                 <Button

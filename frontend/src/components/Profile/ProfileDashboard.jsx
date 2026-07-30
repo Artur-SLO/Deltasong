@@ -1,13 +1,13 @@
 import { Title, Group, Text, Button, Paper, Modal, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { IconFlame } from '@tabler/icons-react';
 import classes from '../../styles/Account.module.css';
 import { logoutUser, updateUserAvatar } from '../../utils/auth';
 import { notifications } from '@mantine/notifications';
 import AvatarSelector from './AvatarSelector';
 import deltaruneCharacters from '../../assets/deltarune_characters.json';
 import { getCharacterImage } from '../../utils/image.js';
+import RankOverviewCard from './RankOverviewCard';
 
 const defaultAvatar = deltaruneCharacters.find(c => c.name.toUpperCase() === 'KRIS')?.image || deltaruneCharacters[0]?.image || '';
 
@@ -73,12 +73,8 @@ export default function ProfileDashboard({ activeUser }) {
                 />
             </Modal>
 
-            <Stack gap={5} align="center" mt="xl" mb="xl">
-                <Group gap="sm" align="center">
-                    <div className={classes.streakNumber}>
-                        <IconFlame size={32} className={classes.flameIcon} /> {activeUser.streak}
-                    </div>
-                </Group>
+            <Stack gap="xl" mt="xl" mb="xl">
+                <RankOverviewCard />
             </Stack>
 
             <Group justify="center" mt="xl">

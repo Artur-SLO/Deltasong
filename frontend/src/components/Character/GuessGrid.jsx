@@ -2,9 +2,10 @@ import { Grid, Stack, Text, Button, Modal, Paper, Group } from '@mantine/core';
 import GridCell from './GridCell.jsx';
 import { createGame, makeGuess } from '../../core/characterGame.js';
 import { compareCharacters } from '../../core/Character.js';
-import { COLUMNS_CONFIG } from '../../config/Constants.js';
+import { COLUMNS_CONFIG, RANK_POINTS } from '../../config/Constants.js';
 import deltaruneCharacters from '../../assets/deltarune_characters.json' with { type: 'json' };
 import { useEffect, useState } from 'react';
+import { addPoints } from '../../core/rankSystem.js';
 import SearchBar from './SearchBar.jsx';
 import Guess from './Guess.jsx';
 import homeClasses from '../../styles/Home.module.css';
@@ -30,6 +31,7 @@ export default function GuessGrid({
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalType, setModalType] = useState('victory');
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
+    const [startTime, setStartTime] = useState(Date.now());
 
     useEffect(() => {
         if (isDaily) return;
@@ -81,6 +83,21 @@ export default function GuessGrid({
                 setGridItems((prevItems) => [targetCharResult, ...prevItems]);
                 setIsWon(true);
                 setguessedCharacters(result.gameState.guessedNames);
+
+                if (!isDaily) {
+                    const attempts = result.gameState.guessedNames.length;
+                    let points = 0;
+                    if (attempts <= 3) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
+                    else if (attempts <= 6) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
+                    else points = RANK_POINTS.VICTORY_SLOW_ATTEMPTS;
+
+                    const duration = (Date.now() - startTime) / 1000;
+                    if (duration < RANK_POINTS.SPEED_THRESHOLD_SECONDS) {
+                        points += RANK_POINTS.SPEED_BONUS;
+                    }
+                    addPoints(points, 'characters');
+                }
+
                 // Delay showing victory modal until all cells fade in (7 * 0.45s = 3.15s)
                 setTimeout(() => {
                     setModalType('victory');
@@ -120,6 +137,7 @@ export default function GuessGrid({
             setGridItems([]);
             setIsWon(false);
             setIsGivenUp(false);
+            setStartTime(Date.now());
             setInput('');
         }, 200);
     };
