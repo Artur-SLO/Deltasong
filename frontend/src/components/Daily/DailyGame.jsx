@@ -223,13 +223,7 @@ export default function DailyGame() {
             const nextGame = submitCharacterGuess(stateWithTime, characterToGuess);
             setGameState(nextGame);
 
-            if (nextGame.currentStep === 2) {
-                notifications.show({
-                    title: 'Stage Completed!',
-                    message: 'Characters stage done. Now guess the Item!',
-                    color: 'emeraldGreen'
-                });
-            } else if (nextGame.status === 'defeat') {
+            if (nextGame.status === 'defeat') {
                 setIsModalOpen(true);
             }
         } catch (err) {
@@ -246,13 +240,7 @@ export default function DailyGame() {
             const nextGame = submitItemGuess(stateWithTime, itemToGuess);
             setGameState(nextGame);
 
-            if (nextGame.currentStep === 3) {
-                notifications.show({
-                    title: 'Stage Completed!',
-                    message: 'Items stage done. Now guess the Song!',
-                    color: 'emeraldGreen'
-                });
-            } else if (nextGame.status === 'defeat') {
+            if (nextGame.status === 'defeat') {
                 setIsModalOpen(true);
             }
         } catch (err) {
