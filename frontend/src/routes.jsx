@@ -36,8 +36,12 @@ const routes = [
             {
                 path: "account",
                 element: <AccountPage />
+            },
+            {
+                path: "*",
+                element: <ErrorPage />
             }
-       ]
+        ]
     }
 ];
 

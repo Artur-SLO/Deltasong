@@ -305,7 +305,7 @@ export default function DailyGame() {
                     </Button>
                 )}
 
-                <Stack gap="xs" align="center" w="100%">
+                <Stack gap="md" align="center" w="100%">
                     <Title order={2} ta="center" mb="lg" className={`${homeClasses.conventionalTitle} ${classes.gameTitle}`}>
                         Daily Challenge
                     </Title>
@@ -318,7 +318,6 @@ export default function DailyGame() {
                             onClick={() => setIsModalOpen(true)}
                             className={homeClasses.conventionalFont}
                             mt="xs"
-                            mb="sm"
                         >
                             View Stats
                         </Button>
