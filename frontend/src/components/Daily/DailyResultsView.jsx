@@ -6,10 +6,9 @@ import { getDailyNumber } from '../../core/dailySeed.js';
 import classes from '../../styles/Daily.module.css';
 import { DAILY_LIMITS } from '../../config/Constants.js';
 import { getCharacterImage } from '../../utils/image.js';
-import berdlyGif from '../../assets/berdly.gif';
-import rouxlsGif from '../../assets/rouxls.gif';
-import jevilGif from '../../assets/jevil.gif';
 import spamtonGif from '../../assets/spamton.gif';
+import pinkGif from '../../assets/pink.gif';
+import jackensteinGif from '../../assets/jackenstein.gif';
 
 
 export default function DailyResultsView({ gameState }) {
@@ -174,9 +173,9 @@ export default function DailyResultsView({ gameState }) {
         <Stack align="center" gap="lg" w="100%">
             {isVictory ? (
                 <div className={classes.victoryMascotRow}>
-                    <img src={berdlyGif} alt="Berdly" className={classes.resultsMascot} />
-                    <img src={rouxlsGif} alt="Rouxls Kaard" className={classes.resultsMascot} />
-                    <img src={jevilGif} alt="Jevil" className={classes.resultsMascot} />
+                    <img src={pinkGif} alt="Pink" className={classes.resultsMascot} />
+                    <img src="https://deltarune.wiki/images/Seam_face.gif?cb=0ngjb8&h=thumb.php&f=Seam_face.gif" alt="Seam" className={classes.resultsMascot} />
+                    <img src={jackensteinGif} alt="Jackenstein" className={classes.resultsMascot} />
                 </div>
             ) : (
                 <div className={classes.defeatMascotRow}>

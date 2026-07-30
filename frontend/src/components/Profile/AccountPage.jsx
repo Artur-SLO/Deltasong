@@ -5,7 +5,8 @@ import { getActiveUser } from '../../utils/auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import ProfileDashboard from './ProfileDashboard';
-import spamtonGif from '../../assets/spamton.gif';
+import gersonImage from '../../assets/gerson.gif';
+import gersonBoomImage from '../../assets/gerson-boom.gif';
 
 export default function AccountPage() {
     const [activeUser, setActiveUser] = useState(null);
@@ -32,7 +33,7 @@ export default function AccountPage() {
                 ) : (
                     <>
                         <div className={classes.welcomeHeader}>
-                            <img src={spamtonGif} alt="Spamton Welcome" className={classes.ralseiWelcome} />
+                            <img src={gersonBoomImage} alt="Gerson Welcome" className={classes.ralseiWelcome} />
                             <div className={classes.welcomeTitle}>
                                 Deltasong Account
                             </div>

@@ -55,14 +55,14 @@
 }
 
 .stepIcon {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .stepIconCompleted {
@@ -276,6 +276,7 @@
     display: flex;
     justify-content: center;
     gap: var(--size-5);
+    margin-top: var(--mantine-spacing-xl);
 }
 
 .defeatMascotRow {
@@ -283,7 +284,7 @@
     flex-direction: column;
     align-items: center;
     gap: var(--size-4);
-    margin-top: var(--mantine-spacing-lg);
+    margin-top: var(--mantine-spacing-xl);
 }
 
 .resultsMascot {
@@ -297,9 +298,11 @@
 .victoryMascotRow .resultsMascot:nth-child(1) {
     animation-delay: 0s;
 }
+
 .victoryMascotRow .resultsMascot:nth-child(2) {
     animation-delay: 0.2s;
 }
+
 .victoryMascotRow .resultsMascot:nth-child(3) {
     animation-delay: 0.4s;
 }
@@ -316,6 +319,7 @@
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(-4px);
     }
@@ -325,6 +329,7 @@
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(-8px);
     }
@@ -335,8 +340,16 @@
         transform: scale(0.95);
         opacity: 0.8;
     }
+
     to {
         transform: scale(1.05);
         opacity: 1;
     }
+}
+
+.lockedStepperMascot {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: pixelated;
 }

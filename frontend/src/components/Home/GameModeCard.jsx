@@ -5,6 +5,7 @@ import {
     GAME_MODE_HOVER_COLORS, 
     GAME_MODE_SHADOW_COLORS 
 } from '../../config/Constants';
+import sethAquaGif from '../../assets/seth&aqua.gif';
 
 export default function GameModeCard({ title, description, badge, color, onPlay, isDaily }) {
     const hoverColor = GAME_MODE_HOVER_COLORS[color] || '#00ff27';
@@ -21,9 +22,16 @@ export default function GameModeCard({ title, description, badge, color, onPlay,
                 onClick={onPlay}
             >
                 <div className={classes.dailyCardContent}>
-                    <Title order={2} className={classes.dailyCardTitle}>
-                        {title}
-                    </Title>
+                    <Group gap="md" align="center" className={classes.dailyHeaderGroup}>
+                        <img 
+                            src={sethAquaGif} 
+                            alt="Seth and Aqua Mascot" 
+                            className={classes.dailyMascotImage} 
+                        />
+                        <Title order={2} className={classes.dailyCardTitle}>
+                            {title}
+                        </Title>
+                    </Group>
                     <Button 
                         size="md" 
                         radius="sm"

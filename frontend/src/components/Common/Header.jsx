@@ -33,7 +33,7 @@ export default function Header() {
             className={classes.link}
             data-active={location.pathname === link.link || undefined}
         >
-            {link.label}
+            <span className={classes.linkText}>{link.label}</span>
         </Link>
     ));
 
@@ -63,7 +63,7 @@ export default function Header() {
                         </Group>
                     ) : (
                             <div className={classes.loginButton}>
-                                Login
+                                <span className={classes.buttonText}>Login</span>
                             </div>
                         )}
                 </Link>

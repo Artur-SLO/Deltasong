@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router';
 import classes from '../../styles/HelpWidget.module.css';
 
@@ -9,10 +9,12 @@ import jevilGif from '../../assets/jevil.gif';
 import spamtonGif from '../../assets/spamton.gif';
 import lancerGif from '../../assets/lancer.gif';
 import susieGif from '../../assets/susie.gif';
+import gersonGif from '../../assets/gerson.gif'
 
 export function HelpWidget({ currentGame }) {
     const [showHint, setShowHint] = useState(false);
     const location = useLocation();
+    const widgetRef = useRef(null);
 
     // Dynamic hint and mascot configuration by minigame/route
     const gameHints = {
@@ -20,14 +22,15 @@ export function HelpWidget({ currentGame }) {
             hero: berdlyGif,
             title: "How to Play: Characters",
             cards: [
-                "Oh? A simpleton dares to test their intellect against my vast database of Deltarune characters?",
-                "Green indicates an exact match, yellow is close, and arrows indicate if the value (Chapter) is higher or lower.",
-                "Do try to make an educated guess, gamer. It is painful to watch you struggle!"
+                "Oh? A simpleton dares to challenge my vast database of Deltarune knowledge? Truly pathetic!",
+                "Green indicates an exact match, teal means nearby, red is dead wrong, and arrows display numerical hierarchy.",
+                "Do try to formulate an educated guess, 'gamer'. Watching your intellectual struggle is physically painful!"
             ]
         },
         items: {
             hero: rouxlsGif,
             title: "How to Play: Items",
+            isLarge: true,
             cards: [
                 "Hearken, Worm! Thou must guess mine Item of choice in the fewest attempts!",
                 "With each Failure, a new property is revealed",
@@ -38,22 +41,23 @@ export function HelpWidget({ currentGame }) {
             hero: jevilGif,
             title: "How to Play: Song",
             cards: [
-                "Chaos, chaos! Listen to the audio and guess the song, guess the song!",
-                "Adjust difficulty to change the duration of audio you can hear, hear!",
-                "The world revolves, and so does the track! Guess it if you can, can!"
+                "CHAOS, CHAOS! Listen to the audio and guess the song, guess the song!",
+                "Adjust difficulty to change how much time you get to hear, hear! More seconds, less points!",
+                "THE WORLD REVOLVES, AND SO DOES THE TRACK! GUESS IT IF YOU CAN, CAN!"
             ]
         },
         daily: {
             hero: spamtonGif,
             title: "How to Play: Daily Challenge",
             cards: [
-                "PLAY ALL THREE [Games] IN A ROW TO BE A [BIG SHOT]!!! FIRST THE CHARACTER, THEN THE ITEM, THEN THE SONG!",
-                "YOUR TIME AND HINTS WILL BE COPIED TO THE CLIPBOARD FOR ALL YOUR FRIEND TO SEE!!! DO IT NOW, NOW, NOW!!!"
+                "PLAY ALL [3 GAMES] IN A ROW TO WIN [Wild Prizes] AND BECOME A [BIG SHOT]!!! FIRST THE [Miniature Characters], THEN THE [Value-Priced Items], AND FINALLY... THE [Top 10 Hits]!!",
+                "YOUR [Total Speedrun Time] AND [Useless Guesses Used] WILL BE [Forcefully Copied] TO YOUR [Clipboard] FOR ALL YOUR [100th Customer Friends] TO SEE AND [Jealous!!] DO IT NOW, NOW, [NOW]!!"
             ]
         },
         home: {
             hero: lancerGif,
             title: "How to Play: Deltasong",
+            isLarge: true,
             cards: [
                 "Ho-ho-ho! I am the bad guy! Or the good guy? I don't know, but you should click these cool game buttons!",
                 "If you win, my lesser dad might let me eat more cookies! Or chalk! Susie says chalk is delicious!",
@@ -61,12 +65,12 @@ export function HelpWidget({ currentGame }) {
             ]
         },
         account: {
-            hero: susieGif,
+            hero: gersonGif,
             title: "Your Account & Stats",
             cards: [
-                "Hey. This is where your local save data and win streaks are kept.",
-                "Click on your avatar if you want to swap it for a cooler sprite.",
-                "Everything is saved locally on your browser, so don't mess it up, alright?"
+                "Gyaa Ha ha! Looking for your old battles records, eh? This is where all your stats and hot streaks are recorded!",
+                "Back in my day, we didn't have fancy avatars! But if you wanna swap yours for a better look, go right ahead, kid!",
+                "All your history is carved right into your browser's local cache... so don't go wiping it clean unless you want your legend forgotten! Gyaa Ha ha!"
             ]
         }
     };
@@ -84,8 +88,24 @@ export function HelpWidget({ currentGame }) {
     const resolvedGame = currentGame || getGameFromPath(location.pathname);
     const currentConfig = gameHints[resolvedGame] || gameHints.home;
 
+    // Close hint if user clicks outside of the widget container
+    useEffect(() => {
+        if (!showHint) return;
+
+        const handleOutsideClick = (event) => {
+            if (widgetRef.current && !widgetRef.current.contains(event.target)) {
+                setShowHint(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [showHint]);
+
     return (
-        <footer className={classes.footerContainer}>
+        <footer ref={widgetRef} className={classes.footerContainer}>
             {showHint && (
                 <div className={classes.hintPopup}>
                     <div className={classes.hintHeader}>
@@ -108,8 +128,9 @@ export function HelpWidget({ currentGame }) {
                 </div>
             )}
 
-            <div className={classes.mascotContainer}>
+            <div className={`${classes.mascotContainer} ${currentConfig.isLarge ? classes.largeMascot : ''}`}>
                 <img
+                    key={resolvedGame}
                     src={currentConfig.hero}
                     alt="Help Mascot"
                     className={classes.hintHero}

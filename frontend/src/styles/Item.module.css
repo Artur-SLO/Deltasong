@@ -351,8 +351,15 @@
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes revealClue {
@@ -361,6 +368,7 @@
         opacity: 0;
         border-color: var(--color-border-primary);
     }
+
     100% {
         transform: perspective(600px) rotateX(0deg);
         opacity: 1;
@@ -383,6 +391,7 @@
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(-8px);
     }

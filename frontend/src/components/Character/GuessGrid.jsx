@@ -183,10 +183,10 @@ export default function GuessGrid({
                     }}
                 >
                     <Stack align="center" gap="md" p="md">
-                        <img 
-                            src={berdlyGif} 
-                            alt="Berdly Mascot" 
-                            className={styles.mascotGif} 
+                        <img
+                            src={berdlyGif}
+                            alt="Berdly Mascot"
+                            className={styles.mascotGif}
                         />
                         <Text size="lg" ta="center">
                             {modalType === 'victory'

@@ -193,6 +193,14 @@
 .paper :global(.mantine-Tabs-tab:hover) {
     background-color: var(--color-border-primary) !important;
     color: var(--color-accent-primary) !important;
+}
+
+.paper :global(.mantine-Tabs-tabLabel) {
+    display: inline-block;
+    transition: transform 0.2s ease !important;
+}
+
+.paper :global(.mantine-Tabs-tab:hover) :global(.mantine-Tabs-tabLabel) {
     transform: scale(1.05) !important;
 }
 

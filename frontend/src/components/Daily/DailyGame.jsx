@@ -183,10 +183,10 @@ export default function DailyGame() {
             <Container size="md" className={`${homeClasses.gameContainer} ${classes.container}`}>
                 <Paper shadow="md" p="xl" radius="md" withBorder className={homeClasses.gamePaper}>
                     <Stack align="center" gap="md">
-                        <img 
-                            src={lancerGif} 
-                            alt="Loading..." 
-                            className={classes.loadingMascot} 
+                        <img
+                            src={lancerGif}
+                            alt="Loading..."
+                            className={classes.loadingMascot}
                         />
                         <Text ta="center">Loading Daily Challenge...</Text>
                     </Stack>
@@ -305,7 +305,7 @@ export default function DailyGame() {
                     </Button>
                 )}
 
-                <Stack gap="md" align="center" w="100%">
+                <Stack gap="xs" align="center" w="100%">
                     <Title order={2} ta="center" mb="lg" className={`${homeClasses.conventionalTitle} ${classes.gameTitle}`}>
                         Daily Challenge
                     </Title>
