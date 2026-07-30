@@ -9,6 +9,10 @@ import { getCharacterImage } from '../../utils/image.js';
 import spamtonGif from '../../assets/spamton.gif';
 import pinkGif from '../../assets/pink.gif';
 import jackensteinGif from '../../assets/jackenstein.gif';
+import jevilGif from '../../assets/jevil.gif';
+import lancerGif from '../../assets/lancer.gif';
+import ralseiGif from '../../assets/ralsei.gif';
+import mizzleGif from '../../assets/mizzle.gif';
 
 
 export default function DailyResultsView({ gameState }) {
@@ -93,68 +97,150 @@ export default function DailyResultsView({ gameState }) {
             });
     };
 
-    const handleDownloadImage = () => {
+    const handleDownloadImage = async () => {
+        // Create canvas
         const canvas = document.createElement('canvas');
-        canvas.width = 500;
-        canvas.height = 420;
+        canvas.width = 600;
+        canvas.height = 460;
         const ctx = canvas.getContext('2d');
 
+        // Helper to load image as a Promise
+        const loadImage = (src) => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = src;
+                img.onload = () => resolve(img);
+                img.onerror = () => resolve(null); // Resolve null if failed to load
+            });
+        };
+
+        // Determine which assets to load
+        const leftAsset = mizzleGif;
+        const rightAsset = mizzleGif;
+
+        // Load images in parallel
+        const [leftImg, rightImg] = await Promise.all([
+            loadImage(leftAsset),
+            loadImage(rightAsset)
+        ]);
+
         // Draw Background
-        ctx.fillStyle = '#1f0f33';
+        ctx.fillStyle = '#130920'; // Cosmic dark purple
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Draw border
-        ctx.strokeStyle = '#783cb5';
-        ctx.lineWidth = 6;
-        ctx.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
+        // Draw a subtle neon glow border
+        ctx.strokeStyle = isVictory ? '#00ff27' : '#ff1f8e'; // Green for win, Magenta for loss
+        ctx.lineWidth = 8;
+        ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
 
         // Draw Title
-        ctx.font = 'bold 24px Roboto, sans-serif';
-        ctx.fillStyle = '#ffb000'; // Gold title
+        ctx.font = '900 24px "Outfit", "Inter", sans-serif';
+        ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
-        ctx.fillText('DELTASONG DAILY CHALLENGE', canvas.width / 2, 60);
+        ctx.fillText('DELTASONG DAILY CHALLENGE', canvas.width / 2, 50);
 
         // Draw Subtitle
-        ctx.font = '16px Roboto, sans-serif';
-        ctx.fillStyle = '#f0f0f0';
-        ctx.fillText(`Daily Challenge #${dailyNum}`, canvas.width / 2, 95);
+        ctx.font = '600 15px monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.fillText(`Daily Challenge #${dailyNum}`, canvas.width / 2, 80);
 
-        // Draw status line
-        ctx.font = 'bold 18px Roboto, sans-serif';
-        ctx.fillText('Status:', 80, 150);
-        ctx.textAlign = 'right';
-        if (isVictory) {
-            ctx.fillStyle = '#00ff27'; // green
-            ctx.fillText('Victory', canvas.width - 80, 150);
-        } else {
-            ctx.fillStyle = '#ff1f8e'; // magenta
-            ctx.fillText('Defeat', canvas.width - 80, 150);
-        }
+        // Draw Status Badge/Banner
+        const bannerY = 105;
+        const bannerH = 40;
+        ctx.fillStyle = isVictory ? 'rgba(0, 255, 39, 0.2)' : 'rgba(255, 31, 142, 0.2)';
+        ctx.fillRect(8, bannerY, canvas.width - 16, bannerH);
+        
+        ctx.strokeStyle = isVictory ? '#00ff27' : '#ff1f8e';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(8, bannerY);
+        ctx.lineTo(canvas.width - 8, bannerY);
+        ctx.moveTo(8, bannerY + bannerH);
+        ctx.lineTo(canvas.width - 8, bannerY + bannerH);
+        ctx.stroke();
 
-        // Draw table rows
-        ctx.fillStyle = '#f0f0f0';
-        ctx.font = '16px Roboto, sans-serif';
+        ctx.font = 'bold 20px "Outfit", "Inter", sans-serif';
+        ctx.fillStyle = isVictory ? '#00ff27' : '#ff1f8e';
+        ctx.textAlign = 'center';
+        ctx.fillText(isVictory ? 'VICTORY' : 'DEFEAT', canvas.width / 2, bannerY + 27);
+
+        // Draw Stats Box
+        const boxX = 140;
+        const boxY = 165;
+        const boxW = 320;
+        const boxH = 190;
+
+        ctx.fillStyle = 'rgba(31, 15, 51, 0.6)'; // Semi-transparent card body
+        ctx.fillRect(boxX, boxY, boxW, boxH);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(boxX, boxY, boxW, boxH);
+
+        // Draw Stats Row
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 15px monospace';
         const rows = [
-            { label: 'Total Time', value: durationStr },
-            { label: 'Characters guesses', value: charScore },
-            { label: 'Items guesses', value: itemScore },
-            { label: 'Song guesses', value: songScore }
+            { label: 'TOTAL TIME', value: durationStr },
+            { label: 'CHARACTERS', value: charScore },
+            { label: 'ITEMS', value: itemScore },
+            { label: 'SONGS', value: songScore }
         ];
 
-        let y = 195;
+        let itemY = boxY + 35;
         rows.forEach(row => {
             ctx.textAlign = 'left';
-            ctx.fillText(row.label, 80, y);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.fillText(row.label, boxX + 24, itemY);
             ctx.textAlign = 'right';
-            ctx.fillText(row.value, canvas.width - 80, y);
-            y += 35;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(row.value, boxX + boxW - 24, itemY);
+            
+            // Draw a separator line
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(boxX + 20, itemY + 12);
+            ctx.lineTo(boxX + boxW - 20, itemY + 12);
+            ctx.stroke();
+
+            itemY += 38;
         });
+
+        // Helper to draw image keeping original aspect ratio
+        const drawKeepRatio = (img, x, y, maxW, maxH, alignRight = false, flipHorizontal = false) => {
+            const ratio = Math.min(maxW / img.width, maxH / img.height);
+            const w = img.width * ratio;
+            const h = img.height * ratio;
+            
+            const targetX = alignRight ? x + (maxW - w) : x;
+            const targetY = y + (maxH - h); // align to bottom
+
+            if (flipHorizontal) {
+                ctx.save();
+                ctx.translate(targetX + w / 2, targetY + h / 2);
+                ctx.scale(-1, 1);
+                ctx.drawImage(img, -w / 2, -h / 2, w, h);
+                ctx.restore();
+            } else {
+                ctx.drawImage(img, targetX, targetY, w, h);
+            }
+        };
+
+        // Draw left mascot (flipped horizontally to face center)
+        if (leftImg) {
+            drawKeepRatio(leftImg, 20, canvas.height - 145, 110, 110, false, true);
+        }
+
+        // Draw right mascot
+        if (rightImg) {
+            drawKeepRatio(rightImg, canvas.width - 130, canvas.height - 145, 110, 110, true, false);
+        }
 
         // Draw footer watermark
         ctx.textAlign = 'center';
-        ctx.font = '12px Roboto, sans-serif';
-        ctx.fillStyle = 'rgba(240, 240, 240, 0.4)';
-        ctx.fillText(window.location.origin.replace(/^https?:\/\//, ''), canvas.width / 2, 380);
+        ctx.font = '12px monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.fillText(window.location.origin.replace(/^https?:\/\//, ''), canvas.width / 2, 420);
 
         // Download link
         const link = document.createElement('a');
