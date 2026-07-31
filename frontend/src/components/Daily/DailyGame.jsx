@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import { Container, Paper, Title, Stack, Button, Text, Box } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 
@@ -12,6 +12,7 @@ import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { 
 import lancerGif from '../../assets/lancer.gif';
 import { addPoints, getRankData } from '../../core/rankSystem.js';
 import { RANK_POINTS } from '../../config/Constants.js';
+import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 
 // Core engines & utilities
@@ -59,6 +60,19 @@ export default function DailyGame() {
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
     const [extraSeconds, setExtraSeconds] = useState(0);
     const [duration, setDuration] = useState(0);
+
+    const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
+
+    useEffect(() => {
+        if (setIsHelpWidgetHidden) {
+            setIsHelpWidgetHidden(isModalOpen);
+        }
+        return () => {
+            if (setIsHelpWidgetHidden) {
+                setIsHelpWidgetHidden(false);
+            }
+        };
+    }, [isModalOpen, setIsHelpWidgetHidden]);
 
     const sessionStartRef = useRef(Date.now());
 

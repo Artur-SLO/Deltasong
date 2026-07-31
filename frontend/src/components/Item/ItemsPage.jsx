@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useContext } from 'react';
 import { Container, Title, Paper, Button } from '@mantine/core';
 import classes from '../../styles/Item.module.css';
 import homeClasses from '../../styles/Home.module.css';
@@ -11,6 +11,7 @@ import GuessHistory from './GuessHistory.jsx';
 import ItemModal from './ItemModal.jsx';
 import { addPoints } from '../../core/rankSystem.js';
 import { RANK_POINTS } from '../../config/Constants.js';
+import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 export default function ItemsPage({
     isDaily = false,
@@ -28,6 +29,20 @@ export default function ItemsPage({
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
     const [isFilterSelected, setIsFilterSelected] = useState(false);
     const [startTime, setStartTime] = useState(Date.now());
+
+    const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
+
+    useEffect(() => {
+        if (isDaily) return;
+        if (setIsHelpWidgetHidden) {
+            setIsHelpWidgetHidden(isModalOpen);
+        }
+        return () => {
+            if (setIsHelpWidgetHidden) {
+                setIsHelpWidgetHidden(false);
+            }
+        };
+    }, [isModalOpen, isDaily, setIsHelpWidgetHidden]);
 
     const resetGame = useCallback(() => {
         if (isDaily) return;

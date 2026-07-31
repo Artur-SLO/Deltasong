@@ -110,7 +110,7 @@ export const RANK_TIERS = [
     span: 700, 
     color: "yellow.4", 
     label: "BIG SHOT", 
-    message: "NOW'S YOUR CHANCE TO BE A [[BIG SHOT]]!! DON'T BELIEVE [[Anything You See On TV!]] THE MAN'S A CRIMINAL!!"
+    message: "NOW'S YOUR CHANCE TO BE A [BIG SHOT]!! DON'T BELIEVE [Anything You See On TV!] THE MAN'S A CRIMINAL!!"
   },
   { 
     grade: "B",
@@ -126,7 +126,7 @@ export const RANK_TIERS = [
     min: 2500, 
     max: 4999, 
     span: 2500, 
-    color: "pink.5", 
+    color: "grape.4", 
     label: "TRUE GENIUS",
     message: "*pushes up glasses* I, the master tactician, have analyzed your stats! This win is NOT luck... it is my ultimate tactic!" 
   },
@@ -144,7 +144,7 @@ export const RANK_TIERS = [
     min: 10000, 
     max: Infinity, 
     span: 10000, 
-    color: "grape.5", 
+    color: "pink.3", 
     label: "TV STAR", 
     message: "It's TV Ti... m... m... m...\n\nTHIS NEXT EXPERIMENT\n\nSEEMS\n\nVERY\n\nVERY\n\nINTERESTING\n\n❄︎♒︎♋︎■︎🙵⬧︎ ♐︎□︎❒︎ ◻︎●︎♋︎⍓︎♓︎■︎♑︎ ⧫︎♒︎♓︎⬧︎ ♐︎♋︎❒︎📬︎" 
   }

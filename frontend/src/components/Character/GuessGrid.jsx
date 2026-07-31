@@ -4,7 +4,7 @@ import { createGame, makeGuess } from '../../core/characterGame.js';
 import { compareCharacters } from '../../core/Character.js';
 import { COLUMNS_CONFIG, RANK_POINTS } from '../../config/Constants.js';
 import deltaruneCharacters from '../../assets/deltarune_characters.json' with { type: 'json' };
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { addPoints } from '../../core/rankSystem.js';
 import SearchBar from './SearchBar.jsx';
 import Guess from './Guess.jsx';
@@ -12,6 +12,7 @@ import homeClasses from '../../styles/Home.module.css';
 import styles from '../../styles/Character.module.css';
 import { getCharacterImage } from '../../utils/image.js';
 import berdlyGif from '../../assets/berdly.gif';
+import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 const totalColumns = COLUMNS_CONFIG.reduce((sum, col) => sum + col.span, 0);
 
@@ -32,6 +33,20 @@ export default function GuessGrid({
     const [modalType, setModalType] = useState('victory');
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
     const [startTime, setStartTime] = useState(Date.now());
+
+    const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
+
+    useEffect(() => {
+        if (isDaily) return;
+        if (setIsHelpWidgetHidden) {
+            setIsHelpWidgetHidden(isModalOpen);
+        }
+        return () => {
+            if (setIsHelpWidgetHidden) {
+                setIsHelpWidgetHidden(false);
+            }
+        };
+    }, [isModalOpen, isDaily, setIsHelpWidgetHidden]);
 
     useEffect(() => {
         if (isDaily) return;

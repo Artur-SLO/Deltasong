@@ -1,5 +1,5 @@
 import { Title, Group, Text, Button, Paper, Modal, Stack } from '@mantine/core';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import classes from '../../styles/Account.module.css';
 import { logoutUser, updateUserAvatar } from '../../utils/auth';
@@ -8,12 +8,26 @@ import AvatarSelector from './AvatarSelector';
 import deltaruneCharacters from '../../assets/deltarune_characters.json';
 import { getCharacterImage } from '../../utils/image.js';
 import RankOverviewCard from './RankOverviewCard';
+import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 const defaultAvatar = deltaruneCharacters.find(c => c.name.toUpperCase() === 'KRIS')?.image || deltaruneCharacters[0]?.image || '';
 
 export default function ProfileDashboard({ activeUser }) {
     const navigate = useNavigate();
     const [isEditingAvatar, setIsEditingAvatar] = useState(false);
+
+    const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
+
+    useEffect(() => {
+        if (setIsHelpWidgetHidden) {
+            setIsHelpWidgetHidden(isEditingAvatar);
+        }
+        return () => {
+            if (setIsHelpWidgetHidden) {
+                setIsHelpWidgetHidden(false);
+            }
+        };
+    }, [isEditingAvatar, setIsHelpWidgetHidden]);
 
     const handleAvatarChange = (avatarUrl) => {
         updateUserAvatar(avatarUrl);

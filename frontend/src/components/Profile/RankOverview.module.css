@@ -9,18 +9,40 @@
 }
 
 .leftCard:hover {
-    border-color: var(--mantine-color-cyberCyan-5, #00ffff);
+    border-color: var(--rank-color, var(--color-border-primary)) !important;
     transform: translateY(-5px) scale(1.005);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--rank-color, #00ffff) 20%, transparent);
 }
 
 .ringSection {
     flex-shrink: 0;
-    transition: transform 0.25s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
 }
 
 .ringSection:hover {
     transform: scale(1.08);
+}
+
+.ringSection::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: 180px;
+    transform: translate(-50%, -50%) scale(0.85);
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--rank-color) 25%, transparent) 0%, transparent 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.ringSection:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 .detailsSection {
@@ -34,7 +56,7 @@
     color: var(--color-text-primary, #ffffff);
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-bottom: 2px solid var(--color-border-primary, #381f54);
+    border-bottom: 2px solid color-mix(in srgb, var(--rank-color, var(--color-border-primary)) 40%, var(--color-border-primary));
     padding-bottom: 4px;
     margin-bottom: 4px;
 }
@@ -49,7 +71,7 @@
 }
 
 .statsListContainer:hover {
-    border-color: rgba(0, 255, 255, 0.3);
+    border-color: var(--rank-color, var(--color-border-primary));
     background-color: rgba(0, 0, 0, 0.25);
 }
 
@@ -72,11 +94,10 @@
 
 .statRowItem:hover {
     transform: translateX(6px);
-    color: var(--mantine-color-cyberCyan-4, #00ffff) !important;
 }
 
 .statRowItem:hover .statLabel {
-    color: var(--mantine-color-cyberCyan-3, #00ffff);
+    color: color-mix(in srgb, var(--rank-color, #a1a1aa) 80%, white);
 }
 
 .statLabel {
@@ -91,7 +112,7 @@
     font-family: var(--font-family-deltarune, monospace) !important;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--mantine-color-cyberCyan-4, #00ffff);
+    color: var(--rank-color, var(--color-text-primary));
 }
 
 .statUnit {
@@ -107,6 +128,12 @@
     font-family: var(--font-family-deltarune, monospace) !important;
     animation: pulseGrade 2.5s infinite ease-in-out;
     display: inline-block;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.ringSection:hover .rankGrade {
+    transform: scale(1.08);
+    text-shadow: 0 0 10px currentColor;
 }
 
 .rankLabel {
@@ -136,30 +163,32 @@
 
 .rankMessage {
     font-family: var(--mantine-font-family, sans-serif) !important;
-    color: var(--color-text-dimmed, #a1a1aa);
-    font-size: 1rem;
+    color: var(--color-text-primary, #e4e4e7) !important;
+    font-size: 0.95rem;
     line-height: 1.4;
-    padding: 10px 14px;
-    background-color: rgba(0, 0, 0, 0.25);
-    border-left: 3px solid var(--color-border-primary, #381f54);
-    border-radius: 4px;
-    transition: transform 0.25s ease, border-left-color 0.25s ease, background-color 0.25s ease;
+    padding: 14px 18px;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid var(--color-border-primary, #381f54);
+    border-left: 4px solid var(--rank-color, var(--color-border-primary));
+    border-radius: 6px;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
     white-space: pre-line;
 }
 
-.rankMessage > * {
-    margin-top: 0;
-    margin-bottom: 10px;
+.rankMessageParagraph {
+    margin: 0;
+    margin-bottom: 8px;
 }
 
-.rankMessage > *:last-child {
+.rankMessageParagraph:last-child {
     margin-bottom: 0;
 }
 
 .rankMessage:hover {
     transform: translateY(-2px);
-    border-left-color: var(--mantine-color-cyberCyan-5, #00ffff);
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.35) !important;
+    border-color: var(--rank-color) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 10px var(--rank-color);
 }
 
 .minigamesRow {
@@ -202,11 +231,14 @@
 }
 
 @keyframes streakFlame {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(1px) scale(1);
         filter: drop-shadow(0px 0px var(--size-2, 2px) var(--color-accent-secondary, #ff1f8e));
         color: var(--color-accent-primary, #00ffff);
     }
+
     50% {
         transform: translateY(-1px) scale(1.15);
         filter: drop-shadow(0px 0px var(--size-3, 4px) var(--color-accent-primary, #00ffff));

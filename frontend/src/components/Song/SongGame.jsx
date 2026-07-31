@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Stack, Text, Button, Modal, Paper } from '@mantine/core';
 import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { type: 'json' };
 import jevilGif from '../../assets/jevil.gif';
+import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 import { createSongGame, makeSongGuess, compareSongs } from '../../core/songGame.js';
 import { SONG_DIFFICULTIES, RANK_POINTS } from '../../config/Constants.js';
@@ -42,6 +43,20 @@ export default function SongGame({
     const [hasPlayed, setHasPlayed] = useState(false);
     const [extraSeconds, setExtraSeconds] = useState(0);
     const [startTime, setStartTime] = useState(Date.now());
+
+    const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
+
+    useEffect(() => {
+        if (isDaily) return;
+        if (setIsHelpWidgetHidden) {
+            setIsHelpWidgetHidden(isModalOpen);
+        }
+        return () => {
+            if (setIsHelpWidgetHidden) {
+                setIsHelpWidgetHidden(false);
+            }
+        };
+    }, [isModalOpen, isDaily, setIsHelpWidgetHidden]);
 
     useEffect(() => {
         if (isDaily) return;
