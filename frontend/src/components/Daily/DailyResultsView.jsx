@@ -9,9 +9,6 @@ import { getCharacterImage } from '../../utils/image.js';
 import spamtonGif from '../../assets/spamton.gif';
 import pinkGif from '../../assets/pink.gif';
 import jackensteinGif from '../../assets/jackenstein.gif';
-import jevilGif from '../../assets/jevil.gif';
-import lancerGif from '../../assets/lancer.gif';
-import ralseiGif from '../../assets/ralsei.gif';
 import mizzleGif from '../../assets/mizzle.gif';
 
 
