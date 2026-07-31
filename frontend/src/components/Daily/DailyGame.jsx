@@ -276,10 +276,29 @@ export default function DailyGame() {
                 if (gameState.status === 'playing' && nextGame.status === 'victory') {
                     const rankData = getRankData();
                     const streak = rankData.streak || 1;
-                    const points = RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS);
+                    const basePoints = RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS);
+                    const paidPenalty = Math.max(0, (nextGame.songState.hintsUsed || 0) - 1) * (RANK_POINTS.SONG_HINT_PENALTY || 10);
+                    const points = Math.max(basePoints, paidPenalty + 10);
                     addPoints(points, 'daily');
                 }
             }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const handleSongHint = () => {
+        try {
+            const stateWithTime = getUpdatedStateWithTime();
+            const nextGame = {
+                ...stateWithTime,
+                songState: {
+                    ...stateWithTime.songState,
+                    hintsUsed: (stateWithTime.songState.hintsUsed || 0) + 1
+                }
+            };
+            setGameState(nextGame);
+            saveDailyGame(nextGame);
         } catch (err) {
             console.error(err);
         }
@@ -376,11 +395,13 @@ export default function DailyGame() {
                     {(gameState.currentStep === 3 || (isGameOver && gameState.guesses.songs.length > 0)) && (
                         <SongGame
                             isDaily={true}
+                            isDailyGameOver={isGameOver}
                             dailyGameState={gameState.songState}
                             dailyGuesses={gameState.guesses.songs}
                             onDailyGuess={handleSongGuess}
                             extraSeconds={extraSeconds}
                             setExtraSeconds={setExtraSeconds}
+                            onDailyHint={handleSongHint}
                         />
                     )}
                 </Stack>

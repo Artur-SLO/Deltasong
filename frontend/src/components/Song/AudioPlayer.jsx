@@ -35,7 +35,7 @@ function loadYouTubeIFrameAPI() {
     return apiPromise;
 }
 
-export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabled, onPlay, onAddTime, maxTimeReached, isClueAvailable }) {
+export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabled, onPlay, onAddTime, maxTimeReached, isClueAvailable, extraControl = null, timeDisplayOverride = null }) {
     const [playerReady, setPlayerReady] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
@@ -264,6 +264,7 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
                             +1s Clue
                         </Button>
                     )}
+                    {extraControl}
                 </Group>
             </div>
 
@@ -271,7 +272,7 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
                 <Text size="sm" ff="var(--mantine-font-family)">
                     {!playerReady 
                         ? "Loading Audio..." 
-                        : `${formatTime(elapsedTime)} / ${formatTime(effectiveDurationLimit)}`
+                        : (timeDisplayOverride || `${formatTime(elapsedTime)} / ${formatTime(effectiveDurationLimit)}`)
                     }
                 </Text>
             </div>
