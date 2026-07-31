@@ -142,7 +142,7 @@
 
 .modalHeader {
     background-color: var(--color-bg-secondary) !important;
-    border-bottom: var(--size-2) solid var(--color-border-primary);
+    border-bottom: 1px solid var(--color-border-primary) !important;
     color: var(--color-text-primary) !important;
 }
 
