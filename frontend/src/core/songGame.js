@@ -35,7 +35,8 @@ export function createSongGame(json, randomFn = Math.random) {
         totalSongs,
         target,
         startTime,
-        guessedTitles: []
+        guessedTitles: [],
+        hintsUsed: 0
     };
 }
 
