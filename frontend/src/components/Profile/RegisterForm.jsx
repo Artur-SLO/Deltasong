@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { registerUser } from '../../utils/auth';
 import { notifications } from '@mantine/notifications';
 import AvatarSelector from './AvatarSelector';
-import deltaruneCharacters from '../../assets/deltarune_characters.json';
+import deltaruneCharacters from '../../assets/data/deltarune_characters.json';
 
 const defaultAvatar = deltaruneCharacters.find(c => c.name.toUpperCase() === 'KRIS')?.image || deltaruneCharacters[0]?.image || '';
 
@@ -51,7 +51,7 @@ export default function RegisterForm({ onRegisterSuccess }) {
                 onChange={(e) => setRegPassword(e.target.value)}
                 mb="md"
             />
-            
+
             <AvatarSelector 
                 selectedAvatar={selectedAvatar} 
                 onSelect={setSelectedAvatar} 

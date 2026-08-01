@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback, useContext } from 'react';
 import { Container, Title, Paper, Button } from '@mantine/core';
 import classes from '../../styles/Item.module.css';
 import homeClasses from '../../styles/Home.module.css';
-import deltaruneItems from '../../assets/deltarune_items.json' with { type: 'json' };
+import deltaruneItems from '../../assets/data/deltarune_items.json';
 import { createItemGame, makeItemGuess } from '../../core/itemGame.js';
 import ItemModeSelector from './ItemModeSelector.jsx';
 import ItemSearchBar from './ItemSearchBar.jsx';
@@ -22,10 +22,10 @@ export default function ItemsPage({
     const [mode, setMode] = useState('all');
     const [category, setCategory] = useState('');
     const [gameState, setGameState] = useState(null);
-    const [guesses, setGuesses] = useState([]); // Array of { item, isCorrect }
+    const [guesses, setGuesses] = useState([]);
     const [input, setInput] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalType, setModalType] = useState('victory'); // 'victory' or 'surrender'
+    const [modalType, setModalType] = useState('victory');
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
     const [isFilterSelected, setIsFilterSelected] = useState(false);
     const [startTime, setStartTime] = useState(Date.now());
@@ -119,10 +119,6 @@ export default function ItemsPage({
                 setModalType('victory');
                 setIsModalOpen(true);
             }
-            else if (nextGameState.guessedNames.length >= 5) {
-                setModalType('surrender');
-                setIsModalOpen(true);
-            }
         } catch (err) {
             console.error(err);
         }
@@ -143,7 +139,7 @@ export default function ItemsPage({
     const activeFilterSelected = isDaily ? true : isFilterSelected;
     const activeGameState = isDaily ? dailyGameState : gameState;
     const activeGuesses = isDaily ? dailyGuesses : guesses;
-    const activeIsGameOver = isDaily ? false : (isModalOpen || (guesses.length > 0 && guesses[0].isCorrect) || (gameState && gameState.guessedNames.length >= 5));
+    const activeIsGameOver = isDaily ? false : (isModalOpen || (guesses.length > 0 && guesses[0].isCorrect));
 
     // Filter autocomplete search options
     const itemOptions = activeGameState

@@ -1,6 +1,6 @@
 import { createInterface } from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
-import deltaruneCharacters from '../assets/deltarune_characters.json' with { type: 'json' };
+import deltaruneCharacters from '../assets/data/deltarune_characters.json' with { type: 'json' };
 import { createGame, makeGuess } from './characterGame.js';
 
 const rl = createInterface({ input, output });

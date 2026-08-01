@@ -1,7 +1,7 @@
 import { Title, Text, Group } from '@mantine/core';
 import classes from '../../styles/Home.module.css';
-import sethGif from '../../assets/seth.gif';
-import aquaGif from '../../assets/aqua.gif';
+import sethGif from '../../assets/images/seth.gif';
+import aquaGif from '../../assets/images/aqua.gif';
 
 export default function Hero() {
     return (

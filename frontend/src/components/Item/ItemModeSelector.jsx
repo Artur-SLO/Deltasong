@@ -4,7 +4,7 @@ import { ITEM_CATEGORIES } from '../../config/Constants.js';
 import styles from '../../styles/Item.module.css';
 
 export default function ItemModeSelector({ onSelect }) {
-    const [tempMode, setTempMode] = useState(''); // '' or 'category'
+    const [tempMode, setTempMode] = useState('');
 
     return (
         <div className={styles.modeSelectorContainer}>

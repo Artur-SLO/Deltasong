@@ -2,8 +2,8 @@ import { Stack, Group } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import classes from '../../styles/Daily.module.css';
 
-import pinkGif from '../../assets/pink.gif';
-import jackensteinGif from '../../assets/jackenstein.gif';
+import pinkGif from '../../assets/images/pink.gif';
+import jackensteinGif from '../../assets/images/jackenstein.gif';
 
 const lockedMascots = {
     1: pinkGif,
@@ -24,7 +24,7 @@ export default function DailyStepper({ currentStep, status }) {
                 {steps.map((step) => {
                     const isCompleted = currentStep > step.id || status === 'victory' || (status === 'defeat' && currentStep > step.id);
                     const isActive = currentStep === step.id && status === 'playing';
-                    
+
                     let stepClass = classes.stepPending;
                     let iconClass = classes.stepIconPending;
                     let icon = (

@@ -21,7 +21,7 @@ export default function GameModeGrid() {
                     />
                 </div>
             )}
-            
+
             <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg">
                 {traditionalModes.map((mode) => (
                     <div key={mode.title} className={classes.cardWrapper}>

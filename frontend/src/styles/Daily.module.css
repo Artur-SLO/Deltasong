@@ -94,7 +94,7 @@
 /* Timer styles */
 .timerContainer {
     position: absolute;
-    top: var(--mantine-spacing-md);
+    top: 28px;
     left: var(--mantine-spacing-md);
     display: flex;
     align-items: center;
@@ -352,4 +352,29 @@
     height: 32px;
     object-fit: contain;
     image-rendering: pixelated;
+}
+
+.attemptsContainer {
+    position: absolute;
+    top: 28px;
+    right: var(--mantine-spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--mantine-spacing-xs);
+    background-color: var(--color-bg-secondary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: var(--mantine-radius-md);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    box-shadow: var(--shadow-standard);
+}
+
+.attemptsText {
+    font-family: monospace;
+    font-size: var(--mantine-font-size-lg);
+    font-weight: bold;
+    color: var(--mantine-color-amberGold-5);
+}
+
+.attemptsTextWarning {
+    color: var(--mantine-color-royalMagenta-6) !important;
 }

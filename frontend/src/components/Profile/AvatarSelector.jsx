@@ -1,7 +1,7 @@
 import { TextInput, Text } from '@mantine/core';
 import { useState } from 'react';
 import classes from '../../styles/Account.module.css';
-import deltaruneCharacters from '../../assets/deltarune_characters.json';
+import deltaruneCharacters from '../../assets/data/deltarune_characters.json';
 import { getCharacterImage } from '../../utils/image.js';
 
 const allCharacters = deltaruneCharacters.filter(c => c.image && c.name);
