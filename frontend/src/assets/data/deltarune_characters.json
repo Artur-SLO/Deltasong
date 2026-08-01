@@ -1173,7 +1173,7 @@
         "class": "NPC",
         "first_appearance": "Hospital",
         "first_appearance_index": 16,
-        "image": "https://static.wikia.nocookie.net/deltarune/images/6/68/Rudy_Overworld.png/revision/latest?cb=20260107234844",
+        "image": "../images/rudy.png",
         "url": "https://deltarune.wiki/w/Rudy"
     },
     {
