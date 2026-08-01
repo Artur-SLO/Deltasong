@@ -1,17 +1,16 @@
 import { useEffect, useState, useRef, useContext } from 'react';
-import { Container, Paper, Title, Stack, Button, Text, Box } from '@mantine/core';
-import { notifications } from '@mantine/notifications';
+import { Container, Paper, Title, Stack, Button, Text, Box, Group } from '@mantine/core';
 
 import homeClasses from '../../styles/Home.module.css';
 import classes from '../../styles/Daily.module.css';
 
 // JSON data
-import deltaruneCharacters from '../../assets/deltarune_characters.json' with { type: 'json' };
-import deltaruneItems from '../../assets/deltarune_items.json' with { type: 'json' };
-import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { type: 'json' };
-import lancerGif from '../../assets/lancer.gif';
+import deltaruneCharacters from '../../assets/data/deltarune_characters.json';
+import deltaruneItems from '../../assets/data/deltarune_items.json';
+import deltaruneSoundtrack from '../../assets/data/deltarune_soundtrack.json';
+import lancerGif from '../../assets/images/lancer.gif';
 import { addPoints, getRankData } from '../../core/rankSystem.js';
-import { RANK_POINTS } from '../../config/Constants.js';
+import { RANK_POINTS, DAILY_LIMITS } from '../../config/Constants.js';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 
@@ -21,7 +20,6 @@ import {
     submitCharacterGuess,
     submitItemGuess,
     submitSongGuess,
-    giveUpDaily,
     saveDailyGame
 } from '../../core/dailyGame.js';
 import { getLocalDateString } from '../../core/dailySeed.js';
@@ -57,7 +55,6 @@ export default function DailyGame() {
     const simulatedDate = getSimulatedOrLocalDate();
     const [gameState, setGameState] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
     const [extraSeconds, setExtraSeconds] = useState(0);
     const [duration, setDuration] = useState(0);
 
@@ -123,7 +120,6 @@ export default function DailyGame() {
                 saveDailyGame(latestState);
             }
         };
-        /* eslint-disable-next-line react-hooks/exhaustive-deps */
     }, [gameState?.status, simulatedDate]);
 
     // Attach developer tools to the window scope for clean testing
@@ -171,7 +167,7 @@ export default function DailyGame() {
                             next.endTime = Date.now();
                             setIsModalOpen(true);
                             console.log('[Dev] Skipped Stage 3: Song (Victory!)');
-                            
+
                             const rankData = getRankData();
                             const streak = rankData.streak || 1;
                             addPoints(RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS), 'daily');
@@ -285,17 +281,22 @@ export default function DailyGame() {
         }
     };
 
-    const handleGiveUpClick = () => {
-        if (isConfirmingGiveUp) {
-            const stateWithTime = getUpdatedStateWithTime();
-            const nextGame = giveUpDaily(stateWithTime);
-            setGameState(nextGame);
-            setIsModalOpen(true);
-            setIsConfirmingGiveUp(false);
-        } else {
-            setIsConfirmingGiveUp(true);
-        }
-    };
+
+    const currentStep = gameState.currentStep;
+    let attemptsLeft = 0;
+    let totalAttempts = 0;
+    if (currentStep === 1) {
+        totalAttempts = DAILY_LIMITS.characters;
+        attemptsLeft = Math.max(0, totalAttempts - (gameState.guesses?.characters?.length || 0));
+    } else if (currentStep === 2) {
+        totalAttempts = DAILY_LIMITS.items;
+        attemptsLeft = Math.max(0, totalAttempts - (gameState.guesses?.items?.length || 0));
+    } else if (currentStep === 3) {
+        totalAttempts = DAILY_LIMITS.songs;
+        attemptsLeft = Math.max(0, totalAttempts - (gameState.guesses?.songs?.length || 0));
+    }
+
+    const isLowAttempts = attemptsLeft <= 3;
 
     return (
         <Container size="md" className={`${homeClasses.gameContainer} ${classes.container}`}>
@@ -307,16 +308,12 @@ export default function DailyGame() {
                 className={homeClasses.gamePaper}
             >
                 {!isGameOver && (
-                    <Button
-                        color="red"
-                        variant="outline"
-                        size="xs"
-                        onClick={handleGiveUpClick}
-                        onBlur={() => setIsConfirmingGiveUp(false)}
-                        className={classes.giveUpButton}
-                    >
-                        {isConfirmingGiveUp ? "Sure?" : "Give up"}
-                    </Button>
+                    <div className={classes.attemptsContainer}>
+                        <Text size="xs" fw="bold">ATTEMPTS</Text>
+                        <span className={`${classes.attemptsText} ${isLowAttempts ? classes.attemptsTextWarning : ''}`}>
+                            {attemptsLeft}/{totalAttempts}
+                        </span>
+                    </div>
                 )}
 
                 <Stack gap="md" align="center" w="100%">

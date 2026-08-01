@@ -6,10 +6,10 @@ import { getDailyNumber } from '../../core/dailySeed.js';
 import classes from '../../styles/Daily.module.css';
 import { DAILY_LIMITS } from '../../config/Constants.js';
 import { getCharacterImage } from '../../utils/image.js';
-import spamtonGif from '../../assets/spamton.gif';
-import pinkGif from '../../assets/pink.gif';
-import jackensteinGif from '../../assets/jackenstein.gif';
-import mizzleGif from '../../assets/mizzle.gif';
+import spamtonGif from '../../assets/images/spamton.gif';
+import pinkGif from '../../assets/images/pink.gif';
+import jackensteinGif from '../../assets/images/jackenstein.gif';
+import mizzleGif from '../../assets/images/mizzle.gif';
 
 
 export default function DailyResultsView({ gameState }) {
@@ -90,8 +90,8 @@ export default function DailyResultsView({ gameState }) {
                 color: 'emeraldGreen'
             });
         }).catch(err => {
-                console.error('Failed to copy', err);
-            });
+            console.error('Failed to copy', err);
+        });
     };
 
     const handleDownloadImage = async () => {
@@ -146,7 +146,7 @@ export default function DailyResultsView({ gameState }) {
         const bannerH = 40;
         ctx.fillStyle = isVictory ? 'rgba(0, 255, 39, 0.2)' : 'rgba(255, 31, 142, 0.2)';
         ctx.fillRect(8, bannerY, canvas.width - 16, bannerH);
-        
+
         ctx.strokeStyle = isVictory ? '#00ff27' : '#ff1f8e';
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -191,7 +191,7 @@ export default function DailyResultsView({ gameState }) {
             ctx.textAlign = 'right';
             ctx.fillStyle = '#ffffff';
             ctx.fillText(row.value, boxX + boxW - 24, itemY);
-            
+
             // Draw a separator line
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
             ctx.lineWidth = 1;
@@ -208,7 +208,7 @@ export default function DailyResultsView({ gameState }) {
             const ratio = Math.min(maxW / img.width, maxH / img.height);
             const w = img.width * ratio;
             const h = img.height * ratio;
-            
+
             const targetX = alignRight ? x + (maxW - w) : x;
             const targetY = y + (maxH - h); // align to bottom
 

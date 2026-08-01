@@ -2,7 +2,7 @@ import { Modal, Stack, Text, Paper, Button, Group } from '@mantine/core';
 import { useEffect } from 'react';
 import { ITEM_DETAILS_CONFIG } from '../../config/Constants.js';
 import styles from '../../styles/Item.module.css';
-import rouxlsGif from '../../assets/rouxls.gif';
+import rouxlsGif from '../../assets/images/rouxls.gif';
 
 
 export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAgain, onChangeFilter }) {
@@ -25,8 +25,6 @@ export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAg
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, [isOpen, onPlayAgain]);
-
-    const details = []; // not used directly anymore
 
     return (
         <Modal

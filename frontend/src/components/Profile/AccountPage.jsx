@@ -5,8 +5,8 @@ import { getActiveUser } from '../../utils/auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import ProfileDashboard from './ProfileDashboard';
-import gersonImage from '../../assets/gerson.gif';
-import gersonBoomImage from '../../assets/gerson-boom.gif';
+import gersonImage from '../../assets/images/gerson.gif';
+import gersonBoomImage from '../../assets/images/gerson-boom.gif';
 
 export default function AccountPage() {
     const [activeUser, setActiveUser] = useState(null);

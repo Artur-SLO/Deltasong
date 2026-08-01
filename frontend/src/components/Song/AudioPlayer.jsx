@@ -126,7 +126,7 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
         if (isPlaying && playerRef.current && playerReady) {
             intervalId = setInterval(() => {
                 if (!playerRef.current || typeof playerRef.current.getCurrentTime !== 'function') return;
-                
+
                 try {
                     const currentTime = playerRef.current.getCurrentTime();
                     const elapsed = currentTime - startTime;
@@ -241,17 +241,17 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
                             Play
                         </Button>
                     ) : (
-                        <Button
-                            leftSection={<IconPlayerPause size={16} />}
-                            onClick={handlePause}
-                            disabled={disabled || !playerReady}
-                            color="royalMagenta"
-                            variant="light"
-                            className={styles.playerBtn}
-                        >
-                            Pause
-                        </Button>
-                    )}
+                            <Button
+                                leftSection={<IconPlayerPause size={16} />}
+                                onClick={handlePause}
+                                disabled={disabled || !playerReady}
+                                color="royalMagenta"
+                                variant="light"
+                                className={styles.playerBtn}
+                            >
+                                Pause
+                            </Button>
+                        )}
                     {isClueAvailable && (
                         <Button
                             leftSection={<IconPlus size={16} />}

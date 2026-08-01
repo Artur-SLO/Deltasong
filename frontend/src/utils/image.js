@@ -1,5 +1,5 @@
-// Automatically glob all image assets from ../assets/
-const localImagesGlob = import.meta.glob('../assets/*.{png,jpg,jpeg,gif,svg}', { eager: true });
+// Automatically glob all image assets from ../assets/images/
+const localImagesGlob = import.meta.glob('../assets/images/*.{png,jpg,jpeg,gif,svg}', { eager: true });
 
 export function getCharacterImage(imagePath) {
     if (!imagePath) return '';

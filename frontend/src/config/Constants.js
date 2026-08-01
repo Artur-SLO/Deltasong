@@ -70,9 +70,9 @@ export const ITEM_DETAILS_CONFIG = [
 ];
 
 export const DAILY_LIMITS = {
-    characters: 8,
-    items: 5,
-    songs: 8
+    characters: 10,
+    items: 10,
+    songs: 10
 };
 
 export const GAME_MODE_SPRITES = {
@@ -94,67 +94,67 @@ export const GAME_MODE_SHADOW_COLORS = {
 };
 
 export const RANK_TIERS = [
-  { 
-    grade: "Z", 
-    min: 0, 
-    max: 299, 
-    span: 300, 
-    color: "gray.6", 
-    label: "DISCARDED VESSEL", 
-    message: "YOUR CREATION WAS DISCARDED. NO ONE CAN CHOOSE WHO THEY ARE IN THIS WORLD... DARK, DARKER, YET DARKER." 
-  },
-  { 
-    grade: "C", 
-    min: 300, 
-    max: 999, 
-    span: 700, 
-    color: "yellow.4", 
-    label: "BIG SHOT", 
-    message: "NOW'S YOUR CHANCE TO BE A [BIG SHOT]!! DON'T BELIEVE [Anything You See On TV!] THE MAN'S A CRIMINAL!!"
-  },
-  { 
-    grade: "B",
-    min: 1000, 
-    max: 2499, 
-    span: 1500, 
-    color: "blue.6", 
-    label: "BAD GUYS SQUAD", 
-    message: "Step one: I thrash you. Step two: You lose! Halt, clowns! This bike is fueled by victory!!!" 
-  },
-  { 
-    grade: "A", 
-    min: 2500, 
-    max: 4999, 
-    span: 2500, 
-    color: "grape.4", 
-    label: "TRUE GENIUS",
-    message: "*pushes up glasses* I, the master tactician, have analyzed your stats! This win is NOT luck... it is my ultimate tactic!" 
-  },
-  { 
-    grade: "S", 
-    min: 5000, 
-    max: 9999, 
-    span: 5000, 
-    color: "green.4", 
-    label: "PROPHECY BUSTER", 
-    message: "Gyaa Ha Ha! The White Pen of Hope writes your name into legend! Old man approves your mighty streak, kid!" 
-  },
-  { 
-    grade: "T", 
-    min: 10000, 
-    max: Infinity, 
-    span: 10000, 
-    color: "pink.3", 
-    label: "TV STAR", 
-    message: "It's TV Ti... m... m... m...\n\nTHIS NEXT EXPERIMENT\n\nSEEMS\n\nVERY\n\nVERY\n\nINTERESTING\n\n❄︎♒︎♋︎■︎🙵⬧︎ ♐︎□︎❒︎ ◻︎●︎♋︎⍓︎♓︎■︎♑︎ ⧫︎♒︎♓︎⬧︎ ♐︎♋︎❒︎📬︎" 
-  }
+    {
+        grade: "Z",
+        min: 0,
+        max: 299,
+        span: 300,
+        color: "gray.6",
+        label: "DISCARDED VESSEL",
+        message: "YOUR CREATION WAS DISCARDED. NO ONE CAN CHOOSE WHO THEY ARE IN THIS WORLD... DARK, DARKER, YET DARKER."
+    },
+    {
+        grade: "C",
+        min: 300,
+        max: 999,
+        span: 700,
+        color: "yellow.4",
+        label: "BIG SHOT",
+        message: "NOW'S YOUR CHANCE TO BE A [BIG SHOT]!! DON'T BELIEVE [Anything You See On TV!] THE MAN'S A CRIMINAL!!"
+    },
+    {
+        grade: "B",
+        min: 1000,
+        max: 2499,
+        span: 1500,
+        color: "blue.6",
+        label: "BAD GUYS SQUAD",
+        message: "Step one: I thrash you. Step two: You lose! Halt, clowns! This bike is fueled by victory!!!"
+    },
+    {
+        grade: "A",
+        min: 2500,
+        max: 4999,
+        span: 2500,
+        color: "grape.4",
+        label: "TRUE GENIUS",
+        message: "*pushes up glasses* I, the master tactician, have analyzed your stats! This win is NOT luck... it is my ultimate tactic!"
+    },
+    {
+        grade: "S",
+        min: 5000,
+        max: 9999,
+        span: 5000,
+        color: "green.4",
+        label: "PROPHECY BUSTER",
+        message: "Gyaa Ha Ha! The White Pen of Hope writes your name into legend! Old man approves your mighty streak, kid!"
+    },
+    {
+        grade: "T",
+        min: 10000,
+        max: Infinity,
+        span: 10000,
+        color: "pink.3",
+        label: "TV STAR",
+        message: "It's TV Ti... m... m... m...\n\nTHIS NEXT EXPERIMENT\n\nSEEMS\n\nVERY\n\nVERY\n\nINTERESTING\n\n❄︎♒︎♋︎■︎🙵⬧︎ ♐︎□︎❒︎ ◻︎●︎♋︎⍓︎♓︎■︎♑︎ ⧫︎♒︎♓︎⬧︎ ♐︎♋︎❒︎📬︎"
+    }
 ];
 
 export const RANK_POINTS = {
     DAILY_VICTORY_BASE: 250,
     DAILY_STREAK_BONUS: 25,
     STREAK_BREAK_PENALTY: 50,
-    
+
     VICTORY_FAST_ATTEMPTS: 80,
     VICTORY_MEDIUM_ATTEMPTS: 50,
     VICTORY_SLOW_ATTEMPTS: 25,

@@ -1,11 +1,11 @@
-import { Title, Group, Text, Button, Paper, Modal, Stack } from '@mantine/core';
+import { Title, Group, Button, Modal, Stack } from '@mantine/core';
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import classes from '../../styles/Account.module.css';
 import { logoutUser, updateUserAvatar } from '../../utils/auth';
 import { notifications } from '@mantine/notifications';
 import AvatarSelector from './AvatarSelector';
-import deltaruneCharacters from '../../assets/deltarune_characters.json';
+import deltaruneCharacters from '../../assets/data/deltarune_characters.json';
 import { getCharacterImage } from '../../utils/image.js';
 import RankOverviewCard from './RankOverviewCard';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';

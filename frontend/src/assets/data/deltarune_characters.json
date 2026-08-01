@@ -6,7 +6,7 @@
         "chapter": 2,
         "class": "Vendor",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Addison_overworld_blue.gif?cb=5xd016&h=thumb.php&f=Addison_overworld_blue.gif",
         "url": "https://deltarune.wiki/w/Addison"
     },
@@ -17,7 +17,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://undertale.wiki/images/Alphys_overworld_epilogue.gif?cb=lwa9j6&h=thumb.php&f=Alphys_overworld_epilogue.gif",
         "url": "https://deltarune.wiki/w/Alphys"
     },
@@ -28,7 +28,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Church",
-        "first_appearance_index": 20,
+        "first_appearance_index": 21,
         "image": "https://deltarune.wiki/images/Alvin_overworld.png?cb=ijwfnw&h=thumb.php&f=Alvin_overworld.png",
         "url": "https://deltarune.wiki/w/Alvin"
     },
@@ -39,7 +39,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Ambyu-Lance_overworld.gif?cb=s1j1c4&h=thumb.php&f=Ambyu-Lance_overworld.gif",
         "url": "https://deltarune.wiki/w/Ambyu-Lance"
     },
@@ -50,7 +50,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Library",
-        "first_appearance_index": 14,
+        "first_appearance_index": 18,
         "image": "https://deltarune.wiki/images/Annoying_Dog_overworld.gif?cb=9k72ty&h=thumb.php&f=Annoying_Dog_overworld.gif",
         "url": "https://deltarune.wiki/w/Annoying_Dog"
     },
@@ -61,7 +61,7 @@
         "chapter": 5,
         "class": "Miniboss",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Aqua_battle_idle.gif?cb=gth4x6&h=thumb.php&f=Aqua_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Aqua"
     },
@@ -72,7 +72,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 54,
+        "first_appearance_index": 57,
         "image": "https://deltarune.wiki/images/Archer_overworld.gif?cb=gdivq7&h=thumb.php&f=Archer_overworld.gif",
         "url": "https://deltarune.wiki/w/Archer"
     },
@@ -94,8 +94,8 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "Cold Place",
-        "first_appearance_index": 46,
-        "image": "https://static.wikia.nocookie.net/undertale/images/d/dd/Asriel_Dreemurr_battle_God_of_Hyperdeath.png/revision/latest/scale-to-width/360?cb=20221019204443&path-prefix=pt-br",
+        "first_appearance_index": 47,
+        "image": "../assets/asriel.png",
         "url": "https://deltarune.wiki/w/Asriel"
     },
     {
@@ -105,7 +105,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Ball_battle_idle.gif?cb=t3gcm6&h=thumb.php&f=Ball_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Ball"
     },
@@ -116,7 +116,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Balthizard_battle.gif?cb=ph0586&h=thumb.php&f=Balthizard_battle.gif",
         "url": "https://deltarune.wiki/w/Balthizard"
     },
@@ -127,7 +127,7 @@
         "chapter": 1,
         "class": "Miniboss",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "./berdly.gif",
         "url": "https://deltarune.wiki/w/Berdly"
     },
@@ -138,7 +138,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Bibliox_battle_idle.gif?cb=joz8gy&h=thumb.php&f=Bibliox_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Bibliox"
     },
@@ -149,7 +149,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Blockler_B_overworld.png?cb=mv4u95&h=thumb.php&f=Blockler_B_overworld.png",
         "url": "https://deltarune.wiki/w/Blockler"
     },
@@ -160,7 +160,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Bloxer_battle_idle.gif?cb=1py9b7&h=thumb.php&f=Bloxer_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Bloxer"
     },
@@ -171,7 +171,7 @@
         "chapter": 5,
         "class": "Miniboss",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 54,
+        "first_appearance_index": 57,
         "image": "https://deltarune.wiki/images/Blue_battle_idle.gif?cb=ancsxy&h=thumb.php&f=Blue_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Blue"
     },
@@ -182,7 +182,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "ICE-E's Pezza",
-        "first_appearance_index": 13,
+        "first_appearance_index": 7,
         "image": "https://deltarune.wiki/images/Blue_Ears_overworld_coat.png?cb=4fasgv&h=thumb.php&f=Blue_Ears_overworld_coat.png",
         "url": "https://deltarune.wiki/w/Blue_Ears"
     },
@@ -204,7 +204,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Field",
-        "first_appearance_index": 30,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/C._Round_overworld.gif?cb=6i9f3h&h=thumb.php&f=C._Round_overworld.gif",
         "url": "https://deltarune.wiki/w/C._Round"
     },
@@ -215,7 +215,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Cage_Animals_overworld.png?cb=n4wttu&h=thumb.php&f=Cage_Animals_overworld.png",
         "url": "https://deltarune.wiki/w/Cage_Animals"
     },
@@ -226,7 +226,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Holiday Manor",
-        "first_appearance_index": 48,
+        "first_appearance_index": 49,
         "image": "https://deltarune.wiki/images/Carol_overworld.png?cb=puyjj3&h=thumb.php&f=Carol_overworld.png",
         "url": "https://deltarune.wiki/w/Carol"
     },
@@ -237,7 +237,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Castle Town",
-        "first_appearance_index": 24,
+        "first_appearance_index": 25,
         "image": "https://deltarune.wiki/images/Castle_Rudinn_overworld.png?cb=d5jchq&h=thumb.php&f=Castle_Rudinn_overworld.png",
         "url": "https://deltarune.wiki/w/Castle_Rudinn"
     },
@@ -248,7 +248,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://deltarune.wiki/images/Catti_overworld_waitress.png?cb=ed71qu&h=thumb.php&f=Catti_overworld_waitress.png",
         "url": "https://deltarune.wiki/w/Catti"
     },
@@ -281,7 +281,7 @@
         "chapter": 1,
         "class": "Miniboss",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Clover_battle.gif?cb=e0ffy1&h=thumb.php&f=Clover_battle.gif",
         "url": "https://deltarune.wiki/w/Clover"
     },
@@ -292,7 +292,7 @@
         "chapter": 4,
         "class": "NPC",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Cuptain_overworld.gif?cb=4jklmy&h=thumb.php&f=Cuptain_overworld.gif",
         "url": "https://deltarune.wiki/w/Cuptain"
     },
@@ -314,7 +314,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Dark_Ponman_overworld.gif?cb=azye66&h=thumb.php&f=Dark_Ponman_overworld.gif",
         "url": "https://deltarune.wiki/w/Dark_Ponman"
     },
@@ -325,7 +325,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "Cold Place",
-        "first_appearance_index": 46,
+        "first_appearance_index": 47,
         "image": "./dess.png",
         "url": "https://deltarune.wiki/w/Dess"
     },
@@ -336,7 +336,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Electro-Dasher_overworld_legs.gif?cb=l5dfhj&h=thumb.php&f=Electro-Dasher_overworld_legs.gif",
         "url": "https://deltarune.wiki/w/Electro-Dasher"
     },
@@ -347,7 +347,7 @@
         "chapter": 3,
         "class": "Miniboss",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Elnina_battle_idle.gif?cb=dr9ynq&h=thumb.php&f=Elnina_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Elnina"
     },
@@ -358,7 +358,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 53,
+        "first_appearance_index": 56,
         "image": "https://deltarune.wiki/images/Ferroll_overworld.gif?cb=2q4lqz&h=thumb.php&f=Ferroll_overworld.gif",
         "url": "https://deltarune.wiki/w/Ferroll"
     },
@@ -369,7 +369,7 @@
         "chapter": 4,
         "class": "NPC",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Fire_extinguisher_overworld.png?cb=iltsi7&h=thumb.php&f=Fire_extinguisher_overworld.png",
         "url": "https://deltarune.wiki/w/Fire_extinguisher"
     },
@@ -380,7 +380,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Floradinn_battle.gif?cb=t66o1a&h=thumb.php&f=Floradinn_battle.gif",
         "url": "https://deltarune.wiki/w/Floradinn"
     },
@@ -391,7 +391,7 @@
         "chapter": 5,
         "class": "Boss",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Flowery_battle_idle.gif?cb=s5lzd3&h=thumb.php&f=Flowery_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Flowery"
     },
@@ -402,7 +402,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Former_Kings_overworld.png?cb=3nqcuc&h=thumb.php&f=Former_Kings_overworld.png",
         "url": "https://deltarune.wiki/w/Former_Kings"
     },
@@ -413,7 +413,7 @@
         "chapter": 2,
         "class": "Unknown",
         "first_appearance": "Queen's Mansion",
-        "first_appearance_index": 36,
+        "first_appearance_index": 37,
         "image": "https://deltarune.wiki/images/FRIEND_overworld_vision.gif?cb=exya2v&h=thumb.php&f=FRIEND_overworld_vision.gif",
         "url": "https://deltarune.wiki/w/FRIEND"
     },
@@ -435,7 +435,7 @@
         "chapter": 4,
         "class": "Boss",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://media.tenor.com/wuYnI5yDxmgAAAAj/gerson-boom-gerson.gif",
         "url": "https://deltarune.wiki/w/Gerson"
     },
@@ -446,7 +446,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Goulden_Sam_overworld.png?cb=jvva1p&h=thumb.php&f=Goulden_Sam_overworld.png",
         "url": "https://deltarune.wiki/w/Goulden_Sam"
     },
@@ -457,7 +457,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Goulden_Son_overworld.png?cb=lw50wk&h=thumb.php&f=Goulden_Son_overworld.png",
         "url": "https://deltarune.wiki/w/Goulden_Son"
     },
@@ -468,7 +468,7 @@
         "chapter": 5,
         "class": "Miniboss",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Green_battle_idle.gif?cb=8viz3t&h=thumb.php&f=Green_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Green"
     },
@@ -479,7 +479,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Guei_overworld.gif?cb=4nssf8&h=thumb.php&f=Guei_overworld.gif",
         "url": "https://deltarune.wiki/w/Guei"
     },
@@ -490,7 +490,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Hacker_overworld.png?cb=74vytn&h=thumb.php&f=Hacker_overworld.png",
         "url": "https://deltarune.wiki/w/Hacker"
     },
@@ -501,7 +501,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Field",
-        "first_appearance_index": 30,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Hathy_battle.gif?cb=0ew9q6&h=thumb.php&f=Hathy_battle.gif",
         "url": "https://deltarune.wiki/w/Hathy"
     },
@@ -512,7 +512,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Head_Hathy_battle.gif?cb=pus9w6&h=thumb.php&f=Head_Hathy_battle.gif",
         "url": "https://deltarune.wiki/w/Head_Hathy"
     },
@@ -523,7 +523,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Hopschef_overworld.gif?cb=6lo049&h=thumb.php&f=Hopschef_overworld.gif",
         "url": "https://deltarune.wiki/w/Hopschef"
     },
@@ -534,7 +534,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Church",
-        "first_appearance_index": 20,
+        "first_appearance_index": 21,
         "image": "https://deltarune.wiki/images/Ice_Cap_overworld_blue.png?cb=m0z357&h=thumb.php&f=Ice_Cap_overworld_blue.png",
         "url": "https://deltarune.wiki/w/Ice_Cap"
     },
@@ -545,7 +545,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "ICE-E's Pezza",
-        "first_appearance_index": 13,
+        "first_appearance_index": 7,
         "image": "https://deltarune.wiki/images/ICE-E_overworld_minigame_unused.gif?cb=0kg9nv&h=thumb.php&f=ICE-E_overworld_minigame_unused.gif",
         "url": "https://deltarune.wiki/w/ICE-E"
     },
@@ -556,7 +556,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Icon_Man_overworld.png?cb=lzhr3e&h=thumb.php&f=Icon_Man_overworld.png",
         "url": "https://deltarune.wiki/w/Icon_Man"
     },
@@ -567,7 +567,7 @@
         "chapter": 4,
         "class": "Miniboss",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "./jackenstein.gif",
         "url": "https://deltarune.wiki/w/Jackenstein"
     },
@@ -578,7 +578,7 @@
         "chapter": 1,
         "class": "Boss",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Jevil_battle_hurt.gif?cb=7o72yb&h=thumb.php&f=Jevil_battle_hurt.gif",
         "url": "https://deltarune.wiki/w/Jevil"
     },
@@ -589,7 +589,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Field",
-        "first_appearance_index": 30,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Jigsaw_Joe_battle_unused.gif?cb=9e7275&h=thumb.php&f=Jigsaw_Joe_battle_unused.gif",
         "url": "https://deltarune.wiki/w/Jigsaw_Joe"
     },
@@ -600,7 +600,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Field",
-        "first_appearance_index": 30,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Jigsawry_battle_idle.gif?cb=jqefcd&h=thumb.php&f=Jigsawry_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Jigsawry"
     },
@@ -611,7 +611,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://deltarune.wiki/images/Jockington_overworld.png?cb=8x4s7b&h=thumb.php&f=Jockington_overworld.png",
         "url": "https://deltarune.wiki/w/Jockington"
     },
@@ -622,7 +622,7 @@
         "chapter": 1,
         "class": "Miniboss",
         "first_appearance": "Great Board",
-        "first_appearance_index": 31,
+        "first_appearance_index": 32,
         "image": "https://deltarune.wiki/images/K._Round_battle_idle.gif?cb=t4fy6n&h=thumb.php&f=K._Round_battle_idle.gif",
         "url": "https://deltarune.wiki/w/K._Round"
     },
@@ -633,7 +633,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 53,
+        "first_appearance_index": 56,
         "image": "https://deltarune.wiki/images/Kawkaw_battle_idle.gif?cb=60607f&h=thumb.php&f=Kawkaw_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Kawkaw"
     },
@@ -644,18 +644,18 @@
         "chapter": 1,
         "class": "Boss",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/King_battle_idle.gif?cb=87vkhh&h=thumb.php&f=King_battle_idle.gif",
         "url": "https://deltarune.wiki/w/King"
     },
     {
-        "name": "KNIGHT",
+        "name": "ROARING KNIGHT",
         "gender": "Non-binary",
         "type": "Unknown",
         "chapter": 3,
         "class": "Boss",
         "first_appearance": "Cold Place",
-        "first_appearance_index": 46,
+        "first_appearance_index": 47,
         "image": "https://deltarune.wiki/images/Knight_overworld_transform_flight.gif?cb=a0ajs6&h=thumb.php&f=Knight_overworld_transform_flight.gif",
         "url": "https://deltarune.wiki/w/Knight"
     },
@@ -666,7 +666,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Kooby_overworld.png?cb=ag6x9l&h=thumb.php&f=Kooby_overworld.png",
         "url": "https://deltarune.wiki/w/Kooby"
     },
@@ -688,7 +688,7 @@
         "chapter": 1,
         "class": "Miniboss",
         "first_appearance": "??????",
-        "first_appearance_index": 23,
+        "first_appearance_index": 24,
         "image": "https://media.tenor.com/RqQoyzQY8lcAAAAj/deltarune-lancer.gif",
         "url": "https://deltarune.wiki/w/Lancer"
     },
@@ -699,7 +699,7 @@
         "chapter": 3,
         "class": "Miniboss",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Lanino_battle_idle.gif?cb=6s7wgl&h=thumb.php&f=Lanino_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Lanino"
     },
@@ -710,7 +710,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 53,
+        "first_appearance_index": 56,
         "image": "https://deltarune.wiki/images/Leafling_battle.gif?cb=8cd8au&h=thumb.php&f=Leafling_battle.gif",
         "url": "https://deltarune.wiki/w/Leafling"
     },
@@ -721,7 +721,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Malius_overworld.gif?cb=2089ru&h=thumb.php&f=Malius_overworld.gif",
         "url": "https://deltarune.wiki/w/Malius"
     },
@@ -732,7 +732,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 54,
+        "first_appearance_index": 57,
         "image": "https://deltarune.wiki/images/Mantis_overworld.gif?cb=cephpy&h=thumb.php&f=Mantis_overworld.gif",
         "url": "https://deltarune.wiki/w/Mantis"
     },
@@ -743,7 +743,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Maus_battle_idle.gif?cb=fmyqf6&h=thumb.php&f=Maus_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Maus"
     },
@@ -754,7 +754,7 @@
         "chapter": 3,
         "class": "Miniboss",
         "first_appearance": "TV Studio",
-        "first_appearance_index": 28,
+        "first_appearance_index": 29,
         "image": "https://deltarune.wiki/images/Small_Mike_battle_idle.gif?cb=q5127v&h=thumb.php&f=Small_Mike_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Mike"
     },
@@ -765,7 +765,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "'Sans",
-        "first_appearance_index": 7,
+        "first_appearance_index": 9,
         "image": "https://deltarune.wiki/images/Milklooker_overworld_talk.gif?cb=fo0gtg&h=thumb.php&f=Milklooker_overworld_talk.gif",
         "url": "https://deltarune.wiki/w/Milklooker"
     },
@@ -776,7 +776,7 @@
         "chapter": 4,
         "class": "Miniboss",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Miss_Mizzle_battle_idle.gif?cb=dbmbw4&h=thumb.php&f=Miss_Mizzle_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Miss_Mizzle"
     },
@@ -787,7 +787,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Mizzle_battle_idle.gif?cb=131sr1&h=thumb.php&f=Mizzle_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Mizzle"
     },
@@ -798,7 +798,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "QC's Diner",
-        "first_appearance_index": 12,
+        "first_appearance_index": 8,
         "image": "https://deltarune.wiki/images/Mom_Cat_overworld.gif?cb=p0azze&h=thumb.php&f=Mom_Cat_overworld.gif",
         "url": "https://deltarune.wiki/w/Mom_Cat"
     },
@@ -809,7 +809,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://deltarune.wiki/images/Monster_Kid_overworld.png?cb=1t93zt&h=thumb.php&f=Monster_Kid_overworld.png",
         "url": "https://deltarune.wiki/w/Monster_Kid"
     },
@@ -820,7 +820,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Great Board",
-        "first_appearance_index": 31,
+        "first_appearance_index": 32,
         "image": "https://deltarune.wiki/images/Mr._Elegance_overworld.png?cb=i44y6y&h=thumb.php&f=Mr._Elegance_overworld.png",
         "url": "https://deltarune.wiki/w/Mr._Elegance"
     },
@@ -831,7 +831,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Great Board",
-        "first_appearance_index": 31,
+        "first_appearance_index": 32,
         "image": "https://deltarune.wiki/images/Mr._Society_overworld.png?cb=pye7nf&h=thumb.php&f=Mr._Society_overworld.png",
         "url": "https://deltarune.wiki/w/Mr._Society"
     },
@@ -842,7 +842,7 @@
         "chapter": 4,
         "class": "NPC",
         "first_appearance": "Church",
-        "first_appearance_index": 20,
+        "first_appearance_index": 21,
         "image": "https://deltarune.wiki/images/Ms._Boom_overworld.png?cb=g2zama&h=thumb.php&f=Ms._Boom_overworld.png",
         "url": "https://deltarune.wiki/w/Ms._Boom"
     },
@@ -853,7 +853,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Police station",
-        "first_appearance_index": 17,
+        "first_appearance_index": 15,
         "image": "https://deltarune.wiki/images/Napstablook_overworld.png?cb=6p2kfx&h=thumb.php&f=Napstablook_overworld.png",
         "url": "https://deltarune.wiki/w/Napstablook"
     },
@@ -864,7 +864,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Netskie_battle_idle.gif?cb=ee09j1&h=thumb.php&f=Netskie_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Netskie"
     },
@@ -875,7 +875,7 @@
         "chapter": 1,
         "class": "Main Character",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://deltarune.wiki/images/Noelle_overworld_traffic.gif?cb=b3kbhy&h=thumb.php&f=Noelle_overworld_traffic.gif",
         "url": "https://deltarune.wiki/w/Noelle"
     },
@@ -886,7 +886,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Library",
-        "first_appearance_index": 14,
+        "first_appearance_index": 18,
         "image": "https://deltarune.wiki/images/Normal_NPC_overworld.png?cb=deizmi&h=thumb.php&f=Normal_NPC_overworld.png",
         "url": "https://deltarune.wiki/w/Normal_NPC"
     },
@@ -897,7 +897,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Nubert_overworld_moving.gif?cb=8e58gp&h=thumb.php&f=Nubert_overworld_moving.gif",
         "url": "https://deltarune.wiki/w/Nubert"
     },
@@ -930,7 +930,7 @@
         "chapter": 5,
         "class": "Miniboss",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 54,
+        "first_appearance_index": 57,
         "image": "https://deltarune.wiki/images/Orange_battle_idle.gif?cb=ax0c6w&h=thumb.php&f=Orange_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Orange"
     },
@@ -941,7 +941,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 51,
+        "first_appearance_index": 52,
         "image": "https://deltarune.wiki/images/Organikk_battle_idle.gif?cb=7sadu2&h=thumb.php&f=Organikk_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Organikk"
     },
@@ -952,7 +952,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Starwalker_overworld_walk.gif?cb=2szett&h=thumb.php&f=Starwalker_overworld_walk.gif",
         "url": "https://deltarune.wiki/w/Starwalker"
     },
@@ -963,7 +963,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Sans's house",
-        "first_appearance_index": 8,
+        "first_appearance_index": 10,
         "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d79feb43-e24e-4c68-a005-183866086217/dd865na-846a863a-da4f-4759-a558-d0b9420ee83e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9kNzlmZWI0My1lMjRlLTRjNjgtYTAwNS0xODM4NjYwODYyMTcvZGQ4NjVuYS04NDZhODYzYS1kYTRmLTQ3NTktYTU1OC1kMGI5NDIwZWU4M2UuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.tovcbe5QO1BoqmduThuNMQ7sVwytXjWW5Q4oEqKOtcY",
         "url": "https://deltarune.wiki/w/Papyrus"
     },
@@ -974,7 +974,7 @@
         "chapter": 5,
         "class": "Boss",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 53,
+        "first_appearance_index": 56,
         "image": "https://media.tenor.com/LcVXpcQp58UAAAAj/deltarune-pink.gif",
         "url": "https://deltarune.wiki/w/Pink"
     },
@@ -985,7 +985,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Pippins_battle_idle.gif?cb=1mg6fs&h=thumb.php&f=Pippins_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Pippins"
     },
@@ -996,7 +996,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "ICE-E's Pezza",
-        "first_appearance_index": 13,
+        "first_appearance_index": 7,
         "image": "https://media.tenor.com/8FFPNE6zUlQAAAAj/undertale-deltarune.gif",
         "url": "https://deltarune.wiki/w/Pizzapants"
     },
@@ -1007,7 +1007,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/thumb/Plugboy_overworld_transform.gif/76px-Plugboy_overworld_transform.gif.webp?cb=lauhuy&h=thumb.php&f=Plugboy_overworld_transform.gif",
         "url": "https://deltarune.wiki/w/Plugboy"
     },
@@ -1018,7 +1018,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Great Board",
-        "first_appearance_index": 31,
+        "first_appearance_index": 32,
         "image": "https://deltarune.wiki/images/Ponman_battle_idle.gif?cb=md5mvu&h=thumb.php&f=Ponman_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Ponman"
     },
@@ -1029,7 +1029,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Poppup_battle_idle.gif?cb=nwmrc9&h=thumb.php&f=Poppup_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Poppup"
     },
@@ -1040,7 +1040,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "QC's Diner",
-        "first_appearance_index": 12,
+        "first_appearance_index": 8,
         "image": "https://deltarune.wiki/images/QC_and_innkeeper_overworld_laugh.gif?cb=ittcf1&h=thumb.php&f=QC_and_innkeeper_overworld_laugh.gif",
         "url": "https://deltarune.wiki/w/QC"
     },
@@ -1051,7 +1051,7 @@
         "chapter": 2,
         "class": "Boss",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Queen_battle.gif?cb=ss3i2o&h=thumb.php&f=Queen_battle.gif",
         "url": "https://deltarune.wiki/w/Queen"
     },
@@ -1062,7 +1062,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "Desert Board",
-        "first_appearance_index": 39,
+        "first_appearance_index": 40,
         "image": "https://deltarune.wiki/images/Quiz_vortex_overworld.gif?cb=a5dw3d&h=thumb.php&f=Quiz_vortex_overworld.gif",
         "url": "https://deltarune.wiki/w/Quiz_vortex"
     },
@@ -1073,7 +1073,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Rabbick_overworld.gif?cb=qn12rd&h=thumb.php&f=Rabbick_overworld.gif",
         "url": "https://deltarune.wiki/w/Rabbick"
     },
@@ -1084,7 +1084,7 @@
         "chapter": 1,
         "class": "Main Character",
         "first_appearance": "Castle Town",
-        "first_appearance_index": 24,
+        "first_appearance_index": 25,
         "image": "https://deltarune.wiki/images/Ralsei_battle_serious.gif?cb=ktm22m&h=thumb.php&f=Ralsei_battle_serious.gif",
         "url": "https://deltarune.wiki/w/Ralsei"
     },
@@ -1095,7 +1095,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Ramb_overworld_smug.gif?cb=bxpsb5&h=thumb.php&f=Ramb_overworld_smug.gif",
         "url": "https://deltarune.wiki/w/Ramb"
     },
@@ -1106,7 +1106,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Ribbick_battle_idle.gif?cb=9rmtfh&h=thumb.php&f=Ribbick_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Ribbick"
     },
@@ -1117,7 +1117,7 @@
         "chapter": 1,
         "class": "Miniboss",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://i.redd.it/yqp2aoqhpudf1.gif",
         "url": "https://deltarune.wiki/w/Rouxls_Kaard"
     },
@@ -1128,7 +1128,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Royal_Coat_Rack_overworld.png?cb=m5s8bd&h=thumb.php&f=Royal_Coat_Rack_overworld.png",
         "url": "https://deltarune.wiki/w/Royal_Coat_Rack"
     },
@@ -1150,7 +1150,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Field",
-        "first_appearance_index": 30,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Rudinn_overworld.gif?cb=4csicm&h=thumb.php&f=Rudinn_overworld.gif",
         "url": "https://deltarune.wiki/w/Rudinn"
     },
@@ -1161,7 +1161,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Card Castle",
-        "first_appearance_index": 33,
+        "first_appearance_index": 34,
         "image": "https://deltarune.wiki/images/Rudinn_Ranger_battle.gif?cb=5hbzpf&h=thumb.php&f=Rudinn_Ranger_battle.gif",
         "url": "https://deltarune.wiki/w/Rudinn_Ranger"
     },
@@ -1173,7 +1173,7 @@
         "class": "NPC",
         "first_appearance": "Hospital",
         "first_appearance_index": 16,
-        "image": "https://static.wikia.nocookie.net/deltarune/images/6/68/Rudy_Overworld.png/revision/latest/scale-to-width/360?cb=20260107234844",
+        "image": "https://static.wikia.nocookie.net/deltarune/images/6/68/Rudy_Overworld.png/revision/latest?cb=20260107234844",
         "url": "https://deltarune.wiki/w/Rudy"
     },
     {
@@ -1183,7 +1183,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "'Sans",
-        "first_appearance_index": 7,
+        "first_appearance_index": 9,
         "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/10c1c6e1-f279-4e8f-8211-f9cf86a7307d/d9tnfw0-a8064ec6-c506-438c-b0de-b9c2cda9e818.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi8xMGMxYzZlMS1mMjc5LTRlOGYtODIxMS1mOWNmODZhNzMwN2QvZDl0bmZ3MC1hODA2NGVjNi1jNTA2LTQzOGMtYjBkZS1iOWMyY2RhOWU4MTguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.1XgpAqdj-cy6Y4tcG10R5EjYQtsKxCZgrSqiDIrHVu8",
         "url": "https://deltarune.wiki/w/Sans"
     },
@@ -1194,7 +1194,7 @@
         "chapter": 1,
         "class": "Vendor",
         "first_appearance": "Field",
-        "first_appearance_index": 30,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Seam_face.gif?cb=0ngjb8&h=thumb.php&f=Seam_face.gif",
         "url": "https://deltarune.wiki/w/Seam"
     },
@@ -1205,7 +1205,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Serious_Trashy_overworld.png?cb=36pby4&h=thumb.php&f=Serious_Trashy_overworld.png",
         "url": "https://deltarune.wiki/w/Serious_Trashy"
     },
@@ -1216,7 +1216,7 @@
         "chapter": 5,
         "class": "Miniboss",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Seth_battle_idle.gif?cb=edlsk9&h=thumb.php&f=Seth_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Seth"
     },
@@ -1227,7 +1227,7 @@
         "chapter": 3,
         "class": "Boss",
         "first_appearance": "Manhole Dungeon",
-        "first_appearance_index": 44,
+        "first_appearance_index": 45,
         "image": "https://preview.redd.it/game-theory-the-shadow-mantle-holder-was-right-on-our-noses-v0-8mtwe5k0rlmf1.gif?width=300&auto=webp&s=2f7fe354d448115fff1998ab68d625185b2cb63b",
         "url": "https://deltarune.wiki/w/Shadow_Mantle_holder"
     },
@@ -1238,7 +1238,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Shadowguy_battle_idle.gif?cb=h7a5kt&h=thumb.php&f=Shadowguy_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shadowguy"
     },
@@ -1249,7 +1249,7 @@
         "chapter": 1,
         "class": "Enemy",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Sheary_overworld.gif?cb=s1z1yx&h=thumb.php&f=Sheary_overworld.gif",
         "url": "https://deltarune.wiki/w/Sheary"
     },
@@ -1260,7 +1260,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 53,
+        "first_appearance_index": 56,
         "image": "https://deltarune.wiki/images/Shi_battle_idle.gif?cb=enw1j3&h=thumb.php&f=Shi_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shi"
     },
@@ -1271,7 +1271,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 54,
+        "first_appearance_index": 57,
         "image": "https://deltarune.wiki/images/Shinobeetle_battle_idle.gif?cb=rbals7&h=thumb.php&f=Shinobeetle_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shinobeetle"
     },
@@ -1282,7 +1282,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Shuttah_battle_idle.gif?cb=et34w4&h=thumb.php&f=Shuttah_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Shuttah"
     },
@@ -1304,7 +1304,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://deltarune.wiki/images/Snowy_overworld.png?cb=8ti073&h=thumb.php&f=Snowy_overworld.png",
         "url": "https://deltarune.wiki/w/Snowy"
     },
@@ -1315,7 +1315,7 @@
         "chapter": 2,
         "class": "Boss",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://i.redd.it/z6971venlho91.gif",
         "url": "https://deltarune.wiki/w/Spamton"
     },
@@ -1326,7 +1326,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Starwalker_Bird_overworld.gif?cb=khn9ur&h=thumb.php&f=Starwalker_Bird_overworld.gif",
         "url": "https://deltarune.wiki/w/Starwalker_Bird"
     },
@@ -1337,7 +1337,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Suilver_Sam_overworld.png?cb=pp22qv&h=thumb.php&f=Suilver_Sam_overworld.png",
         "url": "https://deltarune.wiki/w/Suilver_Sam"
     },
@@ -1348,7 +1348,7 @@
         "chapter": 1,
         "class": "Main Character",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://deltarune.wiki/images/Susie_battle_serious.gif?cb=s2z2tj&h=thumb.php&f=Susie_battle_serious.gif",
         "url": "https://deltarune.wiki/w/Susie"
     },
@@ -1359,7 +1359,7 @@
         "chapter": 2,
         "class": "Vendor",
         "first_appearance": "Queen's Mansion",
-        "first_appearance_index": 36,
+        "first_appearance_index": 37,
         "image": "https://deltarune.wiki/images/Swatch_face_shop.gif?cb=gafgly&h=thumb.php&f=Swatch_face_shop.gif",
         "url": "https://deltarune.wiki/w/Swatch"
     },
@@ -1370,7 +1370,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Swatchling_battle_idle.gif?cb=k87c8o&h=thumb.php&f=Swatchling_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Swatchling"
     },
@@ -1381,7 +1381,7 @@
         "chapter": 2,
         "class": "Miniboss",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Sweet_battle_idle.gif?cb=81t5jk&h=thumb.php&f=Sweet_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Sweet_Cap%27n_Cakes"
     },
@@ -1392,7 +1392,7 @@
         "chapter": 4,
         "class": "NPC",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Tao_overworld.gif?cb=o2h0hq&h=thumb.php&f=Tao_overworld.gif",
         "url": "https://deltarune.wiki/w/Tao"
     },
@@ -1403,7 +1403,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Tasque_battle_idle.gif?cb=scifs0&h=thumb.php&f=Tasque_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Tasque"
     },
@@ -1414,7 +1414,7 @@
         "chapter": 2,
         "class": "Miniboss",
         "first_appearance": "Queen's Mansion",
-        "first_appearance_index": 36,
+        "first_appearance_index": 37,
         "image": "https://deltarune.wiki/images/Tasque_Manager_battle_idle.gif?cb=ms7wwa&h=thumb.php&f=Tasque_Manager_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Tasque_Manager"
     },
@@ -1425,7 +1425,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "School",
-        "first_appearance_index": 15,
+        "first_appearance_index": 19,
         "image": "https://deltarune.wiki/images/Temmie_overworld_drawing.gif?cb=pvtqqn&h=thumb.php&f=Temmie_overworld_drawing.gif",
         "url": "https://deltarune.wiki/w/Temmie"
     },
@@ -1436,7 +1436,7 @@
         "chapter": 3,
         "class": "Boss",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Tenna_battle.gif?cb=0v510r&h=thumb.php&f=Tenna_battle.gif",
         "url": "https://deltarune.wiki/w/Tenna"
     },
@@ -1447,7 +1447,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Flower Castle",
-        "first_appearance_index": 54,
+        "first_appearance_index": 57,
         "image": "https://deltarune.wiki/images/Terakota_battle_idle.gif?cb=poxbw8&h=thumb.php&f=Terakota_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Terakota"
     },
@@ -1458,7 +1458,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Church",
-        "first_appearance_index": 20,
+        "first_appearance_index": 21,
         "image": "https://deltarune.wiki/images/Terry_overworld.png?cb=hz9jak&h=thumb.php&f=Terry_overworld.png",
         "url": "https://deltarune.wiki/w/Terry"
     },
@@ -1466,7 +1466,7 @@
         "name": "THE WARRIOR",
         "gender": "Non-binary",
         "type": "Lightner",
-        "chapter": 2,
+        "chapter": 1,
         "class": "NPC",
         "first_appearance": "Hospital",
         "first_appearance_index": 16,
@@ -1480,7 +1480,7 @@
         "chapter": 4,
         "class": "Boss",
         "first_appearance": "3rd Sanctuary",
-        "first_appearance_index": 52,
+        "first_appearance_index": 53,
         "image": "https://deltarune.wiki/images/thumb/Titan_battle_idle.gif/300px-Titan_battle_idle.gif.webp?cb=cl40yd&h=thumb.php&f=Titan_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Titan_(Chapter_4)"
     },
@@ -1491,7 +1491,7 @@
         "chapter": 4,
         "class": "Miniboss",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Titan_Spawn_battle_idle.gif?cb=2nt12b&h=thumb.php&f=Titan_Spawn_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Titan_Spawn"
     },
@@ -1502,7 +1502,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Field",
-        "first_appearance_index": 30,
+        "first_appearance_index": 31,
         "image": "https://deltarune.wiki/images/Top_Chef_overworld_talk.gif?cb=ebn5dr&h=thumb.php&f=Top_Chef_overworld_talk.gif",
         "url": "https://deltarune.wiki/w/Top_Chef"
     },
@@ -1524,7 +1524,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Cyber City",
-        "first_appearance_index": 35,
+        "first_appearance_index": 36,
         "image": "https://deltarune.wiki/images/Trashy_overworld.gif?cb=k425pn&h=thumb.php&f=Trashy_overworld.gif",
         "url": "https://deltarune.wiki/w/Trashy"
     },
@@ -1535,7 +1535,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Tropical_Starwalker_overworld.png?cb=sevoou&h=thumb.php&f=Tropical_Starwalker_overworld.png",
         "url": "https://deltarune.wiki/w/Tropical_Starwalker"
     },
@@ -1546,7 +1546,7 @@
         "chapter": 5,
         "class": "Enemy",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Tropical_Starwalker_Bird_overworld.gif?cb=rfwg90&h=thumb.php&f=Tropical_Starwalker_Bird_overworld.gif",
         "url": "https://deltarune.wiki/w/Tropical_Starwalker_Bird"
     },
@@ -1557,7 +1557,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Umbrella_overworld_spin.gif?cb=5egb21&h=thumb.php&f=Umbrella_overworld_spin.gif",
         "url": "https://deltarune.wiki/w/Umbrella"
     },
@@ -1567,7 +1567,7 @@
         "type": "Lightner",
         "chapter": 1,
         "class": "NPC",
-        "first_appearance": "Police station",
+        "first_appearance": "Traffic Jam",
         "first_appearance_index": 17,
         "image": "https://deltarune.wiki/images/Undyne_overworld_spear_point.gif?cb=r9dun4&h=thumb.php&f=Undyne_overworld_spear_point.gif",
         "url": "https://deltarune.wiki/w/Undyne"
@@ -1579,7 +1579,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Church",
-        "first_appearance_index": 20,
+        "first_appearance_index": 21,
         "image": "https://deltarune.wiki/images/Vegetoid_overworld.png?cb=ly5tco&h=thumb.php&f=Vegetoid_overworld.png",
         "url": "https://deltarune.wiki/w/Vegetoid"
     },
@@ -1590,7 +1590,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Virovirokun_battle_idle.gif?cb=ixfico&h=thumb.php&f=Virovirokun_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Virovirokun"
     },
@@ -1601,7 +1601,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "QC's Diner",
-        "first_appearance_index": 12,
+        "first_appearance_index": 8,
         "image": "https://deltarune.wiki/images/Vulkin_overworld.png?cb=mqso5t&h=thumb.php&f=Vulkin_overworld.png",
         "url": "https://deltarune.wiki/w/Vulkin"
     },
@@ -1612,7 +1612,7 @@
         "chapter": 4,
         "class": "NPC",
         "first_appearance": "Dark Sanctuary",
-        "first_appearance_index": 49,
+        "first_appearance_index": 50,
         "image": "https://deltarune.wiki/images/Wafer_overworld.gif?cb=7awekq&h=thumb.php&f=Wafer_overworld.gif",
         "url": "https://deltarune.wiki/w/Wafer"
     },
@@ -1623,7 +1623,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Watercooler_battle_idle.png?cb=9c6ywj&h=thumb.php&f=Watercooler_battle_idle.png",
         "url": "https://deltarune.wiki/w/Watercooler"
     },
@@ -1634,7 +1634,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Queen's Mansion",
-        "first_appearance_index": 36,
+        "first_appearance_index": 37,
         "image": "https://deltarune.wiki/images/Werewerewire_battle_idle.gif?cb=kdyavw&h=thumb.php&f=Werewerewire_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Werewerewire"
     },
@@ -1645,7 +1645,7 @@
         "chapter": 2,
         "class": "Enemy",
         "first_appearance": "Cyber Field",
-        "first_appearance_index": 34,
+        "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Werewire_overworld_idle.gif?cb=kj0drv&h=thumb.php&f=Werewire_overworld_idle.gif",
         "url": "https://deltarune.wiki/w/Werewire"
     },
@@ -1656,7 +1656,7 @@
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Police station",
-        "first_appearance_index": 17,
+        "first_appearance_index": 15,
         "image": "https://deltarune.wiki/images/Doggo_overworld.png?cb=l86dsf&h=thumb.php&f=Doggo_overworld.png",
         "url": "https://deltarune.wiki/w/Wet-Nose_Bandits"
     },
@@ -1667,7 +1667,7 @@
         "chapter": 3,
         "class": "NPC",
         "first_appearance": "Ice Palace",
-        "first_appearance_index": 42,
+        "first_appearance_index": 43,
         "image": "https://deltarune.wiki/images/White_Cloak_overworld.gif?cb=i9f66c&h=thumb.php&f=White_Cloak_overworld.gif",
         "url": "https://deltarune.wiki/w/White_Cloak"
     },
@@ -1678,7 +1678,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 51,
+        "first_appearance_index": 52,
         "image": "https://deltarune.wiki/images/Wicabel_battle.gif?cb=dt7erl&h=thumb.php&f=Wicabel_battle.gif",
         "url": "https://deltarune.wiki/w/Wicabel"
     },
@@ -1689,7 +1689,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Cliffs",
-        "first_appearance_index": 53,
+        "first_appearance_index": 56,
         "image": "https://deltarune.wiki/images/Windstruggler_overworld.gif?cb=81copi&h=thumb.php&f=Windstruggler_overworld.gif",
         "url": "https://deltarune.wiki/w/Windstruggler"
     },
@@ -1700,7 +1700,7 @@
         "chapter": 4,
         "class": "Enemy",
         "first_appearance": "2nd Sanctuary",
-        "first_appearance_index": 51,
+        "first_appearance_index": 52,
         "image": "https://deltarune.wiki/images/Winglade_battle_idle.gif?cb=fvoagg&h=thumb.php&f=Winglade_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Winglade"
     },
@@ -1711,7 +1711,7 @@
         "chapter": 1,
         "class": "NPC",
         "first_appearance": "Forest",
-        "first_appearance_index": 32,
+        "first_appearance_index": 33,
         "image": "https://deltarune.wiki/images/Worm_overworld_leaf.gif?cb=npmi6i&h=thumb.php&f=Worm_overworld_leaf.gif",
         "url": "https://deltarune.wiki/w/Worm"
     },
@@ -1722,7 +1722,7 @@
         "chapter": 5,
         "class": "Miniboss",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Yellow_battle_idle.gif?cb=mwe1gi&h=thumb.php&f=Yellow_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Yellow"
     },
@@ -1733,7 +1733,7 @@
         "chapter": 3,
         "class": "Enemy",
         "first_appearance": "TV World",
-        "first_appearance_index": 38,
+        "first_appearance_index": 39,
         "image": "https://deltarune.wiki/images/Zapper_battle_idle.gif?cb=8hbonl&h=thumb.php&f=Zapper_battle_idle.gif",
         "url": "https://deltarune.wiki/w/Zapper"
     },
@@ -1744,7 +1744,7 @@
         "chapter": 5,
         "class": "NPC",
         "first_appearance": "Garden",
-        "first_appearance_index": 52,
+        "first_appearance_index": 55,
         "image": "https://deltarune.wiki/images/Zenlooker_overworld_talk.gif?cb=mpu4jn&h=thumb.php&f=Zenlooker_overworld_talk.gif",
         "url": "https://deltarune.wiki/w/Zenlooker"
     }

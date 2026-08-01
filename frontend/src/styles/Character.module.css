@@ -132,19 +132,47 @@
         transform: perspective(800px) rotateX(-20deg) scale(0.96);
         opacity: 0;
     }
+
     100% {
         transform: perspective(800px) rotateX(0deg) scale(1);
         opacity: 1;
     }
 }
 
-.flipCell0 { animation: flip 0.45s ease-in-out both; animation-delay: 0.0s; }
-.flipCell1 { animation: flip 0.45s ease-in-out both; animation-delay: 0.45s; }
-.flipCell2 { animation: flip 0.45s ease-in-out both; animation-delay: 0.9s; }
-.flipCell3 { animation: flip 0.45s ease-in-out both; animation-delay: 1.35s; }
-.flipCell4 { animation: flip 0.45s ease-in-out both; animation-delay: 1.8s; }
-.flipCell5 { animation: flip 0.45s ease-in-out both; animation-delay: 2.25s; }
-.flipCell6 { animation: flip 0.45s ease-in-out both; animation-delay: 2.7s; }
+.flipCell0 {
+    animation: flip 0.45s ease-in-out both;
+    animation-delay: 0.0s;
+}
+
+.flipCell1 {
+    animation: flip 0.45s ease-in-out both;
+    animation-delay: 0.45s;
+}
+
+.flipCell2 {
+    animation: flip 0.45s ease-in-out both;
+    animation-delay: 0.9s;
+}
+
+.flipCell3 {
+    animation: flip 0.45s ease-in-out both;
+    animation-delay: 1.35s;
+}
+
+.flipCell4 {
+    animation: flip 0.45s ease-in-out both;
+    animation-delay: 1.8s;
+}
+
+.flipCell5 {
+    animation: flip 0.45s ease-in-out both;
+    animation-delay: 2.25s;
+}
+
+.flipCell6 {
+    animation: flip 0.45s ease-in-out both;
+    animation-delay: 2.7s;
+}
 
 .mascotGif {
     width: 96px;
@@ -158,6 +186,7 @@
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(-8px);
     }

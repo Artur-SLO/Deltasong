@@ -42,7 +42,7 @@ export default function HintProgress({ target, incorrectGuessesCount }) {
         <div className={styles.hintDashboard}>
             {clues.map((clue) => {
                 const isUnlocked = incorrectGuessesCount >= clue.reqGuesses;
-                
+
                 return (
                     <Paper
                         key={clue.key}
@@ -58,20 +58,20 @@ export default function HintProgress({ target, incorrectGuessesCount }) {
                             {isUnlocked ? (
                                 <IconLockOpen size={16} color="var(--mantine-color-royalMagenta-4)" />
                             ) : (
-                                <IconLock size={16} color="var(--color-text-dimmed)" />
-                            )}
+                                    <IconLock size={16} color="var(--color-text-dimmed)" />
+                                )}
                         </div>
                         {isUnlocked ? (
                             <Text className={styles.hintContent}>
                                 {clue.value || 'N/A'}
                             </Text>
                         ) : (
-                            <div className={styles.hintContentLocked}>
-                                <Text size="sm">
-                                    Locked — Guess {clue.reqGuesses} time{clue.reqGuesses > 1 ? 's' : ''} to reveal
-                                </Text>
-                            </div>
-                        )}
+                                <div className={styles.hintContentLocked}>
+                                    <Text size="sm">
+                                        Locked — Guess {clue.reqGuesses} time{clue.reqGuesses > 1 ? 's' : ''} to reveal
+                                    </Text>
+                                </div>
+                            )}
                     </Paper>
                 );
             })}

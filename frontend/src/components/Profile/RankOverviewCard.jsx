@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Title, Text, RingProgress, Container, Stack, Group, Flex } from '@mantine/core';
-import classes from './RankOverview.module.css';
+import classes from '../../styles/RankOverview.module.css';
 import { calculateUserRank, getRankData } from '../../core/rankSystem';
 import { IconFlame } from '@tabler/icons-react';
 
@@ -14,7 +14,7 @@ export function RankOverviewCard() {
 
         window.addEventListener('deltasong_rank_change', handleRankChange);
         window.addEventListener('deltasong_auth_change', handleRankChange);
-        
+
         return () => {
             window.removeEventListener('deltasong_rank_change', handleRankChange);
             window.removeEventListener('deltasong_auth_change', handleRankChange);

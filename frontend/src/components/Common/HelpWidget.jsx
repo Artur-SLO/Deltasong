@@ -3,13 +3,12 @@ import { useLocation } from 'react-router';
 import classes from '../../styles/HelpWidget.module.css';
 
 // Import character mascots in GIF format
-import berdlyGif from '../../assets/berdly.gif';
-import rouxlsGif from '../../assets/rouxls.gif';
-import jevilGif from '../../assets/jevil.gif';
-import spamtonGif from '../../assets/spamton.gif';
-import lancerGif from '../../assets/lancer.gif';
-import susieGif from '../../assets/susie.gif';
-import gersonGif from '../../assets/gerson.gif'
+import berdlyGif from '../../assets/images/berdly.gif';
+import rouxlsGif from '../../assets/images/rouxls.gif';
+import jevilGif from '../../assets/images/jevil.gif';
+import spamtonGif from '../../assets/images/spamton.gif';
+import lancerGif from '../../assets/images/lancer.gif';
+import gersonGif from '../../assets/images/gerson.gif';
 
 export function HelpWidget({ currentGame }) {
     const [showHint, setShowHint] = useState(false);

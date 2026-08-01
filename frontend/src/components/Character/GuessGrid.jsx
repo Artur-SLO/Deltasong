@@ -1,9 +1,10 @@
-import { Grid, Stack, Text, Button, Modal, Paper, Group } from '@mantine/core';
+import { Grid, Stack, Text, Button, Modal, Paper } from '@mantine/core';
 import GridCell from './GridCell.jsx';
 import { createGame, makeGuess } from '../../core/characterGame.js';
 import { compareCharacters } from '../../core/Character.js';
 import { COLUMNS_CONFIG, RANK_POINTS } from '../../config/Constants.js';
-import deltaruneCharacters from '../../assets/deltarune_characters.json' with { type: 'json' };
+import deltaruneCharacters from '../../assets/data/deltarune_characters.json';
+import berdlyGif from '../../assets/images/berdly.gif';
 import { useEffect, useState, useContext } from 'react';
 import { addPoints } from '../../core/rankSystem.js';
 import SearchBar from './SearchBar.jsx';
@@ -11,7 +12,7 @@ import Guess from './Guess.jsx';
 import homeClasses from '../../styles/Home.module.css';
 import styles from '../../styles/Character.module.css';
 import { getCharacterImage } from '../../utils/image.js';
-import berdlyGif from '../../assets/berdly.gif';
+
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 const totalColumns = COLUMNS_CONFIG.reduce((sum, col) => sum + col.span, 0);
@@ -70,7 +71,6 @@ export default function GuessGrid({
         };
     }, [isModalOpen, isDaily]);
 
-    const activeGameState = isDaily ? dailyGameState : gameState;
     const activeGuesses = isDaily ? dailyGuesses : gridItems;
     const activeGuessedNames = isDaily ? (dailyGameState?.guessedNames || []) : guessedCharacters;
 
@@ -113,7 +113,7 @@ export default function GuessGrid({
                     addPoints(points, 'characters');
                 }
 
-                // Delay showing victory modal until all cells fade in (7 * 0.45s = 3.15s)
+                // Delay showing victory modal until all cells fade in
                 setTimeout(() => {
                     setModalType('victory');
                     setIsModalOpen(true);
