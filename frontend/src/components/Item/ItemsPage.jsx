@@ -198,7 +198,7 @@ export default function ItemsPage({
             )}
 
             {activeFilterSelected && (
-                <GuessHistory guesses={activeGuesses} />
+                <GuessHistory guesses={activeGuesses.slice(0, 15)} />
             )}
 
             {!isDaily && activeFilterSelected && activeGameState && (
