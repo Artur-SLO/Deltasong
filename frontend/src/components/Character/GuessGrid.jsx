@@ -198,21 +198,10 @@ export default function GuessGrid({
                     centered
                     size="md"
                     title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
-                    styles={{
-                        content: {
-                            backgroundColor: 'var(--color-bg-secondary)',
-                            border: 'var(--size-2) solid var(--color-border-primary)',
-                            color: 'var(--color-text-primary)',
-                        },
-                        header: {
-                            backgroundColor: 'var(--color-bg-secondary)',
-                            color: 'var(--color-text-primary)',
-                        },
-                        title: {
-                            fontFamily: 'var(--font-family-deltarune)',
-                            fontSize: '1.5rem',
-                            color: modalType === 'victory' ? '#00ff27' : '#ff1f8e',
-                        }
+                    classNames={{
+                        content: styles.modalContent,
+                        header: styles.modalHeader,
+                        title: modalType === 'victory' ? styles.modalTitleVictory : styles.modalTitleSurrender
                     }}
                 >
                     <Stack align="center" gap="md" p="md">

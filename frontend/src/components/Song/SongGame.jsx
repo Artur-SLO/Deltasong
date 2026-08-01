@@ -2,6 +2,9 @@ import { useEffect, useState, useContext } from 'react';
 import { Stack, Text, Button, Modal, Paper } from '@mantine/core';
 import deltaruneSoundtrack from '../../assets/data/deltarune_soundtrack.json';
 import jevilGif from '../../assets/images/jevil.gif';
+import { IconBulb } from '@tabler/icons-react';
+import deltaruneSoundtrack from '../../assets/deltarune_soundtrack.json' with { type: 'json' };
+import jevilGif from '../../assets/jevil.gif';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 import { createSongGame, makeSongGuess, compareSongs } from '../../core/songGame.js';
@@ -24,11 +27,13 @@ function getYouTubeId(url) {
 
 export default function SongGame({
     isDaily = false,
+    isDailyGameOver = false,
     dailyGameState = null,
     dailyGuesses = [],
     onDailyGuess = null,
     extraSeconds: dailyExtraSeconds = 0,
-    setExtraSeconds: setDailyExtraSeconds = null
+    setExtraSeconds: setDailyExtraSeconds = null,
+    onDailyHint = null
 }) {
     const [gameState, setGameState] = useState(null);
     const [input, setInput] = useState('');
@@ -86,7 +91,93 @@ export default function SongGame({
     const activeExtraSeconds = isDaily ? dailyExtraSeconds : extraSeconds;
     const activeSetExtraSeconds = isDaily ? setDailyExtraSeconds : setExtraSeconds;
     const activeDiff = isDaily ? 'normal' : activeDifficulty;
-    const activeIsGameOver = isDaily ? false : (isWon || isGivenUp);
+    const activeIsGameOver = isDaily ? isDailyGameOver : (isWon || isGivenUp);
+    const activeIsWon = isDaily ? (isDailyGameOver && activeGuesses.some(g => g.title && g.title.correct)) : isWon;
+    const activeIsGivenUp = isDaily ? (isDailyGameOver && !activeIsWon) : isGivenUp;
+
+    const title = activeGameState?.target?.title || "";
+    const charMetadata = [];
+    let currentWordIndex = 0;
+    let currentCharIndexInWord = 0;
+    let wordLengths = [];
+    
+    for (let i = 0; i < title.length; i++) {
+        const char = title[i];
+        const isLetter = /[a-zA-Z]/.test(char);
+        if (isLetter) {
+            charMetadata.push({
+                isLetter: true,
+                wordIndex: currentWordIndex,
+                charIndexInWord: currentCharIndexInWord
+            });
+            currentCharIndexInWord++;
+        } else {
+            charMetadata.push({
+                isLetter: false,
+                wordIndex: -1,
+                charIndexInWord: -1
+            });
+            if (char === ' ') {
+                if (currentCharIndexInWord > 0) {
+                    wordLengths.push(currentCharIndexInWord);
+                    currentWordIndex++;
+                    currentCharIndexInWord = 0;
+                }
+            }
+        }
+    }
+    if (currentCharIndexInWord > 0) {
+        wordLengths.push(currentCharIndexInWord);
+    }
+
+    const totalLetters = wordLengths.reduce((sum, len) => sum + len, 0);
+    const totalWords = wordLengths.length;
+
+    let hintLimit = 1;
+    if (activeDiff === 'easy') {
+        hintLimit = Math.max(1, (totalLetters - totalWords) - totalWords);
+    } else if (activeDiff === 'normal') {
+        hintLimit = Math.max(2, Math.ceil(title.length / 2) - totalWords);
+    } else if (activeDiff === 'hard') {
+        hintLimit = Math.max(2, Math.ceil(title.length / 4) - totalWords);
+    } else if (activeDiff === 'madness') {
+        hintLimit = 1;
+    }
+
+    const activeHintsUsed = activeGameState?.hintsUsed || 0;
+
+    let extraReveals = activeHintsUsed >= 2 ? activeHintsUsed - 2 : 0;
+    const wordRevealedCounts = wordLengths.map(len => {
+        if (activeHintsUsed < 2) return 0;
+        let count = 1;
+        const extraForThisWord = Math.min(extraReveals, len - 1);
+        count += extraForThisWord;
+        extraReveals -= extraForThisWord;
+        return count;
+    });
+
+    const isTitleBlockRevealed = activeIsGameOver || activeHintsUsed >= 1;
+
+    const handleRequestHint = () => {
+        if (activeHintsUsed >= hintLimit || activeIsGameOver) return;
+
+        const isFreeHint = activeHintsUsed === 0;
+        if (!isFreeHint) {
+            const penalty = RANK_POINTS.SONG_HINT_PENALTY || 10;
+            addPoints(-penalty, isDaily ? 'daily' : 'songs');
+        }
+
+        if (isDaily) {
+            if (onDailyHint) {
+                onDailyHint();
+            }
+        } else {
+            setGameState(prev => ({
+                ...prev,
+                hintsUsed: (prev.hintsUsed || 0) + 1
+            }));
+        }
+    };
 
     const songOptions = deltaruneSoundtrack
         .map(s => s.title)
@@ -123,7 +214,11 @@ export default function SongGame({
                     if (duration < RANK_POINTS.SPEED_THRESHOLD_SECONDS) {
                         points += RANK_POINTS.SPEED_BONUS;
                     }
-                    addPoints(points, 'songs');
+
+                    // Guarantee a positive net score by offsetting the paid hints penalty
+                    const paidPenalty = Math.max(0, activeHintsUsed - 1) * (RANK_POINTS.SONG_HINT_PENALTY || 10);
+                    const finalPoints = Math.max(points, paidPenalty + 10);
+                    addPoints(finalPoints, 'songs');
                 }
 
                 // Delay showing victory modal until all cells fade in (3 * 0.45s = 1.35s)
@@ -217,16 +312,90 @@ export default function SongGame({
             )}
 
             {activeGameState && (
-                <AudioPlayer
-                    videoUrl={activeGameState.target.url}
-                    startTime={actualStartTime}
-                    durationLimit={durationLimit}
-                    disabled={activeIsGameOver}
-                    onPlay={isDaily ? () => { } : () => setHasPlayed(true)}
-                    onAddTime={() => activeSetExtraSeconds(prev => prev + 1)}
-                    maxTimeReached={maxTimeReached}
-                    isClueAvailable={activeDiff === 'easy'}
-                />
+                <div className={styles.unifiedPanel}>
+                    <AudioPlayer
+                        videoUrl={activeGameState.target.url}
+                        startTime={actualStartTime}
+                        durationLimit={durationLimit}
+                        disabled={activeIsGameOver}
+                        onPlay={() => setHasPlayed(true)}
+                        onAddTime={() => activeSetExtraSeconds(prev => prev + 1)}
+                        maxTimeReached={maxTimeReached}
+                        isClueAvailable={activeDiff === 'easy'}
+                        extraControl={
+                            !activeIsGameOver && (
+                                <Button
+                                    leftSection={<IconBulb size={16} />}
+                                    onClick={handleRequestHint}
+                                    disabled={!hasPlayed || activeHintsUsed >= hintLimit}
+                                    color="cyberCyan"
+                                    variant="light"
+                                    className={styles.playerBtn}
+                                >
+                                    Hint
+                                </Button>
+                            )
+                        }
+                        timeDisplayOverride={
+                            activeHintsUsed >= 1
+                                ? (activeHintsUsed >= hintLimit 
+                                    ? `Hints: ${activeHintsUsed}/${hintLimit} (Max)` 
+                                    : `Hints: ${activeHintsUsed}/${hintLimit}`)
+                                : null
+                        }
+                    />
+
+                    {isTitleBlockRevealed && (
+                        <>
+                            <div className={styles.panelDivider} />
+
+                            <div className={styles.hintSectionInternal}>
+                                <div className={styles.maskedTitleContainer}>
+                                    {title.split('').map((char, index) => {
+                                        const isLetter = /[a-zA-Z]/.test(char);
+                                        if (isLetter) {
+                                            const metadata = charMetadata[index];
+                                            const isRevealed = activeIsGameOver || (
+                                                metadata && metadata.isLetter && metadata.wordIndex !== -1 && metadata.charIndexInWord < wordRevealedCounts[metadata.wordIndex]
+                                            );
+
+                                            let charClass = styles.maskedChar;
+                                            if (isRevealed) {
+                                                charClass += ` ${styles.revealedChar}`;
+                                                if (activeIsGameOver) {
+                                                    if (activeIsWon) {
+                                                        charClass += ` ${styles.victoryChar}`;
+                                                    } else if (activeIsGivenUp) {
+                                                        charClass += ` ${styles.surrenderChar}`;
+                                                    }
+                                                }
+                                            }
+
+                                            return (
+                                                <span 
+                                                    key={`${index}-${isRevealed}`} 
+                                                    className={charClass}
+                                                >
+                                                    {isRevealed ? char : '\u00A0'}
+                                                </span>
+                                            );
+                                        } else if (char === ' ') {
+                                            return (
+                                                <span key={index} className={styles.maskedSpace} />
+                                            );
+                                        } else {
+                                            return (
+                                                <span key={index} className={styles.maskedPunctuation}>
+                                                    {char}
+                                                </span>
+                                            );
+                                        }
+                                    })}
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
             )}
 
             {!activeIsGameOver && (
