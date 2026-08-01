@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import { Stack, Text, Button, Modal, Paper } from '@mantine/core';
-import { IconBulb } from '@tabler/icons-react';
 import deltaruneSoundtrack from '../../assets/data/deltarune_soundtrack.json';
 import jevilGif from '../../assets/images/jevil.gif';
+import { IconBulb } from '@tabler/icons-react';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 import { createSongGame, makeSongGuess, compareSongs } from '../../core/songGame.js';
