@@ -328,6 +328,22 @@ export default function DailyGame() {
         }
     };
 
+    const currentStep = gameState.currentStep;
+    let attemptsLeft = 0;
+    let totalAttempts = 0;
+    if (currentStep === 1) {
+        totalAttempts = DAILY_LIMITS.characters;
+        attemptsLeft = Math.max(0, totalAttempts - (gameState.guesses?.characters?.length || 0));
+    } else if (currentStep === 2) {
+        totalAttempts = DAILY_LIMITS.items;
+        attemptsLeft = Math.max(0, totalAttempts - (gameState.guesses?.items?.length || 0));
+    } else if (currentStep === 3) {
+        totalAttempts = DAILY_LIMITS.songs;
+        attemptsLeft = Math.max(0, totalAttempts - (gameState.guesses?.songs?.length || 0));
+    }
+
+    const isLowAttempts = attemptsLeft <= 3;
+
     return (
         <Container size="md" className={`${homeClasses.gameContainer} ${classes.container}`}>
             <Paper
