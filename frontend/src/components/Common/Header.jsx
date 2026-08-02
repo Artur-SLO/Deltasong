@@ -1,4 +1,4 @@
-import { Container, Group, Title } from '@mantine/core';
+import { Container, Group, Title, Burger, Drawer, Stack } from '@mantine/core';
 import { Link, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
 import { IconFlame } from '@tabler/icons-react';
@@ -10,6 +10,7 @@ import { LINKS } from '../../config/Constants';
 export default function Header() {
     const location = useLocation();
     const [activeUser, setActiveUser] = useState(null);
+    const [mobileOpened, setMobileOpened] = useState(false);
 
     useEffect(() => {
         // Update streak if applicable, then fetch active user
@@ -26,6 +27,11 @@ export default function Header() {
         };
     }, []);
 
+    // Close mobile menu on route change
+    useEffect(() => {
+        setMobileOpened(false);
+    }, [location.pathname]);
+
     const items = LINKS.map((link) => (
         <Link
             key={link.label}
@@ -38,36 +44,67 @@ export default function Header() {
     ));
 
     return (
-        <header className={classes.header}>
-            <Container fluid className={classes.inner}>
+        <>
+            <header className={classes.header}>
+                <Container fluid className={classes.inner}>
 
-                <Link to="/" className={classes.linkWrapper}>
-                        <Title order={3} className={classes.title}>deltAsong</Title>
-                </Link>
-                <Group gap={3} visibleFrom="xs" className={classes.subjects}>
+                    <Group gap="xs" align="center">
+                        <Burger
+                            opened={mobileOpened}
+                            onClick={() => setMobileOpened((o) => !o)}
+                            hiddenFrom="xs"
+                            size="sm"
+                            color="var(--color-text-primary)"
+                            className={classes.burger}
+                        />
+                        <Link to="/" className={classes.linkWrapper}>
+                            <Title order={3} className={classes.title}>deltAsong</Title>
+                        </Link>
+                    </Group>
+
+                    <Group gap={3} visibleFrom="xs" className={classes.subjects}>
+                        {items}
+                    </Group>
+
+                    <Link to="/account" className={classes.linkWrapper}>
+                        {activeUser ? (
+                            <Group gap="xs" className={classes.profileGroup}>
+                                <div className={classes.streakBadge}>
+                                    <IconFlame size={20} className={classes.flameIcon} /> {activeUser.streak}
+                                </div>
+                                <span className={classes.headerName}>{activeUser.name}</span>
+                                <img 
+                                    src={activeUser.avatar} 
+                                    alt={activeUser.name} 
+                                    className={classes.headerAvatar} 
+                                />
+                            </Group>
+                        ) : (
+                                <div className={classes.loginButton}>
+                                    <span className={classes.buttonText}>Login</span>
+                                </div>
+                            )}
+                    </Link>
+                </Container>
+            </header>
+
+            <Drawer
+                opened={mobileOpened}
+                onClose={() => setMobileOpened(false)}
+                size="75%"
+                title={<Title order={4} className={classes.title}>deltAsong</Title>}
+                hiddenFrom="xs"
+                classNames={{
+                    content: classes.drawerContent,
+                    header: classes.drawerHeader,
+                    body: classes.drawerBody,
+                    overlay: classes.drawerOverlay,
+                }}
+            >
+                <Stack gap={0}>
                     {items}
-                </Group>
-
-                <Link to="/account" className={classes.linkWrapper}>
-                    {activeUser ? (
-                        <Group gap="xs" className={classes.profileGroup}>
-                            <div className={classes.streakBadge}>
-                                <IconFlame size={20} className={classes.flameIcon} /> {activeUser.streak}
-                            </div>
-                            <span className={classes.headerName}>{activeUser.name}</span>
-                            <img 
-                                src={activeUser.avatar} 
-                                alt={activeUser.name} 
-                                className={classes.headerAvatar} 
-                            />
-                        </Group>
-                    ) : (
-                            <div className={classes.loginButton}>
-                                <span className={classes.buttonText}>Login</span>
-                            </div>
-                        )}
-                </Link>
-            </Container>
-        </header>
+                </Stack>
+            </Drawer>
+        </>
     );
 }

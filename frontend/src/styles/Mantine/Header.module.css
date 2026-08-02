@@ -192,3 +192,128 @@
 .loginButton:hover .buttonText {
     transform: scale(1.05);
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        min-height: 56px;
+    }
+
+    .inner {
+        height: 56px;
+        padding: 0 var(--mantine-spacing-sm);
+    }
+
+    .title {
+        font-size: var(--mantine-font-size-md);
+    }
+
+    .subjects {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+    }
+
+    .link {
+        padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+        font-size: var(--mantine-font-size-xs);
+    }
+
+    .headerAvatar {
+        width: 32px;
+        height: 32px;
+        padding: var(--size-1);
+    }
+
+    .headerName {
+        font-size: var(--mantine-font-size-xs);
+    }
+
+    .streakBadge {
+        font-size: var(--mantine-font-size-xs);
+        gap: var(--size-2);
+    }
+
+    .loginButton {
+        padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+        font-size: 0.7rem;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .header {
+        height: auto;
+        min-height: 48px;
+    }
+
+    .inner {
+        height: 48px;
+        padding: 0 var(--mantine-spacing-xs);
+        gap: var(--size-2);
+    }
+
+    .title {
+        font-size: var(--mantine-font-size-sm);
+    }
+
+    .headerAvatar {
+        width: 28px;
+        height: 28px;
+    }
+
+    .headerName {
+        display: none;
+    }
+
+    .streakBadge {
+        font-size: 0.7rem;
+    }
+
+    .loginButton {
+        padding: var(--size-3) var(--size-4);
+        font-size: 0.65rem;
+    }
+}
+
+/* Mobile Drawer */
+.burger {
+    z-index: 10;
+}
+
+.drawerContent {
+    background-color: var(--color-bg-secondary) !important;
+    border-right: var(--size-2) solid var(--color-border-primary) !important;
+}
+
+.drawerHeader {
+    background-color: var(--color-bg-secondary) !important;
+    border-bottom: var(--size-1) solid var(--color-border-primary) !important;
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md) !important;
+}
+
+.drawerBody {
+    padding: var(--mantine-spacing-xs) 0 !important;
+}
+
+.drawerOverlay {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.drawerBody .link {
+    display: block;
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
+    font-size: var(--mantine-font-size-sm);
+    border-radius: 0;
+}
+
+.drawerBody .link:hover {
+    background-color: var(--color-border-primary);
+}
+
+.drawerBody .link[data-active] {
+    border: none !important;
+    border-left: var(--size-3) solid var(--color-accent-secondary) !important;
+    border-radius: 0 !important;
+}

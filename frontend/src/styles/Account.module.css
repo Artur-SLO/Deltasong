@@ -302,3 +302,88 @@
         transform: translateY(-6px);
     }
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .columnsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .noCharacters {
+        grid-column: span 2;
+    }
+
+    .profileAvatar {
+        width: var(--size-8);
+        height: var(--size-8);
+    }
+
+    .profileName {
+        font-size: 1.5rem;
+    }
+
+    .welcomeTitle {
+        font-size: 1.4rem;
+    }
+
+    .scrollContainer {
+        max-height: var(--size-9);
+    }
+
+    .avatarOption {
+        height: var(--size-8);
+    }
+
+    .avatarImageWrapper {
+        height: var(--size-7);
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .columnsContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--size-3);
+    }
+
+    .avatarOption {
+        height: 56px;
+        padding: var(--size-2);
+    }
+
+    .avatarImageWrapper {
+        height: 36px;
+    }
+
+    .avatarLabel {
+        font-size: 0.6rem;
+        margin-top: var(--size-2);
+    }
+
+    .profileAvatar {
+        width: 56px;
+        height: 56px;
+    }
+
+    .profileName {
+        font-size: 1.2rem;
+    }
+
+    .welcomeTitle {
+        font-size: 1.1rem;
+    }
+
+    .streakNumber {
+        font-size: var(--mantine-font-size-lg);
+    }
+
+    .ralseiWelcome {
+        width: 48px;
+        height: 48px;
+    }
+
+    .susieStreakBuddy {
+        width: 36px;
+        height: 36px;
+    }
+}

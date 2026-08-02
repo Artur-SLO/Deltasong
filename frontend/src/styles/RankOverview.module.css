@@ -245,3 +245,84 @@
         color: var(--color-accent-secondary, #ff1f8e);
     }
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .ringSection::before {
+        width: 140px;
+        height: 140px;
+    }
+
+    .sectionTitle {
+        font-size: 1.1rem;
+    }
+
+    .statValue {
+        font-size: 0.95rem;
+    }
+
+    .rankMessage {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
+    .rankLabel {
+        max-width: 120px;
+        font-size: 0.55rem;
+    }
+
+    .minigameStat {
+        font-size: 0.7rem;
+    }
+
+    .statsListContainer {
+        padding: 8px 10px;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .sectionTitle {
+        font-size: 0.95rem;
+    }
+
+    .statLabel {
+        font-size: 0.7rem;
+    }
+
+    .statValue {
+        font-size: 0.85rem;
+    }
+
+    .statUnit {
+        font-size: 0.75rem;
+    }
+
+    .rankMessage {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .rankLabel {
+        max-width: 100px;
+        font-size: 0.5rem;
+    }
+
+    .ringSection::before {
+        width: 120px;
+        height: 120px;
+    }
+
+    .minigameStat {
+        font-size: 0.65rem;
+    }
+
+    .statsListContainer {
+        padding: 6px 8px;
+    }
+
+    .statRowItem {
+        padding-bottom: 4px;
+        padding-top: 4px;
+    }
+}
