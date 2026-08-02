@@ -159,9 +159,21 @@ export const RANK_POINTS = {
     VICTORY_MEDIUM_ATTEMPTS: 50,
     VICTORY_SLOW_ATTEMPTS: 25,
 
+    ATTEMPTS_THRESHOLD_FAST: 4,
+    ATTEMPTS_THRESHOLD_MEDIUM: 7,
+
     SPEED_BONUS: 30,
     SPEED_THRESHOLD_SECONDS: 30,
     GIVE_UP_PENALTY: 30,
     SONG_HINT_PENALTY: 10
 };
 
+import pinkGif from '../assets/images/pink.gif';
+import seamGif from '../assets/images/seam.gif';
+import jackensteinGif from '../assets/images/jackenstein.gif';
+
+export const STAGE_MASCOTS = {
+    1: pinkGif,
+    2: seamGif,
+    3: jackensteinGif
+};

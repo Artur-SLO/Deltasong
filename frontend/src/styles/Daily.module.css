@@ -36,7 +36,33 @@
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
     border-radius: var(--mantine-radius-sm);
     flex: 1;
-    transition: background-color var(--transition-standard);
+    transition: var(--transition-slow), background-color 0.3s ease;
+}
+
+.stepClickable {
+    transition: var(--transition-slow), background-color 0.3s ease;
+}
+
+.stepClickable:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stepActive.stepClickable:hover {
+    background-color: color-mix(in srgb, var(--mantine-color-amberGold-5) 18%, transparent);
+}
+
+.stepCompleted.stepClickable:hover {
+    background-color: rgba(0, 255, 39, 0.18);
+}
+
+.stepDefeat.stepClickable:hover {
+    background-color: rgba(220, 20, 60, 0.18);
+}
+
+.stepPending.stepClickable:hover {
+    background-color: var(--color-bg-tertiary);
+    opacity: 0.9;
 }
 
 .stepActive {
@@ -47,6 +73,16 @@
 .stepCompleted {
     background-color: rgba(0, 255, 39, 0.1);
     border-left: var(--size-3) solid var(--mantine-color-emeraldGreen-6);
+}
+
+.stepDefeat {
+    background-color: rgba(220, 20, 60, 0.1);
+    border-left: var(--size-3) solid var(--mantine-color-royalMagenta-6);
+}
+
+.stepSelected {
+    border-left-width: 6px !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.25), inset 0 0 8px rgba(255, 255, 255, 0.05);
 }
 
 .stepPending {
@@ -67,6 +103,11 @@
 
 .stepIconCompleted {
     background-color: var(--mantine-color-emeraldGreen-6);
+    color: var(--color-bg-primary);
+}
+
+.stepIconDefeat {
+    background-color: var(--mantine-color-royalMagenta-6);
     color: var(--color-bg-primary);
 }
 
@@ -107,8 +148,6 @@
 }
 
 .timerText {
-    font-family: monospace;
-    font-size: var(--mantine-font-size-lg);
     font-weight: bold;
     color: var(--mantine-color-amberGold-5);
 }
@@ -209,14 +248,14 @@
 .countdownLabel {
     font-family: var(--font-family-deltarune);
     font-size: var(--mantine-font-size-sm);
-    color: var(--color-text-primary);
+    color: var(--color-accent-primary);
 }
 
 .countdownTimer {
     font-family: monospace;
     font-size: var(--mantine-font-size-xl);
     font-weight: bold;
-    color: var(--color-accent-primary);
+    color: var(--color-tex);
     letter-spacing: 2px;
 }
 
@@ -285,6 +324,71 @@
     align-items: center;
     gap: var(--size-4);
     margin-top: var(--mantine-spacing-xl);
+}
+
+.mascotRow {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: var(--mantine-spacing-xl);
+}
+
+.mascotContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 4px;
+}
+
+.mascotContainer img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    animation: resultsBounce 0.6s infinite alternate;
+}
+
+.mascotContainer:nth-child(1) img {
+    animation-delay: 0s;
+}
+.mascotContainer:nth-child(2) img {
+    animation-delay: 0.2s;
+}
+.mascotContainer:nth-child(3) img {
+    animation-delay: 0.4s;
+}
+
+.mascotLocked img {
+    filter: grayscale(1) opacity(0.3);
+    animation: none !important;
+}
+
+.mascotBadge {
+    position: absolute;
+    bottom: 20px;
+    right: -4px;
+    font-size: 14px;
+    background: var(--color-bg-primary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mascotBadgeVictory {
+    background-color: var(--mantine-color-emeraldGreen-6) !important;
+    color: var(--color-bg-primary) !important;
+    border-color: var(--mantine-color-emeraldGreen-6) !important;
+}
+
+.mascotBadgeDefeat {
+    background-color: var(--mantine-color-royalMagenta-6) !important;
+    color: var(--color-bg-primary) !important;
+    border-color: var(--mantine-color-royalMagenta-6) !important;
 }
 
 .resultsMascot {

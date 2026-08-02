@@ -1,15 +1,15 @@
 import { Stack, Text, Paper, Button, Group } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { notifications } from '@mantine/notifications';
-import { IconCopy, IconClock, IconDownload } from '@tabler/icons-react';
+import { IconCopy, IconClock, IconDownload, IconCheck, IconX } from '@tabler/icons-react';
 import { getDailyNumber } from '../../core/dailySeed.js';
 import classes from '../../styles/Daily.module.css';
 import { DAILY_LIMITS } from '../../config/Constants.js';
 import { getCharacterImage } from '../../utils/image.js';
-import spamtonGif from '../../assets/images/spamton.gif';
 import pinkGif from '../../assets/images/pink.gif';
 import jackensteinGif from '../../assets/images/jackenstein.gif';
 import mizzleGif from '../../assets/images/mizzle.gif';
+import seamGif from '../../assets/images/seam.gif';
 
 
 export default function DailyResultsView({ gameState }) {
@@ -54,7 +54,7 @@ export default function DailyResultsView({ gameState }) {
     const dailyNum = getDailyNumber(gameState.date);
     const isVictory = gameState.status === 'victory';
     const timeSpent = (gameState.endTime || gameState.startTime) - gameState.startTime;
-    const durationStr = formatDuration(timeSpent);
+    const durationStr = formatDuration(gameState.elapsedTime || timeSpent || 0);
 
     const charGuesses = gameState.guesses.characters.length;
     const itemGuesses = gameState.guesses.items.length;
@@ -64,15 +64,15 @@ export default function DailyResultsView({ gameState }) {
     const itemLimit = DAILY_LIMITS.items;
     const songLimit = DAILY_LIMITS.songs;
 
-    const charScore = (gameState.currentStep > 1 || isVictory || (gameState.status === 'defeat' && gameState.currentStep === 1))
+    const charScore = (gameState.stageResults?.characters !== null || isVictory || gameState.status === 'defeat')
         ? `${charGuesses}/${charLimit}`
         : `-/${charLimit}`;
 
-    const itemScore = (gameState.currentStep > 2 || isVictory || (gameState.status === 'defeat' && gameState.currentStep === 2))
+    const itemScore = (gameState.stageResults?.items !== null || isVictory || gameState.status === 'defeat')
         ? `${itemGuesses}/${itemLimit}`
         : `-/${itemLimit}`;
 
-    const songScore = (isVictory || (gameState.status === 'defeat' && gameState.currentStep === 3))
+    const songScore = (gameState.stageResults?.songs !== null || isVictory || gameState.status === 'defeat')
         ? `${songGuesses}/${songLimit}`
         : `-/${songLimit}`;
 
@@ -165,7 +165,7 @@ export default function DailyResultsView({ gameState }) {
         const boxX = 140;
         const boxY = 165;
         const boxW = 320;
-        const boxH = 190;
+        const boxH = 180;
 
         ctx.fillStyle = 'rgba(31, 15, 51, 0.6)'; // Semi-transparent card body
         ctx.fillRect(boxX, boxY, boxW, boxH);
@@ -178,12 +178,12 @@ export default function DailyResultsView({ gameState }) {
         ctx.font = 'bold 15px monospace';
         const rows = [
             { label: 'TOTAL TIME', value: durationStr },
-            { label: 'CHARACTERS', value: charScore },
-            { label: 'ITEMS', value: itemScore },
-            { label: 'SONGS', value: songScore }
+            { label: 'CHARACTERS', value: `${charScore} (${formatDuration(gameState.elapsedTimes?.characters || 0)})` },
+            { label: 'ITEMS', value: `${itemScore} (${formatDuration(gameState.elapsedTimes?.items || 0)})` },
+            { label: 'SONGS', value: `${songScore} (${formatDuration(gameState.elapsedTimes?.songs || 0)})` },
         ];
 
-        let itemY = boxY + 35;
+        let itemY = boxY + 40;
         rows.forEach(row => {
             ctx.textAlign = 'left';
             ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
@@ -200,7 +200,7 @@ export default function DailyResultsView({ gameState }) {
             ctx.lineTo(boxX + boxW - 20, itemY + 12);
             ctx.stroke();
 
-            itemY += 38;
+            itemY += 35;
         });
 
         // Helper to draw image keeping original aspect ratio
@@ -252,31 +252,34 @@ export default function DailyResultsView({ gameState }) {
         });
     };
 
+    const charWon = gameState.stageResults?.characters === 'victory';
+    const itemWon = gameState.stageResults?.items === 'victory';
+    const songWon = gameState.stageResults?.songs === 'victory';
+
     return (
         <Stack align="center" gap="lg" w="100%">
-            {isVictory ? (
-                <div className={classes.victoryMascotRow}>
-                    <img src={pinkGif} alt="Pink" className={classes.resultsMascot} />
-                    <img src="https://deltarune.wiki/images/Seam_face.gif?cb=0ngjb8&h=thumb.php&f=Seam_face.gif" alt="Seam" className={classes.resultsMascot} />
-                    <img src={jackensteinGif} alt="Jackenstein" className={classes.resultsMascot} />
-                </div>
-            ) : (
-                <div className={classes.defeatMascotRow}>
-                    <img src={spamtonGif} alt="Spamton" className={classes.resultsMascot} />
-                    <div className={classes.defeatMascotText}>[BIG SHOT] FAILS!</div>
-                </div>
-            )}
-
-            <div className={classes.countdownContainer}>
-                <div className={classes.countdownLabel}>
-                    NEXT CHALLENGE RESET IN
-                </div>
-                <Group gap="xs">
-                    <IconClock size={20} color="var(--color-accent-primary)" />
-                    <div className={classes.countdownTimer}>
-                        {timeLeft}
+            <div className={classes.mascotRow}>
+                <div className={`${classes.mascotContainer} ${charWon ? '' : classes.mascotLocked}`}>
+                    <img src={pinkGif} alt="Pink" />
+                    <div className={`${classes.mascotBadge} ${charWon ? classes.mascotBadgeVictory : classes.mascotBadgeDefeat}`}>
+                        {charWon ? <IconCheck size={12} stroke={3} /> : <IconX size={12} stroke={3} />}
                     </div>
-                </Group>
+                    <Text size="xs" fw="bold" ta="center">Characters</Text>
+                </div>
+                <div className={`${classes.mascotContainer} ${itemWon ? '' : classes.mascotLocked}`}>
+                    <img src={seamGif} alt="Seam" />
+                    <div className={`${classes.mascotBadge} ${itemWon ? classes.mascotBadgeVictory : classes.mascotBadgeDefeat}`}>
+                        {itemWon ? <IconCheck size={12} stroke={3} /> : <IconX size={12} stroke={3} />}
+                    </div>
+                    <Text size="xs" fw="bold" ta="center">Items</Text>
+                </div>
+                <div className={`${classes.mascotContainer} ${songWon ? '' : classes.mascotLocked}`}>
+                    <img src={jackensteinGif} alt="Jackenstein" />
+                    <div className={`${classes.mascotBadge} ${songWon ? classes.mascotBadgeVictory : classes.mascotBadgeDefeat}`}>
+                        {songWon ? <IconCheck size={12} stroke={3} /> : <IconX size={12} stroke={3} />}
+                    </div>
+                    <Text size="xs" fw="bold" ta="center">Song</Text>
+                </div>
             </div>
 
             <Paper className={classes.resultsCard}>
@@ -317,9 +320,25 @@ export default function DailyResultsView({ gameState }) {
                 </div>
             </Paper>
 
+            <div className={classes.countdownContainer}>
+                <div className={classes.countdownLabel}>
+                    NEXT CHALLENGE
+                </div>
+                <Group gap="xs">
+                    <IconClock size={20} color="var(--mantine-color-amberGold-5)" />
+                    <div className={classes.countdownTimer}>
+                        {timeLeft}
+                    </div>
+                </Group>
+            </div>
+
             <Paper className={classes.resultsCard}>
                 <div className={classes.resultsTitle}>
-                    {isVictory ? 'Victory Statistics' : 'Game Over Statistics'}
+                    {isVictory ? 'Victory Statistics' : 'Statistics'}
+                </div>
+                <div className={classes.resultsRow}>
+                    <Text size="sm" className={classes.timerText}>Total Time</Text>
+                    <Text size="sm" fw="bold" className={classes.timerText}>{durationStr}</Text>
                 </div>
                 <div className={classes.resultsRow}>
                     <Text size="sm">Daily Challenge</Text>
@@ -330,10 +349,6 @@ export default function DailyResultsView({ gameState }) {
                     <Text size="sm" fw="bold" color={isVictory ? 'emeraldGreen' : 'royalMagenta'}>
                         {isVictory ? 'Victory' : 'Defeat'}
                     </Text>
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm">Total Time</Text>
-                    <Text size="sm" fw="bold" className={classes.timerText}>{durationStr}</Text>
                 </div>
                 <div className={classes.resultsRow}>
                     <Text size="sm">Characters guesses</Text>

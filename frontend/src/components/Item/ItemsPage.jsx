@@ -10,7 +10,7 @@ import HintProgress from './HintProgress.jsx';
 import GuessHistory from './GuessHistory.jsx';
 import ItemModal from './ItemModal.jsx';
 import { addPoints } from '../../core/rankSystem.js';
-import { RANK_POINTS } from '../../config/Constants.js';
+import { RANK_POINTS, DAILY_LIMITS } from '../../config/Constants.js';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 export default function ItemsPage({
@@ -106,8 +106,8 @@ export default function ItemsPage({
                 if (!isDaily) {
                     const attempts = nextGameState.guessedNames.length;
                     let points = 0;
-                    if (attempts <= 3) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
-                    else if (attempts <= 6) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
+                    if (attempts <= RANK_POINTS.ATTEMPTS_THRESHOLD_FAST) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
+                    else if (attempts <= RANK_POINTS.ATTEMPTS_THRESHOLD_MEDIUM) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
                     else points = RANK_POINTS.VICTORY_SLOW_ATTEMPTS;
 
                     const duration = (Date.now() - startTime) / 1000;
@@ -139,7 +139,9 @@ export default function ItemsPage({
     const activeFilterSelected = isDaily ? true : isFilterSelected;
     const activeGameState = isDaily ? dailyGameState : gameState;
     const activeGuesses = isDaily ? dailyGuesses : guesses;
-    const activeIsGameOver = isDaily ? false : (isModalOpen || (guesses.length > 0 && guesses[0].isCorrect));
+    const isDailyWon = isDaily && activeGuesses?.some(g => g.isCorrect);
+    const isDailyLost = isDaily && activeGuesses?.length >= (DAILY_LIMITS?.items || 10);
+    const activeIsGameOver = isDaily ? (isDailyWon || isDailyLost) : (isModalOpen || (guesses.length > 0 && guesses[0].isCorrect));
 
     // Filter autocomplete search options
     const itemOptions = activeGameState

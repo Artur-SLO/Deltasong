@@ -1002,13 +1002,13 @@
     },
     {
         "name": "PLUGBOY",
-        "gender": "Non-binary",
+        "gender": "Male",
         "type": "Darkner",
         "chapter": 2,
         "class": "NPC",
         "first_appearance": "Cyber Field",
         "first_appearance_index": 35,
-        "image": "https://deltarune.wiki/images/thumb/Plugboy_overworld_transform.gif/76px-Plugboy_overworld_transform.gif.webp?cb=lauhuy&h=thumb.php&f=Plugboy_overworld_transform.gif",
+        "image": "https://static.wikia.nocookie.net/deltarune/images/9/90/Plugboy_overworld.png/revision/latest?cb=20211005205350",
         "url": "https://deltarune.wiki/w/Plugboy"
     },
     {

@@ -2,7 +2,7 @@ import { Grid, Stack, Text, Button, Modal, Paper } from '@mantine/core';
 import GridCell from './GridCell.jsx';
 import { createGame, makeGuess } from '../../core/characterGame.js';
 import { compareCharacters } from '../../core/Character.js';
-import { COLUMNS_CONFIG, RANK_POINTS } from '../../config/Constants.js';
+import { COLUMNS_CONFIG, RANK_POINTS, DAILY_LIMITS } from '../../config/Constants.js';
 import deltaruneCharacters from '../../assets/data/deltarune_characters.json';
 import berdlyGif from '../../assets/images/berdly.gif';
 import { useEffect, useState, useContext } from 'react';
@@ -102,8 +102,8 @@ export default function GuessGrid({
                 if (!isDaily) {
                     const attempts = result.gameState.guessedNames.length;
                     let points = 0;
-                    if (attempts <= 3) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
-                    else if (attempts <= 6) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
+                    if (attempts <= RANK_POINTS.ATTEMPTS_THRESHOLD_FAST) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
+                    else if (attempts <= RANK_POINTS.ATTEMPTS_THRESHOLD_MEDIUM) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
                     else points = RANK_POINTS.VICTORY_SLOW_ATTEMPTS;
 
                     const duration = (Date.now() - startTime) / 1000;
@@ -157,7 +157,11 @@ export default function GuessGrid({
         }, 200);
     };
 
-    const showSearchBar = isDaily || (!isWon && !isGivenUp);
+    const isDailyFinished = isDaily && (
+        dailyGuesses?.some(g => g.isVictory) ||
+        dailyGuesses?.length >= (DAILY_LIMITS?.characters || 10)
+    );
+    const showSearchBar = !isDailyFinished && !isWon && !isGivenUp;
 
     return (
         <Stack gap="md" align="center" w="100%">
@@ -263,7 +267,12 @@ export default function GuessGrid({
             </Grid>
 
             {activeGuesses.slice(0, 15).map((char) => (
-                <Guess key={char.name.value} character={char} widths={COLUMNS_CONFIG} totalColumns={totalColumns} />
+                <Guess 
+                    key={char.name.value} 
+                    character={char} 
+                    widths={COLUMNS_CONFIG} 
+                    totalColumns={totalColumns} 
+                />
             ))}
         </Stack>
     );

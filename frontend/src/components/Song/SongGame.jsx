@@ -6,7 +6,7 @@ import { IconBulb } from '@tabler/icons-react';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 
 import { createSongGame, makeSongGuess, compareSongs } from '../../core/songGame.js';
-import { SONG_DIFFICULTIES, RANK_POINTS } from '../../config/Constants.js';
+import { SONG_DIFFICULTIES, RANK_POINTS, DAILY_LIMITS } from '../../config/Constants.js';
 import AudioPlayer from './AudioPlayer.jsx';
 import DifficultySelector from './DifficultySelector.jsx';
 import SongSearchBar from './SongSearchBar.jsx';
@@ -89,9 +89,12 @@ export default function SongGame({
     const activeExtraSeconds = isDaily ? dailyExtraSeconds : extraSeconds;
     const activeSetExtraSeconds = isDaily ? setDailyExtraSeconds : setExtraSeconds;
     const activeDiff = isDaily ? 'normal' : activeDifficulty;
-    const activeIsGameOver = isDaily ? isDailyGameOver : (isWon || isGivenUp);
-    const activeIsWon = isDaily ? (isDailyGameOver && activeGuesses.some(g => g.title && g.title.correct)) : isWon;
-    const activeIsGivenUp = isDaily ? (isDailyGameOver && !activeIsWon) : isGivenUp;
+    const isDailyWon = isDaily && activeGuesses?.some(g => g.title && g.title.correct);
+    const isDailyLost = isDaily && activeGuesses?.length >= (DAILY_LIMITS?.songs || 10);
+    const isDailyStageFinished = isDailyWon || isDailyLost;
+    const activeIsGameOver = isDaily ? (isDailyGameOver || isDailyStageFinished) : (isWon || isGivenUp);
+    const activeIsWon = isDaily ? isDailyWon : isWon;
+    const activeIsGivenUp = isDaily ? isDailyLost : isGivenUp;
 
     const title = activeGameState?.target?.title || "";
     const charMetadata = [];
@@ -204,8 +207,8 @@ export default function SongGame({
                 if (!isDaily) {
                     const attempts = result.gameState.guessedTitles.length;
                     let points = 0;
-                    if (attempts <= 3) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
-                    else if (attempts <= 6) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
+                    if (attempts <= RANK_POINTS.ATTEMPTS_THRESHOLD_FAST) points = RANK_POINTS.VICTORY_FAST_ATTEMPTS;
+                    else if (attempts <= RANK_POINTS.ATTEMPTS_THRESHOLD_MEDIUM) points = RANK_POINTS.VICTORY_MEDIUM_ATTEMPTS;
                     else points = RANK_POINTS.VICTORY_SLOW_ATTEMPTS;
 
                     const duration = (Date.now() - startTime) / 1000;
