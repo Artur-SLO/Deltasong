@@ -20,7 +20,9 @@ import {
     submitCharacterGuess,
     submitItemGuess,
     submitSongGuess,
-    saveDailyGame
+    saveDailyGame,
+    giveUpDaily,
+    calculateStagePoints
 } from '../../core/dailyGame.js';
 import { getLocalDateString } from '../../core/dailySeed.js';
 import { compareCharacters } from '../../core/Character.js';
@@ -57,6 +59,9 @@ export default function DailyGame() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [extraSeconds, setExtraSeconds] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
+
+    const currentStep = gameState?.currentStep;
 
     const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
 
@@ -72,6 +77,10 @@ export default function DailyGame() {
     }, [isModalOpen, setIsHelpWidgetHidden]);
 
     const sessionStartRef = useRef(Date.now());
+    const latestElapsedTimesRef = useRef({});
+    if (gameState) {
+        latestElapsedTimesRef.current = gameState.elapsedTimes || {};
+    }
 
     // Load or create game status for the target date
     useEffect(() => {
@@ -94,13 +103,24 @@ export default function DailyGame() {
 
     // Track active playing timer
     useEffect(() => {
-        if (!gameState || gameState.status !== 'playing') return;
+        if (!gameState) return;
+
+        const stepKey = currentStep === 1 ? 'characters' : (currentStep === 2 ? 'items' : 'songs');
+
+        const isStageCompleted = gameState.stageResults?.[stepKey] === 'victory' || gameState.stageResults?.[stepKey] === 'defeat';
+        const savedTime = gameState.status !== 'playing' 
+            ? (gameState.elapsedTime || 0) 
+            : (gameState.elapsedTimes?.[stepKey] || 0);
+        setDuration(savedTime);
+
+        if (gameState.status !== 'playing' || isStageCompleted) return;
 
         sessionStartRef.current = Date.now();
-        const initialElapsed = gameState.elapsedTime || 0;
 
         const updateTime = () => {
-            setDuration(initialElapsed + (Date.now() - sessionStartRef.current));
+            if (gameState.status !== 'playing') return;
+            const currentElapsed = latestElapsedTimesRef.current[stepKey] || 0;
+            setDuration(currentElapsed + (Date.now() - sessionStartRef.current));
         };
 
         updateTime();
@@ -108,7 +128,8 @@ export default function DailyGame() {
 
         return () => {
             clearInterval(interval);
-            const finalElapsed = initialElapsed + (Date.now() - sessionStartRef.current);
+            const currentElapsed = latestElapsedTimesRef.current[stepKey] || 0;
+            const finalElapsed = currentElapsed + (Date.now() - sessionStartRef.current);
             const latestState = loadOrCreateDailyGame(
                 simulatedDate,
                 deltaruneCharacters,
@@ -116,11 +137,20 @@ export default function DailyGame() {
                 deltaruneSoundtrack
             );
             if (latestState && latestState.status === 'playing') {
-                latestState.elapsedTime = finalElapsed;
-                saveDailyGame(latestState);
+                const isStageCompleted = latestState.stageResults?.[stepKey] === 'victory' || latestState.stageResults?.[stepKey] === 'defeat';
+                if (!isStageCompleted) {
+                    if (!latestState.elapsedTimes) {
+                        latestState.elapsedTimes = { characters: 0, items: 0, songs: 0 };
+                    }
+                    latestState.elapsedTimes[stepKey] = finalElapsed;
+                    latestState.elapsedTime = (latestState.elapsedTimes.characters || 0) +
+                        (latestState.elapsedTimes.items || 0) +
+                        (latestState.elapsedTimes.songs || 0);
+                    saveDailyGame(latestState);
+                }
             }
         };
-    }, [gameState?.status, simulatedDate]);
+    }, [gameState?.status, currentStep, simulatedDate]);
 
     // Attach developer tools to the window scope for clean testing
     useEffect(() => {
@@ -152,16 +182,25 @@ export default function DailyGame() {
                             const targetCharResult = compareCharacters(prev.characterState.target, prev.characterState.target);
                             targetCharResult.isVictory = true;
                             next.guesses.characters = [targetCharResult, ...prev.guesses.characters];
+                            next.stageResults.characters = 'victory';
+                            next.stagePoints.characters = calculateStagePoints(1, 15000, true, 'characters');
+                            next.elapsedTimes.characters = 15000;
                             next.currentStep = 2;
                             console.log('[Dev] Skipped Stage 1: Characters');
                         } else if (prev.currentStep === 2) {
                             const newGuess = { item: prev.itemState.target, isCorrect: true };
                             next.guesses.items = [newGuess, ...prev.guesses.items];
+                            next.stageResults.items = 'victory';
+                            next.stagePoints.items = calculateStagePoints(1, 15000, true, 'items');
+                            next.elapsedTimes.items = 15000;
                             next.currentStep = 3;
                             console.log('[Dev] Skipped Stage 2: Items');
                         } else if (prev.currentStep === 3) {
                             const targetSongResult = compareSongs(prev.songState.target, prev.songState.target);
                             next.guesses.songs = [targetSongResult, ...prev.guesses.songs];
+                            next.stageResults.songs = 'victory';
+                            next.stagePoints.songs = calculateStagePoints(1, 15000, true, 'songs', prev.songState.hintsUsed || 0);
+                            next.elapsedTimes.songs = 15000;
                             next.status = 'victory';
                             next.currentStep = 'completed';
                             next.endTime = Date.now();
@@ -170,12 +209,27 @@ export default function DailyGame() {
 
                             const rankData = getRankData();
                             const streak = rankData.streak || 1;
-                            addPoints(RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS), 'daily');
+
+                            const charPts = next.stagePoints.characters || 0;
+                            const itemPts = next.stagePoints.items || 0;
+                            const songPts = next.stagePoints.songs || 0;
+                            let totalPoints = charPts + itemPts + songPts;
+
+                            const basePoints = RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS);
+                            const paidPenalty = Math.max(0, (next.songState.hintsUsed || 0) - 1) * (RANK_POINTS.SONG_HINT_PENALTY || 10);
+                            const targetTotalPoints = Math.max(basePoints, paidPenalty + 10);
+                            const victoryBonus = Math.max(0, targetTotalPoints - (charPts + itemPts + songPts));
+                            totalPoints += victoryBonus;
+
+                            next.earnedPoints = totalPoints;
+                            next.victoryBonus = victoryBonus;
+
+                            addPoints(totalPoints, 'daily', true);
                         }
                         saveDailyGame(next);
                         return next;
                     });
-                },
+                    },
                 setDate: (dateStr) => {
                     const url = new URL(window.location.href);
                     if (dateStr) {
@@ -212,16 +266,75 @@ export default function DailyGame() {
     }
 
     const isGameOver = gameState.status !== 'playing';
+    const activeStep = (isGameOver && (currentStep === 'completed' || !currentStep)) ? 1 : currentStep;
 
 
 
     const getUpdatedStateWithTime = () => {
         if (!gameState || gameState.status !== 'playing') return gameState;
-        const currentElapsed = (gameState.elapsedTime || 0) + (Date.now() - sessionStartRef.current);
+
+        const stepKey = currentStep === 1 ? 'characters' : (currentStep === 2 ? 'items' : 'songs');
+
+        // If the current stage is already completed (victory or defeat), do not add any active session time
+        const isStageCompleted = gameState.stageResults?.[stepKey] === 'victory' || gameState.stageResults?.[stepKey] === 'defeat';
+        if (isStageCompleted) {
+            return gameState;
+        }
+
+        const now = Date.now();
+        const elapsedForStep = (gameState.elapsedTimes?.[stepKey] || 0) + (now - sessionStartRef.current);
+
+        // Reset the session start time to now because we are committing/accumulating this session's elapsed time!
+        sessionStartRef.current = now;
+
+        const nextElapsedTimes = {
+            ...gameState.elapsedTimes,
+            [stepKey]: elapsedForStep
+        };
+
+        const nextElapsedTime = (nextElapsedTimes.characters || 0) +
+            (nextElapsedTimes.items || 0) +
+            (nextElapsedTimes.songs || 0);
+
         return {
             ...gameState,
-            elapsedTime: currentElapsed
+            elapsedTimes: nextElapsedTimes,
+            elapsedTime: nextElapsedTime
         };
+    };
+
+    const handleDailyChallengeFinished = (nextGame) => {
+        if (gameState.status === 'playing') {
+            const rankData = getRankData();
+            const streak = rankData.streak || 1;
+
+            const charPts = nextGame.stagePoints?.characters || 0;
+            const itemPts = nextGame.stagePoints?.items || 0;
+            const songPts = nextGame.stagePoints?.songs || 0;
+
+            let totalPoints = charPts + itemPts + songPts;
+            const isDailyWin = nextGame.status === 'victory';
+
+            let victoryBonus = 0;
+            if (isDailyWin) {
+                const basePoints = RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS);
+                const paidPenalty = Math.max(0, (nextGame.songState.hintsUsed || 0) - 1) * (RANK_POINTS.SONG_HINT_PENALTY || 10);
+                const targetTotalPoints = Math.max(basePoints, paidPenalty + 10);
+                victoryBonus = Math.max(0, targetTotalPoints - (charPts + itemPts + songPts));
+                totalPoints += victoryBonus;
+            }
+
+            const nextGameWithPoints = {
+                ...nextGame,
+                earnedPoints: totalPoints,
+                victoryBonus: victoryBonus
+            };
+            saveDailyGame(nextGameWithPoints);
+            setGameState(nextGameWithPoints);
+            setIsModalOpen(true);
+
+            addPoints(totalPoints, 'daily', isDailyWin);
+        }
     };
 
     // Handles guesses for Stage 1: Characters
@@ -231,10 +344,11 @@ export default function DailyGame() {
         try {
             const stateWithTime = getUpdatedStateWithTime();
             const nextGame = submitCharacterGuess(stateWithTime, characterToGuess);
-            setGameState(nextGame);
 
-            if (nextGame.status === 'defeat') {
-                setIsModalOpen(true);
+            if (nextGame.status === 'victory' || nextGame.status === 'defeat') {
+                handleDailyChallengeFinished(nextGame);
+            } else {
+                setGameState(nextGame);
             }
         } catch (err) {
             console.error(err);
@@ -248,10 +362,11 @@ export default function DailyGame() {
         try {
             const stateWithTime = getUpdatedStateWithTime();
             const nextGame = submitItemGuess(stateWithTime, itemToGuess);
-            setGameState(nextGame);
 
-            if (nextGame.status === 'defeat') {
-                setIsModalOpen(true);
+            if (nextGame.status === 'victory' || nextGame.status === 'defeat') {
+                handleDailyChallengeFinished(nextGame);
+            } else {
+                setGameState(nextGame);
             }
         } catch (err) {
             console.error(err);
@@ -265,18 +380,11 @@ export default function DailyGame() {
         try {
             const stateWithTime = getUpdatedStateWithTime();
             const nextGame = submitSongGuess(stateWithTime, songToGuess);
-            setGameState(nextGame);
 
             if (nextGame.status === 'victory' || nextGame.status === 'defeat') {
-                setIsModalOpen(true);
-                if (gameState.status === 'playing' && nextGame.status === 'victory') {
-                    const rankData = getRankData();
-                    const streak = rankData.streak || 1;
-                    const basePoints = RANK_POINTS.DAILY_VICTORY_BASE + (streak * RANK_POINTS.DAILY_STREAK_BONUS);
-                    const paidPenalty = Math.max(0, (nextGame.songState.hintsUsed || 0) - 1) * (RANK_POINTS.SONG_HINT_PENALTY || 10);
-                    const points = Math.max(basePoints, paidPenalty + 10);
-                    addPoints(points, 'daily');
-                }
+                handleDailyChallengeFinished(nextGame);
+            } else {
+                setGameState(nextGame);
             }
         } catch (err) {
             console.error(err);
@@ -304,15 +412,47 @@ export default function DailyGame() {
         if (isConfirmingGiveUp) {
             const stateWithTime = getUpdatedStateWithTime();
             const nextGame = giveUpDaily(stateWithTime);
+
+            const charPts = nextGame.stagePoints?.characters || 0;
+            const itemPts = nextGame.stagePoints?.items || 0;
+            const songPts = nextGame.stagePoints?.songs || 0;
+            const totalPoints = charPts + itemPts + songPts;
+
+            nextGame.earnedPoints = totalPoints;
+            nextGame.victoryBonus = 0;
+            saveDailyGame(nextGame);
+
             setGameState(nextGame);
             setIsModalOpen(true);
             setIsConfirmingGiveUp(false);
+
+            addPoints(totalPoints, 'daily', false);
         } else {
             setIsConfirmingGiveUp(true);
         }
     };
 
-    const currentStep = gameState.currentStep;
+    const handleStepClick = (stepId) => {
+        if (!gameState) return;
+        if (currentStep === stepId) return;
+
+        if (gameState.status !== 'playing') {
+            setGameState(prev => ({
+                ...prev,
+                currentStep: stepId
+            }));
+            return;
+        }
+
+        const stateWithTime = getUpdatedStateWithTime();
+        const nextState = {
+            ...stateWithTime,
+            currentStep: stepId
+        };
+        saveDailyGame(nextState);
+        setGameState(nextState);
+    };
+
     let attemptsLeft = 0;
     let totalAttempts = 0;
     if (currentStep === 1) {
@@ -346,23 +486,12 @@ export default function DailyGame() {
                     </div>
                 )}
 
-                <Stack gap="md" align="center" w="100%">
+                <Stack gap="sm" align="center" w="100%">
                     <Title order={2} ta="center" mb="lg" className={`${homeClasses.conventionalTitle} ${classes.gameTitle}`}>
                         Daily Challenge
                     </Title>
 
-                    <DailyStepper currentStep={gameState.currentStep} status={gameState.status} />
-
-                    {isGameOver && (
-                        <Button
-                            color="emeraldGreen"
-                            onClick={() => setIsModalOpen(true)}
-                            className={homeClasses.conventionalFont}
-                            mt="xs"
-                        >
-                            View Stats
-                        </Button>
-                    )}
+                    <DailyStepper currentStep={activeStep} status={gameState.status} stageResults={gameState.stageResults} onStepClick={handleStepClick} />
 
                     {/* Info Bar / Controls */}
                     <Box mt="md" mb="md">
@@ -375,14 +504,14 @@ export default function DailyGame() {
                     </Box>
 
                     {/* Developer Instructions */}
-                    {import.meta.env.DEV && (
-                        <Text size="xs" ta="center" c="var(--color-accent-primary)" mb="md">
-                            [Dev Mode] Use `window.deltasongDev.skipStage()` in your console to advance.
-                        </Text>
-                    )}
+                    {/* {import.meta.env.DEV && ( */}
+                    {/*     <Text size="xs" ta="center" c="var(--color-accent-primary)" mb="md"> */}
+                    {/*         [Dev Mode] Use `window.deltasongDev.skipStage()` in your console to advance. */}
+                    {/*     </Text> */}
+                    {/* )} */}
 
                     {/* Stage Views */}
-                    {(gameState.currentStep === 1 || isGameOver) && (
+                    {activeStep === 1 && (
                         <GuessGrid
                             isDaily={true}
                             dailyGameState={gameState.characterState}
@@ -391,7 +520,7 @@ export default function DailyGame() {
                         />
                     )}
 
-                    {(gameState.currentStep === 2 || (isGameOver && gameState.guesses.items.length > 0)) && (
+                    {activeStep === 2 && (
                         <ItemsPage
                             isDaily={true}
                             dailyGameState={gameState.itemState}
@@ -400,7 +529,7 @@ export default function DailyGame() {
                         />
                     )}
 
-                    {(gameState.currentStep === 3 || (isGameOver && gameState.guesses.songs.length > 0)) && (
+                    {activeStep === 3 && (
                         <SongGame
                             isDaily={true}
                             isDailyGameOver={isGameOver}

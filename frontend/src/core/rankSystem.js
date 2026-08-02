@@ -109,7 +109,7 @@ export function calculateUserRank(score) {
     };
 }
 
-export function addPoints(amount, gameType) {
+export function addPoints(amount, gameType, isDailyWin = true) {
     const data = getRankData();
     const oldScore = data.totalScore;
     const newScore = Math.max(0, oldScore + amount);
@@ -142,7 +142,7 @@ export function addPoints(amount, gameType) {
             data.stats.totalLosses += 1;
         }
     } else if (gameType === 'daily') {
-        if (amount > 0) {
+        if (isDailyWin && amount > 0) {
             data.stats.dailyCompleted += 1;
             data.stats.totalWins += 1;
         } else {

@@ -1,17 +1,10 @@
 import { Stack, Group } from '@mantine/core';
-import { IconCheck } from '@tabler/icons-react';
+import { IconCheck, IconX } from '@tabler/icons-react';
 import classes from '../../styles/Daily.module.css';
 
-import pinkGif from '../../assets/images/pink.gif';
-import jackensteinGif from '../../assets/images/jackenstein.gif';
+import { STAGE_MASCOTS } from '../../config/Constants.js';
 
-const lockedMascots = {
-    1: pinkGif,
-    2: "https://deltarune.wiki/images/Seam_face.gif?cb=0ngjb8&h=thumb.php&f=Seam_face.gif",
-    3: jackensteinGif
-};
-
-export default function DailyStepper({ currentStep, status }) {
+export default function DailyStepper({ currentStep, status, stageResults, onStepClick }) {
     const steps = [
         { id: 1, label: "Characters", desc: "Guess Character" },
         { id: 2, label: "Items", desc: "Guess Item" },
@@ -22,31 +15,53 @@ export default function DailyStepper({ currentStep, status }) {
         <div className={classes.stepperContainer}>
             <div className={classes.stepperTrack}>
                 {steps.map((step) => {
-                    const isCompleted = currentStep > step.id || status === 'victory' || (status === 'defeat' && currentStep > step.id);
+                    const stepKey = step.id === 1 ? 'characters' : (step.id === 2 ? 'items' : 'songs');
+                    const stageResult = stageResults?.[stepKey];
+                    const isCompleted = stageResult === 'victory' || stageResult === 'defeat' || currentStep === 'completed' || status === 'victory' || status === 'defeat';
                     const isActive = currentStep === step.id && status === 'playing';
 
                     let stepClass = classes.stepPending;
                     let iconClass = classes.stepIconPending;
                     let icon = (
                         <img 
-                            src={lockedMascots[step.id]} 
+                            src={STAGE_MASCOTS[step.id]} 
                             alt="Mascot" 
                             className={classes.lockedStepperMascot} 
                         />
                     );
-                    let statusText = "In Progress";
+                    let statusText = step.desc;
 
                     if (isCompleted) {
-                        stepClass = classes.stepCompleted;
-                        iconClass = classes.stepIconCompleted;
-                        icon = <IconCheck size={20} />;
+                        if (stageResult === 'defeat') {
+                            stepClass = classes.stepDefeat;
+                            iconClass = classes.stepIconDefeat;
+                            icon = <IconX size={20} />;
+                            statusText = "Defeat";
+                        } else {
+                            stepClass = classes.stepCompleted;
+                            iconClass = classes.stepIconCompleted;
+                            icon = <IconCheck size={20} />;
+                            statusText = "Victory";
+                        }
                     } else if (isActive) {
                         stepClass = classes.stepActive;
                         iconClass = classes.stepIconActive;
+                        statusText = "In Progress";
                     }
 
+                    const isClickable = status === 'playing' || status === 'victory' || status === 'defeat';
+
                     return (
-                        <div key={step.id} className={`${classes.step} ${stepClass}`}>
+                        <div 
+                            key={step.id} 
+                            className={`${classes.step} ${stepClass} ${isClickable ? classes.stepClickable : ''} ${isActive ? classes.stepSelected : ''}`}
+                            onClick={() => {
+                                if (isClickable && onStepClick) {
+                                    onStepClick(step.id);
+                                }
+                            }}
+                            style={{ cursor: isClickable ? 'pointer' : 'default' }}
+                        >
                             <div className={`${classes.stepIcon} ${iconClass}`}>
                                 {icon}
                             </div>
@@ -57,7 +72,7 @@ export default function DailyStepper({ currentStep, status }) {
                                     </span>
                                 </Group>
                                 <span className={classes.stepStatusText}>
-                                    {isActive ? statusText : step.desc}
+                                    {statusText}
                                 </span>
                             </Stack>
                         </div>
