@@ -482,3 +482,156 @@
 .attemptsTextWarning {
     color: var(--mantine-color-royalMagenta-6) !important;
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .stepperContainer {
+        max-width: 100%;
+        padding: var(--mantine-spacing-sm);
+    }
+
+    .stepIcon {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .stepLabel {
+        font-size: 0.8rem;
+    }
+
+    .stepStatusText {
+        font-size: 0.65rem;
+    }
+
+    .step {
+        padding: var(--size-3) var(--mantine-spacing-xs);
+    }
+
+    .timerContainer {
+        position: static;
+        margin: 0 auto var(--mantine-spacing-sm) auto;
+        width: fit-content;
+    }
+
+    .attemptsContainer {
+        position: static;
+        margin: 0 auto var(--mantine-spacing-sm) auto;
+        width: fit-content;
+    }
+
+    .giveUpButton {
+        position: relative;
+        top: auto;
+        right: auto;
+        align-self: flex-end;
+        margin-bottom: var(--mantine-spacing-xs);
+    }
+
+    .resultsCard {
+        max-width: 100%;
+    }
+
+    .countdownContainer {
+        max-width: 100%;
+    }
+
+    .blockedView {
+        max-width: 100%;
+        padding: var(--mantine-spacing-md);
+    }
+
+    .mascotContainer img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .resultsMascot {
+        width: 48px;
+        height: 48px;
+    }
+
+    .loadingMascot {
+        width: 48px;
+        height: 48px;
+    }
+
+    .modalTitleVictory,
+    .modalTitleSurrender {
+        font-size: var(--mantine-font-size-lg) !important;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .stepIcon {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .stepLabel {
+        font-size: 0.7rem;
+    }
+
+    .step {
+        padding: var(--size-2) var(--size-3);
+        gap: var(--mantine-spacing-xs);
+    }
+
+    .timerContainer {
+        padding: var(--size-3) var(--mantine-spacing-sm);
+    }
+
+    .timerText {
+        font-size: var(--mantine-font-size-sm);
+    }
+
+    .attemptsContainer {
+        padding: var(--size-3) var(--mantine-spacing-sm);
+    }
+
+    .attemptsText {
+        font-size: var(--mantine-font-size-md);
+    }
+
+    .mascotContainer img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .resultsMascot {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mascotRow {
+        gap: 16px;
+    }
+
+    .blockedView {
+        padding: var(--mantine-spacing-sm);
+    }
+
+    .blockedTitle {
+        font-size: 1rem;
+    }
+
+    .blockedSubtitle {
+        font-size: var(--mantine-font-size-sm);
+    }
+
+    .defeatMascotText {
+        font-size: 1rem;
+    }
+
+    .stepperMascot {
+        width: 18px;
+        height: 18px;
+    }
+
+    .lockedStepperMascot {
+        width: 24px;
+        height: 24px;
+    }
+}

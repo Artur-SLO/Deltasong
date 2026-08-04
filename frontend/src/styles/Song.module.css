@@ -425,3 +425,157 @@
         transform: translateY(0);
     }
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .paper {
+        padding: var(--mantine-spacing-md);
+    }
+
+    .searchBar {
+        max-width: 100%;
+    }
+
+    .playerControls {
+        flex-wrap: wrap;
+        gap: var(--mantine-spacing-sm);
+    }
+
+    .playerBtn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .historyContainer {
+        max-width: 100%;
+    }
+
+    .gridCell {
+        height: 48px;
+    }
+
+    .cellContent {
+        font-size: 0.8rem;
+    }
+
+    .guessText {
+        font-size: var(--mantine-font-size-xs) !important;
+    }
+
+    .unifiedPanel {
+        max-width: 100%;
+        padding: var(--mantine-spacing-sm);
+    }
+
+    .maskedTitleContainer {
+        font-size: 1.2rem;
+        gap: 5px;
+    }
+
+    .maskedChar {
+        min-width: 16px;
+    }
+
+    .maskedSpace {
+        width: 12px;
+    }
+
+    .giveUpButton {
+        top: 12px !important;
+        right: 12px !important;
+    }
+
+    .targetCard {
+        max-width: 100%;
+    }
+
+    .modalIframe {
+        height: 200px;
+        width: 100%;
+    }
+
+    .difficultyContainer {
+        gap: var(--mantine-spacing-sm);
+    }
+
+    .difficultyButton {
+        min-width: 80px;
+    }
+
+    .mascotGif {
+        width: 72px;
+        height: 72px;
+    }
+
+    .modalTextTitle {
+        font-size: var(--mantine-font-size-lg);
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .paper {
+        padding: var(--mantine-spacing-sm);
+    }
+
+    .playerControls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .gridCell {
+        height: 40px;
+    }
+
+    .cellContent {
+        font-size: 0.7rem;
+    }
+
+    .guessText {
+        font-size: 0.7rem !important;
+    }
+
+    .maskedTitleContainer {
+        font-size: 1rem;
+        gap: 4px;
+    }
+
+    .maskedChar {
+        min-width: 14px;
+        font-size: 0.9rem;
+    }
+
+    .maskedSpace {
+        width: 10px;
+    }
+
+    .modalIframe {
+        height: 160px;
+    }
+
+    .mascotGif {
+        width: 64px;
+        height: 64px;
+    }
+
+    .modalTextTitle {
+        font-size: var(--mantine-font-size-md);
+    }
+
+    .modalTextSubtitle {
+        font-size: var(--mantine-font-size-sm);
+    }
+
+    .difficultyButton {
+        min-width: 70px;
+        font-size: 0.8rem !important;
+    }
+
+    .dropdownOption {
+        padding: var(--size-3) var(--mantine-spacing-sm);
+    }
+
+    .hintStats {
+        font-size: 0.65rem;
+    }
+}

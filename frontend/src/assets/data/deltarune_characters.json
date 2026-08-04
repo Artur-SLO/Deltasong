@@ -1008,7 +1008,7 @@
         "class": "NPC",
         "first_appearance": "Cyber Field",
         "first_appearance_index": 35,
-        "image": "https://static.wikia.nocookie.net/deltarune/images/9/90/Plugboy_overworld.png/revision/latest?cb=20211005205350",
+        "image": "../images/plugboy.png",
         "url": "https://deltarune.wiki/w/Plugboy"
     },
     {

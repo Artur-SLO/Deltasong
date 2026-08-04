@@ -189,3 +189,44 @@
         height: 56px;
     }
 }
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .footerContainer {
+        bottom: var(--size-3);
+        right: var(--size-3);
+        gap: var(--size-2);
+    }
+
+    .hintPopup {
+        width: 220px;
+        padding: var(--size-3);
+        margin-bottom: var(--size-2);
+    }
+
+    .hintPopup::after {
+        bottom: 10px;
+    }
+
+    .hintPopup::before {
+        bottom: 11px;
+    }
+
+    .hintHero {
+        width: 44px;
+        height: 44px;
+    }
+
+    .hintTitle {
+        font-size: 0.9rem;
+    }
+
+    .hintCardText {
+        font-size: 0.75rem;
+        padding: var(--size-2);
+    }
+
+    .closeButton {
+        font-size: 1.2rem;
+    }
+}

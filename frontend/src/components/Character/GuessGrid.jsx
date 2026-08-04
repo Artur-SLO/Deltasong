@@ -254,26 +254,30 @@ export default function GuessGrid({
                 </Modal>
             )}
 
-            <Grid columns={totalColumns} gutter="md" w="100%" align="center">
-                {COLUMNS_CONFIG.map((col) => (
-                    <Grid.Col key={col.label} span={col.span}>
-                        <GridCell>
-                            <Text size="sm" fw="bold" ff="var(--font-family-deltarune)">
-                                {col.label}
-                            </Text>
-                        </GridCell>
-                    </Grid.Col>
-                ))}
-            </Grid>
+            <div className={styles.gridScrollWrapper}>
+                <div className={styles.gridScrollContent}>
+                    <Grid columns={totalColumns} gutter="md" w="100%" align="center">
+                        {COLUMNS_CONFIG.map((col) => (
+                            <Grid.Col key={col.label} span={col.span}>
+                                <GridCell>
+                                    <Text size="sm" fw="bold" ff="var(--font-family-deltarune)">
+                                        {col.label}
+                                    </Text>
+                                </GridCell>
+                            </Grid.Col>
+                        ))}
+                    </Grid>
 
-            {activeGuesses.slice(0, 15).map((char) => (
-                <Guess 
-                    key={char.name.value} 
-                    character={char} 
-                    widths={COLUMNS_CONFIG} 
-                    totalColumns={totalColumns} 
-                />
-            ))}
+                    {activeGuesses.slice(0, 15).map((char) => (
+                        <Guess 
+                            key={char.name.value} 
+                            character={char} 
+                            widths={COLUMNS_CONFIG} 
+                            totalColumns={totalColumns} 
+                        />
+                    ))}
+                </div>
+            </div>
         </Stack>
     );
 }

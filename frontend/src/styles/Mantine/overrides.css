@@ -132,3 +132,45 @@
 .mantine-Modal-header {
     background-color: transparent !important;
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .mantine-Modal-content {
+        margin: 8px !important;
+        max-height: 90vh !important;
+    }
+
+    .mantine-Card-root:hover {
+        transform: none !important;
+    }
+
+    .mantine-Grid-root {
+        --grid-gutter: 4px !important;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .mantine-Modal-content {
+        margin: 4px !important;
+        max-height: 92vh !important;
+        border-radius: var(--mantine-radius-sm) !important;
+    }
+
+    .mantine-Card-root:hover {
+        transform: none !important;
+        box-shadow: var(--shadow-standard) !important;
+    }
+
+    .mantine-AppShell-header {
+        padding: 0 var(--mantine-spacing-xs) !important;
+    }
+
+    .mantine-Button-root {
+        min-height: 44px;
+    }
+
+    .mantine-Grid-root {
+        --grid-gutter: 2px !important;
+    }
+}

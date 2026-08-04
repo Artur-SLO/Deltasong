@@ -320,3 +320,60 @@
     pointer-events: none;
     padding: 0 var(--mantine-spacing-md);
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: calc(var(--mantine-font-size-xl) * 2.5);
+    }
+
+    .heroMascot {
+        width: 48px;
+        height: 48px;
+    }
+
+    .cardBadgeImage {
+        width: 36px;
+        height: 36px;
+    }
+
+    .homeDecorations {
+        margin-top: var(--size-6);
+        padding: 0 var(--mantine-spacing-sm);
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: calc(var(--mantine-font-size-xl) * 1.8);
+    }
+
+    .heroMascot {
+        width: 36px;
+        height: 36px;
+    }
+
+    .cardBadgeImage {
+        width: 28px;
+        height: 28px;
+    }
+
+    .dailyPlayBtn {
+        width: 100% !important;
+    }
+
+    .dailyMascotImage {
+        width: 36px;
+        height: 36px;
+    }
+
+    .homeDecorations {
+        margin-top: var(--size-5);
+        display: none;
+    }
+
+    .heroWrapper {
+        margin-bottom: var(--mantine-spacing-lg);
+    }
+}

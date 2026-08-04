@@ -396,3 +396,111 @@
         transform: translateY(-8px);
     }
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .searchBar {
+        max-width: 100%;
+    }
+
+    .hintDashboard {
+        max-width: 100%;
+    }
+
+    .hintCard {
+        padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm) !important;
+    }
+
+    .historyContainer {
+        max-width: 100%;
+    }
+
+    .guessRow {
+        padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm) !important;
+    }
+
+    .guessName {
+        font-size: 0.95rem;
+    }
+
+    .giveUpButton {
+        top: 12px !important;
+        right: 12px !important;
+    }
+
+    .targetCard {
+        max-width: 100%;
+    }
+
+    .detailItem {
+        grid-template-columns: 80px 1fr;
+        font-size: 0.85rem;
+    }
+
+    .mascotGif {
+        width: 72px;
+        height: 72px;
+    }
+
+    .modalTextTitle {
+        font-size: 1.3rem;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .hintCard {
+        padding: var(--size-3) var(--mantine-spacing-xs) !important;
+    }
+
+    .hintLabel {
+        font-size: 0.75rem;
+    }
+
+    .hintContent {
+        font-size: 0.85rem;
+    }
+
+    .guessRow {
+        padding: var(--size-3) var(--mantine-spacing-xs) !important;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--size-2);
+    }
+
+    .guessName {
+        font-size: 0.85rem;
+    }
+
+    .guessType {
+        font-size: 0.7rem;
+    }
+
+    .detailItem {
+        grid-template-columns: 70px 1fr;
+        font-size: 0.8rem;
+        gap: var(--mantine-spacing-xs);
+    }
+
+    .detailLabel {
+        font-size: 0.7rem;
+    }
+
+    .targetImage {
+        width: 70px;
+        height: 70px;
+    }
+
+    .mascotGif {
+        width: 56px;
+        height: 56px;
+    }
+
+    .modalTextTitle {
+        font-size: 1.1rem;
+    }
+
+    .dropdownOption {
+        padding: var(--size-3) var(--mantine-spacing-sm);
+    }
+}
