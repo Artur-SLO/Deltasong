@@ -209,17 +209,6 @@
         "url": "https://deltarune.wiki/w/C._Round"
     },
     {
-        "name": "CAGE ANIMALS",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Card Castle",
-        "first_appearance_index": 34,
-        "image": "https://deltarune.wiki/images/Cage_Animals_overworld.png?cb=n4wttu&h=thumb.php&f=Cage_Animals_overworld.png",
-        "url": "https://deltarune.wiki/w/Cage_Animals"
-    },
-    {
         "name": "CAROL",
         "gender": "Female",
         "type": "Lightner",
@@ -1054,17 +1043,6 @@
         "first_appearance_index": 35,
         "image": "https://deltarune.wiki/images/Queen_battle.gif?cb=ss3i2o&h=thumb.php&f=Queen_battle.gif",
         "url": "https://deltarune.wiki/w/Queen"
-    },
-    {
-        "name": "QUIZ VORTEX",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 3,
-        "class": "NPC",
-        "first_appearance": "Desert Board",
-        "first_appearance_index": 40,
-        "image": "https://deltarune.wiki/images/Quiz_vortex_overworld.gif?cb=a5dw3d&h=thumb.php&f=Quiz_vortex_overworld.gif",
-        "url": "https://deltarune.wiki/w/Quiz_vortex"
     },
     {
         "name": "RABBICK",
