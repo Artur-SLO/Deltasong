@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { IconFlame } from '@tabler/icons-react';
 import classes from '../../styles/Mantine/Header.module.css';
 import { getActiveUser, updateActiveUserStreak } from '../../utils/auth';
+import { getCharacterImage } from '../../utils/image.js';
 
 import { LINKS } from '../../config/Constants';
 
@@ -74,7 +75,7 @@ export default function Header() {
                                 </div>
                                 <span className={classes.headerName}>{activeUser.name}</span>
                                 <img 
-                                    src={activeUser.avatar} 
+                                    src={getCharacterImage(activeUser.avatar)} 
                                     alt={activeUser.name} 
                                     className={classes.headerAvatar} 
                                 />
