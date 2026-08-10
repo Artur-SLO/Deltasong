@@ -209,17 +209,6 @@
         "url": "https://deltarune.wiki/w/C._Round"
     },
     {
-        "name": "CAGE ANIMALS",
-        "gender": "Unknown",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Card Castle",
-        "first_appearance_index": 34,
-        "image": "../assets/images/characters/cage_animals.png",
-        "url": "https://deltarune.wiki/w/Cage_Animals"
-    },
-    {
         "name": "CAROL",
         "gender": "Female",
         "type": "Lightner",
@@ -394,17 +383,6 @@
         "first_appearance_index": 55,
         "image": "../assets/images/characters/flowery.gif",
         "url": "https://deltarune.wiki/w/Flowery"
-    },
-    {
-        "name": "FORMER KINGS",
-        "gender": "Male",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Card Castle",
-        "first_appearance_index": 34,
-        "image": "../assets/images/characters/former_kings.png",
-        "url": "https://deltarune.wiki/w/Former_Kings"
     },
     {
         "name": "FRIEND",
@@ -1054,17 +1032,6 @@
         "first_appearance_index": 35,
         "image": "../assets/images/characters/queen.gif",
         "url": "https://deltarune.wiki/w/Queen"
-    },
-    {
-        "name": "QUIZ VORTEX",
-        "gender": "Unknown",
-        "type": "Unknown",
-        "chapter": 3,
-        "class": "NPC",
-        "first_appearance": "Desert Board",
-        "first_appearance_index": 40,
-        "image": "../assets/images/characters/quiz_vortex.gif",
-        "url": "https://deltarune.wiki/w/Quiz_vortex"
     },
     {
         "name": "RABBICK",
