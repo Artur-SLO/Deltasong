@@ -34,7 +34,7 @@ export default function ProfileDashboard({ activeUser }) {
         setIsEditingAvatar(false);
         notifications.show({
             title: 'Avatar Updated',
-            message: 'Your profile sprite has been updated!',
+            message: 'Your profile image has been updated!',
             color: 'royalMagenta',
         });
     };
