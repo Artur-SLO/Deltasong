@@ -1,4 +1,5 @@
 import { TextInput, Group, Text, Paper } from "@mantine/core";
+import { IconSearch } from "@tabler/icons-react";
 import { useState } from 'react';
 import styles from '../../styles/Character.module.css';
 import { getCharacterImage } from '../../utils/image.js';
@@ -61,6 +62,7 @@ export default function SearchBar({ data, charactersMap, input, setInput, handle
         <div className={styles.searchBar}>
             <form onSubmit={handleSubmitForm}>
                 <TextInput
+                    leftSection={<IconSearch size={18} opacity={0.6} />}
                     placeholder="Type a character name"
                     value={input}
                     onChange={(e) => {

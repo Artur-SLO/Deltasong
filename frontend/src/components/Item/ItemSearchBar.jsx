@@ -1,4 +1,5 @@
 import { TextInput, Paper, Text } from '@mantine/core';
+import { IconSearch } from '@tabler/icons-react';
 import { useState } from 'react';
 import styles from '../../styles/Item.module.css';
 
@@ -60,7 +61,8 @@ export default function ItemSearchBar({ data, input, setInput, handleGuess }) {
         <div className={styles.searchBar}>
             <form onSubmit={handleSubmitForm}>
                 <TextInput
-                    placeholder="Type an item name"
+                    leftSection={<IconSearch size={18} opacity={0.6} />}
+                    placeholder="Search item name..."
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);

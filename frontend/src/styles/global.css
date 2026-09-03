@@ -63,3 +63,20 @@ h5,
 h6 {
     font-family: var(--font-family-deltarune) !important;
 }
+
+/* Centralized Global Keyframes */
+@keyframes crtOpen {
+    0% { transform: scaleY(0.01) scaleX(0.8); opacity: 0; filter: brightness(3); }
+    60% { transform: scaleY(1.02) scaleX(1.01); opacity: 1; filter: brightness(1.2); }
+    100% { transform: scaleY(1) scaleX(1); opacity: 1; filter: brightness(1); }
+}
+
+@keyframes slideUpFade {
+    0% { transform: translateY(16px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gentleBob {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}

@@ -14,7 +14,39 @@
     right: 24px !important;
 }
 
-/* Mode selector */
+/* Dynamic Mode Selector (matching Song mode transparent pill style) */
+.modeSwitcherContainer {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: var(--mantine-spacing-md);
+    background: var(--color-bg-primary);
+    border: var(--size-2) solid var(--color-border-primary);
+    border-radius: 999px;
+    padding: 4px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.modePillButton {
+    border-radius: 999px !important;
+    font-family: var(--font-family-deltarune) !important;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.modePillButton:disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+
+
+
+/* Legacy Mode selector */
 .modeSelectorContainer {
     display: flex;
     flex-direction: column;
@@ -113,37 +145,25 @@
     font-size: 0.75rem;
 }
 
-/* Hint Progress Dashboard */
+/* Hint Progress Dashboard (High Legibility & Modern Deltarune Aesthetics) */
 .hintDashboard {
     width: 100%;
     max-width: 700px;
     margin: var(--mantine-spacing-md) auto;
     display: flex;
     flex-direction: column;
-    gap: var(--mantine-spacing-sm);
+    gap: 12px;
 }
 
-.hintCard {
+/* Primary Clue: Description */
+.descriptionCard {
     background-color: var(--color-bg-primary) !important;
-    border: var(--size-2) solid var(--color-border-primary) !important;
+    border: 2px solid var(--color-border-primary) !important;
+    border-left: 4px solid var(--mantine-color-royalMagenta-5) !important;
     border-radius: var(--mantine-radius-md);
-    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md) !important;
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-2);
-    transition: all var(--transition-slow);
-}
-
-.hintCardUnlocked {
-    border-color: var(--mantine-color-royalMagenta-5) !important;
-    box-shadow: 0 0 5px rgba(255, 0, 142, 0.2);
-    animation: revealClue 0.5s ease-out;
-}
-
-.hintCardLocked {
-    opacity: 0.6;
-    background-color: rgba(20, 20, 20, 0.4) !important;
-    border-style: dashed !important;
+    padding: 16px 20px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
 }
 
 .hintHeader {
@@ -151,37 +171,94 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--color-border-primary);
-    padding-bottom: var(--size-2);
+    padding-bottom: 8px;
 }
 
-.hintLabel {
+.hintIconMain {
+    color: var(--mantine-color-royalMagenta-4);
+    display: flex;
+    align-items: center;
+}
+
+.hintLabelMain {
     font-family: var(--font-family-deltarune) !important;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     letter-spacing: 1px;
+    color: var(--color-text-primary);
     text-transform: uppercase;
 }
 
-.hintLabelUnlocked {
-    color: var(--mantine-color-royalMagenta-4) !important;
+.descriptionText {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #f3f4f6;
+    font-style: italic;
+    margin-top: 10px;
 }
 
-.hintLabelLocked {
-    color: var(--color-text-dimmed) !important;
+/* Secondary Clues: 2x2 Grid */
+.cluesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+    align-items: start;
 }
 
-.hintContent {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    white-space: pre-line;
+@media (max-width: 600px) {
+    .cluesGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.hintContentLocked {
+.clueBox {
+    background-color: var(--color-bg-primary) !important;
+    border-radius: var(--mantine-radius-md);
+    padding: 12px 16px !important;
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.clueBoxUnlocked {
+    border: 2px solid var(--color-border-primary) !important;
+    border-left: 4px solid var(--mantine-color-royalMagenta-5) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.clueBoxLocked {
+    border: 1px solid var(--color-border-primary) !important;
+    background-color: rgba(20, 20, 26, 0.7) !important;
+}
+
+.clueBoxHeader {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--mantine-spacing-xs);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 6px;
+}
+
+.clueBoxLabel {
+    font-family: var(--font-family-deltarune);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.clueBoxValue {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+}
+
+.clueBoxLockedText {
+    font-size: 0.82rem;
     color: var(--color-text-dimmed);
     font-style: italic;
-    font-size: 0.9rem;
 }
 
 /* Guess History */
@@ -252,16 +329,71 @@
 }
 
 /* Modal styles matching character/song standard */
+@keyframes crtOpen {
+    0% { transform: scaleY(0.01) scaleX(0.8); opacity: 0; filter: brightness(3); }
+    60% { transform: scaleY(1.02) scaleX(1.01); opacity: 1; filter: brightness(1.2); }
+    100% { transform: scaleY(1) scaleX(1); opacity: 1; filter: brightness(1); }
+}
+
 .modalContent {
     background-color: var(--color-bg-secondary) !important;
     border: var(--size-2) solid var(--color-border-primary) !important;
     color: var(--color-text-primary) !important;
+    animation: crtOpen 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+.targetImageWon {
+    filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.5)) drop-shadow(0 0 4px rgba(255, 215, 0, 0.35));
+    animation: gentleBob 1.6s ease-in-out infinite alternate !important;
+}
+
+.detailItem:nth-child(1) { animation: slideUpFade 0.35s ease-out 0.25s both; }
+.detailItem:nth-child(2) { animation: slideUpFade 0.35s ease-out 0.32s both; }
+.detailItem:nth-child(3) { animation: slideUpFade 0.35s ease-out 0.39s both; }
+.detailItem:nth-child(4) { animation: slideUpFade 0.35s ease-out 0.46s both; }
+.detailItem:nth-child(5) { animation: slideUpFade 0.35s ease-out 0.53s both; }
 
 .modalHeader {
     background-color: var(--color-bg-secondary) !important;
     color: var(--color-text-primary) !important;
     border-bottom: 1px solid var(--color-border-primary) !important;
+}
+
+.modalHeader :global(.mantine-Modal-title) {
+    flex: 1;
+}
+
+.modalTitleGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 8px;
+}
+
+.modalPlayAgainBtn {
+    color: #00ff27 !important;
+    border: 1px solid rgba(0, 255, 39, 0.4) !important;
+    background-color: rgba(0, 255, 39, 0.08) !important;
+    transition: transform 0.25s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+    cursor: pointer;
+}
+
+.modalPlayAgainBtn:hover {
+    transform: rotate(60deg) scale(1.12);
+    border-color: #00ff27 !important;
+    background-color: rgba(0, 255, 39, 0.22) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 39, 0.7) !important;
+}
+
+.modalCloseBtn {
+    color: var(--color-text-dimmed) !important;
+    transition: all 0.2s ease !important;
+}
+
+.modalCloseBtn:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .modalTitleVictory {
@@ -296,6 +428,13 @@
     flex-direction: column;
     gap: var(--mantine-spacing-sm);
     margin: 0 auto;
+    box-shadow: 0 0 10px rgba(255, 183, 3, 0.15);
+    transition: all 0.3s ease;
+}
+
+.targetCardWon {
+    border-color: rgba(255, 183, 3, 0.6) !important;
+    box-shadow: 0 0 14px rgba(255, 183, 3, 0.25), 0 0 4px rgba(0, 255, 39, 0.2) !important;
 }
 
 .targetImage {

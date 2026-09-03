@@ -112,12 +112,19 @@
 }
 
 .targetCard {
-    border-color: var(--color-border-primary) !important;
+    border: 1.5px solid var(--color-border-primary) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     width: 200px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.targetCardWon {
+    border-color: rgba(0, 255, 39, 0.6) !important;
+    box-shadow: 0 0 14px rgba(0, 255, 39, 0.3), 0 0 5px rgba(0, 255, 255, 0.2) !important;
 }
 
 .targetImage {
@@ -193,16 +200,65 @@
 }
 
 /* Modal styles matching item/song standard */
+@keyframes crtOpen {
+    0% { transform: scaleY(0.01) scaleX(0.8); opacity: 0; filter: brightness(3); }
+    60% { transform: scaleY(1.02) scaleX(1.01); opacity: 1; filter: brightness(1.2); }
+    100% { transform: scaleY(1) scaleX(1); opacity: 1; filter: brightness(1); }
+}
+
 .modalContent {
     background-color: var(--color-bg-secondary) !important;
     border: var(--size-2) solid var(--color-border-primary) !important;
     color: var(--color-text-primary) !important;
+    animation: crtOpen 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.targetImageWon {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 4px rgba(0, 255, 39, 0.35));
+    animation: gentleBob 1.6s ease-in-out infinite alternate !important;
 }
 
 .modalHeader {
     background-color: var(--color-bg-secondary) !important;
     color: var(--color-text-primary) !important;
     border-bottom: 1px solid var(--color-border-primary) !important;
+}
+
+.modalHeader :global(.mantine-Modal-title) {
+    flex: 1;
+}
+
+.modalTitleGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 8px;
+}
+
+.modalPlayAgainBtn {
+    color: #00ff27 !important;
+    border: 1px solid rgba(0, 255, 39, 0.4) !important;
+    background-color: rgba(0, 255, 39, 0.08) !important;
+    transition: transform 0.25s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+    cursor: pointer;
+}
+
+.modalPlayAgainBtn:hover {
+    transform: rotate(60deg) scale(1.12);
+    border-color: #00ff27 !important;
+    background-color: rgba(0, 255, 39, 0.22) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 39, 0.7) !important;
+}
+
+.modalCloseBtn {
+    color: var(--color-text-dimmed) !important;
+    transition: all 0.2s ease !important;
+}
+
+.modalCloseBtn:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Grid scroll wrapper — desktop: transparent, mobile: horizontal scroll */

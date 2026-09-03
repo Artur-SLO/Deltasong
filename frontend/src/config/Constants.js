@@ -1,3 +1,7 @@
+import krisBattleGif from '../assets/images/characters/kris.gif';
+import susieBattleGif from '../assets/images/characters/susie.gif';
+import ralseiBattleGif from '../assets/images/characters/ralsei.gif';
+
 export const LINKS = [
     { link: "/daily", label: "Daily" },
     { link: "/characters", label: "Characters" },
@@ -47,11 +51,30 @@ export const COLUMNS_CONFIG = [
 ];
 
 export const SONG_DIFFICULTIES = {
-    easy: { label: 'Easy', duration: 5.0, color: 'emeraldGreen' },
-    normal: { label: 'Normal', duration: 3.0, color: 'cyberCyan' },
-    hard: { label: 'Hard', duration: 1.5, color: 'spadeBlue' },
-    madness: { label: 'Madness', duration: 0.5, color: 'royalMagenta' }
+    easy: { label: 'Easy', duration: 5.0, color: 'emeraldGreen', hexColor: '#00ff27' },
+    medium: { label: 'Medium', duration: 2.5, color: 'yellow', hexColor: '#ffd43b' },
+    hard: { label: 'Hard', duration: 1.0, color: 'red', hexColor: '#ff5252' },
+    madness: { label: 'Madness', duration: 0.5, color: 'royalMagenta', hexColor: '#ff1f8e' },
+    normal: { label: 'Medium', duration: 2.5, color: 'yellow', hexColor: '#ffd43b' }
 };
+
+export const DIFFICULTY_HEX = {
+    easy: '#00ff27',
+    medium: '#ffd43b',
+    normal: '#ffd43b',
+    hard: '#ff5252',
+    madness: '#ff1f8e'
+};
+
+export const SOUL_COLORS = [
+    { name: 'Determination', hex: '#ff2222' },
+    { name: 'Bravery', hex: '#ff7f00' },
+    { name: 'Justice', hex: '#ffd43b' },
+    { name: 'Kindness', hex: '#00ff27' },
+    { name: 'Patience', hex: '#00ffff' },
+    { name: 'Integrity', hex: '#0B00F3' },
+    { name: 'Perseverance', hex: '#a855f7' }
+];
 
 export const ITEM_CATEGORIES = [
     { value: 'Consumables', label: 'Consumables' },
@@ -76,9 +99,9 @@ export const DAILY_LIMITS = {
 };
 
 export const GAME_MODE_SPRITES = {
-    "Characters": "https://deltarune.wiki/images/Kris_battle_idle.gif?cb=dpui8e&h=thumb.php&f=Kris_battle_idle.gif",
-    "Items": "https://deltarune.wiki/images/Susie_battle_serious.gif?cb=s2z2tj&h=thumb.php&f=Susie_battle_serious.gif",
-    "Song": "https://deltarune.wiki/images/Ralsei_battle_serious.gif?cb=ktm22m&h=thumb.php&f=Ralsei_battle_serious.gif"
+    "Characters": krisBattleGif,
+    "Items": susieBattleGif,
+    "Song": ralseiBattleGif
 };
 
 export const GAME_MODE_HOVER_COLORS = {
@@ -176,4 +199,112 @@ export const STAGE_MASCOTS = {
     1: pinkGif,
     2: seamGif,
     3: jackensteinGif
+};
+
+export const RUSH_STAGES = [
+    {
+        id: 'easy',
+        label: 'Easy',
+        duration: 5.0,
+        points: 30,
+        color: 'emeraldGreen',
+        hexColor: '#00ff27'
+    },
+    {
+        id: 'medium',
+        label: 'Medium',
+        duration: 2.5,
+        points: 50,
+        color: 'yellow',
+        hexColor: '#ffd43b'
+    },
+    {
+        id: 'hard',
+        label: 'Hard',
+        duration: 1.0,
+        points: 80,
+        color: 'red',
+        hexColor: '#ff5252'
+    },
+    {
+        id: 'madness',
+        label: 'Madness',
+        duration: 0.5,
+        points: 150,
+        color: 'royalMagenta',
+        hexColor: '#ff1f8e'
+    }
+];
+
+export const RUSH_POINTS = {
+    COMPLETION_BONUS: 90,
+    SPEED_BONUS_PER_STAGE: 5,
+    SPEED_THRESHOLD_SECONDS: 10,
+    MAX_PERFECT_SCORE: 400
+};
+
+export const RUSH_LIVES = 5;
+
+export const RUSH_CURATED_POOLS = {
+    easy: [
+        'BIG SHOT', 'THE WORLD REVOLVING', 'Attack of the Killer Queen', 'GUARDIAN',
+        'Flower Man', 'Chaos King', "It's TV Time!", 'BURNING EYES'
+    ],
+    medium: [
+        'Lancer', 'Rouxls Kaard', 'Queen', 'Berdly', 'Lost Girl', 'sans.', 'Spamton',
+        'TV WORLD', 'Card Castle', 'A Town Called Hometown',
+        'Vs. Susie', 'Vs. Lancer', 'Checker Dance', 'Pandora Palace',
+        "A CYBER'S WORLD?", 'Field of Hopes and Dreams', 'Smart Race',
+        'Beginning', 'School', 'Until Next Time', 'Rude Buster',
+        'You Can Always Come Home', 'Faint Glow', 'Lantern', 'Quiet Autumn',
+        'Welcome to the Green Room', 'ANOTHER HIM', 'Powers Combined',
+        'Acid Tunnel of Love', 'SPAWN', 'Old wooden rafters', 'Hymn',
+        'The Legend', 'Cyber Battle (Solo)', `It's Pronounced "Rules"`,
+        'Darkness Falls', 'Susie', 'Ferris Wheel', 'Your Power',
+        'THE HOLY', 'Faint Courage (Game Over)', 'Garden of Hopes and Dreams',
+        'Flower King', 'Flower Castle', 'With Hope Crossed On Our Hearts', 'Rakuichi Buster'
+    ],
+    hard: [
+        'A Real Boy!', 'Deal Gone Wrong', 'HEY EVERY !', 'Friendship',
+        'KEYGEN', 'Knock You Down !!', 'Giga Size', 'Thrash Machine', 'The Circus',
+        "Don't Forget", 'Hip Shop', "NOW'S YOUR CHANCE TO BE A", 'WELCOME TO THE CITY',
+        'Ruder Buster', 'My Castle Town', 'Scarlet Forest', 'Girl Next Door', 'Dialtone', 
+        'Imminent Death', 'Almost to the Guys!', 'Cool Beat', 'Cool Mixtape',
+        'When I Get Mad I Dance Like This', 'When I Get Happy I Dance Like This',
+        'Sound Studio', 'Elegant Entrance', 'Bluebird of Misfortune', 'Quiz!',
+        'Physical Challenge', 'Board Clear!', 'Sandy Board', 'Adventure Board',
+        'Vapor Buster', 'Paradise, Paradise', 'Raft Ride', 'SOUTH OF THE BORDER!!',
+        'Castle Funk', 'Knock You Down!! (Rhythm Ver.)', 'From Now On (Battle 2)',
+        'Catswing', 'Dark Place', 'Dump', 'Breath', 'Fireplace', 'A DARK ZONE',
+        'Mysterious Ringing', 'Stop, Criminell!', "I'm Telling!", 'Need a hand!?',
+        'The Second Sanctuary', 'The Third Sanctuary', 'ATRIUM', 'Empty Town', 'Before the Story',
+        'The Dark Truth',
+        'A Simple Diversion', 'Ohhhhohohoho!', 'Mini Studio', 'Holiday Studio',
+        'Feature Presentation', 'MIKE, the BOARD, please!', 'Big City Board',
+        'Doom Board', 'Metaphysical Challenge', 'Hall of Fame', 'Raise Up Your Bat',
+        'Black Knife', 'Friends', 'Hammer of Justice', 'Neverending Night',
+        'The LEGEND…?', 'Air Waves', 'Pirate Dojo', 'Festival',
+        'Dark Sanctuary', 'Ever Higher', 'Gyaa Ha ha!', 'Pink',
+        'Cutie Mew Mew Magic', 'Walking Home', 'Scarlet Forest (DELTARUNE Piano Collections, Vol. 1)',
+        'Flower Foyer', 'Petal Dance', 'Sunset of Seven Suns', 'Violet Tactics',
+        'Loving Steps', 'Onsen', 'Goodnight, Sweet Prince'
+    ],
+    madness: [
+        'Gallery', 'Flashback (Excerpt)', 'Crickets', 'NORTHERNLIGHT', 'SWORD',
+        'GLACEIR', 'BIT ROOTS', 'ERAM', 'Another day in hometown', 'C',
+        '12am', '13am', '4rd Sanctuary', 'Heavy Footsteps', 'Crumbling Tower',
+        'The place where it rained', 'Catfession...?', 'Bratfession...?',
+        'Digital Roots', 'April 2012', 'The Chase', 'Chill Jailbreak Alarm to Study and Relax to',
+        'The Door', 'Cliffs', 'Weird Birds', 'Fanfare (from "Rose of Winter")',
+        "I'm Very Bad", 'Basement', 'Berdly (Rejected Concept)',
+        "And Now For Today's Sponsors…!", 'Query?', 'Dig! Dig! To The Center of the Earth!',
+        'Pushing Buddies', 'Sound Check', 'KING OF ROLYPOLY', 'Glowing Snow',
+        'Gingerbread House', 'The distance between two', 'Wise words',
+        'Piano that may not be played that well', 'Ripple', "The Ol' Jitterbug",
+        'Volume Adjustment', 'Concert for you', 'Inappropriate Recycling',
+        "I guess I'm in love", 'Weirder Birds', "Your Dad's Best Friend",
+        'The Diner Song of Best Friends', 'Ride the Board', 'Quiet Glade',
+        'Who might you be?', 'Flying Feather', 'Shop 3', 'Thousand Cafe Zukan',
+        'Beautiful Bathtime', 'Running Sky', 'That Day', 'Dreamwatchers', 'Weak Flowers'
+    ]
 };

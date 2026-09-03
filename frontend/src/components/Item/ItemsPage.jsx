@@ -1,10 +1,17 @@
 import { useEffect, useState, useCallback, useContext } from 'react';
 import { Container, Title, Paper, Button } from '@mantine/core';
+import { 
+    IconPackage, 
+    IconFlask, 
+    IconSword, 
+    IconShield, 
+    IconKey, 
+    IconSun 
+} from '@tabler/icons-react';
 import classes from '../../styles/Item.module.css';
 import homeClasses from '../../styles/Home.module.css';
 import deltaruneItems from '../../assets/data/deltarune_items.json';
 import { createItemGame, makeItemGuess } from '../../core/itemGame.js';
-import ItemModeSelector from './ItemModeSelector.jsx';
 import ItemSearchBar from './ItemSearchBar.jsx';
 import HintProgress from './HintProgress.jsx';
 import GuessHistory from './GuessHistory.jsx';
@@ -12,6 +19,15 @@ import ItemModal from './ItemModal.jsx';
 import { addPoints } from '../../core/rankSystem.js';
 import { RANK_POINTS, DAILY_LIMITS } from '../../config/Constants.js';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
+
+const ITEM_MODES = [
+    { key: 'all', label: 'All Items', icon: <IconPackage size={14} />, mode: 'all', category: '' },
+    { key: 'Consumables', label: 'Consumables', icon: <IconFlask size={14} />, mode: 'category', category: 'Consumables' },
+    { key: 'Weapons', label: 'Weapons', icon: <IconSword size={14} />, mode: 'category', category: 'Weapons' },
+    { key: 'Armor', label: 'Armor', icon: <IconShield size={14} />, mode: 'category', category: 'Armor' },
+    { key: 'Key Items', label: 'Key Items', icon: <IconKey size={14} />, mode: 'category', category: 'Key Items' },
+    { key: 'Light World', label: 'Light World', icon: <IconSun size={14} />, mode: 'category', category: 'Light World' }
+];
 
 export default function ItemsPage({
     isDaily = false,
@@ -21,14 +37,15 @@ export default function ItemsPage({
 }) {
     const [mode, setMode] = useState('all');
     const [category, setCategory] = useState('');
-    const [gameState, setGameState] = useState(null);
+    const [activeTabKey, setActiveTabKey] = useState('all');
+    const [gameState, setGameState] = useState(() => (isDaily ? null : createItemGame(deltaruneItems, 'all', '')));
     const [guesses, setGuesses] = useState([]);
     const [input, setInput] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalType, setModalType] = useState('victory');
+    const [modalTarget, setModalTarget] = useState(null);
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
-    const [isFilterSelected, setIsFilterSelected] = useState(false);
-    const [startTime, setStartTime] = useState(Date.now());
+    const [startTime, setStartTime] = useState(() => Date.now());
 
     const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
 
@@ -44,45 +61,29 @@ export default function ItemsPage({
         };
     }, [isModalOpen, isDaily, setIsHelpWidgetHidden]);
 
-    const resetGame = useCallback(() => {
-        if (isDaily) return;
+    const startNewGame = useCallback((newMode, newCategory) => {
         setIsModalOpen(false);
         setIsConfirmingGiveUp(false);
         setInput('');
-        setGameState(null);
         setGuesses([]);
-        setIsFilterSelected(false);
         setStartTime(Date.now());
-    }, [isDaily]);
+        const newGame = createItemGame(deltaruneItems, newMode, newCategory);
+        setGameState(newGame);
+        setModalTarget(null);
+    }, []);
+
+    const handleModeTabSelect = (tab) => {
+        if (tab.key === activeTabKey) return;
+        setActiveTabKey(tab.key);
+        setMode(tab.mode);
+        setCategory(tab.category);
+        startNewGame(tab.mode, tab.category);
+    };
 
     const playAgainSameFilter = useCallback(() => {
         if (isDaily) return;
-        setIsModalOpen(false);
-        setIsConfirmingGiveUp(false);
-        setInput('');
-
-        const game = createItemGame(deltaruneItems, mode, category);
-        setGameState(game);
-        setGuesses([]);
-        setStartTime(Date.now());
-    }, [mode, category, isDaily]);
-
-    // Initialize in unselected state
-    useEffect(() => {
-        if (!isDaily) {
-            resetGame();
-        }
-    }, [resetGame, isDaily]);
-
-    const handleSelectFilter = (selectedMode, selectedCategory) => {
-        setMode(selectedMode);
-        setCategory(selectedCategory);
-
-        const game = createItemGame(deltaruneItems, selectedMode, selectedCategory);
-        setGameState(game);
-        setGuesses([]);
-        setIsFilterSelected(true);
-    };
+        startNewGame(mode, category);
+    }, [mode, category, isDaily, startNewGame]);
 
     const handleGuess = (e, selectedName) => {
         if (e && e.preventDefault) e.preventDefault();
@@ -99,7 +100,6 @@ export default function ItemsPage({
             const isCorrect = outcome === "Victory";
             const newGuess = { item: guess, isCorrect };
 
-            // Add the new guess to history (prepend like songs/characters)
             setGuesses(prev => [newGuess, ...prev]);
 
             if (isCorrect) {
@@ -114,21 +114,29 @@ export default function ItemsPage({
                     if (duration < RANK_POINTS.SPEED_THRESHOLD_SECONDS) {
                         points += RANK_POINTS.SPEED_BONUS;
                     }
+
                     addPoints(points, 'items');
                 }
-                setModalType('victory');
-                setIsModalOpen(true);
+
+                setModalTarget(gameState.target);
+                setTimeout(() => {
+                    setModalType('victory');
+                    setIsModalOpen(true);
+                }, 1400);
             }
         } catch (err) {
             console.error(err);
         }
+
         setInput('');
     };
 
     const handleGiveUpClick = () => {
-        if (!gameState) return;
+        if (!gameState || (guesses.length > 0 && guesses[0].isCorrect)) return;
+
         if (isConfirmingGiveUp) {
             setModalType('surrender');
+            setModalTarget(gameState.target);
             setIsModalOpen(true);
             setIsConfirmingGiveUp(false);
         } else {
@@ -136,14 +144,12 @@ export default function ItemsPage({
         }
     };
 
-    const activeFilterSelected = isDaily ? true : isFilterSelected;
     const activeGameState = isDaily ? dailyGameState : gameState;
     const activeGuesses = isDaily ? dailyGuesses : guesses;
     const isDailyWon = isDaily && activeGuesses?.some(g => g.isCorrect);
     const isDailyLost = isDaily && activeGuesses?.length >= (DAILY_LIMITS?.items || 10);
     const activeIsGameOver = isDaily ? (isDailyWon || isDailyLost) : (isModalOpen || (guesses.length > 0 && guesses[0].isCorrect));
 
-    // Filter autocomplete search options
     const itemOptions = activeGameState
         ? activeGameState.items.filter(item => !activeGameState.guessedNames.includes(item.name.toUpperCase().trim()))
         : [];
@@ -166,7 +172,30 @@ export default function ItemsPage({
 
     const gameContent = (
         <>
-            {!isDaily && activeFilterSelected && activeGameState && !activeIsGameOver && (
+            {/* Dynamic Mode Selector (matching Song mode transparent pill style) */}
+            {!isDaily && (
+                <div className={classes.modeSwitcherContainer}>
+                    {ITEM_MODES.map((tab) => {
+                        const isActive = activeTabKey === tab.key;
+                        return (
+                            <Button
+                                key={tab.key}
+                                size="xs"
+                                variant={isActive ? 'filled' : 'subtle'}
+                                color="royalMagenta"
+                                className={`${classes.modePillButton} ${isActive ? classes.modeButtonActive : ''}`}
+                                onClick={() => handleModeTabSelect(tab)}
+                                leftSection={tab.icon}
+                            >
+                                {tab.label}
+                            </Button>
+                        );
+                    })}
+                </div>
+            )}
+
+            {/* Give Up Button */}
+            {!isDaily && activeGameState && !activeIsGameOver && (
                 <Button
                     color="red"
                     variant="outline"
@@ -179,11 +208,8 @@ export default function ItemsPage({
                 </Button>
             )}
 
-            {!activeFilterSelected && (
-                <ItemModeSelector onSelect={handleSelectFilter} />
-            )}
-
-            {activeFilterSelected && activeGameState && !activeIsGameOver && (
+            {/* Item Search Bar */}
+            {activeGameState && !activeIsGameOver && (
                 <ItemSearchBar
                     data={itemOptions}
                     input={input}
@@ -192,25 +218,25 @@ export default function ItemsPage({
                 />
             )}
 
-            {activeFilterSelected && activeGameState && (
+            {/* Enhanced Hint Progress Dashboard */}
+            {activeGameState && (
                 <HintProgress
                     target={activeGameState.target}
                     incorrectGuessesCount={activeIncorrectGuessesCount}
                 />
             )}
 
-            {activeFilterSelected && (
-                <GuessHistory guesses={activeGuesses.slice(0, 15)} />
-            )}
+            {/* Guess History */}
+            <GuessHistory guesses={activeGuesses.slice(0, 15)} />
 
-            {!isDaily && activeFilterSelected && activeGameState && (
+            {/* CRT Result Modal */}
+            {!isDaily && (modalTarget || activeGameState) && (
                 <ItemModal
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
                     modalType={modalType}
-                    target={activeGameState.target}
+                    target={modalTarget || activeGameState.target}
                     onPlayAgain={playAgainSameFilter}
-                    onChangeFilter={resetGame}
                 />
             )}
         </>

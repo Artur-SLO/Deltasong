@@ -54,7 +54,7 @@ export function getRankData() {
                     setTimeout(() => {
                         notifications.show({
                             title: 'Streak Broken!',
-                            message: `You missed a day! Your streak has reset to 1 and you lost ${RANK_POINTS.STREAK_BREAK_PENALTY} points.`,
+                            message: `You missed a day! Your streak has reset to 1`,
                             color: 'red',
                             autoClose: 5000
                         });
