@@ -243,7 +243,7 @@
     margin: 0 auto;
     padding: var(--mantine-spacing-md);
     border-radius: var(--mantine-radius-md);
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.15);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
     transition: all 0.3s ease;
 }
 
@@ -288,15 +288,11 @@
     border-bottom: 1px dashed var(--color-border-primary);
 }
 
-.totalScoreRow {
-    border-top: 2px solid var(--color-border-primary);
+.stageBreakdownRow:last-child {
+    border-bottom: none;
 }
 
-@keyframes equalizerAura {
-    0% { box-shadow: 0 0 8px rgba(168, 85, 247, 0.25), 0 0 3px rgba(0, 255, 255, 0.15); }
-    50% { box-shadow: 0 0 16px rgba(168, 85, 247, 0.45), 0 0 5px rgba(0, 255, 255, 0.25); }
-    100% { box-shadow: 0 0 8px rgba(168, 85, 247, 0.25), 0 0 3px rgba(0, 255, 255, 0.15); }
-}
+
 
 @keyframes pulseGlow {
     0% {
@@ -351,8 +347,8 @@
 }
 
 .targetCardWon {
-    animation: equalizerAura 2.2s infinite alternate ease-in-out;
-    border-color: #a855f7 !important;
+    border-color: rgba(0, 255, 39, 0.6) !important;
+    box-shadow: 0 0 14px rgba(0, 255, 39, 0.3), 0 0 5px rgba(0, 255, 255, 0.2) !important;
 }
 
 .modalHeader {

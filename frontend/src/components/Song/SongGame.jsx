@@ -11,7 +11,6 @@ import {
     createSongRushGame, 
     makeSongRushGuess, 
     skipSongRushStage,
-    RUSH_POINTS,
     RUSH_LIVES
 } from '../../core/songRush.js';
 import { SONG_DIFFICULTIES, DIFFICULTY_HEX, RANK_POINTS, DAILY_LIMITS } from '../../config/Constants.js';
@@ -775,30 +774,25 @@ export default function SongGame({
 
                         {/* Rush Victory Details */}
                         {modalType === 'rush_victory' && (modalRushState || rushState) && (
-                            <div className={styles.modalCenterFull}>
-                                <Text size="lg" fw="bold" c="emeraldGreen.4">
-                                    Phenomenal! You conquered all 4 difficulties in a row!
+                            <>
+                                <Text size="lg" ta="center">
+                                    Congratulations! You guessed the songs!
                                 </Text>
-                                <Paper p="md" mt="sm" withBorder bg="var(--color-bg-primary)" radius="md" className={styles.targetCardWon}>
-                                    <Text size="sm" fw="bold" c="amberGold.4" mb="xs">
-                                        RUN BREAKDOWN:
-                                    </Text>
-                                    {(modalRushState || rushState).stages.map((stg) => (
-                                        <Group key={stg.id} justify="space-between" py={4} className={styles.stageBreakdownRow}>
-                                            <Text size="xs" fw="bold">{stg.label} ({stg.target.title})</Text>
-                                            <Text size="xs" c="emeraldGreen.4">+{stg.earnedPoints} pts {stg.speedBonus ? '⚡' : ''}</Text>
-                                        </Group>
-                                    ))}
-                                    <Group justify="space-between" py={4} mt="xs">
-                                        <Text size="xs" fw="bold">Completion Bonus</Text>
-                                        <Text size="xs" c="emeraldGreen.4">+{RUSH_POINTS.COMPLETION_BONUS} pts</Text>
-                                    </Group>
-                                    <Group justify="space-between" pt="sm" mt="xs" className={styles.totalScoreRow}>
-                                        <Text size="sm" fw="900">TOTAL SCORE</Text>
-                                        <Text size="md" fw="900" c="#ffd43b">+{(modalRushState || rushState).totalScore} PTS</Text>
-                                    </Group>
+                                <Paper className={`${styles.targetCard} ${styles.targetCardWon}`} withBorder mt="xs">
+                                    <div style={{ width: '100%' }}>
+                                        {(modalRushState || rushState).stages.map((stg) => (
+                                            <Group key={stg.id} justify="space-between" py={6} className={styles.stageBreakdownRow}>
+                                                <Text size="xs" fw="bold" style={{ color: stg.hexColor }}>
+                                                    {stg.label}
+                                                </Text>
+                                                <Text size="xs" fw="bold" ta="right">
+                                                    {stg.target.title}
+                                                </Text>
+                                            </Group>
+                                        ))}
+                                    </div>
                                 </Paper>
-                            </div>
+                            </>
                         )}
 
                         {/* Rush Defeat Details */}
