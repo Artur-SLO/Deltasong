@@ -297,17 +297,6 @@
         "url": "https://deltarune.wiki/w/Dad_Cat"
     },
     {
-        "name": "DARK PONMAN",
-        "gender": "Non-binary",
-        "type": "Darkner",
-        "chapter": 1,
-        "class": "NPC",
-        "first_appearance": "Forest",
-        "first_appearance_index": 33,
-        "image": "../assets/images/characters/dark_ponman.gif",
-        "url": "https://deltarune.wiki/w/Dark_Ponman"
-    },
-    {
         "name": "DESS",
         "gender": "Female",
         "type": "Lightner",
