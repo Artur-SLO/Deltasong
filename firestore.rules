@@ -1,0 +1,148 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // HELPER FUNCTIONS
+    // =========================================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Only non-anonymous, officially registered accounts can write to the database
+    function isRegisteredUser() {
+      return isAuthenticated() 
+        && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+
+    function isOwner(userId) {
+      return isRegisteredUser() && request.auth.uid == userId;
+    }
+
+    // Username validation: alphanumeric, underscores, hyphens, and spaces (2 to 18 characters)
+    // Disallows generic 'Guest_' names from ever entering the cloud database
+    function isValidUsername(name) {
+      return name is string 
+        && name.size() >= 2 
+        && name.size() <= 18 
+        && !name.matches('(?i)^guest_.*$')
+        && name != 'Player'
+        && name.matches('^[a-zA-Z0-9_ -]+$');
+    }
+
+    // Avatar validation: supports avatar keys ('kris') or asset paths ('../assets/images/characters/addison.gif')
+    function isValidAvatar(avatar) {
+      return avatar is string 
+        && avatar.size() > 0 
+        && avatar.size() <= 200;
+    }
+
+    // Rate-limiting / Cooldown validation: prevents automated rapid script flooding
+    function isCooldownRespected(lastUpdatedAt) {
+      return request.time >= lastUpdatedAt + duration.value(2, 's');
+    }
+
+    // Anti-Spoofing: enforces score delta within valid Deltasong boundaries (-100 to +500 pts)
+    // or allows initial legacy score import from 0 up to 50,000 pts
+    function isValidScoreDelta(oldScore, newScore) {
+      let delta = newScore - oldScore;
+      return newScore is int 
+        && newScore >= 0 
+        && ((delta >= -100 && delta <= 500) || (oldScore == 0 && newScore <= 50000));
+    }
+
+    // Validates the structure of the stats map
+    function isValidStats(stats) {
+      return stats is map
+        && stats.totalWins is int
+        && stats.totalLosses is int
+        && stats.charactersWon is int
+        && stats.itemsWon is int
+        && stats.songsWon is int
+        && stats.dailyCompleted is int;
+    }
+
+    // =========================================================================
+    // 1. COLLECTION: users/{userId} (Profile, Stats, and Total Score)
+    // =========================================================================
+    match /users/{userId} {
+      // Public read access for the global Leaderboard and player profiles
+      allow read: if true;
+
+      // Account creation / Initial migration from localStorage
+      allow create: if isOwner(userId)
+        && request.resource.data.userId == userId
+        && isValidUsername(request.resource.data.username)
+        && isValidAvatar(request.resource.data.avatar)
+        && request.resource.data.totalScore is int
+        && request.resource.data.totalScore >= 0
+        // Sanity ceiling for legacy localStorage migration (max 50,000 points)
+        && request.resource.data.totalScore <= 50000
+        && request.resource.data.streak is int
+        && request.resource.data.streak >= 0
+        && isValidStats(request.resource.data.stats)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+
+      // Profile updates and score increments
+      allow update: if isOwner(userId)
+        // Immutable identity and creation timestamps
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.createdAt == resource.data.createdAt
+        // Enforce server timestamp on update
+        && request.resource.data.updatedAt == request.time
+        // Sanitized username and avatar
+        && isValidUsername(request.resource.data.username)
+        && isValidAvatar(request.resource.data.avatar)
+        // Anti-flood cooldown check (minimum 2s between mutations)
+        && isCooldownRespected(resource.data.updatedAt)
+        // Anti-cheat: bounded point deltas
+        && isValidScoreDelta(resource.data.totalScore, request.resource.data.totalScore)
+        // Streak must be non-negative
+        && request.resource.data.streak is int
+        && request.resource.data.streak >= 0
+        // Validated stats map
+        && isValidStats(request.resource.data.stats);
+
+      // Account deletion allowed only by the owner
+      allow delete: if isOwner(userId);
+
+      // =======================================================================
+      // 2. SUBCOLLECTION: users/{userId}/daily_records/{date} (Anti-Farm Daily)
+      // =======================================================================
+      match /daily_records/{date} {
+        allow read: if isOwner(userId);
+
+        // Exactly one document per calendar date (e.g. "2026-09-04")
+        allow create: if isOwner(userId)
+          && date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+          && request.resource.data.completedAt == request.time
+          && request.resource.data.won is bool;
+
+        // Immutable: daily records cannot be modified or deleted
+        allow update, delete: if false;
+      }
+    }
+
+    // =========================================================================
+    // 3. COLLECTION: score_events/{eventId} (Append-Only Audit Ledger)
+    // =========================================================================
+    match /score_events/{eventId} {
+      // Users can only view their own score logs
+      allow read: if isRegisteredUser() && resource.data.userId == request.auth.uid;
+
+      // Append-only creation by the authenticated owner
+      allow create: if isRegisteredUser()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.gameType in ['characters', 'items', 'songs', 'daily', 'rush', 'migration', 'penalty']
+        && request.resource.data.pointsDelta is int
+        && request.resource.data.pointsDelta >= -100
+        && request.resource.data.pointsDelta <= 500
+        && request.resource.data.createdAt == request.time;
+
+      // Score events can never be edited or deleted
+      allow update, delete: if false;
+    }
+  }
+}

@@ -9,7 +9,7 @@ const allCharacters = deltaruneCharacters.filter(c => c.image && c.name);
 export default function AvatarSelector({ selectedAvatar, onSelect }) {
     const [searchQuery, setSearchQuery] = useState('');
 
-    const filteredCharacters = allCharacters.filter(c => 
+    const filteredCharacters = allCharacters.filter(c =>
         c.name.toLowerCase().includes(searchQuery.toLowerCase().trim())
     );
 
@@ -24,8 +24,8 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
 
     return (
         <div>
-            <TextInput 
-                label="Search Avatar Sprite" 
+            <TextInput
+                label="Search Avatar Sprite"
                 placeholder="Search by name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -36,7 +36,7 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
                 <div className={classes.columnsContainer}>
                     <div className={classes.avatarColumn}>
                         {col1.map(({ c, index }) => (
-                            <div 
+                            <div
                                 key={`sel-${c.name}-${index}`}
                                 className={`${classes.avatarOption} ${selectedAvatar === c.image ? classes.avatarOptionActive : ''}`}
                                 onClick={() => onSelect(c.image)}
@@ -50,7 +50,7 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
                     </div>
                     <div className={classes.avatarColumn}>
                         {col2.map(({ c, index }) => (
-                            <div 
+                            <div
                                 key={`sel-${c.name}-${index}`}
                                 className={`${classes.avatarOption} ${selectedAvatar === c.image ? classes.avatarOptionActive : ''}`}
                                 onClick={() => onSelect(c.image)}
@@ -64,7 +64,7 @@ export default function AvatarSelector({ selectedAvatar, onSelect }) {
                     </div>
                     <div className={classes.avatarColumn}>
                         {col3.map(({ c, index }) => (
-                            <div 
+                            <div
                                 key={`sel-${c.name}-${index}`}
                                 className={`${classes.avatarOption} ${selectedAvatar === c.image ? classes.avatarOptionActive : ''}`}
                                 onClick={() => onSelect(c.image)}

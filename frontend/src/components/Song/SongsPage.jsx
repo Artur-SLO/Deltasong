@@ -28,7 +28,7 @@ export default function SongsPage() {
                 withBorder
                 className={`${homeClasses.gamePaper} ${classes.paper || ''}`}
             >
-                <Title order={2} ta="center" mb="lg" c="emeraldGreen.5" className={homeClasses.conventionalTitle}>
+                <Title order={2} ta="center" mb="lg" className={homeClasses.songsTitle}>
                     {currentMode === 'rush' ? 'Rush Mode' : 'Song Mode'}
                 </Title>
                 <SongGame initialMode={currentMode} onModeChange={handleModeChange} />

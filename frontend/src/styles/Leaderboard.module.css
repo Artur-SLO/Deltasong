@@ -1,0 +1,301 @@
+.container {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--color-bg-secondary, #1f0f33) !important;
+    border-color: var(--color-border-primary, #381f54) !important;
+}
+
+.titleWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: var(--mantine-spacing-xl);
+}
+
+.trophyIcon {
+    color: #00ffff;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
+}
+
+.headerTitle {
+    color: var(--color-text-primary, #ffffff) !important;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
+    margin: 0 !important;
+}
+
+.tableWrapper {
+    border: 2px solid var(--color-border-primary, #381f54);
+    border-radius: var(--mantine-radius-md);
+    background: rgba(10, 4, 18, 0.4);
+    overflow: hidden;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableHeader {
+    background-color: rgba(0, 0, 0, 0.45);
+    border-bottom: 2px solid var(--color-border-primary, #381f54);
+}
+
+.tableHeader th {
+    color: var(--color-text-secondary, #a855f7) !important;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    padding: 12px 14px !important;
+    vertical-align: middle !important;
+}
+
+.rankTh {
+    width: 80px;
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+
+.playerTh {
+    text-align: center !important;
+}
+
+.tierTh {
+    width: 160px;
+    text-align: center !important;
+}
+
+.streakTh {
+    width: 100px;
+    text-align: center !important;
+}
+
+.scoreTh {
+    width: 140px;
+    text-align: center !important;
+}
+
+.playerRow {
+    transition: background-color 0.15s ease;
+    border-bottom: 1px solid rgba(56, 31, 84, 0.5);
+}
+
+.playerRow:last-child {
+    border-bottom: none;
+}
+
+.playerRow:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.currentUserRow {
+    background-color: rgba(0, 255, 255, 0.08) !important;
+    box-shadow: inset 3px 0 0 #00ffff;
+}
+
+.currentUserRow:hover {
+    background-color: rgba(0, 255, 255, 0.13) !important;
+}
+
+.rankTd {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px 4px !important;
+}
+
+.rankBadgeWrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.soulRankContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: default;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.soulRankContainer:hover {
+    transform: scale(1.18);
+    filter: brightness(1.2);
+}
+
+.rankNumber {
+    font-family: var(--font-family-deltarune, monospace);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.5px;
+}
+
+.playerTd {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px 16px !important;
+}
+
+.playerContent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.avatarWrapper {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-border-primary, #381f54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.playerAvatar {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    display: block;
+}
+
+.playerInfo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.playerName {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text-primary, #ffffff);
+    white-space: nowrap;
+}
+
+.youBadge {
+    font-family: var(--font-family-deltarune, monospace);
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(0, 255, 255, 0.15);
+    color: #00ffff;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.tierTd {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px 8px !important;
+}
+
+.tierBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    cursor: default;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.tierBadge:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+.tierGrade {
+    font-family: var(--font-family-deltarune, monospace);
+    font-size: 0.85rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.tierLabel {
+    font-family: var(--font-family-deltarune, monospace);
+    font-size: 0.68rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
+}
+
+.streakTd {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px 12px !important;
+}
+
+.streakWrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+}
+
+.streakText {
+    color: #ff9800;
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-family: var(--font-family-deltarune, monospace);
+}
+
+.scoreTd {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px 16px !important;
+}
+
+.scoreWrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.scoreText {
+    font-weight: 700;
+    color: #00ff27;
+    font-size: 1.05rem;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    text-shadow: 0 0 8px rgba(0, 255, 39, 0.3);
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.ptsLabel {
+    font-size: 0.75rem;
+    color: rgba(0, 255, 39, 0.7);
+    margin-left: 4px;
+    letter-spacing: 1px;
+}
+
+.emptyStateText {
+    font-family: var(--font-family-deltarune, monospace) !important;
+    letter-spacing: 1px;
+}

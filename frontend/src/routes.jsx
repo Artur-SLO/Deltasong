@@ -6,6 +6,7 @@ import SongsPage from './components/Song/SongsPage.jsx';
 import AccountPage from './components/Profile/AccountPage.jsx';
 import Characters from './components/Character/Characters.jsx';
 import DailyGame from './components/Daily/DailyGame.jsx';
+import Leaderboard from './components/Leaderboard/Leaderboard.jsx';
 
 const routes = [
     {
@@ -32,6 +33,10 @@ const routes = [
             {
                 path: "daily",
                 element: <DailyGame />
+            },
+            {
+                path: "leaderboard",
+                element: <Leaderboard />
             },
             {
                 path: "account",

@@ -13,7 +13,7 @@ export default function Characters() {
                 withBorder
                 className={`${homeClasses.gamePaper} ${classes.paper || ''}`}
             >
-                <Title order={2} ta="center" mb="lg" c="cyberCyan.5" className={homeClasses.conventionalTitle}>
+                <Title order={2} ta="center" mb="lg" className={homeClasses.charactersTitle}>
                     Characters Mode
                 </Title>
                 <GuessGrid />

@@ -50,9 +50,9 @@ export default function ProfileDashboard({ activeUser }) {
                 <Title order={1} mt="sm" className={classes.profileName}>
                     {activeUser.name}
                 </Title>
-                <img 
-                    src={getAvatarSrc(activeUser.avatar)} 
-                    alt={activeUser.name} 
+                <img
+                    src={getAvatarSrc(activeUser.avatar)}
+                    alt={activeUser.name}
                     className={classes.profileAvatar}
                     onClick={() => setIsEditingAvatar(true)}
                     title="Click to change avatar"
@@ -81,7 +81,7 @@ export default function ProfileDashboard({ activeUser }) {
                     }
                 }}
             >
-                <AvatarSelector 
+                <AvatarSelector
                     selectedAvatar={activeUser.avatar}
                     onSelect={handleAvatarChange}
                 />

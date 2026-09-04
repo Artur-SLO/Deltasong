@@ -255,7 +255,7 @@ export default function ItemsPage({
                 withBorder
                 className={`${homeClasses.gamePaper} ${classes.paper || ''}`}
             >
-                <Title order={2} ta="center" mb="lg" c="royalMagenta.5" className={homeClasses.conventionalTitle}>
+                <Title order={2} ta="center" mb="lg" className={homeClasses.itemsTitle}>
                     Items Mode
                 </Title>
                 {gameContent}

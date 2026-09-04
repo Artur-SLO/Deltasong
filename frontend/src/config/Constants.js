@@ -7,6 +7,7 @@ export const LINKS = [
     { link: "/characters", label: "Characters" },
     { link: "/items", label: "Items" },
     { link: "/songs", label: "Song" },
+    { link: "/leaderboard", label: "Leaderboard" },
 ];
 
 export const GAME_MODES = [

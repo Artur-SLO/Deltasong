@@ -487,7 +487,7 @@ export default function DailyGame() {
                 )}
 
                 <Stack gap="sm" align="center" w="100%">
-                    <Title order={2} ta="center" mb="lg" className={`${homeClasses.conventionalTitle} ${classes.gameTitle}`}>
+                    <Title order={2} ta="center" mb="lg" className={homeClasses.dailyTitle}>
                         Daily Challenge
                     </Title>
 

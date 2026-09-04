@@ -13,6 +13,11 @@ import '@mantine/notifications/styles.css';
 // Router config
 import routes from "./routes.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import { initializeAuth } from './services/authService.js';
+
+// Prime the Firebase Auth session (anonymous guest or existing session)
+initializeAuth();
+
 const router = createBrowserRouter(routes, {
     basename: import.meta.env.BASE_URL,
 });
