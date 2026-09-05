@@ -697,44 +697,8 @@ export async function updateActiveUserStreak() {
                 }
             }
         } else {
-            // 2. Guest User Streak (Local only)
-            const guestKey = 'deltasong_guest_streak_date';
-            const guestDataKey = 'deltasong_rank_data_guest';
-            let lastDateStr = localStorage.getItem(guestKey);
-
-            if (!lastDateStr) {
-                localStorage.setItem(guestKey, todayStr);
-                return null;
-            }
-
-            if (lastDateStr === todayStr) {
-                return null;
-            }
-
-            const [y1, m1, d1] = lastDateStr.split('-').map(Number);
-            const [y2, m2, d2] = todayStr.split('-').map(Number);
-            const date1 = new Date(y1, m1 - 1, d1);
-            const date2 = new Date(y2, m2 - 1, d2);
-            const diffDays = Math.round((date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
-
-            let guestRank = {};
-            try {
-                guestRank = JSON.parse(localStorage.getItem(guestDataKey) || '{}');
-            } catch {}
-
-            if (diffDays === 1) {
-                guestRank.streak = (guestRank.streak || 0) + 1;
-                localStorage.setItem(guestKey, todayStr);
-                localStorage.setItem(guestDataKey, JSON.stringify(guestRank));
-                setCachedRankData(guestRank);
-                window.dispatchEvent(new Event('deltasong_rank_change'));
-            } else if (diffDays > 1) {
-                guestRank.streak = 1;
-                localStorage.setItem(guestKey, todayStr);
-                localStorage.setItem(guestDataKey, JSON.stringify(guestRank));
-                setCachedRankData(guestRank);
-                window.dispatchEvent(new Event('deltasong_rank_change'));
-            }
+            // Anonymous / unauthenticated players are excluded from streaks, points and stats
+            return null;
         }
     } catch (err) {
         console.warn('[Deltasong] updateActiveUserStreak error:', err);

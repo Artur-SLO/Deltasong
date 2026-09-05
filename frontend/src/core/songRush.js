@@ -1,4 +1,4 @@
-import { compareSongs } from './songGame.js';
+import { compareSongs, calculateRandomStartTime } from './songGame.js';
 
 import { 
     RUSH_STAGES, 
@@ -11,7 +11,8 @@ export {
     RUSH_STAGES, 
     RUSH_POINTS, 
     RUSH_LIVES, 
-    RUSH_CURATED_POOLS 
+    RUSH_CURATED_POOLS,
+    calculateRandomStartTime
 };
 
 function normalizeTitle(title) {
@@ -33,7 +34,7 @@ function pickUniqueSong(soundtrack, poolTitles, usedTitles, usedUrls = null, ran
         .map(t => soundtrackMap.get(normalizeTitle(t)))
         .filter(s => s && isSongUnused(s));
 
-    let chosenSong = null;
+    let chosenSong;
     if (availablePool.length > 0) {
         chosenSong = availablePool[Math.floor(randomFn() * availablePool.length)];
     } else {
@@ -52,13 +53,6 @@ function pickUniqueSong(soundtrack, poolTitles, usedTitles, usedUrls = null, ran
         if (usedUrls && chosenSong.url) usedUrls.add(chosenSong.url.trim());
     }
     return chosenSong;
-}
-
-export function calculateRandomStartTime(target, durationLimit = 5.0, randomFn = Math.random) {
-    if (!target || !target.duration_seconds || target.duration_seconds <= durationLimit) {
-        return 0;
-    }
-    return Math.floor(randomFn() * (target.duration_seconds - durationLimit));
 }
 
 export function createSongRushGame(soundtrack, randomFn = Math.random, recentTitles = []) {

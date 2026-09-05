@@ -13,7 +13,15 @@ import { RANK_TIERS } from '../config/Constants';
 import { getLocalDateString } from '../core/dailySeed';
 
 function getInitialLocalRankData() {
-    const fallback = {
+    // Purge any legacy guest score/stats data from localStorage to ensure anonymous players remain unranked
+    try {
+        localStorage.removeItem('deltasong_rank_data_guest');
+        localStorage.removeItem('deltasong_guest_streak_date');
+    } catch {
+        // ignore storage errors
+    }
+
+    return {
         totalScore: 0,
         streak: 1,
         stats: {
@@ -28,16 +36,6 @@ function getInitialLocalRankData() {
             totalLosses: 0
         }
     };
-    try {
-        const stored = localStorage.getItem('deltasong_rank_data_guest');
-        if (stored) {
-            const parsed = JSON.parse(stored);
-            return { ...fallback, ...parsed, stats: { ...fallback.stats, ...(parsed.stats || {}) } };
-        }
-    } catch {
-        // ignore storage read error
-    }
-    return fallback;
 }
 
 let cachedRankData = getInitialLocalRankData();
@@ -117,6 +115,11 @@ export function calculateUserRank(score) {
  */
 export async function addPoints(amount, gameType, isDailyWin = true) {
     const user = auth.currentUser;
+    // Anonymous players (without an account) are completely excluded from the points and stats system.
+    if (!user || user.isAnonymous) {
+        return { ...cachedRankData };
+    }
+
     const oldScore = cachedRankData.totalScore;
     const boundedDelta = Math.max(-100, Math.min(500, amount));
     const newScore = Math.max(0, oldScore + boundedDelta);
@@ -162,53 +165,44 @@ export async function addPoints(amount, gameType, isDailyWin = true) {
     checkRankChange(oldScore, newScore);
     window.dispatchEvent(new Event('deltasong_rank_change'));
 
-    // If authenticated, synchronize with Firestore
-    if (user) {
-        // Enforce 2-second rate-limit cooldown
-        const now = Date.now();
-        if (now - lastMutationTimestamp < 2000) {
-            await new Promise(res => setTimeout(res, 2000 - (now - lastMutationTimestamp)));
-        }
-        lastMutationTimestamp = Date.now();
+    // Synchronize with Firestore for authenticated account
+    // Enforce 2-second rate-limit cooldown
+    const now = Date.now();
+    if (now - lastMutationTimestamp < 2000) {
+        await new Promise(res => setTimeout(res, 2000 - (now - lastMutationTimestamp)));
+    }
+    lastMutationTimestamp = Date.now();
 
-        try {
-            const userRef = doc(db, 'users', user.uid);
-            const todayStr = getLocalDateString();
+    try {
+        const userRef = doc(db, 'users', user.uid);
+        const todayStr = getLocalDateString();
 
-            // If daily win, create daily record document to prevent re-farming
-            if (gameType === 'daily' && isDailyWin) {
-                const dailyRef = doc(db, 'users', user.uid, 'daily_records', todayStr);
-                await setDoc(dailyRef, {
-                    completedAt: serverTimestamp(),
-                    won: true
-                });
-            }
-
-            // Update user document
-            await updateDoc(userRef, {
-                totalScore: newScore,
-                streak: cachedRankData.streak || 1,
-                stats: cachedRankData.stats,
-                updatedAt: serverTimestamp()
+        // If daily win, create daily record document to prevent re-farming
+        if (gameType === 'daily' && isDailyWin) {
+            const dailyRef = doc(db, 'users', user.uid, 'daily_records', todayStr);
+            await setDoc(dailyRef, {
+                completedAt: serverTimestamp(),
+                won: true
             });
+        }
 
-            // Append audit event
-            await addDoc(collection(db, 'score_events'), {
-                userId: user.uid,
-                gameType,
-                pointsDelta: boundedDelta,
-                createdAt: serverTimestamp()
-            });
-        } catch (error) {
-            console.error('[ScoreService] Failed to sync score with Firestore:', error);
-        }
-    } else {
-        // Persist local session for unauthenticated players
-        try {
-            localStorage.setItem('deltasong_rank_data_guest', JSON.stringify(cachedRankData));
-        } catch {
-            // ignore storage quota error
-        }
+        // Update user document
+        await updateDoc(userRef, {
+            totalScore: newScore,
+            streak: cachedRankData.streak || 1,
+            stats: cachedRankData.stats,
+            updatedAt: serverTimestamp()
+        });
+
+        // Append audit event
+        await addDoc(collection(db, 'score_events'), {
+            userId: user.uid,
+            gameType,
+            pointsDelta: boundedDelta,
+            createdAt: serverTimestamp()
+        });
+    } catch (error) {
+        console.error('[ScoreService] Failed to sync score with Firestore:', error);
     }
 
     return { ...cachedRankData };

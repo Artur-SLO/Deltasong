@@ -18,17 +18,40 @@ export function compareSongs(target, guessed) {
     };
 }
 
+/**
+ * Calculates a safe random start time for an audio snippet.
+ * Excludes the ending of the song to avoid trailing silence and fade-outs.
+ */
+export function calculateRandomStartTime(target, durationLimit = 5.0, randomFn = Math.random) {
+    if (!target || !target.duration_seconds || target.duration_seconds <= durationLimit) {
+        return 0;
+    }
+
+    const totalDuration = target.duration_seconds;
+
+    // Safety margin to exclude the ending fade-out / trailing silence of the track.
+    // OST videos generally have a 5-10s fade-out or silence buffer near the end.
+    // We reserve at least 15% (or 6 seconds minimum) of the track.
+    const endMargin = Math.max(6, totalDuration * 0.15);
+    const maxStartTime = totalDuration - endMargin - durationLimit;
+
+    // Fallback if the song is too short to accommodate the safety margin
+    if (maxStartTime <= 0) {
+        const fallbackMax = totalDuration - durationLimit;
+        return fallbackMax > 0 ? Math.floor(randomFn() * fallbackMax) : 0;
+    }
+
+    return Math.floor(randomFn() * maxStartTime);
+}
+
 export function createSongGame(json, randomFn = Math.random) {
     const songs = json;
     const totalSongs = songs.length;
     const target = songs[Math.floor(randomFn() * totalSongs)];
 
-    // Choose a random starting position for the audio segment (max limit is 5s)
+    // Choose a safe random starting position for the audio segment, avoiding trailing silence
     const maxDurationLimit = 5.0;
-    let startTime = 0;
-    if (target.duration_seconds > maxDurationLimit) {
-        startTime = Math.floor(randomFn() * (target.duration_seconds - maxDurationLimit));
-    }
+    const startTime = calculateRandomStartTime(target, maxDurationLimit, randomFn);
 
     return {
         songs,
