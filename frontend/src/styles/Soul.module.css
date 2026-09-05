@@ -1,0 +1,14 @@
+.soulBase {
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.35s ease;
+}
+
+.soulAlive {
+    filter: drop-shadow(0 0 4px var(--soul-glow, rgba(255, 34, 34, 0.7)));
+}
+
+.soulDead {
+    opacity: 0.25;
+    filter: grayscale(1);
+}

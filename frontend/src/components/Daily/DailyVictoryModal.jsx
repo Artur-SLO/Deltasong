@@ -12,6 +12,7 @@ export default function DailyVictoryModal({ isOpen, onClose, gameState }) {
             onClose={onClose}
             centered
             size="md"
+            transitionProps={{ duration: 0 }}
             title={'Daily Challenge'}
             overlayProps={{
                 backgroundOpacity: 0.55,

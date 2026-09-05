@@ -1,0 +1,150 @@
+/* Centralized Modal & Results Styles */
+
+@keyframes crtOpen {
+    0% { transform: scaleY(0.01) scaleX(0.8); opacity: 0; filter: brightness(3); }
+    60% { transform: scaleY(1.02) scaleX(1.01); opacity: 1; filter: brightness(1.2); }
+    100% { transform: scaleY(1) scaleX(1); opacity: 1; filter: brightness(1); }
+}
+
+@keyframes slideUpFade {
+    0% { transform: translateY(16px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gentleBob {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+
+.resultsWrapper {
+    animation: crtOpen 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    position: relative;
+    width: 100%;
+}
+
+.stampBanner {
+    width: 100%;
+    max-width: 520px;
+    padding: 8px 14px;
+    border-radius: var(--mantine-radius-md);
+    text-align: center;
+    font-family: var(--font-family-deltarune);
+    font-size: clamp(0.58rem, 2.3vw, 0.95rem);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto var(--mantine-spacing-xs) auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.stampBanner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3) 0px,
+        rgba(0, 0, 0, 0.3) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+}
+
+.stampBannerVictory {
+    background-color: rgba(0, 255, 39, 0.12);
+    border: 2px solid #00ff27;
+    color: #00ff27;
+    box-shadow: 0 0 16px rgba(0, 255, 39, 0.4), inset 0 0 10px rgba(0, 255, 39, 0.15);
+    text-shadow: 0 0 8px rgba(0, 255, 39, 0.7);
+}
+
+.stampBannerDefeat {
+    background-color: rgba(255, 31, 142, 0.12);
+    border: 2px solid #ff1f8e;
+    color: #ff1f8e;
+    box-shadow: 0 0 16px rgba(255, 31, 142, 0.4), inset 0 0 10px rgba(255, 31, 142, 0.15);
+    text-shadow: 0 0 8px rgba(255, 31, 142, 0.7);
+}
+
+.stampBannerRushClear {
+    background-color: rgba(255, 212, 59, 0.12);
+    border: 2px solid #ffd43b;
+    color: #ffd43b;
+    box-shadow: 0 0 16px rgba(255, 212, 59, 0.4), inset 0 0 10px rgba(255, 212, 59, 0.15);
+    text-shadow: 0 0 8px rgba(255, 212, 59, 0.7);
+}
+
+.stagger1 {
+    animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.stagger2 {
+    animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.stagger3 {
+    animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.stagger4 {
+    animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both;
+}
+
+.stagger5 {
+    animation: slideUpFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+.mascotWon img {
+    filter: drop-shadow(0 0 10px rgba(0, 255, 39, 0.65));
+    animation: gentleBob 1.6s ease-in-out infinite alternate !important;
+}
+
+.mascotLost img {
+    filter: grayscale(0.85) opacity(0.45) !important;
+    animation: none !important;
+}
+
+.mascotGif {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    margin: 0 auto;
+    display: block;
+    animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 768px) {
+    .mascotGif {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mascotGif {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+.modalDeltaruneText {
+    font-family: var(--font-family-deltarune) !important;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+}

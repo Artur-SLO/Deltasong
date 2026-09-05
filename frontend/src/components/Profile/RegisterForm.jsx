@@ -13,23 +13,28 @@ export default function RegisterForm({ onRegisterSuccess }) {
     const [selectedAvatar, setSelectedAvatar] = useState(defaultAvatar);
     const [regError, setRegError] = useState('');
 
-    const handleRegister = (e) => {
+    const [loading, setLoading] = useState(false);
+
+    const handleRegister = async (e) => {
         e.preventDefault();
         setRegError('');
+        setLoading(true);
         try {
-            registerUser(regName, regPassword, selectedAvatar);
+            await registerUser(regName, regPassword, selectedAvatar);
             setRegName('');
             setRegPassword('');
             notifications.show({
                 title: 'Account Created',
-                message: 'Your account was successfully created! You can now login.',
+                message: 'Your account was successfully created! You are now logged in.',
                 color: 'emeraldGreen',
             });
             if (onRegisterSuccess) {
                 onRegisterSuccess();
             }
         } catch (err) {
-            setRegError(err.message);
+            setRegError(err.message || 'Failed to create account');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -37,8 +42,9 @@ export default function RegisterForm({ onRegisterSuccess }) {
         <form onSubmit={handleRegister}>
             <TextInput 
                 label="Username" 
-                placeholder="Choose a username"
+                placeholder="Choose a username (max 18 chars)"
                 required
+                maxLength={18}
                 value={regName}
                 onChange={(e) => setRegName(e.target.value)}
                 mb="md"
@@ -63,7 +69,7 @@ export default function RegisterForm({ onRegisterSuccess }) {
                 </Text>
             )}
 
-            <Button type="submit" color="royalMagenta" fullWidth mt="lg">
+            <Button type="submit" color="royalMagenta" fullWidth mt="lg" loading={loading}>
                 Create Account
             </Button>
         </form>

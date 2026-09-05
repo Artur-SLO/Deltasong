@@ -1,8 +1,19 @@
-import { TextInput, Group, Text, Paper } from "@mantine/core";
+import { TextInput, Text, Paper } from "@mantine/core";
+import { IconSearch } from "@tabler/icons-react";
 import { useState } from 'react';
 import styles from '../../styles/Song.module.css';
 
-export default function SongSearchBar({ data, songsMap, input, setInput, handleGuess }) {
+export default function SongSearchBar({ 
+    data, 
+    songsMap, 
+    input, 
+    setInput, 
+    handleGuess,
+    placeholder = "Type a song title",
+    inputRef = null,
+    isSuccessFlashing = false,
+    rightAction = null
+}) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -56,11 +67,13 @@ export default function SongSearchBar({ data, songsMap, input, setInput, handleG
         }
     };
 
-    return (
-        <div className={styles.searchBar}>
+    const searchInput = (
+        <div className={`${styles.searchBar} ${rightAction ? styles.rushSearchBarFlex : ''} ${isSuccessFlashing ? styles.flashInput : ''}`}>
             <form onSubmit={handleSubmitForm}>
                 <TextInput
-                    placeholder="Type a song title"
+                    ref={inputRef}
+                    leftSection={<IconSearch size={18} opacity={0.6} />}
+                    placeholder={placeholder}
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);
@@ -70,7 +83,7 @@ export default function SongSearchBar({ data, songsMap, input, setInput, handleG
                     onFocus={() => setIsOpen(true)}
                     onBlur={() => {
                         // Delay to allow clicking option before closing
-                        setTimeout(() => setIsOpen(false), 50);
+                        setTimeout(() => setIsOpen(false), 80);
                     }}
                     onKeyDown={handleKeyDown}
                     size="md"
@@ -106,4 +119,16 @@ export default function SongSearchBar({ data, songsMap, input, setInput, handleG
             )}
         </div>
     );
+
+    if (rightAction) {
+        return (
+            <div className={styles.rushSearchBarRow}>
+                {searchInput}
+                {rightAction}
+            </div>
+        );
+    }
+
+    return searchInput;
 }
+

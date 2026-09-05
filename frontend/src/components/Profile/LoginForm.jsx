@@ -8,11 +8,14 @@ export default function LoginForm() {
     const [loginPassword, setLoginPassword] = useState('');
     const [loginError, setLoginError] = useState('');
 
-    const handleLogin = (e) => {
+    const [loading, setLoading] = useState(false);
+
+    const handleLogin = async (e) => {
         e.preventDefault();
         setLoginError('');
+        setLoading(true);
         try {
-            loginUser(loginName, loginPassword);
+            await loginUser(loginName, loginPassword);
             setLoginName('');
             setLoginPassword('');
             notifications.show({
@@ -21,7 +24,9 @@ export default function LoginForm() {
                 color: 'cyberCyan',
             });
         } catch (err) {
-            setLoginError(err.message);
+            setLoginError(err.message || 'Failed to sign in');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -50,7 +55,7 @@ export default function LoginForm() {
                 </Text>
             )}
 
-            <Button type="submit" color="cyberCyan" fullWidth mt="lg">
+            <Button type="submit" color="cyberCyan" fullWidth mt="lg" loading={loading}>
                 Login
             </Button>
         </form>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Group, Button, Text } from '@mantine/core';
 import { IconPlayerPlay, IconPlayerPause, IconPlus } from '@tabler/icons-react';
+import Soul from '../Common/Soul.jsx';
 import styles from '../../styles/Song.module.css';
 
 // Helper to extract YouTube video ID from URL
@@ -35,7 +36,29 @@ function loadYouTubeIFrameAPI() {
     return apiPromise;
 }
 
-export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabled, onPlay, onAddTime, maxTimeReached, isClueAvailable, extraControl = null, timeDisplayOverride = null }) {
+export default function AudioPlayer({ 
+    videoUrl, 
+    startTime, 
+    durationLimit, 
+    disabled, 
+    onPlay, 
+    onAddTime, 
+    maxTimeReached, 
+    isClueAvailable, 
+    hasPlayed = false,
+    extraControl = null, 
+    timeDisplayOverride = null,
+    isRushMode = false,
+    autoPlay = false,
+    flashPlayButton = false,
+    difficultyColor = '#00ff27',
+    rushStageIndex = 0,
+    rushStagesCount = 4,
+    rushLives = 5,
+    soulColors = [],
+    rushExtraControl = null,
+    rushHintContent = null
+}) {
     const [playerReady, setPlayerReady] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
@@ -76,7 +99,7 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
                 height: '0',
                 width: '0',
                 playerVars: {
-                    autoplay: 0,
+                    autoplay: autoPlay ? 1 : 0,
                     controls: 0,
                     disablekb: 1,
                     fs: 0,
@@ -90,7 +113,17 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
                         if (active) {
                             setPlayerReady(true);
                             event.target.seekTo(startTime, true);
-                            event.target.pauseVideo();
+                            if (autoPlay) {
+                                try {
+                                    event.target.playVideo();
+                                    setIsPlaying(true);
+                                    if (onPlay) onPlay();
+                                } catch (e) {
+                                    console.error("Autoplay trigger error", e);
+                                }
+                            } else {
+                                event.target.pauseVideo();
+                            }
                         }
                     },
                     onStateChange: (event) => {
@@ -117,7 +150,7 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
             }
             playerRef.current = null;
         };
-    }, [videoUrl, startTime]);
+    }, [videoUrl, startTime, autoPlay]);
 
     // Handle precise playback cutoff and progress bar update
     useEffect(() => {
@@ -216,6 +249,68 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
         return time.toFixed(1) + 's';
     };
 
+    if (isRushMode) {
+        return (
+            <div className={styles.rushPlayerWrapper}>
+                {/* Hidden container where YT Iframe is instantiated */}
+                <div className={styles.hiddenIframeContainer}>
+                    <div id={playerDivId} />
+                </div>
+
+                {/* Undertale Soul Hearts Header */}
+                <div className={styles.rushHeartsHeader}>
+                    <div className={styles.rushHeartsContainer}>
+                        {soulColors.map((color, idx) => (
+                            <Soul
+                                key={idx}
+                                color={color}
+                                isAlive={idx < rushLives}
+                                size={22}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                <div className={styles.progressContainer} onClick={handleSliderClick}>
+                    <div ref={progressFillRef} className={styles.progressFill} style={{ '--glow-color': difficultyColor }} />
+                </div>
+
+                <div className={styles.rushCenterPlayGroup}>
+                    <div className={styles.rushProgressChip}>
+                        <span 
+                            className={`${styles.rushStatusDot} ${isPlaying ? styles.rushStatusDotActive : ''}`}
+                            style={isPlaying ? { '--glow-color': difficultyColor } : undefined}
+                        />
+                        <span className={styles.rushProgressText}>
+                            {elapsedTime.toFixed(1)}s / {effectiveDurationLimit.toFixed(1)}s
+                        </span>
+                    </div>
+
+                    <button
+                        type="button"
+                        className={`${styles.rushBigPlayBtn} ${flashPlayButton ? styles.flashPlay : ''}`}
+                        onClick={isPlaying ? handlePause : handlePlay}
+                        disabled={disabled || !playerReady}
+                        aria-label={isPlaying ? "Pause" : "Play"}
+                        style={{ '--glow-color': difficultyColor }}
+                    >
+                        {isPlaying ? (
+                            <IconPlayerPause size={42} color="#000000" fill="#000000" />
+                        ) : (
+                            <IconPlayerPlay size={42} color="#000000" fill="#000000" style={{ marginLeft: 4 }} />
+                        )}
+                    </button>
+
+                    <div className={styles.rushRightSpacer}>
+                        {rushExtraControl}
+                    </div>
+                </div>
+
+                {rushHintContent}
+            </div>
+        );
+    }
+
     return (
         <div className={styles.playerContainer}>
             {/* Hidden container where YT Iframe is instantiated */}
@@ -224,57 +319,63 @@ export default function AudioPlayer({ videoUrl, startTime, durationLimit, disabl
             </div>
 
             <div className={styles.progressContainer} onClick={handleSliderClick}>
-                <div ref={progressFillRef} className={styles.progressFill} />
+                <div 
+                    ref={progressFillRef} 
+                    className={styles.progressFill} 
+                    style={{ '--glow-color': difficultyColor }} 
+                />
             </div>
 
-            <div className={styles.playerControls}>
-                <Group gap="md">
-                    {!isPlaying ? (
-                        <Button
-                            leftSection={<IconPlayerPlay size={16} />}
-                            onClick={handlePlay}
-                            disabled={disabled || !playerReady}
-                            color="emeraldGreen"
-                            variant="light"
-                            className={styles.playerBtn}
-                        >
-                            Play
-                        </Button>
+            <div className={styles.rushCenterPlayGroup}>
+                {/* Left: Progress chip */}
+                <div className={styles.rushProgressChip}>
+                    <span 
+                        className={`${styles.rushStatusDot} ${isPlaying ? styles.rushStatusDotActive : ''}`}
+                        style={isPlaying ? { '--glow-color': difficultyColor } : undefined}
+                    />
+                    <span className={styles.rushProgressText}>
+                        {!playerReady 
+                            ? "Loading..." 
+                            : (timeDisplayOverride || `${elapsedTime.toFixed(1)}s / ${effectiveDurationLimit.toFixed(1)}s`)}
+                    </span>
+                </div>
+
+                {/* Center: Big circular play button with difficulty color & glow */}
+                <button
+                    type="button"
+                    className={`${styles.rushBigPlayBtn} ${flashPlayButton ? styles.flashPlay : ''}`}
+                    onClick={isPlaying ? handlePause : handlePlay}
+                    disabled={disabled || !playerReady}
+                    aria-label={isPlaying ? "Pause" : "Play"}
+                    style={{ '--glow-color': difficultyColor }}
+                >
+                    {isPlaying ? (
+                        <IconPlayerPause size={42} color="#000000" fill="#000000" />
                     ) : (
-                            <Button
-                                leftSection={<IconPlayerPause size={16} />}
-                                onClick={handlePause}
-                                disabled={disabled || !playerReady}
-                                color="royalMagenta"
-                                variant="light"
-                                className={styles.playerBtn}
-                            >
-                                Pause
-                            </Button>
-                        )}
+                        <IconPlayerPlay size={42} color="#000000" fill="#000000" style={{ marginLeft: 4 }} />
+                    )}
+                </button>
+
+                {/* Right: Actions (Clue + Hint) */}
+                <div className={styles.classicRightActions}>
                     {isClueAvailable && (
-                        <Button
-                            leftSection={<IconPlus size={16} />}
+                        <button
+                            type="button"
                             onClick={handleAddTime}
-                            disabled={disabled || !playerReady || isMaxReached}
-                            color="cyberCyan"
-                            variant="light"
-                            className={styles.playerBtn}
+                            disabled={disabled || !playerReady || maxTimeReached || !hasPlayed}
+                            className={styles.arcadeClueBtn}
+                            title={
+                                !hasPlayed
+                                    ? "Play snippet first"
+                                    : (maxTimeReached ? "Maximum snippet duration reached" : "Add 1 second to snippet duration")
+                            }
                         >
-                            +1s Clue
-                        </Button>
+                            <IconPlus size={14} />
+                            <span>+1s</span>
+                        </button>
                     )}
                     {extraControl}
-                </Group>
-            </div>
-
-            <div className={styles.timeDisplay}>
-                <Text size="sm" ff="var(--mantine-font-family)">
-                    {!playerReady 
-                        ? "Loading Audio..." 
-                        : (timeDisplayOverride || `${formatTime(elapsedTime)} / ${formatTime(effectiveDurationLimit)}`)
-                    }
-                </Text>
+                </div>
             </div>
         </div>
     );

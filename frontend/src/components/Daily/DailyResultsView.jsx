@@ -286,106 +286,105 @@ export default function DailyResultsView({ gameState }) {
                 <div className={classes.resultsTitle} style={{ color: 'var(--mantine-color-amberGold-5)' }}>
                     Correct Answers
                 </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm" fw="bold">Secret Character</Text>
-                    <Group gap="xs" align="center">
-                        {gameState.characterState.target.image && (
-                            <img
-                                src={getCharacterImage(gameState.characterState.target.image)}
-                                alt={gameState.characterState.target.name}
-                                style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }}
-                            />
-                        )}
-                        <Text size="sm">{gameState.characterState.target.name}</Text>
-                    </Group>
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm" fw="bold">Secret Item</Text>
-                    <Group gap="xs" align="center">
-                        {gameState.itemState.target.image && (
-                            <img
-                                src={gameState.itemState.target.image}
-                                alt={gameState.itemState.target.name}
-                                style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }}
-                            />
-                        )}
-                        <Text size="sm">{gameState.itemState.target.name}</Text>
-                    </Group>
-                </div>
-                <div className={classes.resultsRow} style={{ borderBottom: 'none' }}>
-                    <Text size="sm" fw="bold">Secret Song</Text>
-                    <Text size="sm" ta="right">
-                        {gameState.songState.target.title} (Ch {gameState.songState.target.chapter})
-                    </Text>
-                </div>
-            </Paper>
-
-            <div className={classes.countdownContainer}>
-                <div className={classes.countdownLabel}>
-                    NEXT CHALLENGE
-                </div>
-                <Group gap="xs">
-                    <IconClock size={20} color="var(--mantine-color-amberGold-5)" />
-                    <div className={classes.countdownTimer}>
-                        {timeLeft}
+                    <div className={classes.resultsRow}>
+                        <Text size="sm" fw="bold">Secret Character</Text>
+                        <Group gap="xs" align="center">
+                            {gameState.characterState.target.image && (
+                                <img
+                                    src={getCharacterImage(gameState.characterState.target.image)}
+                                    alt={gameState.characterState.target.name}
+                                    style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }}
+                                />
+                            )}
+                            <Text size="sm">{gameState.characterState.target.name}</Text>
+                        </Group>
                     </div>
+                    <div className={classes.resultsRow}>
+                        <Text size="sm" fw="bold">Secret Item</Text>
+                        <Group gap="xs" align="center">
+                            {gameState.itemState.target.image && (
+                                <img
+                                    src={gameState.itemState.target.image}
+                                    alt={gameState.itemState.target.name}
+                                    style={{ width: 20, height: 20, borderRadius: 4, objectFit: 'contain' }}
+                                />
+                            )}
+                            <Text size="sm">{gameState.itemState.target.name}</Text>
+                        </Group>
+                    </div>
+                    <div className={classes.resultsRow} style={{ borderBottom: 'none' }}>
+                        <Text size="sm" fw="bold">Secret Song</Text>
+                        <Text size="sm" ta="right">
+                            {gameState.songState.target.title} (Ch {gameState.songState.target.chapter})
+                        </Text>
+                    </div>
+                </Paper>
+
+                <div className={classes.countdownContainer}>
+                    <div className={classes.countdownLabel}>
+                        NEXT CHALLENGE
+                    </div>
+                    <Group gap="xs">
+                        <IconClock size={20} color="var(--mantine-color-amberGold-5)" />
+                        <div className={classes.countdownTimer}>
+                            {timeLeft}
+                        </div>
+                    </Group>
+                </div>
+
+                <Paper className={classes.resultsCard}>
+                    <div className={classes.resultsTitle}>
+                        {isVictory ? 'Victory Statistics' : 'Statistics'}
+                    </div>
+                    <div className={classes.resultsRow}>
+                        <Text size="sm" className={classes.timerText}>Total Time</Text>
+                        <Text size="sm" fw="bold" className={classes.timerText}>{durationStr}</Text>
+                    </div>
+                    <div className={classes.resultsRow}>
+                        <Text size="sm">Daily Challenge</Text>
+                        <Text size="sm" fw="bold">#{dailyNum}</Text>
+                    </div>
+                    <div className={classes.resultsRow}>
+                        <Text size="sm">Status</Text>
+                        <Text size="sm" fw="bold" color={isVictory ? 'emeraldGreen' : 'royalMagenta'}>
+                            {isVictory ? 'Victory' : 'Defeat'}
+                        </Text>
+                    </div>
+                    <div className={classes.resultsRow}>
+                        <Text size="sm">Characters guesses</Text>
+                        <Text size="sm" fw="bold">{charScore}</Text>
+                    </div>
+                    <div className={classes.resultsRow}>
+                        <Text size="sm">Items guesses</Text>
+                        <Text size="sm" fw="bold">{itemScore}</Text>
+                    </div>
+                    <div className={classes.resultsRow}>
+                        <Text size="sm">Song guesses</Text>
+                        <Text size="sm" fw="bold">{songScore}</Text>
+                    </div>
+                </Paper>
+
+                <Group gap="md" className={classes.stagger5}>
+                    <Button
+                        leftSection={<IconCopy size={16} />}
+                        color="emeraldGreen"
+                        onClick={handleCopy}
+                        className={classes.shareButton}
+                        size="sm"
+                    >
+                        Copy
+                    </Button>
+
+                    <Button
+                        leftSection={<IconDownload size={16} />}
+                        color="spadeBlue"
+                        onClick={handleDownloadImage}
+                        className={classes.shareButton}
+                        size="sm"
+                    >
+                        Download Image
+                    </Button>
                 </Group>
-            </div>
-
-            <Paper className={classes.resultsCard}>
-                <div className={classes.resultsTitle}>
-                    {isVictory ? 'Victory Statistics' : 'Statistics'}
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm" className={classes.timerText}>Total Time</Text>
-                    <Text size="sm" fw="bold" className={classes.timerText}>{durationStr}</Text>
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm">Daily Challenge</Text>
-                    <Text size="sm" fw="bold">#{dailyNum}</Text>
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm">Status</Text>
-                    <Text size="sm" fw="bold" color={isVictory ? 'emeraldGreen' : 'royalMagenta'}>
-                        {isVictory ? 'Victory' : 'Defeat'}
-                    </Text>
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm">Characters guesses</Text>
-                    <Text size="sm" fw="bold">{charScore}</Text>
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm">Items guesses</Text>
-                    <Text size="sm" fw="bold">{itemScore}</Text>
-                </div>
-                <div className={classes.resultsRow}>
-                    <Text size="sm">Song guesses</Text>
-                    <Text size="sm" fw="bold">{songScore}</Text>
-                </div>
-            </Paper>
-
-            <Group gap="md">
-                <Button
-                    leftSection={<IconCopy size={16} />}
-                    color="emeraldGreen"
-                    onClick={handleCopy}
-                    className={classes.shareButton}
-                    size="sm"
-                >
-                    Copy
-                </Button>
-
-                <Button
-                    leftSection={<IconDownload size={16} />}
-                    color="spadeBlue"
-                    onClick={handleDownloadImage}
-                    className={classes.shareButton}
-                    size="sm"
-                >
-                    Download Image
-                </Button>
-            </Group>
-
-        </Stack>
-    );
+            </Stack>
+        );
 }

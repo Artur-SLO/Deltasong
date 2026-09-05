@@ -165,7 +165,42 @@
 }
 
 .conventionalTitle {
-    font-family: var(--mantine-font-family) !important;
+    color: var(--color-text-primary, #ffffff) !important;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+}
+
+.charactersTitle {
+    color: var(--color-text-primary, #ffffff) !important;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
+}
+
+.itemsTitle {
+    color: var(--color-text-primary, #ffffff) !important;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    text-shadow: 0 0 10px rgba(255, 31, 142, 0.6) !important;
+}
+
+.songsTitle {
+    color: var(--color-text-primary, #ffffff) !important;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    text-shadow: 0 0 10px rgba(0, 255, 39, 0.6) !important;
+}
+
+.dailyTitle {
+    color: var(--color-text-primary, #ffffff) !important;
+    font-family: var(--font-family-deltarune, monospace) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    text-shadow: 0 0 10px rgba(255, 212, 59, 0.6) !important;
 }
 
 .conventionalFont {

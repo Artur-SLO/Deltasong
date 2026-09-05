@@ -1,4 +1,5 @@
 import { Grid, Stack, Text, Button, Modal, Paper } from '@mantine/core';
+import ModalHeader from '../Common/ModalHeader.jsx';
 import GridCell from './GridCell.jsx';
 import { createGame, makeGuess } from '../../core/characterGame.js';
 import { compareCharacters } from '../../core/Character.js';
@@ -32,6 +33,7 @@ export default function GuessGrid({
     const [isGivenUp, setIsGivenUp] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalType, setModalType] = useState('victory');
+    const [modalTarget, setModalTarget] = useState(null);
     const [isConfirmingGiveUp, setIsConfirmingGiveUp] = useState(false);
     const [startTime, setStartTime] = useState(Date.now());
 
@@ -113,6 +115,7 @@ export default function GuessGrid({
                     addPoints(points, 'characters');
                 }
 
+                setModalTarget(gameState.target);
                 // Delay showing victory modal until all cells fade in
                 setTimeout(() => {
                     setModalType('victory');
@@ -134,6 +137,7 @@ export default function GuessGrid({
         if (isConfirmingGiveUp) {
             setIsGivenUp(true);
             setModalType('surrender');
+            setModalTarget(gameState.target);
             setIsModalOpen(true);
             setIsConfirmingGiveUp(false);
         } else {
@@ -144,17 +148,15 @@ export default function GuessGrid({
     const resetGame = () => {
         setIsModalOpen(false);
         setIsConfirmingGiveUp(false);
-
-        setTimeout(() => {
-            const game = createGame(deltaruneCharacters);
-            setGameState(game);
-            setguessedCharacters([]);
-            setGridItems([]);
-            setIsWon(false);
-            setIsGivenUp(false);
-            setStartTime(Date.now());
-            setInput('');
-        }, 200);
+        const game = createGame(deltaruneCharacters);
+        setGameState(game);
+        setguessedCharacters([]);
+        setGridItems([]);
+        setIsWon(false);
+        setIsGivenUp(false);
+        setStartTime(Date.now());
+        setInput('');
+        setModalTarget(null);
     };
 
     const isDailyFinished = isDaily && (
@@ -198,14 +200,22 @@ export default function GuessGrid({
             {!isDaily && (
                 <Modal
                     opened={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
+                    onClose={resetGame}
+                    withCloseButton={false}
                     centered
                     size="md"
-                    title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
+                    transitionProps={{ duration: 0 }}
+                    title={
+                        <ModalHeader
+                            title={modalType === 'victory' ? 'Victory!' : 'Game Over'}
+                            isVictory={modalType === 'victory'}
+                            onPlayAgain={resetGame}
+                            onClose={() => setIsModalOpen(false)}
+                        />
+                    }
                     classNames={{
                         content: styles.modalContent,
-                        header: styles.modalHeader,
-                        title: modalType === 'victory' ? styles.modalTitleVictory : styles.modalTitleSurrender
+                        header: styles.modalHeader
                     }}
                 >
                     <Stack align="center" gap="md" p="md">
@@ -220,36 +230,26 @@ export default function GuessGrid({
                                 : "Too bad! The secret character was:"}
                         </Text>
 
-                        {gameState?.target && (
+                        {(modalTarget || gameState?.target) && (
                             <Paper
                                 bg="var(--color-bg-primary)"
                                 p="md"
                                 radius="md"
                                 withBorder
-                                className={styles.targetCard}
+                                className={`${styles.targetCard} ${modalType === 'victory' ? styles.targetCardWon : ''}`}
                             >
-                                {gameState.target.image && (
+                                {(modalTarget || gameState.target).image && (
                                     <img
-                                        src={getCharacterImage(gameState.target.image)}
-                                        alt={gameState.target.name}
-                                        className={styles.targetImage}
+                                        src={getCharacterImage((modalTarget || gameState.target).image)}
+                                        alt={(modalTarget || gameState.target).name}
+                                        className={`${styles.targetImage} ${modalType === 'victory' ? styles.targetImageWon : ''}`}
                                     />
                                 )}
                                 <Text size="xl" fw="bold" ff="var(--font-family-deltarune)" ta="center">
-                                    {gameState.target.name}
+                                    {(modalTarget || gameState.target).name}
                                 </Text>
                             </Paper>
                         )}
-
-                        <Button
-                            color="emeraldGreen"
-                            size="md"
-                            onClick={resetGame}
-                            className={homeClasses.conventionalFont}
-                            mt="md"
-                        >
-                            Play Again
-                        </Button>
                     </Stack>
                 </Modal>
             )}

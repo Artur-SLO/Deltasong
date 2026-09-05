@@ -1,6 +1,5 @@
 import { Title, Group, Button, Modal, Stack } from '@mantine/core';
 import { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router';
 import classes from '../../styles/Account.module.css';
 import { logoutUser, updateUserAvatar } from '../../utils/auth';
 import { notifications } from '@mantine/notifications';
@@ -13,7 +12,6 @@ import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
 const defaultAvatar = deltaruneCharacters.find(c => c.name.toUpperCase() === 'KRIS')?.image || deltaruneCharacters[0]?.image || '';
 
 export default function ProfileDashboard({ activeUser }) {
-    const navigate = useNavigate();
     const [isEditingAvatar, setIsEditingAvatar] = useState(false);
 
     const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
@@ -50,9 +48,9 @@ export default function ProfileDashboard({ activeUser }) {
                 <Title order={1} mt="sm" className={classes.profileName}>
                     {activeUser.name}
                 </Title>
-                <img 
-                    src={getAvatarSrc(activeUser.avatar)} 
-                    alt={activeUser.name} 
+                <img
+                    src={getAvatarSrc(activeUser.avatar)}
+                    alt={activeUser.name}
                     className={classes.profileAvatar}
                     onClick={() => setIsEditingAvatar(true)}
                     title="Click to change avatar"
@@ -81,7 +79,7 @@ export default function ProfileDashboard({ activeUser }) {
                     }
                 }}
             >
-                <AvatarSelector 
+                <AvatarSelector
                     selectedAvatar={activeUser.avatar}
                     onSelect={handleAvatarChange}
                 />
@@ -92,9 +90,6 @@ export default function ProfileDashboard({ activeUser }) {
             </Stack>
 
             <Group justify="center" mt="xl">
-                <Button color="royalMagenta" variant="light" size="md" onClick={() => navigate('/')}>
-                    Play Games
-                </Button>
                 <Button color="red" variant="outline" size="md" onClick={logoutUser}>
                     Logout
                 </Button>

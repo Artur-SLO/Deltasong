@@ -1,11 +1,11 @@
-import { Modal, Stack, Text, Paper, Button, Group } from '@mantine/core';
+import { Modal, Stack, Text, Paper } from '@mantine/core';
+import ModalHeader from '../Common/ModalHeader.jsx';
 import { useEffect } from 'react';
 import { ITEM_DETAILS_CONFIG } from '../../config/Constants.js';
 import styles from '../../styles/Item.module.css';
 import rouxlsGif from '../../assets/images/rouxls.gif';
 
-
-export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAgain, onChangeFilter }) {
+export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAgain }) {
     if (!target) return null;
 
     const isVictory = modalType === 'victory';
@@ -29,14 +29,22 @@ export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAg
     return (
         <Modal
             opened={isOpen}
-            onClose={onClose}
+            onClose={onPlayAgain}
+            withCloseButton={false}
             centered
             size="md"
-            title={isVictory ? 'Victory!' : 'Game Over'}
+            transitionProps={{ duration: 0 }}
+            title={
+                <ModalHeader
+                    title={isVictory ? 'Victory!' : 'Game Over'}
+                    isVictory={isVictory}
+                    onPlayAgain={onPlayAgain}
+                    onClose={onClose}
+                />
+            }
             classNames={{
                 content: styles.modalContent,
-                header: styles.modalHeader,
-                title: isVictory ? styles.modalTitleVictory : styles.modalTitleSurrender
+                header: styles.modalHeader
             }}
         >
             <Stack align="center" gap="md" p="md">
@@ -51,12 +59,12 @@ export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAg
                         : "Too bad! The secret item was:"}
                 </Text>
 
-                <Paper className={styles.targetCard} withBorder>
+                <Paper className={`${styles.targetCard} ${isVictory ? styles.targetCardWon : ''}`} withBorder>
                     {target.image && (
                         <img
                             src={target.image}
                             alt={target.name}
-                            className={styles.targetImage}
+                            className={`${styles.targetImage} ${isVictory ? styles.targetImageWon : ''}`}
                         />
                     )}
                     <Text className={styles.modalTextTitle}>
@@ -76,26 +84,6 @@ export default function ItemModal({ isOpen, onClose, modalType, target, onPlayAg
                         ))}
                     </div>
                 </Paper>
-
-                <Group gap="sm" justify="center">
-                    <Button
-                        color="emeraldGreen"
-                        size="md"
-                        onClick={onPlayAgain}
-                        className={styles.playAgainBtn}
-                    >
-                        Play Again
-                    </Button>
-                    <Button
-                        color="royalMagenta"
-                        variant="outline"
-                        size="md"
-                        onClick={onChangeFilter}
-                        className={styles.playAgainBtn}
-                    >
-                        Change Mode
-                    </Button>
-                </Group>
             </Stack>
         </Modal>
     );

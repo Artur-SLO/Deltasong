@@ -1,0 +1,51 @@
+.modalTitleGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 8px;
+}
+
+.modalTitleVictory {
+    font-family: var(--font-family-deltarune) !important;
+    font-size: 1.5rem !important;
+    color: #00ff27 !important;
+}
+
+.modalTitleSurrender {
+    font-family: var(--font-family-deltarune) !important;
+    font-size: 1.5rem !important;
+    color: #ff1f8e !important;
+}
+
+.modalPlayAgainBtn {
+    color: #00ff27 !important;
+    border: 1px solid rgba(0, 255, 39, 0.4) !important;
+    background-color: rgba(0, 255, 39, 0.08) !important;
+    transition: transform 0.25s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+    cursor: pointer;
+}
+
+.modalPlayAgainBtn:hover {
+    transform: rotate(60deg) scale(1.12);
+    border-color: #00ff27 !important;
+    background-color: rgba(0, 255, 39, 0.22) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 39, 0.7) !important;
+}
+
+.modalCloseBtn {
+    color: var(--color-text-dimmed) !important;
+    transition: all 0.2s ease !important;
+}
+
+.modalCloseBtn:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+@media (max-width: 480px) {
+    .modalTitleVictory,
+    .modalTitleSurrender {
+        font-size: 1.25rem !important;
+    }
+}

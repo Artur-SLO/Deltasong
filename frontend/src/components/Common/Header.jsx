@@ -74,17 +74,17 @@ export default function Header() {
                                     <IconFlame size={20} className={classes.flameIcon} /> {activeUser.streak}
                                 </div>
                                 <span className={classes.headerName}>{activeUser.name}</span>
-                                <img 
-                                    src={getCharacterImage(activeUser.avatar)} 
-                                    alt={activeUser.name} 
-                                    className={classes.headerAvatar} 
+                                <img
+                                    src={getCharacterImage(activeUser.avatar)}
+                                    alt={activeUser.name}
+                                    className={classes.headerAvatar}
                                 />
                             </Group>
                         ) : (
-                                <div className={classes.loginButton}>
-                                    <span className={classes.buttonText}>Login</span>
-                                </div>
-                            )}
+                            <div className={classes.loginButton}>
+                                <span className={classes.buttonText}>Login</span>
+                            </div>
+                        )}
                     </Link>
                 </Container>
             </header>

@@ -67,9 +67,9 @@ export function HelpWidget({ currentGame }) {
             hero: gersonGif,
             title: "Your Account & Stats",
             cards: [
-                "Gyaa Ha ha! Looking for your old battles records, eh? This is where all your stats and hot streaks are recorded!",
+                "Gyaa Ha ha! Looking for your old battle records, eh? This is where all your stats and hot streaks are recorded!",
                 "Back in my day, we didn't have fancy avatars! But if you wanna swap yours for a better look, go right ahead, kid!",
-                "All your history is carved right into your browser's local cache... so don't go wiping it clean unless you want your legend forgotten! Gyaa Ha ha!"
+                "With your account, all your history is carved right into the cloud... so your legend will never be forgotten! Gyaa Ha ha!"
             ]
         }
     };
