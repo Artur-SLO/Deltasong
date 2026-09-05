@@ -90,16 +90,45 @@ export function getFriendlyAuthErrorMessage(error) {
         case 'auth/user-not-found':
         case 'auth/wrong-password':
             return "Invalid username or password. If you haven't created an account yet, please use the Register tab!";
+        case 'auth/user-disabled':
+            return 'This account has been disabled. Please choose another username or create a new account.';
         case 'auth/email-already-in-use':
             return 'This username is already taken. Please login or choose another username.';
+        case 'auth/weak-password':
+            return 'Password is too weak. Please choose a password with at least 6 characters.';
+        case 'auth/invalid-email':
+            return 'Invalid username format. Please choose a valid username.';
         case 'auth/operation-not-allowed':
             return 'Account service is currently unavailable. Please try again later.';
         case 'auth/too-many-requests':
             return 'Too many failed login attempts. Please wait a moment and try again.';
         case 'auth/network-request-failed':
             return 'Network error. Please check your internet connection.';
-        default:
-            return error?.message || 'Authentication failed. Please check your credentials and try again.';
+        default: {
+            const raw = error?.message || '';
+            if (raw.includes('auth/user-disabled')) {
+                return 'This account has been disabled. Please choose another username or create a new account.';
+            }
+            if (raw.includes('auth/invalid-credential') || raw.includes('auth/wrong-password') || raw.includes('auth/user-not-found')) {
+                return "Invalid username or password. If you haven't created an account yet, please use the Register tab!";
+            }
+            if (raw.includes('auth/email-already-in-use')) {
+                return 'This username is already taken. Please login or choose another username.';
+            }
+            if (raw.includes('auth/weak-password')) {
+                return 'Password is too weak. Please choose a password with at least 6 characters.';
+            }
+            if (raw.includes('auth/too-many-requests')) {
+                return 'Too many failed login attempts. Please wait a moment and try again.';
+            }
+            if (raw.includes('auth/network-request-failed')) {
+                return 'Network error. Please check your internet connection.';
+            }
+            if (raw.startsWith('Firebase:') || raw.includes('(auth/')) {
+                return 'Authentication failed. Please check your credentials and try again.';
+            }
+            return raw || 'Authentication failed. Please check your credentials and try again.';
+        }
     }
 }
 
@@ -450,27 +479,34 @@ export async function loginUser(name, password) {
         }
 
         const legacyMatch = legacyUsers.find(
-            u => u.name && u.name.toLowerCase().trim() === name.toLowerCase().trim() && u.password === password
+            u => u.name && u.name.toLowerCase().trim() === name.toLowerCase().trim() && (u.password === password || normalizePassword(u.password) === safePassword)
         );
 
         if (legacyMatch) {
             try {
                 return await registerUser(name, password, legacyMatch.avatar || 'kris');
-            } catch (regErr) {
-                throw new Error(regErr.message || getFriendlyAuthErrorMessage(authErr), { cause: regErr });
+            } catch {
+                throw new Error(getFriendlyAuthErrorMessage(authErr), { cause: authErr });
             }
         }
 
-        // Also check if deltasong_active_user matches name
+        // Also check if deltasong_active_user matches name AND password
         try {
             const activeRaw = localStorage.getItem('deltasong_active_user');
             if (activeRaw) {
                 const activeParsed = JSON.parse(activeRaw);
-                if (activeParsed.name && activeParsed.name.toLowerCase().trim() === name.toLowerCase().trim()) {
-                    return await registerUser(name, password, activeParsed.avatar || 'kris');
+                const nameMatches = activeParsed.name && activeParsed.name.toLowerCase().trim() === name.toLowerCase().trim();
+                const passMatches = activeParsed.password && (activeParsed.password === password || activeParsed.password === safePassword || normalizePassword(activeParsed.password) === safePassword);
+                if (nameMatches && passMatches) {
+                    try {
+                        return await registerUser(name, password, activeParsed.avatar || 'kris');
+                    } catch {
+                        throw new Error(getFriendlyAuthErrorMessage(authErr), { cause: authErr });
+                    }
                 }
             }
-        } catch {
+        } catch (e) {
+            if (e.message && !e.message.includes('JSON')) throw e;
             // ignore local parse error
         }
 
