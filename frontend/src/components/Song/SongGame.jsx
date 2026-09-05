@@ -150,6 +150,7 @@ export default function SongGame({
     const [flashPlay, setFlashPlay] = useState(false);
     const [flashInput, setFlashInput] = useState(false);
     const inputRef = useRef(null);
+    const recentRushTitles = useRef([]);
 
     const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
 
@@ -158,7 +159,10 @@ export default function SongGame({
         setIsConfirmingGiveUp(false);
 
         if (mode === 'rush') {
-            setRushState(createSongRushGame(deltaruneSoundtrack));
+            // Track songs from the previous run to avoid immediate consecutive repeats
+            const previousTitles = rushState?.stages?.map(s => s.target?.title).filter(Boolean) || [];
+            recentRushTitles.current = [...recentRushTitles.current, ...previousTitles].slice(-20);
+            setRushState(createSongRushGame(deltaruneSoundtrack, Math.random, recentRushTitles.current));
             setSoulColors(getRandomSoulColors(RUSH_LIVES));
         } else {
             setGameState(createSongGame(deltaruneSoundtrack));
@@ -180,7 +184,7 @@ export default function SongGame({
         setTimeout(() => {
             inputRef.current?.focus();
         }, 50);
-    }, [mode]);
+    }, [mode, rushState?.stages]);
 
     const handleModeToggle = (newMode) => {
         if (newMode === mode) return;
@@ -198,7 +202,10 @@ export default function SongGame({
         setRushHintsUsed({});
 
         if (newMode === 'rush') {
-            setRushState(createSongRushGame(deltaruneSoundtrack));
+            // Track songs from the previous run to avoid immediate consecutive repeats
+            const previousTitles = rushState?.stages?.map(s => s.target?.title).filter(Boolean) || [];
+            recentRushTitles.current = [...recentRushTitles.current, ...previousTitles].slice(-20);
+            setRushState(createSongRushGame(deltaruneSoundtrack, Math.random, recentRushTitles.current));
             setSoulColors(getRandomSoulColors(RUSH_LIVES));
         } else {
             setGameState(createSongGame(deltaruneSoundtrack));
@@ -238,7 +245,9 @@ export default function SongGame({
 
     const isRush = !isDaily && mode === 'rush';
     const activeGameState = isDaily ? dailyGameState : gameState;
-    const activeGuesses = isDaily ? dailyGuesses : guesses;
+    const activeGuesses = isDaily 
+        ? dailyGuesses 
+        : (isRush ? (rushState?.stages[rushState.currentStageIndex]?.guesses || []) : guesses);
     const activeGuessedTitles = isDaily 
         ? (dailyGameState?.guessedTitles || []) 
         : (isRush ? (rushState?.stages[rushState.currentStageIndex]?.guessedTitles || []) : guessedTitles);
@@ -383,6 +392,8 @@ export default function SongGame({
 
                 setRushState(result.nextState);
                 setHasPlayed(false);
+                // Reset local guesses so the next stage starts with a clean history
+                setGuesses([]);
 
                 if (result.isRushClear) {
                     addPoints(result.nextState.totalScore, 'songs');
@@ -427,6 +438,8 @@ export default function SongGame({
         setRushState(next);
         setHasPlayed(false);
         setInput('');
+        // Clear local guesses for the skipped track
+        setGuesses([]);
         setTimeout(() => {
             inputRef.current?.focus();
         }, 60);
