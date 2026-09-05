@@ -10,6 +10,7 @@ import {
 import { notifications } from '@mantine/notifications';
 import { auth, db } from '../config/firebase';
 import { RANK_TIERS } from '../config/Constants';
+import { getLocalDateString } from '../core/dailySeed';
 
 function getInitialLocalRankData() {
     const fallback = {
@@ -172,7 +173,7 @@ export async function addPoints(amount, gameType, isDailyWin = true) {
 
         try {
             const userRef = doc(db, 'users', user.uid);
-            const todayStr = new Date().toISOString().split('T')[0];
+            const todayStr = getLocalDateString();
 
             // If daily win, create daily record document to prevent re-farming
             if (gameType === 'daily' && isDailyWin) {

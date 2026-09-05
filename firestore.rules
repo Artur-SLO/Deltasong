@@ -40,7 +40,7 @@ service cloud.firestore {
 
     // Rate-limiting / Cooldown validation: prevents automated rapid script flooding
     function isCooldownRespected(lastUpdatedAt) {
-      return request.time >= lastUpdatedAt + duration.value(2, 's');
+      return !(lastUpdatedAt is timestamp) || request.time >= lastUpdatedAt + duration.value(2, 's');
     }
 
     // Anti-Spoofing: enforces score delta within valid Deltasong boundaries (-100 to +500 pts)
