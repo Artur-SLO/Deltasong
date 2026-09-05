@@ -6,6 +6,7 @@ import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import ProfileDashboard from './ProfileDashboard';
 import gersonBoomImage from '../../assets/images/gerson-boom.gif';
+import { IconBrandGithub } from '@tabler/icons-react';
 
 export default function AccountPage() {
     const [activeUser, setActiveUser] = useState(() => getActiveUser());
@@ -24,6 +25,20 @@ export default function AccountPage() {
 
     return (
         <Container size={activeUser ? 'sm' : 'xs'} className={classes.container}>
+            {/* Floating GitHub Mascot on the left */}
+            <a
+                href="https://github.com/Artur-SLO/Deltasong"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.githubMascotLink}
+                title="View Deltasong repository on GitHub"
+            >
+                <div className={classes.mascotBubble}>GitHub ↗</div>
+                <div className={classes.mascotOrb}>
+                    <IconBrandGithub size={36} stroke={1.8} />
+                </div>
+            </a>
+
             <Paper shadow="md" p="xl" radius="md" withBorder className={classes.paper}>
                 {activeUser ? (
                     <ProfileDashboard activeUser={activeUser} />
