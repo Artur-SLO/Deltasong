@@ -24,7 +24,8 @@ import {
     submitSongGuess,
     saveDailyGame,
     giveUpDaily,
-    calculateStagePoints
+    calculateStagePoints,
+    getDailyStorageKey
 } from '../../core/dailyGame.js';
 import { getLocalDateString } from '../../core/dailySeed.js';
 import { compareCharacters } from '../../core/Character.js';
@@ -57,6 +58,7 @@ function formatDuration(ms) {
 
 export default function DailyGame() {
     const simulatedDate = getSimulatedOrLocalDate();
+    const [currentUserId, setCurrentUserId] = useState(() => auth.currentUser?.uid || 'guest');
     const [gameState, setGameState] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [extraSeconds, setExtraSeconds] = useState(0);
@@ -66,6 +68,21 @@ export default function DailyGame() {
     const currentStep = gameState?.currentStep;
 
     const { setIsHelpWidgetHidden } = useContext(HelpWidgetContext);
+
+    // Track active user account to ensure daily progress is isolated per account
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setCurrentUserId(user?.uid || 'guest');
+        });
+        const handleAuthChange = () => {
+            setCurrentUserId(auth.currentUser?.uid || 'guest');
+        };
+        window.addEventListener('deltasong_auth_change', handleAuthChange);
+        return () => {
+            unsubscribe();
+            window.removeEventListener('deltasong_auth_change', handleAuthChange);
+        };
+    }, []);
 
     useEffect(() => {
         if (setIsHelpWidgetHidden) {
@@ -84,13 +101,14 @@ export default function DailyGame() {
         latestElapsedTimesRef.current = gameState.elapsedTimes || {};
     }
 
-    // Load or create game status for the target date
+    // Load or create game status for the target date and current account
     useEffect(() => {
         const game = loadOrCreateDailyGame(
             simulatedDate,
             deltaruneCharacters,
             deltaruneItems,
-            deltaruneSoundtrack
+            deltaruneSoundtrack,
+            currentUserId
         );
         setGameState(game);
 
@@ -100,14 +118,14 @@ export default function DailyGame() {
         } else {
             setIsModalOpen(false);
             // Check if user completed this daily challenge on another device via Firestore
-            if (auth.currentUser) {
-                getDoc(doc(db, 'users', auth.currentUser.uid, 'daily_records', simulatedDate))
+            if (currentUserId !== 'guest') {
+                getDoc(doc(db, 'users', currentUserId, 'daily_records', simulatedDate))
                     .then(snap => {
                         if (snap.exists() && snap.data()?.won) {
                             setGameState(prev => {
                                 if (!prev || prev.status !== 'playing') return prev;
-                                const syncd = { ...prev, status: 'victory', currentStep: 'completed' };
-                                saveDailyGame(syncd);
+                                const syncd = { ...prev, status: 'victory', currentStep: 'completed', userId: currentUserId };
+                                saveDailyGame(syncd, currentUserId);
                                 return syncd;
                             });
                             setIsModalOpen(true);
@@ -117,7 +135,7 @@ export default function DailyGame() {
             }
         }
         setExtraSeconds(0);
-    }, [simulatedDate]);
+    }, [simulatedDate, currentUserId]);
 
     // Track active playing timer
     useEffect(() => {
@@ -152,7 +170,8 @@ export default function DailyGame() {
                 simulatedDate,
                 deltaruneCharacters,
                 deltaruneItems,
-                deltaruneSoundtrack
+                deltaruneSoundtrack,
+                currentUserId
             );
             if (latestState && latestState.status === 'playing') {
                 const isStageCompleted = latestState.stageResults?.[stepKey] === 'victory' || latestState.stageResults?.[stepKey] === 'defeat';
@@ -164,11 +183,11 @@ export default function DailyGame() {
                     latestState.elapsedTime = (latestState.elapsedTimes.characters || 0) +
                         (latestState.elapsedTimes.items || 0) +
                         (latestState.elapsedTimes.songs || 0);
-                    saveDailyGame(latestState);
+                    saveDailyGame(latestState, currentUserId);
                 }
             }
         };
-    }, [gameState?.status, currentStep, simulatedDate]);
+    }, [gameState?.status, currentStep, simulatedDate, currentUserId]);
 
     // Attach developer tools to the window scope for clean testing
     useEffect(() => {
@@ -176,18 +195,19 @@ export default function DailyGame() {
             window.deltasongDev = {
                 reset: () => {
                     const dateStr = getSimulatedOrLocalDate();
-                    const key = `daily_status_${dateStr}`;
+                    const key = getDailyStorageKey(dateStr, currentUserId);
                     localStorage.removeItem(key);
                     const fresh = loadOrCreateDailyGame(
                         dateStr,
                         deltaruneCharacters,
                         deltaruneItems,
-                        deltaruneSoundtrack
+                        deltaruneSoundtrack,
+                        currentUserId
                     );
                     setGameState(fresh);
                     setExtraSeconds(0);
                     setIsModalOpen(false);
-                    console.log(`[Dev] Reset daily challenge status for date: ${dateStr}`);
+                    console.log(`[Dev] Reset daily challenge status for date: ${dateStr} and user: ${currentUserId}`);
                 },
                 skipStage: () => {
                     setGameState(prev => {

@@ -5,10 +5,26 @@ import { compareCharacters } from './Character.js';
 import { createPRNG } from './dailySeed.js';
 import { DAILY_LIMITS, RANK_POINTS } from '../config/Constants.js';
 
+import { auth } from '../config/firebase.js';
+
 const STORAGE_KEY_PREFIX = 'daily_status_';
 
-export function getDailyStorageKey(dateStr) {
-    return `${STORAGE_KEY_PREFIX}${dateStr}`;
+export function getDailyStorageKey(dateStr, userId = null) {
+    const resolvedUid = userId || auth.currentUser?.uid || 'guest';
+    return `${STORAGE_KEY_PREFIX}${resolvedUid}_${dateStr}`;
+}
+
+export function hasPlayedDaily(dateStr, userId = null) {
+    if (!dateStr) return false;
+    const key = getDailyStorageKey(dateStr, userId);
+    try {
+        const stored = localStorage.getItem(key);
+        if (!stored) return false;
+        const parsed = JSON.parse(stored);
+        return parsed && (parsed.status === 'victory' || parsed.status === 'defeat');
+    } catch {
+        return false;
+    }
 }
 
 export function calculateStagePoints(attempts, durationMs, isVictory, modeType, hintsUsed = 0) {
@@ -47,14 +63,30 @@ export function getNextIncompleteStep(currentStep, stageResults) {
     return 'completed';
 }
 
-export function loadOrCreateDailyGame(dateStr, deltaruneCharacters, deltaruneItems, deltaruneSoundtrack) {
-    const key = getDailyStorageKey(dateStr);
-    const stored = localStorage.getItem(key);
+export function loadOrCreateDailyGame(dateStr, deltaruneCharacters, deltaruneItems, deltaruneSoundtrack, userId = null) {
+    const resolvedUid = userId || auth.currentUser?.uid || 'guest';
+    const key = getDailyStorageKey(dateStr, resolvedUid);
+    let stored = localStorage.getItem(key);
+
+    // Fallback: if user is logged in and had played previously under the un-scoped legacy key, migrate it
+    if (!stored && resolvedUid !== 'guest') {
+        const legacyKey = `${STORAGE_KEY_PREFIX}${dateStr}`;
+        const legacyStored = localStorage.getItem(legacyKey);
+        if (legacyStored) {
+            stored = legacyStored;
+            try {
+                localStorage.setItem(key, legacyStored);
+            } catch {
+                // ignore storage error
+            }
+        }
+    }
 
     if (stored) {
         try {
             const parsed = JSON.parse(stored);
-                        if (parsed.guesses) {
+            parsed.userId = resolvedUid;
+            if (parsed.guesses) {
                 if (parsed.guesses.characters && parsed.guesses.characters.length > DAILY_LIMITS.characters) {
                     parsed.guesses.characters = parsed.guesses.characters.slice(0, DAILY_LIMITS.characters);
                 }
@@ -95,7 +127,7 @@ export function loadOrCreateDailyGame(dateStr, deltaruneCharacters, deltaruneIte
                 parsed.status = 'playing';
                 parsed.endTime = null;
                 parsed.currentStep = getNextIncompleteStep(parsed.currentStep || 1, parsed.stageResults);
-                saveDailyGame(parsed);
+                saveDailyGame(parsed, resolvedUid);
             }
 
             return parsed;
@@ -111,6 +143,7 @@ export function loadOrCreateDailyGame(dateStr, deltaruneCharacters, deltaruneIte
 
     const initialGameState = {
         date: dateStr,
+        userId: resolvedUid,
         currentStep: 1, // 1: Characters, 2: Items, 3: Song
         status: "playing", // "playing", "victory", "defeat"
         startTime: Date.now(),
@@ -141,14 +174,19 @@ export function loadOrCreateDailyGame(dateStr, deltaruneCharacters, deltaruneIte
         elapsedTime: 0
     };
 
-    saveDailyGame(initialGameState);
+    saveDailyGame(initialGameState, resolvedUid);
     return initialGameState;
 }
 
-export function saveDailyGame(gameState) {
+export function saveDailyGame(gameState, userId = null) {
     if (!gameState || !gameState.date) return;
-    const key = getDailyStorageKey(gameState.date);
-    localStorage.setItem(key, JSON.stringify(gameState));
+    const resolvedUid = userId || gameState.userId || auth.currentUser?.uid || 'guest';
+    const key = getDailyStorageKey(gameState.date, resolvedUid);
+    try {
+        localStorage.setItem(key, JSON.stringify({ ...gameState, userId: resolvedUid }));
+    } catch (e) {
+        console.error("Failed to save daily game state to localStorage", e);
+    }
 }
 
 export function submitCharacterGuess(gameState, guessName) {

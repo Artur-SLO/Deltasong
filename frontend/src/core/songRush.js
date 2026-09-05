@@ -1,4 +1,4 @@
-import { compareSongs } from './songGame.js';
+import { compareSongs, calculateRandomStartTime } from './songGame.js';
 
 import { 
     RUSH_STAGES, 
@@ -11,46 +11,65 @@ export {
     RUSH_STAGES, 
     RUSH_POINTS, 
     RUSH_LIVES, 
-    RUSH_CURATED_POOLS 
+    RUSH_CURATED_POOLS,
+    calculateRandomStartTime
 };
 
-function pickUniqueSong(soundtrack, poolTitles, usedTitles, randomFn = Math.random) {
-    const soundtrackMap = new Map(soundtrack.map(s => [s.title.toUpperCase(), s]));
-    const availablePool = poolTitles.filter(t => {
-        const upper = t.toUpperCase();
-        return soundtrackMap.has(upper) && !usedTitles.has(upper);
-    });
+function normalizeTitle(title) {
+    return (title || '').toUpperCase().trim();
+}
 
-    let chosenTitle = null;
+function pickUniqueSong(soundtrack, poolTitles, usedTitles, usedUrls = null, randomFn = Math.random) {
+    const isSongUnused = (s) => {
+        if (!s || !s.title) return false;
+        const normTitle = normalizeTitle(s.title);
+        const normUrl = (s.url || '').trim();
+        if (usedTitles && usedTitles.has(normTitle)) return false;
+        if (usedUrls && normUrl && usedUrls.has(normUrl)) return false;
+        return true;
+    };
+
+    const soundtrackMap = new Map(soundtrack.map(s => [normalizeTitle(s.title), s]));
+    const availablePool = poolTitles
+        .map(t => soundtrackMap.get(normalizeTitle(t)))
+        .filter(s => s && isSongUnused(s));
+
+    let chosenSong;
     if (availablePool.length > 0) {
-        chosenTitle = availablePool[Math.floor(randomFn() * availablePool.length)];
+        chosenSong = availablePool[Math.floor(randomFn() * availablePool.length)];
     } else {
-        // Fallback to any unused song from entire soundtrack
-        const availableAll = soundtrack.filter(s => !usedTitles.has(s.title.toUpperCase()));
+        // Fallback to any unused song from the entire soundtrack
+        const availableAll = soundtrack.filter(s => isSongUnused(s));
         if (availableAll.length > 0) {
-            chosenTitle = availableAll[Math.floor(randomFn() * availableAll.length)].title;
+            chosenSong = availableAll[Math.floor(randomFn() * availableAll.length)];
         } else {
-            chosenTitle = soundtrack[Math.floor(randomFn() * soundtrack.length)].title;
+            // Extreme fallback if entire catalog was exhausted
+            chosenSong = soundtrack[Math.floor(randomFn() * soundtrack.length)];
         }
     }
 
-    const song = soundtrackMap.get(chosenTitle.toUpperCase());
-    usedTitles.add(song.title.toUpperCase());
-    return song;
-}
-
-export function calculateRandomStartTime(target, durationLimit = 5.0, randomFn = Math.random) {
-    if (!target || !target.duration_seconds || target.duration_seconds <= durationLimit) {
-        return 0;
+    if (chosenSong) {
+        if (usedTitles) usedTitles.add(normalizeTitle(chosenSong.title));
+        if (usedUrls && chosenSong.url) usedUrls.add(chosenSong.url.trim());
     }
-    return Math.floor(randomFn() * (target.duration_seconds - durationLimit));
+    return chosenSong;
 }
 
-export function createSongRushGame(soundtrack, randomFn = Math.random) {
-    const usedTitles = new Set();
+
+export function createSongRushGame(soundtrack, randomFn = Math.random, recentTitles = []) {
+    const usedTitles = new Set((recentTitles || []).map(normalizeTitle));
+    const usedUrls = new Set();
+
+    // If recentTitles over-restricts the Easy/Medium pool, clear recent history
+    const easyPool = RUSH_CURATED_POOLS.easy || [];
+    const availableEasy = easyPool.filter(t => !usedTitles.has(normalizeTitle(t)));
+    if (availableEasy.length < RUSH_STAGES.length * 2) {
+        usedTitles.clear();
+    }
+
     const stages = RUSH_STAGES.map((stageConfig, index) => {
         const pool = RUSH_CURATED_POOLS[stageConfig.id] || [];
-        const song = pickUniqueSong(soundtrack, pool, usedTitles, randomFn);
+        const song = pickUniqueSong(soundtrack, pool, usedTitles, usedUrls, randomFn);
         const startTime = calculateRandomStartTime(song, stageConfig.duration, randomFn);
 
         return {
@@ -65,6 +84,7 @@ export function createSongRushGame(soundtrack, randomFn = Math.random) {
             status: index === 0 ? 'active' : 'pending',
             attempts: 0,
             guessedTitles: [],
+            guesses: [],
             speedBonus: false,
             earnedPoints: 0
         };
@@ -78,6 +98,7 @@ export function createSongRushGame(soundtrack, randomFn = Math.random) {
         totalScore: 0,
         completionBonus: 0,
         usedTitles: Array.from(usedTitles),
+        usedUrls: Array.from(usedUrls),
         stageStartTime: Date.now()
     };
 }
@@ -86,17 +107,18 @@ export function makeSongRushGuess(rushState, title, soundtrack, now = Date.now()
     if (!title || !title.trim()) throw new Error("Empty title");
     if (rushState.status !== 'playing') return { nextState: rushState, isCorrect: false };
 
-    const formattedTitle = title.toUpperCase().trim();
+    const formattedTitle = normalizeTitle(title);
     const currentStage = rushState.stages[rushState.currentStageIndex];
     if (!currentStage) throw new Error("Invalid stage");
 
-    const guess = soundtrack.find(s => s.title.toUpperCase() === formattedTitle);
+    const guess = soundtrack.find(s => normalizeTitle(s.title) === formattedTitle);
     if (!guess) throw new Error("Non-existent song");
     if (currentStage.guessedTitles.includes(formattedTitle)) {
         throw new Error("Song already guessed!");
     }
 
-    const isVictory = formattedTitle === currentStage.target.title.toUpperCase();
+    const isVictory = formattedTitle === normalizeTitle(currentStage.target.title);
+    const comparison = compareSongs(currentStage.target, guess);
 
     if (isVictory) {
         const elapsedSeconds = (now - (rushState.stageStartTime || now)) / 1000;
@@ -111,13 +133,15 @@ export function makeSongRushGuess(rushState, title, soundtrack, now = Date.now()
                     status: 'cleared',
                     speedBonus: isSpeedBonus,
                     earnedPoints: stagePoints,
-                    guessedTitles: [...stg.guessedTitles, formattedTitle]
+                    guessedTitles: [...stg.guessedTitles, formattedTitle],
+                    guesses: [comparison, ...(stg.guesses || [])]
                 };
             }
             if (idx === rushState.currentStageIndex + 1) {
                 return {
                     ...stg,
-                    status: 'active'
+                    status: 'active',
+                    guesses: []
                 };
             }
             return stg;
@@ -154,13 +178,13 @@ export function makeSongRushGuess(rushState, title, soundtrack, now = Date.now()
             pointsAwarded: stagePoints
         };
     } else {
-        const comparison = compareSongs(currentStage.target, guess);
         const updatedStages = rushState.stages.map((stg, idx) => {
             if (idx === rushState.currentStageIndex) {
                 return {
                     ...stg,
                     attempts: stg.attempts + 1,
-                    guessedTitles: [...stg.guessedTitles, formattedTitle]
+                    guessedTitles: [...stg.guessedTitles, formattedTitle],
+                    guesses: [comparison, ...(stg.guesses || [])]
                 };
             }
             return stg;
@@ -187,9 +211,21 @@ export function skipSongRushStage(rushState, soundtrack, randomFn = Math.random)
     const currentStage = rushState.stages[rushState.currentStageIndex];
     if (!currentStage) return rushState;
 
-    const usedTitlesSet = new Set(rushState.usedTitles);
+    const usedTitlesSet = new Set((rushState.usedTitles || []).map(normalizeTitle));
+    const usedUrlsSet = new Set((rushState.usedUrls || []).map(u => (u || '').trim()));
+
+    // Ensure all songs from existing stages (active, past, upcoming) are marked as used
+    rushState.stages.forEach(stg => {
+        if (stg.target?.title) {
+            usedTitlesSet.add(normalizeTitle(stg.target.title));
+        }
+        if (stg.target?.url) {
+            usedUrlsSet.add(stg.target.url.trim());
+        }
+    });
+
     const pool = RUSH_CURATED_POOLS[currentStage.id] || [];
-    const newSong = pickUniqueSong(soundtrack, pool, usedTitlesSet, randomFn);
+    const newSong = pickUniqueSong(soundtrack, pool, usedTitlesSet, usedUrlsSet, randomFn);
     const newStartTime = calculateRandomStartTime(newSong, currentStage.duration, randomFn);
 
     const updatedStages = rushState.stages.map((stg, idx) => {
@@ -199,7 +235,8 @@ export function skipSongRushStage(rushState, soundtrack, randomFn = Math.random)
                 target: newSong,
                 startTime: newStartTime,
                 attempts: 0,
-                guessedTitles: []
+                guessedTitles: [],
+                guesses: []
             };
         }
         return stg;
@@ -212,6 +249,7 @@ export function skipSongRushStage(rushState, soundtrack, randomFn = Math.random)
         stages: updatedStages,
         lives: newLives,
         usedTitles: Array.from(usedTitlesSet),
+        usedUrls: Array.from(usedUrlsSet),
         stageStartTime: Date.now()
     };
 }

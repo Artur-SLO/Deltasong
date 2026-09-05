@@ -8,8 +8,8 @@ import {
 import sethAquaGif from '../../assets/images/seth&aqua.gif';
 
 export default function GameModeCard({ title, description, badge, color, onPlay, isDaily }) {
-    const hoverColor = GAME_MODE_HOVER_COLORS[color]
-    const shadowColor = GAME_MODE_SHADOW_COLORS[color]
+    const hoverColor = GAME_MODE_HOVER_COLORS[color];
+    const shadowColor = GAME_MODE_SHADOW_COLORS[color];
 
     if (isDaily) {
         return (
