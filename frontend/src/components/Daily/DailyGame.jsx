@@ -12,6 +12,8 @@ import lancerGif from '../../assets/images/lancer.gif';
 import { addPoints, getRankData } from '../../core/rankSystem.js';
 import { RANK_POINTS, DAILY_LIMITS } from '../../config/Constants.js';
 import { HelpWidgetContext } from '../../utils/HelpWidgetContext.js';
+import { auth, db } from '../../config/firebase.js';
+import { doc, getDoc } from 'firebase/firestore';
 
 
 // Core engines & utilities
@@ -97,6 +99,22 @@ export default function DailyGame() {
             setIsModalOpen(true);
         } else {
             setIsModalOpen(false);
+            // Check if user completed this daily challenge on another device via Firestore
+            if (auth.currentUser) {
+                getDoc(doc(db, 'users', auth.currentUser.uid, 'daily_records', simulatedDate))
+                    .then(snap => {
+                        if (snap.exists() && snap.data()?.won) {
+                            setGameState(prev => {
+                                if (!prev || prev.status !== 'playing') return prev;
+                                const syncd = { ...prev, status: 'victory', currentStep: 'completed' };
+                                saveDailyGame(syncd);
+                                return syncd;
+                            });
+                            setIsModalOpen(true);
+                        }
+                    })
+                    .catch(() => {});
+            }
         }
         setExtraSeconds(0);
     }, [simulatedDate]);

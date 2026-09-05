@@ -186,6 +186,7 @@ export async function addPoints(amount, gameType, isDailyWin = true) {
             // Update user document
             await updateDoc(userRef, {
                 totalScore: newScore,
+                streak: cachedRankData.streak || 1,
                 stats: cachedRankData.stats,
                 updatedAt: serverTimestamp()
             });
