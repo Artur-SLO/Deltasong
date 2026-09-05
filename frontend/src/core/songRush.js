@@ -55,7 +55,6 @@ function pickUniqueSong(soundtrack, poolTitles, usedTitles, usedUrls = null, ran
     return chosenSong;
 }
 
-
 export function createSongRushGame(soundtrack, randomFn = Math.random, recentTitles = []) {
     const usedTitles = new Set((recentTitles || []).map(normalizeTitle));
     const usedUrls = new Set();
