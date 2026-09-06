@@ -50,8 +50,8 @@ export default function Guess({ character, widths, totalColumns }) {
                         }
 
                         content = (
-                            <div className={styles.guessContent}>
-                                <Text size="sm" fw="bold">
+                            <div className={`${styles.guessContent} ${col.key === 'first_appearance' ? styles.appearanceContent : ''}`}>
+                                <Text size="sm" fw="bold" className={col.key === 'first_appearance' ? styles.appearanceText : ''}>
                                     {val}
                                 </Text>
                                 {showHint === 'higher' && <IconArrowUp size={16} />}
@@ -71,7 +71,7 @@ export default function Guess({ character, widths, totalColumns }) {
 
                 return (
                     <Grid.Col key={col.key} span={col.span}>
-                        <GridCell bg={cellBg} className={styles[`flipCell${index}`]}>
+                        <GridCell bg={cellBg} className={`${styles[`flipCell${index}`]} ${col.key === 'first_appearance' ? styles.appearanceCell : ''}`}>
                             {content}
                         </GridCell>
                     </Grid.Col>

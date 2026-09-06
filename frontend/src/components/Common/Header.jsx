@@ -10,28 +10,39 @@ import { LINKS } from '../../config/Constants';
 
 export default function Header() {
     const location = useLocation();
-    const [activeUser, setActiveUser] = useState(null);
+    const [activeUser, setActiveUser] = useState(() => getActiveUser());
     const [mobileOpened, setMobileOpened] = useState(false);
 
     useEffect(() => {
-        // Update streak if applicable, then fetch active user
-        updateActiveUserStreak();
-        setActiveUser(getActiveUser());
-
-        const handleAuthChange = () => {
-            setActiveUser(getActiveUser());
+        const handleSync = () => {
+            const user = getActiveUser();
+            setActiveUser(user ? { ...user } : null);
         };
 
-        window.addEventListener('deltasong_auth_change', handleAuthChange);
+        handleSync();
+
+        window.addEventListener('deltasong_auth_change', handleSync);
+        window.addEventListener('deltasong_rank_change', handleSync);
         return () => {
-            window.removeEventListener('deltasong_auth_change', handleAuthChange);
+            window.removeEventListener('deltasong_auth_change', handleSync);
+            window.removeEventListener('deltasong_rank_change', handleSync);
         };
     }, []);
 
-    // Close mobile menu on route change
+    // Close mobile menu on route change or when resized to desktop
     useEffect(() => {
         setMobileOpened(false);
     }, [location.pathname]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 960 && window.innerHeight > 550) {
+                setMobileOpened(false);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const items = LINKS.map((link) => (
         <Link
@@ -49,21 +60,21 @@ export default function Header() {
             <header className={classes.header}>
                 <Container fluid className={classes.inner}>
 
-                    <Group gap="xs" align="center">
+                    <div className={classes.brandGroup}>
                         <Burger
                             opened={mobileOpened}
                             onClick={() => setMobileOpened((o) => !o)}
-                            hiddenFrom="xs"
                             size="sm"
                             color="var(--color-text-primary)"
                             className={classes.burger}
+                            aria-label="Toggle navigation"
                         />
                         <Link to="/" className={classes.linkWrapper}>
                             <Title order={3} className={classes.title}>deltAsong</Title>
                         </Link>
-                    </Group>
+                    </div>
 
-                    <Group gap={3} visibleFrom="xs" className={classes.subjects}>
+                    <Group gap={3} className={classes.subjects}>
                         {items}
                     </Group>
 
@@ -93,8 +104,8 @@ export default function Header() {
                 opened={mobileOpened}
                 onClose={() => setMobileOpened(false)}
                 size="75%"
+                transitionProps={{ duration: 0 }}
                 title={<Title order={4} className={classes.title}>deltAsong</Title>}
-                hiddenFrom="xs"
                 classNames={{
                     content: classes.drawerContent,
                     header: classes.drawerHeader,

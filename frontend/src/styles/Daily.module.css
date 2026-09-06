@@ -21,13 +21,7 @@
     position: relative;
 }
 
-@media (max-width: 600px) {
-    .stepperTrack {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--mantine-spacing-sm);
-    }
-}
+
 
 .step {
     display: flex;
@@ -132,11 +126,16 @@
     opacity: 0.8;
 }
 
-/* Timer styles */
+.dailyInfoBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--mantine-spacing-xs);
+    margin: var(--mantine-spacing-md) 0;
+    width: 100%;
+}
+
 .timerContainer {
-    position: absolute;
-    top: 28px;
-    left: var(--mantine-spacing-md);
     display: flex;
     align-items: center;
     gap: var(--mantine-spacing-xs);
@@ -170,6 +169,21 @@
     position: absolute;
     top: var(--mantine-spacing-md);
     right: var(--mantine-spacing-md);
+    color: #ff78bd !important;
+    background-color: rgba(255, 31, 142, 0.08) !important;
+    border: 1.5px solid rgba(255, 31, 142, 0.45) !important;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 8px rgba(255, 31, 142, 0.15) !important;
+    transition: all 0.2s ease !important;
+}
+
+.giveUpButton:hover,
+.giveUpButton:focus {
+    background-color: rgba(255, 31, 142, 0.22) !important;
+    border-color: #ff1f8e !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(255, 31, 142, 0.5) !important;
+    transform: translateY(-2px);
 }
 
 /* Modals & Content */
@@ -459,9 +473,6 @@
 }
 
 .attemptsContainer {
-    position: absolute;
-    top: 28px;
-    right: var(--mantine-spacing-md);
     display: flex;
     align-items: center;
     gap: var(--mantine-spacing-xs);
@@ -485,47 +496,106 @@
 
 /* Tablet */
 @media (max-width: 768px) {
+    .container {
+        margin-top: var(--mantine-spacing-sm) !important;
+    }
+
     .stepperContainer {
-        max-width: 100%;
-        padding: var(--mantine-spacing-sm);
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 6px 8px !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        scrollbar-width: none !important;
+        box-sizing: border-box !important;
     }
 
-    .stepIcon {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
+    .stepperContainer::-webkit-scrollbar {
+        display: none !important;
     }
 
-    .stepLabel {
-        font-size: 0.8rem;
-    }
-
-    .stepStatusText {
-        font-size: 0.65rem;
+    .stepperTrack {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 6px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 0 !important;
     }
 
     .step {
-        padding: var(--size-3) var(--mantine-spacing-xs);
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        padding: 6px 6px !important;
+        gap: 6px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        border-radius: var(--mantine-radius-sm) !important;
     }
 
-    .timerContainer {
-        position: static;
-        margin: 0 auto var(--mantine-spacing-sm) auto;
-        width: fit-content;
+    .stepIcon {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        font-size: 13px !important;
+        flex-shrink: 0 !important;
     }
 
+    .stepIcon svg {
+        width: 15px !important;
+        height: 15px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .stepLabel {
+        font-size: 0.74rem !important;
+        white-space: nowrap !important;
+        letter-spacing: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .stepStatusText {
+        font-size: 0.58rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+    }
+
+    .dailyInfoBar {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin: 6px auto !important;
+        width: 100% !important;
+    }
+
+    .timerContainer,
     .attemptsContainer {
-        position: static;
-        margin: 0 auto var(--mantine-spacing-sm) auto;
+        position: static !important;
+        margin: 0 !important;
+        padding: 4px 10px !important;
+        gap: 6px !important;
         width: fit-content;
     }
 
     .giveUpButton {
-        position: relative;
-        top: auto;
-        right: auto;
-        align-self: flex-end;
-        margin-bottom: var(--mantine-spacing-xs);
+        position: static !important;
+        top: auto !important;
+        right: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        align-self: center !important;
+        margin: 8px auto 14px auto !important;
+        border-radius: 999px !important;
+        font-size: 0.75rem !important;
+        min-height: 36px !important;
+        padding: 4px 18px !important;
+        opacity: 0.85 !important;
     }
 
     .resultsCard {
@@ -564,35 +634,46 @@
 
 /* Smartphone */
 @media (max-width: 480px) {
+    .step {
+        flex: 0 0 145px;
+        min-width: 145px;
+        padding: 6px 10px;
+    }
+
     .stepIcon {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        font-size: 13px;
     }
 
     .stepLabel {
-        font-size: 0.7rem;
+        font-size: 0.78rem;
     }
 
-    .step {
-        padding: var(--size-2) var(--size-3);
-        gap: var(--mantine-spacing-xs);
+    .stepStatusText {
+        font-size: 0.62rem;
+    }
+
+    .giveUpButton {
+        min-height: 34px !important;
+        font-size: 0.72rem !important;
+        margin: 6px auto 12px auto !important;
     }
 
     .timerContainer {
         padding: var(--size-3) var(--mantine-spacing-sm);
     }
 
-    .timerText {
-        font-size: var(--mantine-font-size-sm);
-    }
-
+    .timerContainer,
     .attemptsContainer {
-        padding: var(--size-3) var(--mantine-spacing-sm);
+        padding: 4px 8px !important;
+        gap: 5px !important;
     }
 
+    .timerText,
     .attemptsText {
-        font-size: var(--mantine-font-size-md);
+        font-size: var(--mantine-font-size-sm) !important;
     }
 
     .mascotContainer img {
@@ -625,13 +706,46 @@
         font-size: 1rem;
     }
 
+    .stepperContainer {
+        padding: 4px 6px !important;
+        border-radius: var(--mantine-radius-md) !important;
+    }
+
+    .stepperTrack {
+        gap: 4px !important;
+    }
+
+    .step {
+        padding: 5px 3px !important;
+        gap: 4px !important;
+    }
+
+    .stepIcon {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+    }
+
+    .stepIcon svg {
+        width: 13px !important;
+        height: 13px !important;
+    }
+
+    .stepLabel {
+        font-size: 0.68rem !important;
+    }
+
+    .stepStatusText {
+        font-size: 0.54rem !important;
+    }
+
     .stepperMascot {
-        width: 18px;
-        height: 18px;
+        width: 14px !important;
+        height: 14px !important;
     }
 
     .lockedStepperMascot {
-        width: 24px;
-        height: 24px;
+        width: 18px !important;
+        height: 18px !important;
     }
 }

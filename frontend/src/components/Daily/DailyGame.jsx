@@ -262,7 +262,8 @@ export default function DailyGame() {
                             next.earnedPoints = totalPoints;
                             next.victoryBonus = victoryBonus;
 
-                            addPoints(totalPoints, 'daily', true);
+                            // Development tool: do not award real cloud daily victory points
+                            addPoints(totalPoints, 'dev', false);
                         }
                         saveDailyGame(next);
                         return next;
@@ -515,15 +516,6 @@ export default function DailyGame() {
                 withBorder
                 className={homeClasses.gamePaper}
             >
-                {!isGameOver && (
-                    <div className={classes.attemptsContainer}>
-                        <Text size="xs" fw="bold">ATTEMPTS</Text>
-                        <span className={`${classes.attemptsText} ${isLowAttempts ? classes.attemptsTextWarning : ''}`}>
-                            {attemptsLeft}/{totalAttempts}
-                        </span>
-                    </div>
-                )}
-
                 <Stack gap="sm" align="center" w="100%">
                     <Title order={2} ta="center" mb="lg" className={homeClasses.dailyTitle}>
                         Daily Challenge
@@ -532,14 +524,22 @@ export default function DailyGame() {
                     <DailyStepper currentStep={activeStep} status={gameState.status} stageResults={gameState.stageResults} onStepClick={handleStepClick} />
 
                     {/* Info Bar / Controls */}
-                    <Box mt="md" mb="md">
+                    <div className={classes.dailyInfoBar}>
+                        {!isGameOver && (
+                            <div className={classes.attemptsContainer}>
+                                <Text size="xs" fw="bold">ATTEMPTS</Text>
+                                <span className={`${classes.attemptsText} ${isLowAttempts ? classes.attemptsTextWarning : ''}`}>
+                                    {attemptsLeft}/{totalAttempts}
+                                </span>
+                            </div>
+                        )}
                         <div className={classes.timerContainer}>
                             <Text size="xs" fw="bold">TIME</Text>
                             <span className={classes.timerText}>
                                 {formatDuration(duration)}
                             </span>
                         </div>
-                    </Box>
+                    </div>
 
                     {/* Developer Instructions */}
                     {/* {import.meta.env.DEV && ( */}

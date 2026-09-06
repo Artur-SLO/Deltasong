@@ -44,17 +44,21 @@ export default function ProfileDashboard({ activeUser }) {
     return (
         <div>
             <div className={classes.dashboardHeader}>
-
-                <Title order={1} mt="sm" className={classes.profileName}>
+                <Title order={1} className={classes.profileName}>
                     {activeUser.name}
                 </Title>
-                <img
-                    src={getAvatarSrc(activeUser.avatar)}
-                    alt={activeUser.name}
-                    className={classes.profileAvatar}
+                <div 
+                    className={classes.avatarWrapper} 
                     onClick={() => setIsEditingAvatar(true)}
                     title="Click to change avatar"
-                />
+                >
+                    <img
+                        src={getAvatarSrc(activeUser.avatar)}
+                        alt={activeUser.name}
+                        className={classes.profileAvatar}
+                    />
+                    <span className={classes.avatarBadge}>EDIT</span>
+                </div>
             </div>
 
             <Modal
@@ -85,12 +89,12 @@ export default function ProfileDashboard({ activeUser }) {
                 />
             </Modal>
 
-            <Stack gap="xl" mt="xl" mb="xl">
+            <div className={classes.rankSectionWrapper}>
                 <RankOverviewCard />
-            </Stack>
+            </div>
 
-            <Group justify="center" mt="xl">
-                <Button color="red" variant="outline" size="md" onClick={logoutUser}>
+            <Group justify="center" className={classes.logoutGroup}>
+                <Button color="red" variant="outline" size="sm" className={classes.logoutBtn} onClick={logoutUser}>
                     Logout
                 </Button>
             </Group>

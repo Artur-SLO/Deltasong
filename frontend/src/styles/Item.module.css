@@ -12,6 +12,22 @@
     position: absolute !important;
     top: 24px !important;
     right: 24px !important;
+    font-family: var(--font-family-deltarune) !important;
+    color: #ff78bd !important;
+    background-color: rgba(255, 31, 142, 0.08) !important;
+    border: 1.5px solid rgba(255, 31, 142, 0.45) !important;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 8px rgba(255, 31, 142, 0.15) !important;
+    transition: all 0.2s ease !important;
+}
+
+.giveUpButton:hover,
+.giveUpButton:focus {
+    background-color: rgba(255, 31, 142, 0.22) !important;
+    border-color: #ff1f8e !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(255, 31, 142, 0.5) !important;
+    transform: translateY(-2px);
 }
 
 /* Dynamic Mode Selector (matching Song mode transparent pill style) */
@@ -538,6 +554,37 @@
 
 /* Tablet */
 @media (max-width: 768px) {
+    .container {
+        margin-top: var(--mantine-spacing-sm) !important;
+    }
+
+    .modeSwitcherContainer {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        padding: 4px 6px !important;
+        border-radius: var(--mantine-radius-md) !important;
+        gap: 6px !important;
+        scrollbar-width: none !important;
+        margin-bottom: var(--mantine-spacing-sm) !important;
+    }
+
+    .modeSwitcherContainer::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .modePillButton {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        padding: 6px 12px !important;
+        font-size: 0.75rem !important;
+        min-height: 40px !important;
+    }
+
     .searchBar {
         max-width: 100%;
     }
@@ -563,8 +610,19 @@
     }
 
     .giveUpButton {
-        top: 12px !important;
-        right: 12px !important;
+        position: static !important;
+        top: auto !important;
+        right: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        align-self: center !important;
+        margin: 8px auto 14px auto !important;
+        border-radius: 999px !important;
+        font-size: 0.75rem !important;
+        min-height: 36px !important;
+        padding: 4px 18px !important;
+        opacity: 0.85 !important;
     }
 
     .targetCard {
@@ -641,5 +699,11 @@
 
     .dropdownOption {
         padding: var(--size-3) var(--mantine-spacing-sm);
+    }
+
+    .giveUpButton {
+        min-height: 34px !important;
+        font-size: 0.72rem !important;
+        margin: 6px auto 12px auto !important;
     }
 }

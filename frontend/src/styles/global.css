@@ -49,9 +49,41 @@
     font-style: normal;
 }
 
+html,
+body,
+#root {
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--color-bg-primary) !important;
     color: var(--color-text-primary) !important;
+}
+
+/* Mobile Usability & Viewport Safeguards */
+@media (max-width: 768px) {
+    input,
+    select,
+    textarea,
+    .mantine-Input-input,
+    .mantine-Autocomplete-input,
+    .mantine-TextInput-input {
+        font-size: 16px !important;
+    }
+
+    /* Minimum touch-friendly targets */
+    .mantine-Button-root,
+    .mantine-ActionIcon-root {
+        min-height: 40px;
+    }
 }
 
 /* Headings font overrides */

@@ -300,3 +300,184 @@
     font-family: var(--font-family-deltarune, monospace) !important;
     letter-spacing: 1px;
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--mantine-spacing-xs);
+    }
+
+    .card {
+        padding: var(--mantine-spacing-sm) !important;
+    }
+
+    .titleWrapper {
+        gap: 8px;
+        margin-bottom: var(--mantine-spacing-md);
+    }
+
+    .headerTitle {
+        font-size: 1.4rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .tableWrapper {
+        border-width: 1px;
+    }
+
+    .tableHeader th {
+        padding: 8px 4px !important;
+        font-size: 0.75rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .rankTh {
+        width: 48px !important;
+    }
+
+    .tierTh {
+        width: 75px !important;
+    }
+
+    .streakTh {
+        width: 55px !important;
+    }
+
+    .scoreTh {
+        width: 85px !important;
+    }
+
+    .rankTd {
+        padding: 6px 2px !important;
+    }
+
+    .rankNumber {
+        font-size: 1.1rem;
+    }
+
+    .soulRankContainer {
+        gap: 4px;
+    }
+
+    .playerTd {
+        padding: 6px 4px !important;
+    }
+
+    .playerContent {
+        gap: 6px;
+    }
+
+    .avatarWrapper {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+    }
+
+    .playerAvatar {
+        width: 24px;
+        height: 24px;
+    }
+
+    .playerName {
+        font-size: 0.82rem;
+    }
+
+    .youBadge {
+        font-size: 0.58rem;
+        padding: 1px 4px;
+    }
+
+    .tierTd {
+        padding: 6px 2px !important;
+    }
+
+    .tierBadge {
+        padding: 2px 6px;
+        gap: 2px;
+        max-width: 70px;
+    }
+
+    .tierGrade {
+        font-size: 0.8rem;
+    }
+
+    .tierLabel {
+        display: none;
+    }
+
+    .streakTd {
+        padding: 6px 2px !important;
+    }
+
+    .streakText {
+        font-size: 0.85rem;
+    }
+
+    .scoreTd {
+        padding: 6px 4px !important;
+    }
+
+    .scoreText {
+        font-size: 0.9rem;
+    }
+
+    .ptsLabel {
+        font-size: 0.62rem;
+        margin-left: 2px;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 4px;
+    }
+
+    .card {
+        padding: var(--mantine-spacing-xs) !important;
+    }
+
+    .headerTitle {
+        font-size: 1.2rem !important;
+    }
+
+    .tableHeader th {
+        padding: 6px 2px !important;
+        font-size: 0.68rem !important;
+    }
+
+    .rankTh {
+        width: 42px !important;
+    }
+
+    .tierTh {
+        width: 55px !important;
+    }
+
+    .streakTh {
+        width: 48px !important;
+    }
+
+    .scoreTh {
+        width: 75px !important;
+    }
+
+    .playerName {
+        font-size: 0.75rem;
+        max-width: 90px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .rankNumber {
+        font-size: 0.95rem;
+    }
+
+    .scoreText {
+        font-size: 0.82rem;
+    }
+
+    .ptsLabel {
+        font-size: 0.55rem;
+    }
+}

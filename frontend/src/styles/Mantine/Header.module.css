@@ -6,7 +6,11 @@
 .title {
     user-select: none;
     font-family: var(--font-family-deltarune);
-    display: inline-block;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
     transition: var(--transition-slow) !important;
 }
 
@@ -25,16 +29,27 @@
     position: relative;
 }
 
+.brandGroup {
+    display: flex;
+    align-items: center;
+    gap: var(--mantine-spacing-xs);
+    height: 100%;
+}
+
 .subjects {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
+    display: flex;
 }
 
 .linkWrapper {
     text-decoration: none;
     color: inherit;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
 }
 
 .link {
@@ -196,23 +211,23 @@
 /* Tablet */
 @media (max-width: 768px) {
     .header {
-        height: auto;
+        height: 100% !important;
         min-height: 56px;
     }
 
     .inner {
-        height: 56px;
+        height: 100% !important;
+        min-height: 56px;
         padding: 0 var(--mantine-spacing-sm);
     }
 
     .title {
         font-size: var(--mantine-font-size-md);
+        transform: translateY(2px) !important;
     }
 
-    .subjects {
-        position: static;
-        transform: none;
-        margin: 0 auto;
+    .title:hover {
+        transform: translateY(2px) scale(1.04) !important;
     }
 
     .link {
@@ -244,18 +259,24 @@
 /* Smartphone */
 @media (max-width: 480px) {
     .header {
-        height: auto;
+        height: 100% !important;
         min-height: 48px;
     }
 
     .inner {
-        height: 48px;
+        height: 100% !important;
+        min-height: 48px;
         padding: 0 var(--mantine-spacing-xs);
         gap: var(--size-2);
     }
 
     .title {
         font-size: var(--mantine-font-size-sm);
+        transform: translateY(2px) !important;
+    }
+
+    .title:hover {
+        transform: translateY(3px) scale(1.04) !important;
     }
 
     .headerAvatar {
@@ -277,9 +298,57 @@
     }
 }
 
-/* Mobile Drawer */
+/* Mobile Drawer & Burger (Hidden on Desktop by default) */
 .burger {
+    display: none;
     z-index: 10;
+}
+
+/* Show Hamburger and Hide Header Links on Mobile Portrait & Mobile Landscape (Horizontal) */
+@media (max-width: 768px), (orientation: landscape) and (max-height: 550px), (orientation: landscape) and (max-width: 960px) {
+    .burger {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        align-self: center !important;
+        margin: 0 !important;
+        margin-bottom: 2px !important;
+        padding: 0 !important;
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
+        transform: translateY(1px) !important;
+    }
+
+    .subjects {
+        display: none !important;
+    }
+}
+
+/* Ergonomic adjustments for mobile horizontal (landscape) */
+@media (orientation: landscape) and (max-height: 550px) {
+    .header {
+        height: 100% !important;
+        min-height: 46px;
+    }
+
+    .inner {
+        height: 100% !important;
+        min-height: 46px;
+        padding: 0 var(--mantine-spacing-sm);
+    }
+
+    .drawerHeader {
+        padding: 6px 12px !important;
+        min-height: 44px !important;
+    }
+
+    .drawerBody .link {
+        padding: 8px 14px !important;
+        font-size: 0.85rem !important;
+        min-height: 38px !important;
+    }
 }
 
 .drawerContent {
@@ -295,6 +364,7 @@
 
 .drawerBody {
     padding: var(--mantine-spacing-xs) 0 !important;
+    overflow-y: auto !important;
 }
 
 .drawerOverlay {
@@ -302,18 +372,38 @@
 }
 
 .drawerBody .link {
-    display: block;
-    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
-    font-size: var(--mantine-font-size-sm);
-    border-radius: 0;
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    font-size: 1.05rem;
+    min-height: 46px;
+    margin: 3px 10px;
+    border-radius: var(--mantine-radius-sm);
+    color: var(--color-text-primary);
+    position: relative;
+    border: 1px solid transparent !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+/* Eliminate the colored bottom underline completely in mobile drawer */
+.drawerBody .link::after {
+    display: none !important;
+    content: none !important;
 }
 
 .drawerBody .link:hover {
-    background-color: var(--color-border-primary);
+    background-color: var(--color-border-primary) !important;
+    color: var(--color-accent-primary) !important;
+    transform: translateX(4px);
 }
 
 .drawerBody .link[data-active] {
-    border: none !important;
-    border-left: var(--size-3) solid var(--color-accent-secondary) !important;
-    border-radius: 0 !important;
+    background: linear-gradient(90deg, rgba(255, 31, 142, 0.25) 0%, rgba(56, 31, 84, 0.5) 100%) !important;
+    color: #ffffff !important;
+    border: 1.5px solid var(--color-accent-secondary) !important;
+    border-left: 5px solid var(--color-accent-secondary) !important;
+    box-shadow: 0 0 12px rgba(255, 31, 142, 0.35) !important;
+    text-shadow: 0 0 8px rgba(255, 31, 142, 0.7);
+    border-radius: var(--mantine-radius-sm) !important;
+    transform: none !important;
 }

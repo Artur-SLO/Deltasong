@@ -358,8 +358,18 @@
 
 /* Tablet */
 @media (max-width: 768px) {
+    .container {
+        padding: var(--mantine-spacing-sm) var(--mantine-spacing-xs);
+        min-height: auto;
+    }
+
     .heroTitle {
         font-size: calc(var(--mantine-font-size-xl) * 2.5);
+    }
+
+    .heroSubtitle {
+        font-size: var(--mantine-font-size-md) !important;
+        margin: 4px auto !important;
     }
 
     .heroMascot {
@@ -376,12 +386,74 @@
         margin-top: var(--size-6);
         padding: 0 var(--mantine-spacing-sm);
     }
+
+    .modeCard {
+        padding: 14px 16px !important;
+    }
+
+    .cardTitle {
+        font-size: 1.15rem !important;
+    }
+
+    .cardDescription {
+        font-size: 0.85rem !important;
+        line-height: 1.35 !important;
+        margin: 6px 0 12px 0 !important;
+    }
+
+    .dailyCardContent {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+
+    .dailyHeaderGroup {
+        justify-content: center !important;
+    }
+
+    .dailyPlayBtn {
+        width: 100% !important;
+        min-height: 48px !important;
+        font-size: 0.95rem !important;
+    }
+
+    .modeCard :global(.mantine-Button-root) {
+        min-height: 46px !important;
+        font-size: 0.95rem !important;
+    }
+
+    .gameContainer {
+        margin-top: var(--mantine-spacing-sm);
+        padding: 0 var(--mantine-spacing-xs);
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .gamePaper {
+        padding: 16px 12px !important;
+    }
+
+    .dailyTitle {
+        font-size: 1.3rem !important;
+        margin-bottom: var(--mantine-spacing-xs) !important;
+    }
 }
 
 /* Smartphone */
 @media (max-width: 480px) {
+    .container {
+        padding: 8px 4px;
+    }
+
     .heroTitle {
         font-size: calc(var(--mantine-font-size-xl) * 1.8);
+    }
+
+    .heroSubtitle {
+        font-size: var(--mantine-font-size-sm) !important;
+        line-height: 1.35 !important;
+        margin: 3px auto !important;
+        padding: 0 8px;
     }
 
     .heroMascot {
@@ -394,8 +466,28 @@
         height: 28px;
     }
 
+    .modeCard {
+        padding: 12px 12px !important;
+    }
+
+    .cardTitle {
+        font-size: 1.05rem !important;
+    }
+
+    .cardDescription {
+        font-size: 0.8rem !important;
+        margin: 4px 0 10px 0 !important;
+    }
+
     .dailyPlayBtn {
         width: 100% !important;
+        min-height: 46px !important;
+        font-size: 0.9rem !important;
+    }
+
+    .modeCard :global(.mantine-Button-root) {
+        min-height: 44px !important;
+        font-size: 0.9rem !important;
     }
 
     .dailyMascotImage {
@@ -409,6 +501,20 @@
     }
 
     .heroWrapper {
-        margin-bottom: var(--mantine-spacing-lg);
+        margin-bottom: var(--mantine-spacing-md);
+    }
+
+    .gameContainer {
+        margin-top: var(--mantine-spacing-xs);
+        padding: 0 4px;
+    }
+
+    .gamePaper {
+        padding: 14px 10px !important;
+    }
+
+    .dailyTitle {
+        font-size: 1.15rem !important;
+        margin-bottom: 4px !important;
     }
 }
