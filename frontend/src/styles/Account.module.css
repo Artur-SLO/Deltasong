@@ -122,6 +122,34 @@
     gap: var(--mantine-spacing-md);
 }
 
+.avatarWrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.avatarBadge {
+    display: none;
+}
+
+.avatarHint {
+    display: none;
+}
+
+.userMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rankSectionWrapper {
+    margin: var(--mantine-spacing-xl) 0;
+}
+
+.logoutGroup {
+    margin-top: var(--mantine-spacing-xl);
+}
+
 .profileAvatar {
     width: var(--size-9);
     height: var(--size-9);
@@ -304,44 +332,167 @@
     }
 }
 
-/* Tablet */
+/* Tablet & Mobile Portrait */
 @media (max-width: 768px) {
-    .columnsContainer {
-        grid-template-columns: repeat(2, 1fr);
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin-top: var(--mantine-spacing-xs) !important;
+        padding: 0 6px !important;
     }
 
-    .noCharacters {
-        grid-column: span 2;
+    .paper {
+        order: 1;
+        padding: 14px 12px !important;
+    }
+
+    .dashboardHeader {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding-bottom: 12px !important;
+        border-bottom: 1px solid var(--color-border-primary) !important;
+        margin: 0 auto 12px auto !important;
+        width: 100% !important;
+    }
+
+    .avatarWrapper {
+        position: relative;
+        flex-shrink: 0;
     }
 
     .profileAvatar {
-        width: var(--size-8);
-        height: var(--size-8);
+        width: 60px !important;
+        height: 60px !important;
+        border-width: 2px !important;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.4) !important;
+        padding: 2px !important;
+    }
+
+    .avatarBadge {
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        right: -3px;
+        background: var(--color-accent-secondary);
+        color: #ffffff;
+        font-family: var(--font-family-deltarune);
+        font-size: 0.52rem;
+        padding: 1px 4px;
+        border-radius: 3px;
+        letter-spacing: 0.5px;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 4px rgba(255, 31, 142, 0.6);
+    }
+
+    .userMeta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
     }
 
     .profileName {
-        font-size: 1.5rem;
+        font-size: 1.4rem !important;
+        line-height: 1.1 !important;
+        margin: 0 !important;
+    }
+
+    .avatarHint {
+        display: block;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: var(--mantine-font-family, sans-serif);
+    }
+
+    .rankSectionWrapper {
+        margin: 6px 0 !important;
+    }
+
+    .logoutGroup {
+        margin-top: 10px !important;
+    }
+
+    .logoutBtn {
+        min-height: 36px !important;
+        font-size: 0.8rem !important;
+        padding: 0 20px !important;
+    }
+
+    .columnsContainer {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 6px;
+    }
+
+    .noCharacters {
+        grid-column: 1 / -1;
     }
 
     .welcomeTitle {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .scrollContainer {
-        max-height: var(--size-9);
+        max-height: 240px;
+        padding: 6px;
     }
 
     .avatarOption {
-        height: var(--size-8);
+        height: 72px;
+        min-height: 48px;
+        padding: 4px;
     }
 
     .avatarImageWrapper {
-        height: var(--size-7);
+        height: 42px;
+    }
+
+    .avatarLabel {
+        font-size: 0.65rem;
+        margin-top: 2px;
     }
 }
 
 /* Smartphone */
 @media (max-width: 480px) {
+    .container {
+        padding: 0 4px !important;
+    }
+
+    .paper {
+        padding: 12px 10px !important;
+    }
+
+    .profileAvatar {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .profileName {
+        font-size: 1.3rem !important;
+    }
+
+    .logoutBtn {
+        min-height: 34px !important;
+        font-size: 0.76rem !important;
+        padding: 0 16px !important;
+    }
+
+    .rankSectionWrapper {
+        margin: 8px 0 !important;
+    }
+
+    .logoutGroup {
+        margin-top: 10px !important;
+    }
+
+    .logoutBtn {
+        min-height: 34px !important;
+        font-size: 0.78rem !important;
+        padding: 0 16px !important;
+    }
+
     .columnsContainer {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--size-3);
@@ -357,17 +508,8 @@
     }
 
     .avatarLabel {
-        font-size: 0.6rem;
-        margin-top: var(--size-2);
-    }
-
-    .profileAvatar {
-        width: 56px;
-        height: 56px;
-    }
-
-    .profileName {
-        font-size: 1.2rem;
+        font-size: 0.58rem;
+        margin-top: 2px;
     }
 
     .welcomeTitle {
@@ -376,16 +518,6 @@
 
     .streakNumber {
         font-size: var(--mantine-font-size-lg);
-    }
-
-    .ralseiWelcome {
-        width: 48px;
-        height: 48px;
-    }
-
-    .susieStreakBuddy {
-        width: 36px;
-        height: 36px;
     }
 }
 
@@ -493,5 +625,35 @@
         bottom: 24px;
         top: auto;
         z-index: 100;
+    }
+}
+
+@media (max-width: 768px) {
+    .githubMascotLink {
+        position: static !important;
+        margin: 6px auto 16px auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        transform: none !important;
+        z-index: 1;
+    }
+
+    .githubMascotLink .mascotOrb {
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+    .githubMascotLink .mascotOrb svg {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    .githubMascotLink .mascotBubble {
+        display: none !important;
+    }
+
+    .githubMascotLink .mascotBubble::after {
+        display: none !important;
     }
 }

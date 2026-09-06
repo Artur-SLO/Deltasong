@@ -65,12 +65,10 @@ export default function DailyStepper({ currentStep, status, stageResults, onStep
                             <div className={`${classes.stepIcon} ${iconClass}`}>
                                 {icon}
                             </div>
-                            <Stack gap={0}>
-                                <Group gap="xs" align="center">
-                                    <span className={classes.stepLabel}>
-                                        {step.label}
-                                    </span>
-                                </Group>
+                            <Stack gap={0} style={{ minWidth: 0, overflow: 'hidden' }}>
+                                <span className={classes.stepLabel}>
+                                    {step.label}
+                                </span>
                                 <span className={classes.stepStatusText}>
                                     {statusText}
                                 </span>

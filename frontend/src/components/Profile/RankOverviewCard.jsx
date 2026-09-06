@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Title, Text, RingProgress, Container, Stack, Group, Flex } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import classes from '../../styles/RankOverview.module.css';
 import { calculateUserRank, getRankData } from '../../core/rankSystem';
 import { IconFlame } from '@tabler/icons-react';
 
 export function RankOverviewCard() {
     const [userData, setUserData] = useState(() => getRankData());
+    const isMobile = useMediaQuery('(max-width: 480px)');
+    const isTablet = useMediaQuery('(max-width: 768px)');
 
     useEffect(() => {
         const handleRankChange = () => {
@@ -23,31 +26,35 @@ export function RankOverviewCard() {
 
     const rank = calculateUserRank(userData.totalScore);
 
+    const ringSize = isMobile ? 136 : (isTablet ? 165 : 200);
+    const ringThickness = isMobile ? 11 : (isTablet ? 13 : 16);
+    const gradeFontSize = isMobile ? '2.4rem' : (isTablet ? '2.8rem' : '3.5rem');
+
     return (
         <Container
             className={classes.leftCard}
-            px="lg"
-            py="xl"
+            px={{ base: 'xs', sm: 'lg' }}
+            py={{ base: 'sm', sm: 'xl' }}
             style={{ '--rank-color': `var(--mantine-color-${rank.color.replace('.', '-')})` }}
         >
-            <Stack gap="xl" align="stretch">
+            <Stack gap={{ base: 'sm', sm: 'xl' }} align="stretch">
                 <Flex
                     direction={{ base: 'column', md: 'row' }}
                     justify="space-between"
                     align="center"
-                    gap="xl"
+                    gap={{ base: 'xs', md: 'xl' }}
                     w="100%"
                 >
                     {/* Ring Progress of Rank (Thematic Circle) */}
                     <Group justify="center" className={classes.ringSection}>
                         <RingProgress
-                            size={200}
-                            thickness={16}
+                            size={ringSize}
+                            thickness={ringThickness}
                             roundCaps
                             sections={[{ value: rank.progressValue, color: rank.color }]}
                             label={
                                 <Stack gap={0} align="center" justify="center">
-                                    <Text size="3.5rem" fw={900} c={rank.color} lh={1} className={classes.rankGrade}>
+                                    <Text size={gradeFontSize} fw={900} c={rank.color} lh={1} className={classes.rankGrade}>
                                         {rank.grade}
                                     </Text>
                                     <Text className={classes.rankLabel} px="xs">

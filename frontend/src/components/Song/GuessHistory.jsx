@@ -28,11 +28,11 @@ export default function GuessHistory({ guesses }) {
     return (
         <div className={styles.historyContainer}>
             {/* Headers */}
-            <Grid columns={12} gutter="md" w="100%" align="center">
+            <Grid columns={12} gutter={{ base: 6, sm: 'md' }} w="100%" align="center">
                 {columns.map((col) => (
                     <Grid.Col key={col.label} span={col.span}>
                         <SongGridCell>
-                            <Text size="sm" fw="bold" className={styles.title}>
+                            <Text fw="bold" className={styles.title}>
                                 {col.label}
                             </Text>
                         </SongGridCell>
@@ -43,7 +43,7 @@ export default function GuessHistory({ guesses }) {
             {/* Rows */}
             {guesses && guesses.map((guess, idx) => {
                 return (
-                    <Grid columns={12} gutter="md" w="100%" align="center" key={guess.title.value}>
+                    <Grid columns={12} gutter={{ base: 6, sm: 'md' }} w="100%" align="center" key={guess.title.value}>
                         {columns.map((col, colIdx) => {
                             const field = guess[col.key];
                             if (!field) return null;

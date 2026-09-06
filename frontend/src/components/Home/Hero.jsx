@@ -25,11 +25,11 @@ export default function Hero() {
                 />
             </Group>
 
-            <Text size="xl" c="dimmed" maxW={600} mx="auto" className={classes.heroSubtitle}>
+            <Text size="xl" c="dimmed" maw={600} mx="auto" className={classes.heroSubtitle}>
                 A guessing game set in the Dark World
             </Text>
 
-            <Text size="xl" c="dimmed" maxW={600} mx="auto" className={classes.heroSubtitle}>
+            <Text size="xl" c="dimmed" maw={600} mx="auto" className={classes.heroSubtitle}>
                 Test Your Deltarune knowledge!
             </Text>
         </div>

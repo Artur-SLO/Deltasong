@@ -37,6 +37,7 @@ export default function AccountPage() {
                 rel="noopener noreferrer"
                 className={classes.githubMascotLink}
                 title="View Deltasong repository on GitHub"
+                aria-label="GitHub Repository"
             >
                 <div className={classes.mascotBubble}>GitHub ↗</div>
                 <div className={classes.mascotOrb}>

@@ -81,7 +81,7 @@ export default function Leaderboard() {
                         </Text>
                     </Center>
                 ) : (
-                    <Table.ScrollContainer minWidth={560} className={classes.tableWrapper}>
+                    <Table.ScrollContainer minWidth={360} className={classes.tableWrapper}>
                         <Table verticalSpacing="sm" className={classes.table} highlightOnHover={false}>
                             <Table.Thead className={classes.tableHeader}>
                                 <Table.Tr>

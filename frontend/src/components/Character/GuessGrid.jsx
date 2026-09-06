@@ -259,8 +259,8 @@ export default function GuessGrid({
                     <Grid columns={totalColumns} gutter="md" w="100%" align="center">
                         {COLUMNS_CONFIG.map((col) => (
                             <Grid.Col key={col.label} span={col.span}>
-                                <GridCell>
-                                    <Text size="sm" fw="bold" ff="var(--font-family-deltarune)">
+                                <GridCell className={styles.headerCell}>
+                                    <Text size="sm" fw="bold" ff="var(--font-family-deltarune)" className={styles.headerText}>
                                         {col.label}
                                     </Text>
                                 </GridCell>
