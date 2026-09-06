@@ -44,23 +44,39 @@ service cloud.firestore {
     }
 
     // Anti-Spoofing: enforces score delta within valid Deltasong boundaries (-100 to +500 pts)
-    // or allows initial legacy score import from 0 up to 50,000 pts
     function isValidScoreDelta(oldScore, newScore) {
       let delta = newScore - oldScore;
       return newScore is int 
         && newScore >= 0 
-        && ((delta >= -100 && delta <= 500) || (oldScore == 0 && newScore <= 50000));
+        && delta >= -100 
+        && delta <= 500;
     }
 
     // Validates the structure of the stats map
     function isValidStats(stats) {
       return stats is map
-        && stats.totalWins is int
-        && stats.totalLosses is int
-        && stats.charactersWon is int
-        && stats.itemsWon is int
-        && stats.songsWon is int
-        && stats.dailyCompleted is int;
+        && stats.totalWins is int && stats.totalWins >= 0
+        && stats.totalLosses is int && stats.totalLosses >= 0
+        && stats.charactersWon is int && stats.charactersWon >= 0
+        && stats.itemsWon is int && stats.itemsWon >= 0
+        && stats.songsWon is int && stats.songsWon >= 0
+        && stats.dailyCompleted is int && stats.dailyCompleted >= 0
+        && (!('charactersPlayed' in stats) || (stats.charactersPlayed is int && stats.charactersPlayed >= 0))
+        && (!('itemsPlayed' in stats) || (stats.itemsPlayed is int && stats.itemsPlayed >= 0))
+        && (!('songsPlayed' in stats) || (stats.songsPlayed is int && stats.songsPlayed >= 0));
+    }
+
+    // Validates streak date format YYYY-MM-DD
+    function isValidStreakDate(date) {
+      return date is string && date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+    }
+
+    // Prevents injection of arbitrary unvalidated fields in user documents
+    function hasOnlyValidUserFields(data) {
+      return data.keys().hasOnly([
+        'userId', 'username', 'avatar', 'totalScore', 
+        'streak', 'lastStreakDate', 'stats', 'createdAt', 'updatedAt'
+      ]);
     }
 
     // =========================================================================
@@ -70,23 +86,25 @@ service cloud.firestore {
       // Public read access for the global Leaderboard and player profiles
       allow read: if true;
 
-      // Account creation / Initial migration from localStorage
+      // Account creation: all accounts must start at 0 score and streak <= 1
       allow create: if isOwner(userId)
+        && hasOnlyValidUserFields(request.resource.data)
         && request.resource.data.userId == userId
         && isValidUsername(request.resource.data.username)
         && isValidAvatar(request.resource.data.avatar)
-        && request.resource.data.totalScore is int
-        && request.resource.data.totalScore >= 0
-        // Sanity ceiling for legacy localStorage migration (max 50,000 points)
-        && request.resource.data.totalScore <= 50000
+        && request.resource.data.totalScore == 0
         && request.resource.data.streak is int
+        && request.resource.data.streak <= 1
         && request.resource.data.streak >= 0
+        && (!('lastStreakDate' in request.resource.data) || isValidStreakDate(request.resource.data.lastStreakDate))
         && isValidStats(request.resource.data.stats)
+        && request.resource.data.stats.totalWins == 0
         && request.resource.data.createdAt == request.time
         && request.resource.data.updatedAt == request.time;
 
       // Profile updates and score increments
       allow update: if isOwner(userId)
+        && hasOnlyValidUserFields(request.resource.data)
         // Immutable identity and creation timestamps
         && request.resource.data.userId == resource.data.userId
         && request.resource.data.createdAt == resource.data.createdAt
@@ -99,9 +117,12 @@ service cloud.firestore {
         && isCooldownRespected(resource.data.updatedAt)
         // Anti-cheat: bounded point deltas
         && isValidScoreDelta(resource.data.totalScore, request.resource.data.totalScore)
-        // Streak must be non-negative
+        // Streak can only stay identical, increment by 1, or reset to 1
         && request.resource.data.streak is int
-        && request.resource.data.streak >= 0
+        && (request.resource.data.streak == resource.data.streak
+            || request.resource.data.streak == resource.data.streak + 1
+            || request.resource.data.streak == 1)
+        && (!('lastStreakDate' in request.resource.data) || isValidStreakDate(request.resource.data.lastStreakDate))
         // Validated stats map
         && isValidStats(request.resource.data.stats);
 
@@ -135,7 +156,7 @@ service cloud.firestore {
       // Append-only creation by the authenticated owner
       allow create: if isRegisteredUser()
         && request.resource.data.userId == request.auth.uid
-        && request.resource.data.gameType in ['characters', 'items', 'songs', 'daily', 'rush', 'migration', 'penalty']
+        && request.resource.data.gameType in ['characters', 'items', 'songs', 'daily', 'rush', 'penalty']
         && request.resource.data.pointsDelta is int
         && request.resource.data.pointsDelta >= -100
         && request.resource.data.pointsDelta <= 500

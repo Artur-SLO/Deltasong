@@ -42,15 +42,18 @@ function getInitialCachedProfile() {
 }
 
 export function setCachedProfile(profile) {
-    currentUserProfile = profile;
+    currentUserProfile = profile ? { ...profile } : null;
     try {
-        if (profile) {
-            localStorage.setItem(CACHED_PROFILE_KEY, JSON.stringify(profile));
+        if (currentUserProfile) {
+            localStorage.setItem(CACHED_PROFILE_KEY, JSON.stringify(currentUserProfile));
         } else {
             localStorage.removeItem(CACHED_PROFILE_KEY);
         }
     } catch {
         // Ignore storage quota / access errors
+    }
+    if (currentUserProfile) {
+        setCachedRankData(currentUserProfile);
     }
 }
 
@@ -256,6 +259,7 @@ export async function fetchOrCreateUserProfile(firebaseUser, customName = null, 
             username: data.username,
             avatar: data.avatar || 'kris',
             streak: data.streak || 1,
+            lastStreakDate: data.lastStreakDate || null,
             totalScore: data.totalScore || 0,
             stats: data.stats || {
                 charactersPlayed: 0,
@@ -280,35 +284,14 @@ export async function fetchOrCreateUserProfile(firebaseUser, customName = null, 
     const resolvedName = customName || pendingRegistration?.name || firebaseUser.displayName || 'Player';
     const resolvedAvatar = customAvatar || pendingRegistration?.avatar || 'kris';
 
-    let legacyScore = 0;
-    let legacyStreak = 1;
-    let legacyStats = null;
-
-    if (resolvedName && resolvedName !== 'Player') {
-        const cleanName = resolvedName.toLowerCase().trim();
-        try {
-            const userSpecificKey = `deltasong_rank_data_${cleanName}`;
-            const stored = localStorage.getItem(userSpecificKey);
-            if (stored) {
-                const parsed = JSON.parse(stored);
-                if (parsed && parsed.totalScore > 0) {
-                    legacyScore = Math.min(50000, parsed.totalScore);
-                    if (parsed.streak) legacyStreak = parsed.streak;
-                    if (parsed.stats) legacyStats = parsed.stats;
-                }
-            }
-        } catch {
-            // ignore parse error
-        }
-    }
-
     const initialData = {
         userId: firebaseUser.uid,
         username: resolvedName,
         avatar: resolvedAvatar,
-        totalScore: legacyScore,
-        streak: legacyStreak,
-        stats: legacyStats || {
+        totalScore: 0,
+        streak: 1,
+        lastStreakDate: getLocalDateString(),
+        stats: {
             charactersPlayed: 0,
             charactersWon: 0,
             itemsPlayed: 0,
@@ -332,6 +315,7 @@ export async function fetchOrCreateUserProfile(firebaseUser, customName = null, 
         username: initialData.username,
         avatar: initialData.avatar,
         streak: initialData.streak,
+        lastStreakDate: initialData.lastStreakDate,
         totalScore: initialData.totalScore,
         stats: initialData.stats
     };
@@ -345,7 +329,7 @@ export async function fetchOrCreateUserProfile(firebaseUser, customName = null, 
  * Returns currently authenticated active user profile (synchronous, null when logged out)
  */
 export function getActiveUser() {
-    return currentUserProfile;
+    return currentUserProfile ? { ...currentUserProfile } : null;
 }
 
 /**
@@ -559,7 +543,7 @@ let isUpdatingStreak = false;
  * Handles consecutive day increments, streak break penalties, and offline caching.
  */
 export async function updateActiveUserStreak() {
-    if (isUpdatingStreak) return currentUserProfile;
+    if (isUpdatingStreak) return currentUserProfile ? { ...currentUserProfile } : null;
     isUpdatingStreak = true;
 
     try {
@@ -569,7 +553,7 @@ export async function updateActiveUserStreak() {
         // 1. Authenticated User Cloud Sync
         if (user && currentUserProfile) {
             const streakKey = `deltasong_streak_date_${user.uid}`;
-            let lastDateStr = localStorage.getItem(streakKey);
+            let lastDateStr = currentUserProfile.lastStreakDate || localStorage.getItem(streakKey);
 
             if (!lastDateStr) {
                 try {
@@ -580,15 +564,24 @@ export async function updateActiveUserStreak() {
                 }
             }
 
-            // First time tracking on this device
+            // First time tracking: establish baseline today
             if (!lastDateStr) {
+                currentUserProfile.lastStreakDate = todayStr;
                 localStorage.setItem(streakKey, todayStr);
-                return currentUserProfile;
+                const userRef = doc(db, 'users', user.uid);
+                updateDoc(userRef, {
+                    lastStreakDate: todayStr,
+                    updatedAt: serverTimestamp()
+                }).catch(() => {});
+                setCachedProfile(currentUserProfile);
+                window.dispatchEvent(new Event('deltasong_auth_change'));
+                window.dispatchEvent(new Event('deltasong_rank_change'));
+                return { ...currentUserProfile };
             }
 
             // Already verified today
             if (lastDateStr === todayStr) {
-                return currentUserProfile;
+                return { ...currentUserProfile };
             }
 
             const [y1, m1, d1] = lastDateStr.split('-').map(Number);
@@ -601,6 +594,7 @@ export async function updateActiveUserStreak() {
                 // Consecutive day -> Streak Up!
                 const newStreak = (currentUserProfile.streak || 0) + 1;
                 currentUserProfile.streak = newStreak;
+                currentUserProfile.lastStreakDate = todayStr;
                 localStorage.setItem(streakKey, todayStr);
 
                 try {
@@ -612,12 +606,12 @@ export async function updateActiveUserStreak() {
                     // ignore
                 }
 
-                setCachedProfile({ ...currentUserProfile });
-                setCachedRankData(currentUserProfile);
+                setCachedProfile(currentUserProfile);
 
                 const userRef = doc(db, 'users', user.uid);
                 await updateDoc(userRef, {
                     streak: newStreak,
+                    lastStreakDate: todayStr,
                     updatedAt: serverTimestamp()
                 }).catch(err => console.warn('[Deltasong] Streak Firestore sync warning:', err));
 
@@ -638,6 +632,7 @@ export async function updateActiveUserStreak() {
                 const oldStreak = currentUserProfile.streak || 1;
                 const newStreak = 1;
                 currentUserProfile.streak = newStreak;
+                currentUserProfile.lastStreakDate = todayStr;
                 localStorage.setItem(streakKey, todayStr);
 
                 try {
@@ -656,11 +651,11 @@ export async function updateActiveUserStreak() {
                     const newScore = Math.max(0, oldScore - penalty);
                     currentUserProfile.totalScore = newScore;
 
-                    setCachedProfile({ ...currentUserProfile });
-                    setCachedRankData(currentUserProfile);
+                    setCachedProfile(currentUserProfile);
 
                     await updateDoc(userRef, {
                         streak: newStreak,
+                        lastStreakDate: todayStr,
                         totalScore: newScore,
                         updatedAt: serverTimestamp()
                     }).catch(err => console.warn('[Deltasong] Streak reset warning:', err));
@@ -684,11 +679,11 @@ export async function updateActiveUserStreak() {
                         });
                     }, 300);
                 } else {
-                    setCachedProfile({ ...currentUserProfile });
-                    setCachedRankData(currentUserProfile);
+                    setCachedProfile(currentUserProfile);
 
                     await updateDoc(userRef, {
                         streak: newStreak,
+                        lastStreakDate: todayStr,
                         updatedAt: serverTimestamp()
                     }).catch(err => console.warn('[Deltasong] Streak reset warning:', err));
 
@@ -697,7 +692,6 @@ export async function updateActiveUserStreak() {
                 }
             }
         } else {
-            // Anonymous / unauthenticated players are excluded from streaks, points and stats
             return null;
         }
     } catch (err) {
@@ -706,7 +700,7 @@ export async function updateActiveUserStreak() {
         isUpdatingStreak = false;
     }
 
-    return currentUserProfile;
+    return currentUserProfile ? { ...currentUserProfile } : null;
 }
 
 /**
@@ -729,14 +723,14 @@ export async function logoutUser() {
     }, 1500);
 }
 
-// Dev and Pen-Testing helpers directly callable in browser DevTools Console
-if (typeof window !== 'undefined') {
+// Dev and Pen-Testing helpers directly callable in browser DevTools Console (dev mode only)
+if (typeof window !== 'undefined' && import.meta.env.DEV) {
     window.deltasongAuth = {
         getActiveUser,
         resetMyScore: async () => {
             const user = auth.currentUser;
             if (!user) {
-                console.error('❌ You must be logged in to reset your score!');
+                console.error('[Error] You must be logged in to reset your score.');
                 return;
             }
             const zeroStats = {
@@ -766,7 +760,7 @@ if (typeof window !== 'undefined') {
                 }
                 resetCachedRankData();
                 window.dispatchEvent(new Event('deltasong_auth_change'));
-                console.log('%c✅ Score for user ' + (currentUserProfile?.name || user.uid) + ' successfully reset to 0 in Firestore and locally!', 'color: #00ff27; font-weight: bold;');
+                console.log('%c[Success] Score for user ' + (currentUserProfile?.name || user.uid) + ' successfully reset to 0 in Firestore and locally.', 'color: #00ff27; font-weight: bold;');
             } catch (err) {
                 console.error('Failed to reset score:', err);
             }
@@ -774,22 +768,24 @@ if (typeof window !== 'undefined') {
         setStreak: async (newStreak) => {
             const user = auth.currentUser;
             if (!user) {
-                console.error('❌ You must be logged in to set streak!');
+                console.error('[Error] You must be logged in to set streak.');
                 return;
             }
             try {
+                const todayStr = getLocalDateString();
                 await updateDoc(doc(db, 'users', user.uid), {
                     streak: Number(newStreak),
+                    lastStreakDate: todayStr,
                     updatedAt: serverTimestamp()
                 });
                 if (currentUserProfile) {
                     currentUserProfile.streak = Number(newStreak);
-                    setCachedProfile({ ...currentUserProfile });
-                    setCachedRankData(currentUserProfile);
+                    currentUserProfile.lastStreakDate = todayStr;
+                    setCachedProfile(currentUserProfile);
                 }
                 window.dispatchEvent(new Event('deltasong_auth_change'));
                 window.dispatchEvent(new Event('deltasong_rank_change'));
-                console.log('%c✅ Streak updated to ' + newStreak, 'color: #00ff27; font-weight: bold;');
+                console.log('%c[Success] Streak updated to ' + newStreak, 'color: #00ff27; font-weight: bold;');
             } catch (err) {
                 console.error('Failed to set streak:', err);
             }
@@ -807,11 +803,113 @@ if (typeof window !== 'undefined') {
         }
     };
 
+    window.deltasongStreak = {
+        /**
+         * Displays current streak status across memory, localStorage, and Firestore
+         */
+        status: async () => {
+            const user = auth.currentUser;
+            if (!user) {
+                console.warn('[Warn] You must be logged in to inspect streak status.');
+                return;
+            }
+            const userRef = doc(db, 'users', user.uid);
+            const snap = await getDoc(userRef);
+            const cloudData = snap.exists() ? snap.data() : {};
+            const streakKey = `deltasong_streak_date_${user.uid}`;
+
+            const info = {
+                'User': currentUserProfile?.name || user.displayName || user.uid,
+                'Streak (Memory)': currentUserProfile?.streak ?? 'N/A',
+                'Streak (Firestore)': cloudData.streak ?? 'N/A',
+                'Streak Date (Memory)': currentUserProfile?.lastStreakDate ?? 'N/A',
+                'Streak Date (Firestore)': cloudData.lastStreakDate ?? 'N/A',
+                'Streak Date (LocalStorage)': localStorage.getItem(streakKey) ?? 'N/A',
+                'Current Score': currentUserProfile?.totalScore ?? cloudData.totalScore ?? 0,
+            };
+            console.table(info);
+            return info;
+        },
+
+        /**
+         * Sets numeric streak directly
+         */
+        set: async (newStreak) => {
+            return window.deltasongAuth.setStreak(newStreak);
+        },
+
+        /**
+         * Simulates that the last login date was yesterday
+         * Triggers verification routine: should increment streak by 1 and show Streak Up notification
+         */
+        simulateNextDay: async () => {
+            const user = auth.currentUser;
+            if (!user || !currentUserProfile) {
+                console.error('[Error] You must be logged in to simulate streak.');
+                return;
+            }
+
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yYear = yesterday.getFullYear();
+            const yMonth = String(yesterday.getMonth() + 1).padStart(2, '0');
+            const yDay = String(yesterday.getDate()).padStart(2, '0');
+            const yesterdayStr = `${yYear}-${yMonth}-${yDay}`;
+
+            console.log(`[Streak Test] Simulating last access as yesterday (${yesterdayStr})...`);
+
+            const streakKey = `deltasong_streak_date_${user.uid}`;
+            currentUserProfile.lastStreakDate = yesterdayStr;
+            localStorage.setItem(streakKey, yesterdayStr);
+
+            const updated = await updateActiveUserStreak();
+            console.log(`%c[Streak Test] Success! New Streak: ${updated?.streak}`, 'color: #00ff27; font-weight: bold;');
+            return updated;
+        },
+
+        /**
+         * Simulates missing consecutive days (default: 2 days)
+         * Triggers verification routine: should break streak to 1 and apply score penalty
+         */
+        simulateMissedDays: async (daysAgo = 2) => {
+            const user = auth.currentUser;
+            if (!user || !currentUserProfile) {
+                console.error('[Error] You must be logged in to simulate streak.');
+                return;
+            }
+
+            const pastDate = new Date();
+            pastDate.setDate(pastDate.getDate() - Math.max(2, daysAgo));
+            const pYear = pastDate.getFullYear();
+            const pMonth = String(pastDate.getMonth() + 1).padStart(2, '0');
+            const pDay = String(pastDate.getDate()).padStart(2, '0');
+            const pastDateStr = `${pYear}-${pMonth}-${pDay}`;
+
+            console.log(`[Streak Test] Simulating last access as ${daysAgo} days ago (${pastDateStr})...`);
+
+            const streakKey = `deltasong_streak_date_${user.uid}`;
+            currentUserProfile.lastStreakDate = pastDateStr;
+            localStorage.setItem(streakKey, pastDateStr);
+
+            const updated = await updateActiveUserStreak();
+            console.log(`%c[Streak Test] Streak broken! Reset to: ${updated?.streak} (Penalty applied)`, 'color: #ffd43b; font-weight: bold;');
+            return updated;
+        },
+
+        /**
+         * Triggers streak verification immediately
+         */
+        check: async () => {
+            console.log('[Streak Test] Checking current streak...');
+            return await updateActiveUserStreak();
+        }
+    };
+
     window.deltasongPenTest = {
         testScoreSpoof: async (fakeScore = 9999999) => {
             const user = auth.currentUser;
             if (!user) {
-                console.error('❌ You must be logged in to run this test!');
+                console.error('[Error] You must be logged in to run this test.');
                 return;
             }
             console.log(`[PenTest] Attempting unauthorized score injection: ${fakeScore} pts...`);
@@ -820,15 +918,15 @@ if (typeof window !== 'undefined') {
                     totalScore: fakeScore,
                     updatedAt: serverTimestamp()
                 });
-                console.error('❌ VULNERABILITY DETECTED: Score injection succeeded!');
+                console.error('[Error] VULNERABILITY DETECTED: Score injection succeeded.');
             } catch (err) {
-                console.log('%c✅ BLOCKED BY FIRESTORE SECURITY RULES: ' + err.message, 'color: #00ff27; font-weight: bold;');
+                console.log('%c[Success] BLOCKED BY FIRESTORE SECURITY RULES: ' + err.message, 'color: #00ff27; font-weight: bold;');
             }
         },
         testRateLimit: async () => {
             const user = auth.currentUser;
             if (!user) {
-                console.error('❌ You must be logged in to run this test!');
+                console.error('[Error] You must be logged in to run this test.');
                 return;
             }
             console.log('[PenTest] Sending 5 rapid concurrent updates to test cooldown limit...');
@@ -841,7 +939,7 @@ if (typeof window !== 'undefined') {
         testImmutableField: async () => {
             const user = auth.currentUser;
             if (!user) {
-                console.error('❌ You must be logged in to run this test!');
+                console.error('[Error] You must be logged in to run this test.');
                 return;
             }
             console.log('[PenTest] Attempting to tamper with immutable userId field...');
@@ -850,9 +948,9 @@ if (typeof window !== 'undefined') {
                     userId: 'hacker_impersonator',
                     updatedAt: serverTimestamp()
                 });
-                console.error('❌ VULNERABILITY DETECTED: Immutable field was altered!');
+                console.error('[Error] VULNERABILITY DETECTED: Immutable field was altered.');
             } catch (err) {
-                console.log('%c✅ BLOCKED BY FIRESTORE SECURITY RULES: ' + err.message, 'color: #00ff27; font-weight: bold;');
+                console.log('%c[Success] BLOCKED BY FIRESTORE SECURITY RULES: ' + err.message, 'color: #00ff27; font-weight: bold;');
             }
         }
     };

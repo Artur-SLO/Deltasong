@@ -53,7 +53,13 @@ export function getRankData() {
  * Updates internal memory cache and dispatches UI update event
  */
 export function setCachedRankData(data) {
-    cachedRankData = { ...cachedRankData, ...data };
+    if (!data) return;
+    cachedRankData = {
+        ...cachedRankData,
+        ...data,
+        streak: data.streak !== undefined ? data.streak : (cachedRankData.streak || 1),
+        stats: data.stats ? { ...cachedRankData.stats, ...data.stats } : cachedRankData.stats
+    };
     window.dispatchEvent(new Event('deltasong_rank_change'));
 }
 
@@ -165,6 +171,12 @@ export async function addPoints(amount, gameType, isDailyWin = true) {
     checkRankChange(oldScore, newScore);
     window.dispatchEvent(new Event('deltasong_rank_change'));
 
+    // Dev games or tests must never synchronize with or alter cloud Firestore data
+    if (gameType === 'dev') {
+        console.warn('[Deltasong Dev] Dev score change applied locally only. Cloud sync skipped.');
+        return { ...cachedRankData };
+    }
+
     // Synchronize with Firestore for authenticated account
     // Enforce 2-second rate-limit cooldown
     const now = Date.now();
@@ -189,7 +201,6 @@ export async function addPoints(amount, gameType, isDailyWin = true) {
         // Update user document
         await updateDoc(userRef, {
             totalScore: newScore,
-            streak: cachedRankData.streak || 1,
             stats: cachedRankData.stats,
             updatedAt: serverTimestamp()
         });

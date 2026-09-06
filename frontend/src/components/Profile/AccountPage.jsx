@@ -13,13 +13,18 @@ export default function AccountPage() {
     const [activeTab, setActiveTab] = useState('login');
 
     useEffect(() => {
-        const handleAuthChange = () => {
-            setActiveUser(getActiveUser());
+        const handleSync = () => {
+            const user = getActiveUser();
+            setActiveUser(user ? { ...user } : null);
         };
 
-        window.addEventListener('deltasong_auth_change', handleAuthChange);
+        handleSync();
+
+        window.addEventListener('deltasong_auth_change', handleSync);
+        window.addEventListener('deltasong_rank_change', handleSync);
         return () => {
-            window.removeEventListener('deltasong_auth_change', handleAuthChange);
+            window.removeEventListener('deltasong_auth_change', handleSync);
+            window.removeEventListener('deltasong_rank_change', handleSync);
         };
     }, []);
 

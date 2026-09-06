@@ -262,7 +262,8 @@ export default function DailyGame() {
                             next.earnedPoints = totalPoints;
                             next.victoryBonus = victoryBonus;
 
-                            addPoints(totalPoints, 'daily', true);
+                            // Development tool: do not award real cloud daily victory points
+                            addPoints(totalPoints, 'dev', false);
                         }
                         saveDailyGame(next);
                         return next;
