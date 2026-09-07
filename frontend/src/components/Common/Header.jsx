@@ -1,7 +1,7 @@
 import { Container, Group, Title, Burger, Drawer, Stack } from '@mantine/core';
 import { Link, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
-import { IconFlame } from '@tabler/icons-react';
+import { IconFlame, IconLogin } from '@tabler/icons-react';
 import classes from '../../styles/Mantine/Header.module.css';
 import { getActiveUser, updateActiveUserStreak } from '../../utils/auth';
 import { getCharacterImage } from '../../utils/image.js';
@@ -93,6 +93,7 @@ export default function Header() {
                             </Group>
                         ) : (
                             <div className={classes.loginButton}>
+                                <IconLogin size={15} className={classes.loginIcon} />
                                 <span className={classes.buttonText}>Login</span>
                             </div>
                         )}
@@ -116,6 +117,47 @@ export default function Header() {
                 <Stack gap={0}>
                     {items}
                 </Stack>
+
+                {!activeUser ? (
+                    <div className={classes.drawerAuthSection}>
+                        <div className={classes.drawerAuthCard}>
+                            <div className={classes.drawerAuthTextGroup}>
+                                <div className={classes.drawerAuthTitle}>Join Deltasong</div>
+                                <div className={classes.drawerAuthSubtitle}>
+                                    Save streaks, stats and climb the leaderboard!
+                                </div>
+                            </div>
+                            <Link
+                                to="/account"
+                                className={classes.drawerAuthButton}
+                                onClick={() => setMobileOpened(false)}
+                            >
+                                <IconLogin size={16} className={classes.drawerAuthIcon} />
+                                <span>Login / Register</span>
+                            </Link>
+                        </div>
+                    </div>
+                ) : (
+                    <div className={classes.drawerUserSection}>
+                        <Link
+                            to="/account"
+                            className={classes.drawerUserCard}
+                            onClick={() => setMobileOpened(false)}
+                        >
+                            <img
+                                src={getCharacterImage(activeUser.avatar)}
+                                alt={activeUser.name}
+                                className={classes.drawerUserAvatar}
+                            />
+                            <div className={classes.drawerUserInfo}>
+                                <span className={classes.drawerUserName}>{activeUser.name}</span>
+                                <span className={classes.drawerUserStreak}>
+                                    <IconFlame size={14} className={classes.flameIcon} /> {activeUser.streak} streak
+                                </span>
+                            </div>
+                        </Link>
+                    </div>
+                )}
             </Drawer>
         </>
     );
