@@ -13,28 +13,28 @@ export const LINKS = [
 export const GAME_MODES = [
     {
         title: "Characters",
-        description: "Guess the character using clues like gender, type, chapter, and class.",
+        description: "Identify the character through attribute clues revealed with each guess.",
         link: "/characters",
         badge: "Classic",
         color: "cyberCyan"
     },
     {
         title: "Items",
-        description: "Discover items and equipment based on their stats and locations.",
+        description: "Recognize the item from its description, unlocking clues with each attempt.",
         link: "/items",
         badge: "Description",
         color: "royalMagenta"
     },
     {
         title: "Song",
-        description: "Guess the soundtracks based on duration and chapter info.",
+        description: "Listen to brief audio snippets and identify the soundtrack.",
         link: "/songs",
         badge: "Audio",
         color: "emeraldGreen"
     },
     {
         title: "Daily Challenge",
-        description: "A continuous 3-stage marathon: Characters ➔ Items ➔ Song. 1 attempt per day!",
+        description: "A 3-stage daily run: Characters ➔ Items ➔ Song. 1 attempt per day.",
         link: "/daily",
         badge: "Daily",
         color: "spadeBlue"
