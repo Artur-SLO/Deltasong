@@ -126,9 +126,15 @@
 
 .rankGrade {
     font-family: var(--font-family-deltarune, monospace) !important;
+    letter-spacing: 0;
     animation: pulseGrade 2.5s infinite ease-in-out;
     display: inline-block;
     transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.rankGrade:not([data-grade='∞']) {
+    /* Balance the Deltarune font's wider right side bearing. */
+    translate: 0.06em 0;
 }
 
 .ringSection:hover .rankGrade {
