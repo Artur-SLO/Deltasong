@@ -35,7 +35,7 @@ export function RankOverviewCard() {
             className={classes.leftCard}
             px={{ base: 'xs', sm: 'lg' }}
             py={{ base: 'sm', sm: 'xl' }}
-            style={{ '--rank-color': `var(--mantine-color-${rank.color.replace('.', '-')})` }}
+            style={{ '--rank-color': rank.color.startsWith('#') ? rank.color : `var(--mantine-color-${rank.color.replace('.', '-')})` }}
         >
             <Stack gap={{ base: 'sm', sm: 'xl' }} align="stretch">
                 <Flex
@@ -54,7 +54,7 @@ export function RankOverviewCard() {
                             sections={[{ value: rank.progressValue, color: rank.color }]}
                             label={
                                 <Stack gap={0} align="center" justify="center">
-                                    <Text size={gradeFontSize} fw={900} c={rank.color} lh={1} className={classes.rankGrade}>
+                                    <Text size={gradeFontSize} fw={900} c={rank.color} lh={1} className={classes.rankGrade} data-grade={rank.grade}>
                                         {rank.grade}
                                     </Text>
                                     <Text className={classes.rankLabel} px="xs">

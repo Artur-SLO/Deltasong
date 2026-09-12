@@ -39,6 +39,8 @@ function getInitialLocalRankData() {
 }
 
 let cachedRankData = getInitialLocalRankData();
+// Display-only development preview; never used as the source for cloud writes.
+let previewScore = null;
 
 let lastMutationTimestamp = 0;
 
@@ -46,7 +48,29 @@ let lastMutationTimestamp = 0;
  * Returns the current cached rank and score data synchronously
  */
 export function getRankData() {
+    if (import.meta.env.DEV && previewScore !== null) {
+        return { ...cachedRankData, totalScore: previewScore };
+    }
     return { ...cachedRankData };
+}
+
+function setPreviewScore(score) {
+    if (!import.meta.env.DEV) return getRankData();
+    if (!Number.isSafeInteger(score) || score < 0) {
+        throw new RangeError('Preview score must be a non-negative safe integer.');
+    }
+    const oldScore = getRankData().totalScore;
+    previewScore = score;
+    checkRankChange(oldScore, score);
+    window.dispatchEvent(new Event('deltasong_rank_change'));
+    return getRankData();
+}
+
+function addPreviewPoints(amount) {
+    if (!Number.isSafeInteger(amount)) {
+        throw new RangeError('Preview points must be a safe integer.');
+    }
+    return setPreviewScore(Math.max(0, getRankData().totalScore + amount));
 }
 
 /**
@@ -67,6 +91,7 @@ export function setCachedRankData(data) {
  * Resets internal memory cache to blank default state (used on logout)
  */
 export function resetCachedRankData() {
+    previewScore = null;
     cachedRankData = {
         totalScore: 0,
         streak: 1,
@@ -96,14 +121,11 @@ export function calculateUserRank(score) {
         }
     }
     
-    let progressValue;
-    if (activeTier.grade === 'T') {
-        progressValue = Math.min(100, Math.round(((score - activeTier.min) / activeTier.span) * 100));
-    } else {
-        progressValue = Math.round(((score - activeTier.min) / activeTier.span) * 100);
-    }
+    const nextTier = RANK_TIERS[RANK_TIERS.indexOf(activeTier) + 1];
+    let progressValue = Math.round(((score - activeTier.min) / activeTier.span) * 100);
     
     progressValue = Math.max(0, Math.min(100, progressValue));
+    if (!nextTier) progressValue = 100;
     
     return {
         grade: activeTier.grade,
@@ -111,7 +133,7 @@ export function calculateUserRank(score) {
         color: activeTier.color,
         label: activeTier.label,
         message: activeTier.message,
-        nextTierMin: activeTier.grade === 'T' ? null : RANK_TIERS[RANK_TIERS.indexOf(activeTier) + 1].min
+        nextTierMin: nextTier?.min ?? null
     };
 }
 
@@ -120,6 +142,10 @@ export function calculateUserRank(score) {
  * All screen components must invoke this method instead of calling Firestore directly.
  */
 export async function addPoints(amount, gameType, isDailyWin = true) {
+    // Test points live in a separate display layer, including when signed out.
+    if (gameType === 'dev') {
+        return import.meta.env.DEV ? addPreviewPoints(amount) : getRankData();
+    }
     const user = auth.currentUser;
     // Anonymous players (without an account) are completely excluded from the points and stats system.
     if (!user || user.isAnonymous) {
@@ -170,12 +196,6 @@ export async function addPoints(amount, gameType, isDailyWin = true) {
     // Check for rank change notification
     checkRankChange(oldScore, newScore);
     window.dispatchEvent(new Event('deltasong_rank_change'));
-
-    // Dev games or tests must never synchronize with or alter cloud Firestore data
-    if (gameType === 'dev') {
-        console.warn('[Deltasong Dev] Dev score change applied locally only. Cloud sync skipped.');
-        return { ...cachedRankData };
-    }
 
     // Synchronize with Firestore for authenticated account
     // Enforce 2-second rate-limit cooldown
@@ -301,7 +321,11 @@ export async function migrateLocalStorageToFirestore(userId, currentProfile) {
 // Dev mode helpers
 if (import.meta.env.DEV) {
     window.deltasongDev = window.deltasongDev || {};
-    window.deltasongDev.addPoints = (amount) => {
-        addPoints(amount, 'dev');
+    window.deltasongDev.addPoints = addPreviewPoints;
+    window.deltasongDev.setScore = setPreviewScore;
+    window.deltasongDev.clearScorePreview = () => {
+        previewScore = null;
+        window.dispatchEvent(new Event('deltasong_rank_change'));
+        return getRankData();
     };
 }

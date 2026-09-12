@@ -26,7 +26,7 @@ See Deltasong in action across its deduction modes, audio challenges, and commun
 - **Characters Mode:** Deduce mystery figures across seven comparison vectors (gender, species/type, chapter, battle role, and appearance chronology).
 - **Items Mode:** Decipher weapons, armor, consumables, and key items through five unlockable clue stages tied to incorrect guess thresholds.
 - **Daily Challenge:** A synchronized 24-hour gauntlet generated deterministically by date. Three stages, ten guesses per stage, zero second chances.
-- **Rankings and Progression:** Earn your standing through six distinct grades: Rank Z (*Discarded Vessel*), Rank C (*Big Shot*), Rank B (*Bad Guys Squad*), Rank A (*True Genius*), Rank S (*Prophecy Buster*), and Rank T (*TV Star*).
+- **Rankings and Progression:** A ranking system tracks your progress as you play.
 - **Instant Play & Cloud Sync:** Jump straight in as a guest with instant local storage, or sign in to permanently record your stats and claim your spot on the world stage.
 
 ---

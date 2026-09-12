@@ -31,7 +31,7 @@ export function useScore() {
                             stats: data.stats || scoreData.stats
                         };
                         setCachedRankData(updated);
-                        setScoreData(updated);
+                        setScoreData(getRankData());
                     }
                     setLoading(false);
                 }, (error) => {

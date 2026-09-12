@@ -19,7 +19,10 @@ const GRADE_CONFIG = {
     B: { color: '#339af0', bg: 'rgba(51, 154, 240, 0.12)', border: 'rgba(51, 154, 240, 0.35)', shadow: 'rgba(51, 154, 240, 0.2)' },
     A: { color: '#cc5de8', bg: 'rgba(204, 93, 232, 0.12)', border: 'rgba(204, 93, 232, 0.35)', shadow: 'rgba(204, 93, 232, 0.2)' },
     S: { color: '#00ff27', bg: 'rgba(0, 255, 39, 0.12)', border: 'rgba(0, 255, 39, 0.35)', shadow: 'rgba(0, 255, 39, 0.25)' },
-    T: { color: '#ff1f8e', bg: 'rgba(255, 31, 142, 0.15)', border: 'rgba(255, 31, 142, 0.45)', shadow: 'rgba(255, 31, 142, 0.3)' }
+    T: { color: '#ff1f8e', bg: 'rgba(255, 31, 142, 0.15)', border: 'rgba(255, 31, 142, 0.45)', shadow: 'rgba(255, 31, 142, 0.3)' },
+    'W.D': { color: '#B8A9FF', bg: 'rgba(184, 169, 255, 0.15)', border: 'rgba(184, 169, 255, 0.45)', shadow: 'rgba(184, 169, 255, 0.3)' },
+    DT: { color: '#FF0000', bg: 'rgba(255, 0, 0, 0.15)', border: 'rgba(255, 0, 0, 0.45)', shadow: 'rgba(255, 0, 0, 0.3)' },
+    '∞': { color: '#FFF1A8', bg: 'rgba(255, 241, 168, 0.18)', border: 'rgba(255, 241, 168, 0.65)', shadow: 'rgba(255, 241, 168, 0.45)' }
 };
 
 // The 7 Undertale / Deltarune Human Souls awarded to the Top 7 Leaderboard Champions
@@ -161,7 +164,7 @@ export default function Leaderboard() {
                                                     }}
                                                     title={`${userRank.label} (${userRank.grade} Rank)`}
                                                 >
-                                                    <span className={classes.tierGrade}>{userRank.grade}</span>
+                                                    <span className={classes.tierGrade} data-grade={userRank.grade}>{userRank.grade}</span>
                                                     <span className={classes.tierLabel}>{userRank.label}</span>
                                                 </div>
                                             </Table.Td>

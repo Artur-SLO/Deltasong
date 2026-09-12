@@ -193,6 +193,7 @@ export default function DailyGame() {
     useEffect(() => {
         if (import.meta.env.DEV) {
             window.deltasongDev = {
+                ...window.deltasongDev,
                 reset: () => {
                     const dateStr = getSimulatedOrLocalDate();
                     const key = getDailyStorageKey(dateStr, currentUserId);
@@ -282,7 +283,9 @@ export default function DailyGame() {
         }
         return () => {
             if (import.meta.env.DEV) {
-                delete window.deltasongDev;
+                delete window.deltasongDev.reset;
+                delete window.deltasongDev.skipStage;
+                delete window.deltasongDev.setDate;
             }
         };
     }, [gameState]);

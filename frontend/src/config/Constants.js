@@ -166,11 +166,38 @@ export const RANK_TIERS = [
     {
         grade: "T",
         min: 10000,
-        max: Infinity,
+        max: 19999,
         span: 10000,
         color: "pink.3",
         label: "TV STAR",
         message: "It's TV Ti... m... m... m...\n\nTHIS NEXT EXPERIMENT\n\nSEEMS\n\nVERY\n\nVERY\n\nINTERESTING\n\n❄︎♒︎♋︎■︎🙵⬧︎ ♐︎□︎❒︎ ◻︎●︎♋︎⍓︎♓︎■︎♑︎ ⧫︎♒︎♓︎⬧︎ ♐︎♋︎❒︎📬︎"
+    },
+    {
+        grade: "W.D",
+        min: 20000,
+        max: 34999,
+        span: 15000,
+        color: "#B8A9FF",
+        label: "Experiment",
+        message: "✌︎☼︎☜︎ ✡︎⚐︎🕆︎ ❄︎☟︎☜︎☼︎☜︎✍︎\n✌︎☼︎☜︎ 🕈︎☜︎ 👍︎⚐︎☠︎☠︎☜︎👍︎❄︎☜︎👎︎✍︎\n☜︎✠︎👍︎☜︎☹︎☹︎☜︎☠︎❄︎📬︎📬︎📬︎\n☠︎⚐︎🕈︎ ✋︎💧︎ ✡︎⚐︎🕆︎☼︎ ❄︎✋︎💣︎☜︎ ❄︎⚐︎\n👌︎☜︎ 👎︎✋︎💧︎👍︎✌︎☼︎👎︎☜︎👎︎📬︎\n✡︎⚐︎🕆︎☼︎ 👍︎☟︎⚐︎✋︎👍︎☜︎💧︎ 👎︎⚐︎ ☠︎⚐︎❄︎ 💣︎✌︎❄︎❄︎☜︎☼︎📬︎\n❄︎☟︎☜︎✡︎ ☠︎☜︎✞︎☜︎☼︎ 👎︎✋︎👎︎📬︎📬︎📬︎\n📬︎︎📬︎︎📬︎︎\n📬︎︎📬︎︎📬︎︎\n⚐︎︎☼︎ 💧︎⚐︎ ✋︎ ❄︎︎☟︎︎⚐︎︎🕆︎︎☝︎︎☟︎︎❄︎︎📬︎︎📬︎︎📬︎︎"
+    },
+    {
+        grade: "DT",
+        min: 35000,
+        max: 49999,
+        span: 15000,
+        color: "#FF0000",
+        label: "The Human",
+        message: "The Cage, With Human Soul and Parts!\nBut, despite everything, it's still you!"
+    },
+    {
+        grade: "∞",
+        min: 50000,
+        max: Infinity,
+        span: 50000,
+        color: "#FFF1A8",
+        label: "Heaven",
+        message: "THE CONNECTION HOLDS.\nACROSS EVERY LAYER OF LIGHT AND DARK.\n\nTHE DEVICE OPENED THE WAY.\nYOUR SOUL CARRIED THE SIGNAL.\nAND ANOTHER WORLD ANSWERED.\n\nNOW THE LAST THRESHOLD FALLS SILENT.\nABOVE THE FOUNTAINS.\nBEYOND THE REACH OF PUPPET STRINGS.\nWHERE EVERY PRAYER BECOMES AN ECHO.\n\nTHEY FORETOLD A HEAVEN TO BE BANISHED.\nYET HERE YOU STAND,\nWITH ALL THEIR HOPES STILL BURNING IN YOUR SOUL.\n\nLET THE FINAL PROPHECY TREMBLE.\nLET THE DARKNESS HEAR YOUR NAME.\nNO HIGHER CROWN AWAITS YOU.\nONLY THE SONG THAT CROSSED BETWEEN WORLDS.\n\nYOU HAVE REACHED HEAVEN.\nNOW ANSWER THE WORLD THAT CALLED.\n\nWILL YOU HOLD IT IN YOUR HAND...\nOR SET IT FREE?"
     }
 ];
 
