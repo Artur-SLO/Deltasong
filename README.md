@@ -51,13 +51,7 @@ See Deltasong in action across its deduction modes, audio challenges, and commun
    npm install
    ```
 
-3. Configure environment variables (optional for local guest play):
-   ```bash
-   cp .env.example .env
-   ```
-   Add your Firebase credentials to enable cloud accounts and global leaderboards. If omitted, the game runs out-of-the-box in local Guest Mode.
-
-4. Launch the application:
+3. Launch the application:
    ```bash
    npm run dev
    ```
